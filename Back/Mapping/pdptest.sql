@@ -2,8 +2,8 @@
 --
 -- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
 --
-GRANT USAGE ON * . * TO `pdp`@`localhost`;
-DROP USER `pdp`@`localhost`;
+-- GRANT USAGE ON * . * TO `pdp`@`localhost`;
+-- DROP USER `pdp`@`localhost`;
 
 
 
