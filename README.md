@@ -1,4 +1,4 @@
-# earthTrack
+# plantillaPHP
 
 Proyecto earthTrack.
 
