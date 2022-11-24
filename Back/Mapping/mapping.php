@@ -54,9 +54,9 @@ class mapping extends MappingBase{
             return substr($toret, 2, strlen($toret));
         }
 
-///////////////////////////////////////////////////////editar////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////EDIT////////////////////////////////////////////////////////
     
-    function editar($tabla,$arrayDatoValor,$condicion,$valoresCondition){
+    function EDIT($tabla,$arrayDatoValor,$condicion,$valoresCondition){
       $this->datosValores($arrayDatoValor);
 
       $infoQuery = '';

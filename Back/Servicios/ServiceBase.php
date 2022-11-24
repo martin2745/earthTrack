@@ -185,7 +185,7 @@ function logExcepcionesAccion($feedback){
 	function editar($mensaje){
 
 		try{	
-			$this->modelo->editar();
+			$this->modelo->EDIT();
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){
@@ -220,7 +220,7 @@ function logExcepcionesAccion($feedback){
 			if($borradoLogico){
 
 				try{	
-					$this->modelo->editar();
+					$this->modelo->EDIT();
 					$tipoBorrado = 'borradoLogico';
 				}catch(falloQuery $ex){
 					$this->rellenarExcepcion($ex->getMessage());
@@ -273,7 +273,7 @@ function logExcepcionesAccion($feedback){
 
 	function reactivar($mensaje){
 		try{	
-			$this->modelo->editar();
+			$this->modelo->EDIT();
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){

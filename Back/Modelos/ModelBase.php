@@ -19,9 +19,9 @@ class ModelBase{
 		$this->mapping->ADD($this->tabla, $this->arrayDatoValor);
 	}
 
-///////////////////////////////////////////////////////editar////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////EDIT////////////////////////////////////////////////////////
 
-	function editar(){
+	function EDIT(){
 		$valoresCondition = array();
 		foreach ($this->arrayDatoValor as $key => $value) { 
 			foreach($this->id as $elementoId){
@@ -39,7 +39,7 @@ class ModelBase{
 			}
 		}
 
-		$this->mapping->editar($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
+		$this->mapping->EDIT($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
 	}
 
 ///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
