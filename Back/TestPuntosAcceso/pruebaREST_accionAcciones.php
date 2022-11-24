@@ -19,7 +19,7 @@
             $rest = pruebaREST_Accion_Borrar_Acciones();
             $respuesta['datos'] = $rest;
             if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST__ACCION_BORRAR_ACCIONES_EXITO';
+                $respuesta['code'] = 'PETICION_TEST_ACCION_BORRAR_ACCIONES_EXITO';
             }
             else{
                 $respuesta['code'] = 'PETICION_TEST_ACCION_BORRAR_ACCIONES_FRACASO';
