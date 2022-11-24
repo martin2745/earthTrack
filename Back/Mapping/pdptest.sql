@@ -2,10 +2,8 @@
 --
 -- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
 --
-GRANT USAGE ON * . * TO `pdp`@`localhost`;
-DROP USER `pdp`@`localhost`;
-
-
+-- GRANT USAGE ON * . * TO `pdp`@`localhost`;
+-- DROP USER `pdp`@`localhost`;
 
 --
 -- CREAMOS EL USUARIO Y LE DAMOS PASSWORD,DAMOS PERMISO DE USO Y DAMOS PERMISOS SOBRE LA BASE DE DATOS.
@@ -41,13 +39,13 @@ CREATE TABLE `accion` (
 --
 
 INSERT INTO `accion` (`id_accion`, `nombre_accion`, `descripcion_accion`) VALUES
-(1, 'insertar', 'Insertar un elemento en base de datos'),
-(2, 'borrar', 'Borrado de un elemento en base de datos'),
-(3, 'editar', 'Editar un elemento en base de datos'),
-(4, 'buscar', 'Buscar un elemento en base de datos'),
-(5, 'reactivar', 'Reactivar un elemento borrado de forma lógica'),
-(6, 'verEnDetalle', 'Ver toda la información para una tupla'),
-(7, 'ejecutarTest', 'El usuario tiene la posibilidad de ejecutar el test');
+(1, 'insertar', 'Insertar un elemento en base de datos.'),
+(2, 'borrar', 'Borrado de un elemento en base de datos.'),
+(3, 'editar', 'Editar un elemento en base de datos.'),
+(4, 'buscar', 'Buscar un elemento en base de datos.'),
+(5, 'reactivar', 'Reactivar un elemento borrado de forma lógica.'),
+(6, 'verEnDetalle', 'Ver toda la información para una tupla.'),
+(7, 'ejecutarTest', 'El usuario tiene la posibilidad de ejecutar el test.');
 
 -- --------------------------------------------------------
 
@@ -66,12 +64,14 @@ CREATE TABLE `funcionalidad` (
 --
 
 INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descripcion_funcionalidad`) VALUES
-(1, 'usuario', 'Gestión de usuarios'),
-(2, 'rol', 'Gestión de roles'),
-(3, 'funcionalidad', 'Gestión de funcionalidades'),
-(4, 'accion', 'Gestión de acciones'),
-(5, 'permiso', 'Gestión de permisos'),
-(6, 'test', 'Ejecución de test');
+(1, 'usuario', 'Gestión de usuarios.'),
+(2, 'rol', 'Gestión de roles.'),
+(3, 'funcionalidad', 'Gestión de funcionalidades.'),
+(4, 'accion', 'Gestión de acciones.'),
+(5, 'permiso', 'Gestión de permisos.'),
+(6, 'test', 'Ejecución de test.'),
+(7, 'logExcepcionAccion', 'Log de excepcion de acciones'),
+(8, 'logExcepcionAtributo', 'Log de excepcion de atributo');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,9 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 2, 5),
 (1, 4, 5),
 (1, 6, 5),
-(1, 7, 6);
+(1, 7, 6),
+(1, 4, 7),
+(1, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -136,11 +138,11 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
-(1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades del sistema', 0),
-(2, 'gestorCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías', 0),
-(3, 'gestorProcesos', 'Solicita la aprobación del proceso que él mismo crea y se encarga de la gestión de procesos', 0),
-(4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema', 0),
-(5, 'existeUsuarioRolActivo', 'Excepcion de rol accion EXISTE_USUARIO_ROL_ACTIVO', 0),
+(1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades. del sistema', 0),
+(2, 'gestorCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías.', 0),
+(3, 'gestorProcesos', 'Solicita la aprobación del proceso que él mismo crea y se encarga de la gestión de procesos.', 0),
+(4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
+(5, 'existeUsuarioRolActivo', 'Excepcion de rol accion. EXISTE_USUARIO_ROL_ACTIVO', 0),
 (6, 'existeUsuarioRolInactivo', 'Nueva insercion de rol por parte del test', 0);
 
 -- --------------------------------------------------------
@@ -169,7 +171,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'admin@admin.com', 0),
-('usuarioCorreo', '4d85101d6936b75f584fc349b863e1f7', 4, '85537205K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioCorreo@gmail.com', 0),
+('usuarioCorreo', '1fb4dd8cf34de6f65fe5bfd2118c089f', 4, '85537205K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioCorreo@gmail.com', 0),
 ('usuarioDelete', '21232f297a57a5a743894a0e4a801fc3', 6, '58551442C', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'responsable@responsable.com', 1),
 ('usuarioRolAccio', '21232f297a57a5a743894a0e4a801fc3', 5, '39426866J', 'usuarioRolAccion', 'rol acciones', '2022-05-01', 'Salvador dalí', '666666666', 'usuarioRolAccion@gmail.com', 0),
 ('usuarioTest', '21232f297a57a5a743894a0e4a801fc3', 4, '10147483K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioTest@gmail.com', 0);
@@ -219,19 +221,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `accion`
 --
 ALTER TABLE `accion`
-  MODIFY `id_accion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_accion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidad`
 --
 ALTER TABLE `funcionalidad`
-  MODIFY `id_funcionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_funcionalidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas

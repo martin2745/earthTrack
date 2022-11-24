@@ -108,6 +108,7 @@ function rellenarTopMenu() {
   }
 
   $("#listadoFuncionalidades").append(desplegable);
+  setLang(getCookie("lang"));
 }
 
 /**
