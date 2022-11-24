@@ -27,6 +27,10 @@ USE `pdp`;
 -- Estructura de tabla para la tabla `accion`
 --
 
+--
+-- Estructura de tabla para la tabla `accion`
+--
+
 CREATE TABLE `accion` (
   `id_accion` int(11) NOT NULL,
   `nombre_accion` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -68,7 +72,9 @@ INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descri
 (3, 'funcionalidad', 'Gestión de funcionalidades'),
 (4, 'accion', 'Gestión de acciones'),
 (5, 'permiso', 'Gestión de permisos'),
-(6, 'test', 'Ejecución de test');
+(6, 'test', 'Ejecución de test'),
+(7, 'logexcepcionaccion', 'Log de excepcion de acciones'),
+(8, 'logexcepcionatributo', 'Log de excepcion de atributo');
 
 -- --------------------------------------------------------
 
@@ -100,6 +106,12 @@ CREATE TABLE `logexcepcionatributo` (
   `tiempo` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `logexcepcionatributo`
+--
+
+INSERT INTO `logexcepcionatributo` (`usuario`, `funcionalidad`, `accion`, `codigo`, `mensaje`, `tiempo`) VALUES
+('usuario', 'funcionalidad', 'accion', 'OKOKOK', 'MENSAJE', '2022-11-24 01:03:50');
 
 -- --------------------------------------------------------
 
@@ -144,7 +156,9 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 2, 5),
 (1, 4, 5),
 (1, 6, 5),
-(1, 7, 6);
+(1, 7, 6),
+(1, 4, 7),
+(1, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -212,18 +226,6 @@ ALTER TABLE `accion`
 --
 ALTER TABLE `funcionalidad`
   ADD PRIMARY KEY (`id_funcionalidad`);
-
---
--- Indices de la tabla `logexcepcionaccion`
---
-ALTER TABLE `logexcepcionaccion`
-  ADD PRIMARY KEY (`usuario`,`tiempo`);
-
---
--- Indices de la tabla `logexcepcionatributo`
---
-ALTER TABLE `logexcepcionatributo`
-  ADD PRIMARY KEY (`usuario`,`tiempo`);
 
 --
 -- Indices de la tabla `permiso`
