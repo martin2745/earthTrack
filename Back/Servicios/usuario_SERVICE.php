@@ -42,7 +42,7 @@ class usuario_SERVICE extends ServiceBase{
 	function editarContrasena($mensaje){
 		$this->modelo->arrayDatoValor['usuario'] = usuarioSistema;
 		try{	
-			$this->modelo->editar();
+			$this->modelo->EDIT();
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){
