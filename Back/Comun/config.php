@@ -6,5 +6,5 @@
 	define ('log_name','log.txt');
 	define ('BD', 'pdp');
 	define ('BDTEST', 'pdptest');
-	define ('urlRest', 'http://localhost/pdp/hola/earthTrack/Back/index.php');
+	define ('urlRest', 'http://localhost/pdp/earthTrack/Back/index.php');
 ?>
