@@ -122,7 +122,7 @@ class auth_SERVICE extends ServiceBase{
 	
 	function registrar($mensaje){
 		try{
-				$this->usuario->insertar();
+				$this->usuario->ADD();
 				$this->feedback['ok'] = true;
 				$this->feedback['code'] = $mensaje;
 			return $this->feedback;
