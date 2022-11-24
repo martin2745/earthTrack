@@ -137,7 +137,7 @@ function logExcepcionesAccion($feedback){
 			'tiempo' => (string)date("Y-m-d H:i:s", time()));
 
 		try{	
-			$log->ADD();
+			$log->insertar();
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){
@@ -152,7 +152,7 @@ function logExcepcionesAccion($feedback){
 
 	function insertar($mensaje){
 		try{	
-			$this->modelo->ADD();
+			$this->modelo->insertar();
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){
