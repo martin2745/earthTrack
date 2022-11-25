@@ -7,7 +7,7 @@ class obtenerContrasena_CORREO{
 		$contrasenaclaro = substr(str_shuffle($permitted_chars), 0, 16);
 		$contrasenaencriptada = md5($contrasenaclaro);
 		$usuario->arrayDatoValor['contrasena'] = $contrasenaencriptada;
-		$usuario->editar();
+		$usuario->EDIT();
 		return $contrasenaclaro;
 		
 	}
