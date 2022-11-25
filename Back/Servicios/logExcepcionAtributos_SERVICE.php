@@ -1,6 +1,7 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/logExcepcionAtributos_VALIDATION.php';
 
 class logExcepcionAtributos_SERVICE extends ServiceBase{
 	
@@ -13,6 +14,16 @@ class logExcepcionAtributos_SERVICE extends ServiceBase{
 				break;
 		}
 		$this->modelo = $this->crearModelOne('logExcepcionAtributos');
+	}
+
+	function validar_entrada_atributos(){
+		try{
+			validar_entrada_logExcepcionAtributos();
+		}catch(excepcionAtributos $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}catch(Exception $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}	
 	}
 }
 ?>

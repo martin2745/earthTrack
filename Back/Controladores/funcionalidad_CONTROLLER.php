@@ -2,7 +2,6 @@
 
 include_once './Controladores/ControllerBase.php';
 include_once './Servicios/funcionalidad_SERVICE.php';
-include_once './Validation/Atributo/controlador_VALIDATION/funcionalidad_VALIDATION.php';
 
 class funcionalidad extends ControllerBase{
 
@@ -13,18 +12,9 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE = new funcionalidad_SERVICE();
 	}
 
-	function validar_entrada_atributos(){
-		try{
-			validar_entrada_funcionalidad();
-		}catch(excepcionAtributos $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	
-	}
 
 	function insertar(){
-		$this->validar_entrada_atributos();
+		$this->funcionalidad_SERVICE->validar_entrada_atributos();
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_insertar();
 		$respuesta = $this->funcionalidad_SERVICE->insertar('FUNCIONALIDAD_INSERTAR_OK');
@@ -32,7 +22,7 @@ class funcionalidad extends ControllerBase{
 	}
 	
 	function editar(){
-		$this->validar_entrada_atributos();
+		$this->funcionalidad_SERVICE->validar_entrada_atributos();
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_editar();
 		$respuesta = $this->funcionalidad_SERVICE->editar('FUNCIONALIDAD_EDITAR_OK');
@@ -40,7 +30,7 @@ class funcionalidad extends ControllerBase{
 	}
 
 	function borrar(){
-		$this->validar_entrada_atributos();
+		$this->funcionalidad_SERVICE->validar_entrada_atributos();
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_borrar();
 		$respuesta = $this->funcionalidad_SERVICE->borrar('FUNCIONALIDAD_BORRAR_OK');
@@ -48,7 +38,7 @@ class funcionalidad extends ControllerBase{
 	}
 
 	function buscar(){
-		$this->validar_entrada_atributos();
+		$this->funcionalidad_SERVICE->validar_entrada_atributos();
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_buscar();
 		$respuesta = $this->funcionalidad_SERVICE->buscar();
@@ -56,7 +46,7 @@ class funcionalidad extends ControllerBase{
 	}	
 	
 	function verEnDetalle(){
-		$this->validar_entrada_atributos();
+		$this->funcionalidad_SERVICE->validar_entrada_atributos();
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->funcionalidad_SERVICE->verEnDetalle();

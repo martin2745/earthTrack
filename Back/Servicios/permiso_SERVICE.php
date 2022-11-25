@@ -1,6 +1,8 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/permiso_VALIDATION.php';
+
 class permiso_SERVICE extends ServiceBase{
 
 	function inicializarRest(){
@@ -23,6 +25,16 @@ class permiso_SERVICE extends ServiceBase{
 
 			$this->clase_validacion->modelo = $this->modelo;
 
+	}
+
+	function validar_entrada_atributos(){
+		try{
+			validar_entrada_permiso();
+		}catch(excepcionAtributos $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}catch(Exception $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}	
 	}
 
 	function buscar(){

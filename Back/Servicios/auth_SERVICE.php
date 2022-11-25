@@ -1,6 +1,7 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/auth_VALIDATION.php';
 
 class auth_SERVICE extends ServiceBase{
 
@@ -35,6 +36,15 @@ class auth_SERVICE extends ServiceBase{
 		}
 	}
 
+	function validar_entrada_atributos(){
+		try{
+			validar_entrada_auth();
+		}catch(excepcionAtributos $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}catch(Exception $ex){
+			$this->rellenarExcepcion($ex->getMessage());
+		}	
+	}
 
 	function verificacionToken(){
 
