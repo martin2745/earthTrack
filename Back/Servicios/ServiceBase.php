@@ -238,7 +238,7 @@ function logExcepcionesAccion($feedback){
 					unset($this->modelo->arrayDatoValor['borrado_logico']);
 				}
 				try{	
-					$this->modelo->borrar();
+					$this->modelo->DELETE();
 					$tipoBorrado = 'borradoFisico';
 				}catch(falloQuery $ex){
 					$this->rellenarExcepcion($ex->getMessage());
@@ -305,7 +305,7 @@ function logExcepcionesAccion($feedback){
 
 	function buscar(){
 		try{
-			$infoBusqueda = $this->modelo->buscar($this->modelo->arrayDatoValor, $this->modelo->orden, $this->modelo->tipoOrden);
+			$infoBusqueda = $this->modelo->SEARCH($this->modelo->arrayDatoValor, $this->modelo->orden, $this->modelo->tipoOrden);
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){
@@ -348,7 +348,7 @@ function logExcepcionesAccion($feedback){
 
 	function verEnDetalle(){
 		try{
-			$infoBusqueda = $this->modelo->buscar($this->modelo->arrayDatoValor, '', '');
+			$infoBusqueda = $this->modelo->SEARCH($this->modelo->arrayDatoValor, '', '');
 		}catch(falloQuery $ex){
 			$this->rellenarExcepcion($ex->getMessage());
 		}catch(falloBD $ex){

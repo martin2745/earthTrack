@@ -42,16 +42,16 @@ class ModelBase{
 		$this->mapping->EDIT($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
 	}
 
-///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////DELETE/////////////////////////////////////////////////////////
 
-	function borrar(){
-		$this->mapping->borrar($this->tabla, $this->arrayDatoValor);
+	function DELETE(){
+		$this->mapping->DELETE($this->tabla, $this->arrayDatoValor);
 	}
 
-//////////////////////////////////////////////////////buscar///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
 
-	function buscar(){
-		$result = $this->mapping->buscar($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden);
+	function SEARCH(){
+		$result = $this->mapping->SEARCH($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden);
 		$filas = $result['resource'];
 
 		if($this->empieza == 'nulo') {$this->empieza = 0;}

@@ -86,9 +86,9 @@ class mapping extends MappingBase{
         $this->execute_single_query($valores);
     }
 
-///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////DELETE/////////////////////////////////////////////////////////
     
-    function borrar($tabla,$arrayDatoValor){
+    function DELETE($tabla,$arrayDatoValor){
       $this->datosValores($arrayDatoValor);
       $infoQuery = '';
 
@@ -102,9 +102,9 @@ class mapping extends MappingBase{
       $this->execute_single_query($this->valoresQuery);
     }
 
-//////////////////////////////////////////////////////buscar///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
 
-    function buscar($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    function SEARCH($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
         $valores = array();
         $this->query = "SELECT * FROM ".$tabla;
         $this->datosValores($arrayDatoValor);  
