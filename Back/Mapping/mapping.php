@@ -102,9 +102,9 @@ class mapping extends MappingBase{
       $this->execute_single_query($this->valoresQuery);
     }
 
-//////////////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH_Generico///////////////////////////////////////////////////////
 
-    function SEARCH($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    function SEARCH_Generico($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
         $valores = array();
         $this->query = "SELECT * FROM ".$tabla;
         $this->datosValores($arrayDatoValor);  
@@ -147,7 +147,7 @@ class mapping extends MappingBase{
         return $this->feedback;
       }
 
-    function filtradoSentenciaWHERE($arrayDatoValor){
+    function filtradoSentenciaWHERE_Generico($arrayDatoValor){
         $arrayDatoValorLIKE = array();
         $arrayDatoValorIGUAL = array();
         $valoresQuery = array();
@@ -246,6 +246,127 @@ class mapping extends MappingBase{
                 return $auxiliar;
             }
 
+////////////////////////////////////////////SEARCH BY///////////////////////////////////////////////////////
+function SEARCH_BY($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    $valores = array();
+    $this->query = "SELECT * FROM ".$tabla;
+    $this->datosValores($arrayDatoValor);  
+
+    if (!empty($this->datosQuery)){
+        $toret = $this->filtradoSentenciaWHEREBy($arrayDatoValor);
+        $this->query = $this->query.' WHERE ('.$toret[0].')';
+        $valores = $toret[1];
+    }
+    
+    if($orden != '' && $tipoOrden != ''){
+        $this->query = $this->query.' ORDER BY ('.$orden.') '.$tipoOrden;
+    }
+
+    if (($empieza == 'nulo') && ($filaspagina == 'nulo')) {
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+    }
+    else{
+    //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+        
+        if($empieza == 'nulo') { $empieza = 0;}
+
+        if(count($this->feedback['resource']) == $empieza){
+            $this->feedback['code'] = 'RECORDSET_VACIO';
+            $this->feedback['resource'] = array();
+        }
+        else if(count($this->feedback['resource']) > $filaspagina){
+            $this->feedback['resource'] = array_slice($this->feedback['resource'], $empieza, $filaspagina);
+        }
+    }
+
+    if (!empty($this->feedback['resource']) && !empty($foraneas)){
+        foreach ($foraneas as $key => $value) {
+            $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+        }
+    }
+    return $this->feedback;
+  }
+
+function filtradoSentenciaWHEREBy($arrayDatoValor){
+    $valoresQuery = array();
+    $query = '';
+
+    if($query != ''){
+        $query = $query.' and '.$this->constructWhereBuscar($arrayDatoValorIGUAL);
+    }else{
+        $query = $this->constructWhereBuscar($arrayDatoValorIGUAL);
+    }
+    foreach($arrayDatoValorIGUAL as $valor){
+       array_push($valoresQuery, $valor);
+    }  
+
+    $toret[0] = $query;
+    $toret[1] = $valoresQuery;
+     return $toret;
+    
+  }
+////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
+function SEARCH($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    $valores = array();
+    $this->query = "SELECT * FROM ".$tabla;
+    $this->datosValores($arrayDatoValor);  
+
+    if (!empty($this->datosQuery)){
+        $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+        $this->query = $this->query.' WHERE ('.$toret[0].')';
+        $valores = $toret[1];
+    }
+    
+    if($orden != '' && $tipoOrden != ''){
+        $this->query = $this->query.' ORDER BY ('.$orden.') '.$tipoOrden;
+    }
+
+    if (($empieza == 'nulo') && ($filaspagina == 'nulo')) {
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+    }
+    else{
+    //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+        
+        if($empieza == 'nulo') { $empieza = 0;}
+
+        if(count($this->feedback['resource']) == $empieza){
+            $this->feedback['code'] = 'RECORDSET_VACIO';
+            $this->feedback['resource'] = array();
+        }
+        else if(count($this->feedback['resource']) > $filaspagina){
+            $this->feedback['resource'] = array_slice($this->feedback['resource'], $empieza, $filaspagina);
+        }
+    }
+
+    if (!empty($this->feedback['resource']) && !empty($foraneas)){
+        foreach ($foraneas as $key => $value) {
+            $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+        }
+    }
+    return $this->feedback;
+  }
+
+function filtradoSentenciaWHERE($arrayDatoValor){
+    $valoresQuery = array();
+    $query = '';
+
+    $query = $this->constructWhereBuscar($arrayDatoValorLIKE);
+    $arrayValoresLike = $this->convertirValoresLike(array_values($arrayDatoValorLIKE));
+    foreach($arrayValoresLike as $value){
+        array_push($valoresQuery, $value);
+    }
+
+    $toret[0] = $query;
+    $toret[1] = $valoresQuery;
+     return $toret;
+    
+  }
 ////////////////////////////////////////////Funciones de apoyo///////////////////////////////////////////////////////
       
     function getById($tabla,$datosQuery,$valoresQuery){
@@ -313,7 +434,7 @@ class mapping extends MappingBase{
         $this->query = "SELECT COUNT(*) FROM ". $tabla;
   
         if (!empty($this->datosQuery)){
-          $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+          $toret = $this->filtradoSentenciaWHERE_Generico($arrayDatoValor);
           $this->query = $this->query.' WHERE ('.$toret[0].')';
           $valores = $toret[1];
         }
