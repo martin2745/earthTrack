@@ -89,85 +89,103 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_contrasena(){
 
 		if($this->Es_Vacio($this->contrasena)===true){
-			throw new excepcionAtributos('CONTRASEÑA_USUARIO_VACIA');
+			//throw new excepcionAtributos('CONTRASEÑA_USUARIO_VACIA');
+			$this->rellenarExcepcion('CONTRASEÑA_USUARIO_VACIA');
 		}
 
 		if($this->Longitud_exacta($this->contrasena,32)===false){
-			throw new excepcionAtributos('CONTRASEÑA_USUARIO_LONGITUD_INCORRECTA');
+			//throw new excepcionAtributos('CONTRASEÑA_USUARIO_LONGITUD_INCORRECTA');
+			$this->rellenarExcepcion('CONTRASEÑA_USUARIO_LONGITUD_INCORRECTA');
 		}
 			
 		if($this->Es_alfanumerico($this->contrasena)===false){
-			throw new excepcionAtributos('CONTRASEÑA_USUARIO_ALFANUMERICO_INCORRECTO');
+			//throw new excepcionAtributos('CONTRASEÑA_USUARIO_ALFANUMERICO_INCORRECTO');
+			$this->rellenarExcepcion('CONTRASEÑA_USUARIO_ALFANUMERICO_INCORRECTO');
 		}			
 	}
 
 	function validar_id_rol(){
 		if($this->Es_Vacio($this->id_rol)===true){
-			throw new excepcionAtributos('ID_ROL_VACIO');
+			//throw new excepcionAtributos('ID_ROL_VACIO');
+			$this->rellenarExcepcion('ID_ROL_VACIO');
 		}
 		if(!$this->Es_numerico($this->id_rol)===true){
-			throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+			//throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+			$this->rellenarExcepcion('ID_ROL_ERROR_FORMATO');
 		}
 	}
 
 	function validar_dni(){
 		
 		if($this->Es_Vacio($this->dni)===true){
-			throw new excepcionAtributos('DNI_VACIO');
+			//throw new excepcionAtributos('DNI_VACIO');
+			$this->rellenarExcepcion('DNI_VACIO');
 		}
 
 		if($this->Longitud_minima($this->dni,9)===false){
-			throw new excepcionAtributos('DNI_MENOR_QUE_9');
+			//throw new excepcionAtributos('DNI_MENOR_QUE_9');
+			$this->rellenarExcepcion('DNI_MENOR_QUE_9');
 		}
 
 		if($this->Longitud_maxima($this->dni,9)===false){
-			throw new excepcionAtributos('DNI_MAYOR_QUE_9');
+			//throw new excepcionAtributos('DNI_MAYOR_QUE_9');
+			$this->rellenarExcepcion('DNI_MAYOR_QUE_9');
 		}
 
 		if($this->Formato_dni($this->dni)===false){
-			throw new excepcionAtributos('DNI_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('DNI_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('DNI_FORMATO_INCORRECTO');
 		}
 			
 		if($this->LetraNIF($this->dni)===false) {
-			throw new excepcionAtributos('DNI_LETRA_INCORRECTA');
+			//throw new excepcionAtributos('DNI_LETRA_INCORRECTA');
+			$this->rellenarExcepcion('DNI_LETRA_INCORRECTA');
 		}
 	}
 
 	function validar_nombre(){
 
 		if($this->Es_Vacio($this->nombre)===true){
-			throw new excepcionAtributos('NOMBRE_VACIO');
+			//throw new excepcionAtributos('NOMBRE_VACIO');
+			$this->rellenarExcepcion('NOMBRE_VACIO');
 		}
 
 		if($this->Longitud_minima($this->nombre,3)===false){
-			throw new excepcionAtributos('NOMBRE_MENOR_QUE_3');
+			//throw new excepcionAtributos('NOMBRE_MENOR_QUE_3');
+			$this->rellenarExcepcion('NOMBRE_MENOR_QUE_3');
 		}
 
 		if($this->Longitud_maxima($this->nombre,45)===false){
-			throw new excepcionAtributos('NOMBRE_MAYOR_QUE_45');
+			//throw new excepcionAtributos('NOMBRE_MAYOR_QUE_45');
+			$this->rellenarExcepcion('NOMBRE_MAYOR_QUE_45');
 		}
 
 		if($this->comprobarLetrasEspacios($this->nombre)===false){
-			throw new excepcionAtributos('NOMBRE_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('NOMBRE_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('NOMBRE_FORMATO_INCORRECTO');
 		}
 	}
 
 	function validar_apellidos(){
 
 		if($this->Es_Vacio($this->apellidos)===true){
-			throw new excepcionAtributos('APELLIDOS_VACIO');
+			//throw new excepcionAtributos('APELLIDOS_VACIO');
+			$this->rellenarExcepcion('APELLIDOS_VACIO');
 		}
 
 		if($this->Longitud_minima($this->apellidos,3)===false){
-			throw new excepcionAtributos('APELLIDOS_MENOR_QUE_3');
+			//throw new excepcionAtributos('APELLIDOS_MENOR_QUE_3');
+			$this->rellenarExcepcion('APELLIDOS_MENOR_QUE_3');
 		}
 
 		if($this->Longitud_maxima($this->apellidos,45)===false){
-			throw new excepcionAtributos('APELLIDOS_MAYOR_QUE_45');
+			//throw new excepcionAtributos('APELLIDOS_MAYOR_QUE_45');
+			$this->rellenarExcepcion('APELLIDOS_MAYOR_QUE_45');
 		}
 
 		if($this->comprobarLetrasEspacios($this->apellidos)===false){
-			throw new excepcionAtributos('APELLIDOS_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('APELLIDOS_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('APELLIDOS_FORMATO_INCORRECTO');
 		}
 			
 	}
@@ -175,28 +193,34 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_fechaNacimiento(){
 
 		if($this->Es_Vacio($this->fechaNacimiento)===true){
-			throw new excepcionAtributos('FECHA_NACIMIENTO_VACIA');
+			//throw new excepcionAtributos('FECHA_NACIMIENTO_VACIA');
+			$this->rellenarExcepcion('FECHA_NACIMIENTO_VACIA');
 		}
 
 		switch ($this->comprobarFechanumerosbarra($this->fechaNacimiento)) {
 			case 'formatofechamal':
-				throw new excepcionAtributos('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
 				break;
 
 			case 'tieneletras':
-				throw new excepcionAtributos('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
+				//throw new excepcionAtributos('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
+				$this->rellenarExcepcion('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
 				break;
 
 			case 'tamañomenor10':
-				throw new excepcionAtributos('FECHA_NACIMIENTO_MENOR_QUE_10');
+				//throw new excepcionAtributos('FECHA_NACIMIENTO_MENOR_QUE_10');
+				$this->rellenarExcepcion('FECHA_NACIMIENTO_MENOR_QUE_10');
 				break;			
 
 			case 'tamañomayor10':
-				throw new excepcionAtributos('FECHA_NACIMIENTO_MAYOR_QUE_10');
+				//throw new excepcionAtributos('FECHA_NACIMIENTO_MAYOR_QUE_10');
+				$this->rellenarExcepcion('FECHA_NACIMIENTO_MAYOR_QUE_10');
 				break;
 				
 			case 'fechafutura':
-				throw new excepcionAtributos('FECHA_NACIMIENTO_IMPOSIBLE');
+				//throw new excepcionAtributos('FECHA_NACIMIENTO_IMPOSIBLE');
+				$this->rellenarExcepcion('FECHA_NACIMIENTO_IMPOSIBLE');
 				break;
 
 			default:
@@ -207,57 +231,69 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_direccion(){
 		
 		if($this->Es_Vacio($this->direccion)===true){
-			throw new excepcionAtributos('DIRECCION_VACIA');
+			//throw new excepcionAtributos('DIRECCION_VACIA');
+			$this->rellenarExcepcion('DIRECCION_VACIA');
 		}
 
 		if($this->Longitud_minima($this->direccion,5)===false){
-			throw new excepcionAtributos('DIRECCION_MENOR_5');
+			//throw new excepcionAtributos('DIRECCION_MENOR_5');
+			$this->rellenarExcepcion('DIRECCION_MENOR_5');
 		}
 
 		if($this->Longitud_maxima($this->direccion,200)===false){
-			throw new excepcionAtributos('DIRECCION_MAYOR_200');
+			//throw new excepcionAtributos('DIRECCION_MAYOR_200');
+			$this->rellenarExcepcion('DIRECCION_MAYOR_200');
 		}
 
 		if($this->FormatoCalle($this->direccion)===false){
-			throw new excepcionAtributos('DIRECCION_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('DIRECCION_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('DIRECCION_FORMATO_INCORRECTO');
 		}
 	}
 
 	function validar_telefono(){
 
 		if($this->Es_Vacio($this->telefono)===true){
-			throw new excepcionAtributos('TELEFONO_VACIO');
+			//throw new excepcionAtributos('TELEFONO_VACIO');
+			$this->rellenarExcepcion('TELEFONO_VACIO');
 		}
 
 		if($this->Longitud_minima($this->telefono,9)===false){
-			throw new excepcionAtributos('TELEFONO_MENOR_QUE_9');
+			//throw new excepcionAtributos('TELEFONO_MENOR_QUE_9');
+			$this->rellenarExcepcion('TELEFONO_MENOR_QUE_9');
 		}
 
 		if($this->Longitud_maxima($this->telefono,9)===false){
-			throw new excepcionAtributos('TELEFONO_MAYOR_QUE_9');
+			//throw new excepcionAtributos('TELEFONO_MAYOR_QUE_9');
+			$this->rellenarExcepcion('TELEFONO_MAYOR_QUE_9');
 		}
 
 		if($this->Es_numerico($this->telefono)===false){
-			throw new excepcionAtributos('TELEFONO_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('TELEFONO_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('TELEFONO_FORMATO_INCORRECTO');
 		}
 	}
 
 	function validar_email(){
 
 		if($this->Es_Vacio($this->email)===true){
-			throw new excepcionAtributos('EMAIL_VACIO');
+			//throw new excepcionAtributos('EMAIL_VACIO');
+			$this->rellenarExcepcion('EMAIL_VACIO');
 		}
 
 		if($this->Longitud_minima($this->email,6)===false){
-			throw new excepcionAtributos('EMAIL_LONGITUD_MINIMA');
+			//throw new excepcionAtributos('EMAIL_LONGITUD_MINIMA');
+			$this->rellenarExcepcion('EMAIL_LONGITUD_MINIMA');
 		}
 
 		if($this->Longitud_maxima($this->email,40)===false){
-			throw new excepcionAtributos('EMAIL_LONGITUD_MAXIMA');
+			//throw new excepcionAtributos('EMAIL_LONGITUD_MAXIMA');
+			$this->rellenarExcepcion('EMAIL_LONGITUD_MAXIMA');
 		}
 
 		if($this->Formato_email($this->email)===false){
-			throw new excepcionAtributos('EMAIL_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('EMAIL_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('EMAIL_FORMATO_INCORRECTO');
 		}
 	}
 
@@ -266,11 +302,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_usuario_buscar(){
 		if(!empty($this->usuario)){
 			if($this->Longitud_maxima($this->usuario,15)===false){
-				throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+				//throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+				$this->rellenarExcepcion('LOGIN_USUARIO_MAYOR_QUE_15');
 			}
 				
 			if($this->comprobarFormatoLoginContrasena($this->usuario)===false){
-				throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+				//throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+				$this->rellenarExcepcion('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
 			}			
 		}
 	}
@@ -279,7 +317,9 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_id_rol_buscar(){
 		if(!empty($this->id_rol)){
 			if(!$this->Es_numerico($this->id_rol)===true){
-				throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+				//throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+				$this->rellenarExcepcion('ID_ROL_ERROR_FORMATO');
+				
 			}
 		}
 	}
@@ -287,7 +327,8 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_dni_buscar(){
 		if(!empty($this->dni)){
 			if($this->Longitud_maxima($this->dni,9)===false){
-				throw new excepcionAtributos('DNI_MAYOR_QUE_9');
+				//throw new excepcionAtributos('DNI_MAYOR_QUE_9');
+				$this->rellenarExcepcion('DNI_MAYOR_QUE_9');
 			}
 		}
 	}
@@ -295,11 +336,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_nombre_buscar(){
 		if(!empty($this->nombre)){
 			if($this->Longitud_maxima($this->nombre,45)===false){
-				throw new excepcionAtributos('NOMBRE_MAYOR_QUE_45');
+				//throw new excepcionAtributos('NOMBRE_MAYOR_QUE_45');
+				$this->rellenarExcepcion('NOMBRE_MAYOR_QUE_45');
 			}
 			
 			if($this->comprobarLetrasEspacios($this->nombre)===false){
-				throw new excepcionAtributos('NOMBRE_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('NOMBRE_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('NOMBRE_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -307,11 +350,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_apellidos_buscar(){
 		if(!empty($this->apellidos)){
 			if($this->Longitud_maxima($this->apellidos,45)===false){
-				throw new excepcionAtributos('APELLIDOS_MAYOR_QUE_45');
+				//throw new excepcionAtributos('APELLIDOS_MAYOR_QUE_45');
+				$this->rellenarExcepcion('APELLIDOS_MAYOR_QUE_45');
 			}
 			
 			if($this->comprobarLetrasEspacios($this->apellidos)===false){
-				throw new excepcionAtributos('APELLIDOS_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('APELLIDOS_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('APELLIDOS_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -320,23 +365,28 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 		if(!empty($this->fechaNacimiento)){
 			switch ($this->comprobarFechanumerosbarra($this->fechaNacimiento)) {
 				case 'formatofechamal':
-					throw new excepcionAtributos('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
+					//throw new excepcionAtributos('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
+					$this->rellenarExcepcion('FECHA_NACIMIENTO_FORMATO_INCORRECTO');
 					break;
 
 				case 'tieneletras':
-					throw new excepcionAtributos('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
+					//throw new excepcionAtributos('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
+					$this->rellenarExcepcion('FECHA_NACIMIENTO_SOLO_NUMEROS_Y_GUIONES');
 					break;
 
 				case 'tamañomenor10':
-					throw new excepcionAtributos('FECHA_NACIMIENTO_MENOR_QUE_10');
+					//throw new excepcionAtributos('FECHA_NACIMIENTO_MENOR_QUE_10');
+					$this->rellenarExcepcion('FECHA_NACIMIENTO_MENOR_QUE_10');
 					break;			
 
 				case 'tamañomayor10':
-					throw new excepcionAtributos('FECHA_NACIMIENTO_MAYOR_QUE_10');
+					//throw new excepcionAtributos('FECHA_NACIMIENTO_MAYOR_QUE_10');
+					$this->rellenarExcepcion('FECHA_NACIMIENTO_MAYOR_QUE_10');
 					break;
 					
 				case 'fechafutura':
-					throw new excepcionAtributos('FECHA_NACIMIENTO_IMPOSIBLE');
+					//throw new excepcionAtributos('FECHA_NACIMIENTO_IMPOSIBLE');
+					$this->rellenarExcepcion('FECHA_NACIMIENTO_IMPOSIBLE');
 					break;
 
 				default:
@@ -348,11 +398,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_direccion_buscar(){
 		if(!empty($this->direccion)){
 			if($this->Longitud_maxima($this->direccion,200)===false){
-				throw new excepcionAtributos('DIRECCION_MAYOR_200');
+				//throw new excepcionAtributos('DIRECCION_MAYOR_200');
+				$this->rellenarExcepcion('DIRECCION_MAYOR_200');
 			}
 			
 			if($this->FormatoCalle($this->direccion)===false){
-				throw new excepcionAtributos('DIRECCION_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('DIRECCION_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('DIRECCION_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -360,11 +412,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_telefono_buscar(){
 		if(!empty($this->telefono)){
 			if($this->Longitud_maxima($this->telefono,9)===false){
-				throw new excepcionAtributos('TELEFONO_MAYOR_QUE_9');
+				//throw new excepcionAtributos('TELEFONO_MAYOR_QUE_9');
+				$this->rellenarExcepcion('TELEFONO_MAYOR_QUE_9');
 			}
 			
 			if($this->Es_numerico($this->telefono)===false){
-				throw new excepcionAtributos('TELEFONO_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('TELEFONO_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('TELEFONO_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -372,11 +426,13 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_email_buscar(){
 		if(!empty($this->email)){
 			if($this->Longitud_maxima($this->email,40)===false){
-				throw new excepcionAtributos('EMAIL_LONGITUD_MAXIMA');
+				//throw new excepcionAtributos('EMAIL_LONGITUD_MAXIMA');
+				$this->rellenarExcepcion('EMAIL_LONGITUD_MAXIMA');
 			}
 
 			if($this->Formato_email($this->email)===false){
-				throw new excepcionAtributos('EMAIL_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('EMAIL_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('EMAIL_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -384,7 +440,8 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_borrado_logico_buscar(){
 		if(!empty($this->borrado_logico)){
 			if($this->Es_flag($this->borrado_logico)===false){
-				throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+				//throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+				$this->rellenarExcepcion('BORRADO_LOGICO_DIFERENTE_0_1');
 			}
 		}
 	}

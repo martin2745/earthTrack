@@ -1,6 +1,8 @@
 <?php
 
-class obtenerContrasena_CORREO{
+include_once './correo/OCCErrorLaunch.php';
+
+class obtenerContrasena_CORREO extends OCCErrorLaunch{
 
     function obtenerContrasenaCorreo($usuario){
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

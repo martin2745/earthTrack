@@ -1,6 +1,8 @@
 <?php
 
-class JWT
+include_once './JWT/JWTErrorLaunch.php';
+
+class JWT extends JWTErrorLaunch
 {
     const ASN1_INTEGER = 0x02;
     const ASN1_SEQUENCE = 0x10;
@@ -28,12 +30,14 @@ class JWT
         $timestamp = \is_null(static::$timestamp) ? \time() : static::$timestamp;
 
         if (empty($key)) {
-            throw new excepcionToken('TOKEN_CLAVE_VACIA');
+            //throw new excepcionToken('TOKEN_CLAVE_VACIA');
+            $this->rellenarExcepcion('TOKEN_CLAVE_VACIA');
         }
         $tks = \explode('.', $jwt);
         
         if (\count($tks) != 3) {
-            throw new excepcionToken('TOKEN_NUMERO_INCORRECTO_SEGMENTOS');
+            //throw new excepcionToken('TOKEN_NUMERO_INCORRECTO_SEGMENTOS');
+            $this->rellenarExcepcion('TOKEN_NUMERO_INCORRECTO_SEGMENTOS');
         }
         
         $headb64 = substr($tks[0], 7);
@@ -41,25 +45,31 @@ class JWT
         $cryptob64 = $tks[2];
         
         if (null === ($header = static::jsonDecode(static::urlsafeB64Decode($headb64)))) {
-            throw new excepcionToken('TOKEN_HEADER_NO_VALIDO');
+            //throw new excepcionToken('TOKEN_HEADER_NO_VALIDO');
+            $this->rellenarExcepcion('TOKEN_HEADER_NO_VALIDO');
         }
         if (null === $payload = static::jsonDecode(static::urlsafeB64Decode($bodyb64))) {
-            throw new excepcionToken('TOKEN_PAYLOAD_NO_VALIDO');
+            //throw new excepcionToken('TOKEN_PAYLOAD_NO_VALIDO');
+            $this->rellenarExcepcion('TOKEN_PAYLOAD_NO_VALIDO');
         }
         if (false === ($sig = static::urlsafeB64Decode($cryptob64))) {
-            throw new excepcionToken('TOKEN_SIGN_NO_VALIDO');
+            //throw new excepcionToken('TOKEN_SIGN_NO_VALIDO');
+            $this->rellenarExcepcion('TOKEN_SIGN_NO_VALIDO');
         }
         if ($header->alg === 'ES256') {
             $sig = self::signatureToDER($sig);
         }
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
-            throw new excepcionToken('TOKEN_FALLO_VERIFICACION_SIGN');
+            //throw new excepcionToken('TOKEN_FALLO_VERIFICACION_SIGN');
+            $this->rellenarExcepcion('TOKEN_FALLO_VERIFICACION_SIGN');
         }
         if (isset($payload->iat) && $payload->iat > ($timestamp + static::$leeway)) {
-            throw new excepcionToken('TOKEN_USO_FUTURO');
+            //throw new excepcionToken('TOKEN_USO_FUTURO');
+            $this->rellenarExcepcion('TOKEN_USO_FUTURO');
         }
         if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
-            throw new excepcionToken('TOKEN_CADUCADO');
+            //throw new excepcionToken('TOKEN_CADUCADO');
+            $this->rellenarExcepcion('TOKEN_CADUCADO');
         }
         
         return $payload;
@@ -88,7 +98,8 @@ class JWT
     public static function sign($msg, $key, $alg = 'HS256')
     {
         if (empty(static::$supported_algs[$alg])) {
-            throw new excepcionToken('ALGORITMO_NO_SOPORTADO');
+            //throw new excepcionToken('ALGORITMO_NO_SOPORTADO');
+            $this->rellenarExcepcion('ALGORITMO_NO_SOPORTADO');
         }
         list($function, $algorithm) = static::$supported_algs[$alg];
         switch ($function) {
@@ -100,7 +111,8 @@ class JWT
     private static function verify($msg, $signature, $key, $alg)
     {
         if (empty(static::$supported_algs[$alg])) {
-            throw new excepcionToken('TOKEN_ALGORITMO_NO_SOPORTADO');
+            //throw new excepcionToken('TOKEN_ALGORITMO_NO_SOPORTADO');
+            $this->rellenarExcepcion('TOKEN_ALGORITMO_NO_SOPORTADO');
         }
 
         list($function, $algorithm) = static::$supported_algs[$alg];
@@ -136,7 +148,8 @@ class JWT
         if ($errno = \json_last_error()) {
             static::handleJsonError($errno);
         } elseif ($obj === null && $input !== 'null') {
-            throw new excepcionToken('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            //throw new excepcionToken('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            $this->rellenarExcepcion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
         }
         return $obj;
     }
@@ -147,7 +160,8 @@ class JWT
         if ($errno = \json_last_error()) {
             static::handleJsonError($errno);
         } elseif ($json === 'null' && $input !== null) {
-            throw new excepcionToken('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            //throw new excepcionToken('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            $this->rellenarExcepcion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
         }
         return $json;
     }
@@ -177,11 +191,12 @@ class JWT
             JSON_ERROR_SYNTAX => 'TOKEN_SYNTAX_ERROR_MALFORMED_JSON',
             JSON_ERROR_UTF8 => 'TOKEN_MALFORMED_UTF8_CHARACTERS' //PHP >= 5.3.3
         );
-        throw new excepcionToken(
+        /*throw new excepcionToken(
             isset($messages[$errno])
             ? $messages[$errno]
             : 'TOKEN_ERROR_TOKEN_INTRODUCIDO'
-        );
+        );*/
+        $this->rellenarExcepcion(isset($messages[$errno]) ? $messages[$errno] : 'TOKEN_ERROR_TOKEN_INTRODUCIDO');
     }
 
     private static function safeStrlen($str)

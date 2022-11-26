@@ -1,8 +1,9 @@
 <?php
 
 include_once './Comun/config.php';
+include_once './Mapping/MappingErrorLaunch.php';
 
-abstract class MappingBase{
+abstract class MappingBase extends MappingErrorLaunch{
 
 	private static $db_host = host;
 	private static $db_user = user;
@@ -50,11 +51,13 @@ abstract class MappingBase{
 	protected function execute_single_query($valores) {
 		
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			//throw new falloBD('CONEXION_BD_KO');
+			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
 			if(!($this->stmt->execute($valores))){
-				throw new falloQuery('SQL_KO');
+				//throw new falloQuery('SQL_KO');
+				$this->rellenarExcepcion('SQL_KO');
 			}
 		}
 
@@ -64,7 +67,8 @@ abstract class MappingBase{
 	protected function get_results_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			//throw new falloBD('CONEXION_BD_KO');
+			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
@@ -88,7 +92,8 @@ abstract class MappingBase{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					throw new falloQuery('SQL_KO');
+					//throw new falloQuery('SQL_KO');
+					$this->rellenarExcepcion('SQL_KO');
 				}else{
 	
 					if ($this->stmt->rowCount() == 0){
@@ -113,12 +118,14 @@ abstract class MappingBase{
 	protected function get_one_result_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			//throw new falloBD('CONEXION_BD_KO');
+			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					throw new falloQuery('SQL_KO');
+					//throw new falloQuery('SQL_KO');
+					$this->rellenarExcepcion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;
@@ -135,7 +142,8 @@ abstract class MappingBase{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					throw new falloQuery('SQL_KO');
+					//throw new falloQuery('SQL_KO');
+					$this->rellenarExcepcion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;
