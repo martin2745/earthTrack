@@ -28,75 +28,62 @@ class permiso_SERVICE extends ServiceBase{
 	}
 
 	function validar_entrada_atributos(){
-		try{
-			validar_entrada_permiso();
-		}catch(excepcionAtributos $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	
+		validar_entrada_permiso();
 	}
 
 	function buscar(){
-		try{
-			$arrayRoles = $this->rolesSistema();
-			$arrayApoyo = array();	
-			$arrayRol = array();
-			$primeraFila = array();
-			$datosFila = array();
-			$matriz = array();
+		$arrayRoles = $this->rolesSistema();
+		$arrayApoyo = array();	
+		$arrayRol = array();
+		$primeraFila = array();
+		$datosFila = array();
+		$matriz = array();
 
-			//Roles
-			foreach($arrayRoles as $rol){
-				$arrayApoyo = [
-					'id_rol' => $rol['id_rol'],
-					'nombre' => $rol['nombre_rol']
-				];
-				array_push($arrayRol, $arrayApoyo);
-			}
+		//Roles
+		foreach($arrayRoles as $rol){
+			$arrayApoyo = [
+				'id_rol' => $rol['id_rol'],
+				'nombre' => $rol['nombre_rol']
+			];
+			array_push($arrayRol, $arrayApoyo);
+		}
 			
-			$primeraFila [0] = array();
+		$primeraFila [0] = array();
 
-			for($i = 1; $i <= count($arrayRol); $i++){
-				$primeraFila[$i] = $arrayRol[$i - 1];
-			}
+		for($i = 1; $i <= count($arrayRol); $i++){
+			$primeraFila[$i] = $arrayRol[$i - 1];
+		}
 
-			$longitudFila = count($primeraFila);
+		$longitudFila = count($primeraFila);
 			
-			$poseePermisos[$this->modelo->arrayDatoValor["nombre_funcionalidad"]] = $this->actionFuncionalidad($this->modelo->arrayDatoValor["nombre_funcionalidad"], $arrayRol);
+		$poseePermisos[$this->modelo->arrayDatoValor["nombre_funcionalidad"]] = $this->actionFuncionalidad($this->modelo->arrayDatoValor["nombre_funcionalidad"], $arrayRol);
 			
-			$funcionalidadAcciones = array();
-			foreach($poseePermisos as $key => $valor){
-				$funcionalidadAcciones[$key] = $valor['acciones'];
-			}
+		$funcionalidadAcciones = array();
+		foreach($poseePermisos as $key => $valor){
+			$funcionalidadAcciones[$key] = $valor['acciones'];
+		}
 
-			foreach($funcionalidadAcciones  as $key => $value) {
-				sort($funcionalidadAcciones[$key], SORT_REGULAR);
-			}
+		foreach($funcionalidadAcciones  as $key => $value) {
+			sort($funcionalidadAcciones[$key], SORT_REGULAR);
+		}
 
-			foreach($funcionalidadAcciones as $key => $valor){
-				$matriz[$key] = array();
-				array_push($matriz[$key], $primeraFila);
-				foreach($valor as $accion){
-					$datosFila[0] = $accion;
-					for($i = 1; $i < $longitudFila; $i++){
-						$datosFila[$i] = $this->datosCasilla($primeraFila[$i]['id_rol'] ,$key, $accion);
-					}
-					array_push($matriz[$key], $datosFila);
+		foreach($funcionalidadAcciones as $key => $valor){
+			$matriz[$key] = array();
+			array_push($matriz[$key], $primeraFila);
+			foreach($valor as $accion){
+				$datosFila[0] = $accion;
+				for($i = 1; $i < $longitudFila; $i++){
+					$datosFila[$i] = $this->datosCasilla($primeraFila[$i]['id_rol'] ,$key, $accion);
 				}
+				array_push($matriz[$key], $datosFila);
 			}
+		}
 
-				$this->feedback['ok'] = true;
-				$this->feedback['code'] = 'PERMISOS_OBTENIDOS';
-				$this->feedback['resource'] = $matriz;
+			$this->feedback['ok'] = true;
+			$this->feedback['code'] = 'PERMISOS_OBTENIDOS';
+			$this->feedback['resource'] = $matriz;
 			
 			return $this->feedback;
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
 	}
 	function rolesSistema(){
 		$this->modeloRol = $this->crearModelOne('rol');

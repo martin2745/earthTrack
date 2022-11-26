@@ -54,7 +54,6 @@ class obtenerContrasena_CORREO extends OCCErrorLaunch{
 		$resultado = $phpmailer->Send();
 
 		if (!$resultado) {
-		    //throw new excepcionAccion('CONTRASENA_CAMBIADA_EMAIL_KO');
 			$this->rellenarExcepcion('CONTRASENA_CAMBIADA_EMAIL_KO');
 		}
 	}

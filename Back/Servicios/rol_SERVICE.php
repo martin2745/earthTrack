@@ -39,13 +39,7 @@ class rol_SERVICE extends ServiceBase{
 	}
 
 	function validar_entrada_atributos(){
-		try{
-			validar_entrada_rol();
-		}catch(excepcionAtributos $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	
+		validar_entrada_rol();
 	}
 }
 ?>

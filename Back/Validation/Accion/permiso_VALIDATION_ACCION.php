@@ -7,11 +7,9 @@ class permiso_VALIDATION_ACCION extends Validar{
 
     function validar_insertar(){		
 		if ($this->existe_permiso()){
-			//throw new excepcionAccion('PERMISO_YA_EXISTE');
             $this->rellenarExcepcion('PERMISO_YA_EXISTE');
         }
         if(!$this->accion_denegada()){
-			//throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_PERMISO');
             $this->rellenarExcepcion('ACCION_DENEGADA_INSERTAR_PERMISO');
         }
 	}
@@ -20,11 +18,9 @@ class permiso_VALIDATION_ACCION extends Validar{
 
 	function validar_borrar(){
         if (!$this->existe_permiso()){
-			//throw new excepcionAccion('PERMISO_NO_EXISTE');
             $this->rellenarExcepcion('PERMISO_NO_EXISTE');
         }
         if(!$this->accion_denegada()){
-			//throw new excepcionAccion('ACCION_DENEGADA_BORRAR_PERMISO');
             $this->rellenarExcepcion('ACCION_DENEGADA_BORRAR_PERMISO');
         }
 	}
@@ -33,7 +29,6 @@ class permiso_VALIDATION_ACCION extends Validar{
 
     function validar_buscar(){ 
         if (!$this->existe_funcionalidad()){
-			//throw new excepcionAccion('FUNCIONALIDAD_NO_EXISTE');
             $this->rellenarExcepcion('FUNCIONALIDAD_NO_EXISTE');
         }
      }

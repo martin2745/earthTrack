@@ -42,26 +42,12 @@ class usuario_SERVICE extends ServiceBase{
 	}
 
 	function validar_entrada_atributos(){
-		try{
-			validar_entrada_usuario();
-		}catch(excepcionAtributos $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	
+		validar_entrada_usuario();
 	}
 
 	function editarContrasena($mensaje){
 		$this->modelo->arrayDatoValor['usuario'] = usuarioSistema;
-		try{	
-			$this->modelo->EDIT();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->modelo->EDIT();
 		
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
@@ -78,14 +64,7 @@ class usuario_SERVICE extends ServiceBase{
 				'rol' => rolUsuarioSistema
 			];
 
-			try{
-				$token = MiToken::creaToken($usuarioDatos);
-			}catch(excepcionToken $ex){
-				$this->rellenarExcepcion($ex->getMessage());
-			}catch(Exception $ex){
-				$this->rellenarExcepcion($ex->getMessage());
-			}
-
+			$token = MiToken::creaToken($usuarioDatos);
 		return $token;
 	}
 

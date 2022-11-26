@@ -7,30 +7,24 @@ class usuario_VALIDATION_ACCION extends Validar{
 	
 	function validar_insertar(){
 		if($this->existe_usuario()){
-			//throw new excepcionAccion('USUARIO_YA_EXISTE');
 			$this->rellenarExcepcion('USUARIO_YA_EXISTE');
 		}
         if(!$this->accion_denegada_insertar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_USUARIO');
 			$this->rellenarExcepcion('ACCION_DENEGADA_INSERTAR_USUARIO');
         }
 	}
 
 	function validar_editar(){
 		if(!$this->existe_usuario()){
-			//throw new excepcionAccion('USUARIO_NO_EXISTE');
 			$this->rellenarExcepcion('USUARIO_NO_EXISTE');
 		}
 		if(!$this->rol_admin()){
-			//throw new excepcionAccion('USUARIO_ROL_NO_VALIDO');
 			$this->rellenarExcepcion('USUARIO_ROL_NO_VALIDO');
 		}
         if(!$this->existe_usuario_email()){
-			//throw new excepcionAccion('EMAIL_USUARIO_YA_EXISTE');
 			$this->rellenarExcepcion('EMAIL_USUARIO_YA_EXISTE');
         }
         if(!$this->accion_denegada_editar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_EDITAR_USUARIO');
 			$this->rellenarExcepcion('ACCION_DENEGADA_EDITAR_USUARIO');
         }
 	}
@@ -44,30 +38,24 @@ class usuario_VALIDATION_ACCION extends Validar{
 
 	function validar_borrar(){
 		if($this->modelo->arrayDatoValor['usuario'] == 'admin'){
-			//throw new excepcionAccion('ADMIN_NO_SE_PUEDE_BORRAR');
 			$this->rellenarExcepcion('ADMIN_NO_SE_PUEDE_BORRAR');
 		}
 		if(!$this->existe_usuario()){
-			//throw new excepcionAccion('USUARIO_NO_EXISTE');
 			$this->rellenarExcepcion('USUARIO_NO_EXISTE');
 		}
         if(!$this->accion_denegada_borrar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_BORRAR_USUARIO');
 			$this->rellenarExcepcion('ACCION_DENEGADA_BORRAR_USUARIO');
         }
 	}
 
 	function validar_reactivar(){
 		if(!$this->existe_usuario()){ 
-			//throw new excepcionAccion('USUARIO_NO_EXISTE');
 			$this->rellenarExcepcion('USUARIO_NO_EXISTE');
         }
 		if(!$this->usuario_ya_activo()){ 
-			//throw new excepcionAccion('USUARIO_YA_ACTIVO');
 			$this->rellenarExcepcion('USUARIO_YA_ACTIVO');
         }
         if(!$this->accion_denegada_reactivar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_REACTIVAR_USUARIO');
 			$this->rellenarExcepcion('ACCION_DENEGADA_REACTIVAR_USUARIO');
         }
 	}

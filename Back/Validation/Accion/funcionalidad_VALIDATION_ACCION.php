@@ -8,41 +8,33 @@ class funcionalidad_VALIDATION_ACCION extends Validar{
 
     function validar_insertar(){		
 		if ($this->existe_nombre_funcionalidad()){
-			//throw new excepcionAccion('FUNCIONALIDAD_YA_EXISTE');
             $this->rellenarExcepcion('FUNCIONALIDAD_YA_EXISTE');
         }
         if(!$this->accion_denegada_insertar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_FUNCIONALIDAD');
             $this->rellenarExcepcion('ACCION_DENEGADA_INSERTAR_FUNCIONALIDAD');
         }
 	}
 
 	function validar_editar(){
 		if (!$this->existe_funcionalidad_id()){
-			//throw new excepcionAccion('FUNCIONALIDAD_NO_EXISTE');
             $this->rellenarExcepcion('FUNCIONALIDAD_NO_EXISTE');
         }	
 		if ($this->existe_nombre_funcionalidad_editar()){
-			//throw new excepcionAccion('FUNCIONALIDAD_YA_EXISTE');
             $this->rellenarExcepcion('FUNCIONALIDAD_YA_EXISTE');
         }
         if(!$this->accion_denegada_editar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_EDITAR_FUNCIONALIDAD');
             $this->rellenarExcepcion('ACCION_DENEGADA_EDITAR_FUNCIONALIDAD');
         }
 	}
 
     function validar_borrar(){
 		if (!$this->existe_funcionalidad_id()){ 
-			//throw new excepcionAccion('FUNCIONALIDAD_NO_EXISTE');
             $this->rellenarExcepcion('FUNCIONALIDAD_NO_EXISTE');
         }
         if($this->existe_permiso()){
-			//throw new excepcionAccion('FUNCIONALIDAD_ASOCIADO_PERMISO');
             $this->rellenarExcepcion('FUNCIONALIDAD_ASOCIADO_PERMISO');
         }
         if(!$this->accion_denegada_borrar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_BORRAR_FUNCIONALIDAD');
             $this->rellenarExcepcion('ACCION_DENEGADA_BORRAR_FUNCIONALIDAD');
         }
 	}

@@ -51,12 +51,10 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function execute_single_query($valores) {
 		
 		if (!($this->connection())){
-			//throw new falloBD('CONEXION_BD_KO');
 			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
 			if(!($this->stmt->execute($valores))){
-				//throw new falloQuery('SQL_KO');
 				$this->rellenarExcepcion('SQL_KO');
 			}
 		}
@@ -67,7 +65,6 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function get_results_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			//throw new falloBD('CONEXION_BD_KO');
 			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
@@ -92,7 +89,6 @@ abstract class MappingBase extends MappingErrorLaunch{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					//throw new falloQuery('SQL_KO');
 					$this->rellenarExcepcion('SQL_KO');
 				}else{
 	
@@ -118,13 +114,11 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function get_one_result_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			//throw new falloBD('CONEXION_BD_KO');
 			$this->rellenarExcepcion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					//throw new falloQuery('SQL_KO');
 					$this->rellenarExcepcion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
@@ -142,7 +136,6 @@ abstract class MappingBase extends MappingErrorLaunch{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					//throw new falloQuery('SQL_KO');
 					$this->rellenarExcepcion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){

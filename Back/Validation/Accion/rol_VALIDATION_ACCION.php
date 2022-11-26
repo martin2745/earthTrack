@@ -8,60 +8,48 @@ class rol_VALIDATION_ACCION extends Validar{
 
     function validar_insertar(){		
 		if ($this->existe_nombre_rol()){
-			//throw new excepcionAccion('ROL_YA_EXISTE');
             $this->rellenarExcepcion('ROL_YA_EXISTE');
         }
         if(!$this->accion_denegada_insertar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_ROL');
             $this->rellenarExcepcion('ACCION_DENEGADA_INSERTAR_ROL');
         }
 	}
 
 	function validar_editar(){
 		if (!$this->existe_rol_id()){
-			//throw new excepcionAccion('ROL_NO_EXISTE');
             $this->rellenarExcepcion('ROL_NO_EXISTE');
         }	
 		if ($this->existe_nombre_rol_editar()){
-			//throw new excepcionAccion('ROL_YA_EXISTE');
             $this->rellenarExcepcion('ROL_YA_EXISTE');
         }
-        if(!$this->accion_denegada_editar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_EDITAR_ROL');
+        if(!$this->accion_denegada_editar()){;
             $this->rellenarExcepcion('ACCION_DENEGADA_EDITAR_ROL');
         }
 	}
 
     function validar_borrar(){
 		if (!$this->existe_rol_id()){ 
-			//throw new excepcionAccion('ROL_NO_EXISTE');
             $this->rellenarExcepcion('ROL_NO_EXISTE');
         }
         if($this->existe_permiso()){
-			//throw new excepcionAccion('ROL_ASOCIADO_PERMISO');
             $this->rellenarExcepcion('ROL_ASOCIADO_PERMISO');
         }
         if($this->existe_usuarioRolActivo()){
-			//throw new excepcionAccion('ROL_ASOCIADO_USUARIO_ACTIVO');
             $this->rellenarExcepcion('ROL_ASOCIADO_USUARIO_ACTIVO');
         }
         if(!$this->accion_denegada_borrar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_BORRAR_ROL');
             $this->rellenarExcepcion('ACCION_DENEGADA_BORRAR_ROL');
         }
 	}
 
     function validar_reactivar(){
 		if (!$this->existe_rol_id()){ 
-			//throw new excepcionAccion('ROL_NO_EXISTE');
             $this->rellenarExcepcion('ROL_NO_EXISTE');
         }
         if (!$this->existe_rol_borrado_logicamente()){ 
-			//throw new excepcionAccion('ROL_YA_ACTIVO');
             $this->rellenarExcepcion('ROL_YA_ACTIVO');
         }
         if(!$this->accion_denegada_reactivar()){
-			//throw new excepcionAccion('ACCION_DENEGADA_REACTIVAR_ROL');
             $this->rellenarExcepcion('ACCION_DENEGADA_REACTIVAR_ROL');
         }
 	}

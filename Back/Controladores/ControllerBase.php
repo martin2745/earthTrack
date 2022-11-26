@@ -36,16 +36,8 @@ abstract class ControllerBase{
 			'codigo' => $feedback['code'],
 			'mensaje' => constant($feedback['code']),
 			'tiempo' => (string)date("Y-m-d H:i:s", time()));
-			
-		try{	
-			$log->insertar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	  
+				
+		$log->insertar();	  
 	}
 
 }

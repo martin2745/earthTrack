@@ -37,79 +37,41 @@ class auth_SERVICE extends ServiceBase{
 	}
 
 	function validar_entrada_atributos(){
-		try{
-			validar_entrada_auth();
-		}catch(excepcionAtributos $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	
+		validar_entrada_auth();
 	}
 
-	function verificacionToken(){
-
-		try{
-				
-			include_once "./JWT/token.php";
-			$tokenFront = $this->cargarTokenCabecera();
-			$resultado = MiToken::devuelveToken($tokenFront);
-			define('usuarioSistema', $resultado->data->usuario);
-			define('rolUsuarioSistema', $resultado->data->rol);
-
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionToken $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+	function verificacionToken(){				
+		include_once "./JWT/token.php";
+		$tokenFront = $this->cargarTokenCabecera();
+		$resultado = MiToken::devuelveToken($tokenFront);
+		define('usuarioSistema', $resultado->data->usuario);
+		define('rolUsuarioSistema', $resultado->data->rol);
 	}
 
 ///////////////////////////////////////////////////////LOGIN///////////////////////////////////////////////////////
 
 	function validar_login(){
-		try{
-			$this->clase_validacion->validar_login();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->clase_validacion->validar_login();
 	}
 	
 	//Se genera un token por usuario, contrasena y rol.
 	function login($mensaje){
-		try{
-			
-			include_once './Modelos/rol_MODEL.php';
-            $modeloRol = new rol_MODEL();
-            $rol = $modeloRol->getById(array($this->usuario->getById(array($this->usuario->arrayDatoValor['usuario']))['resource']['id_rol']))['resource']['nombre_rol'];
+		include_once './Modelos/rol_MODEL.php';
+        $modeloRol = new rol_MODEL();
+        $rol = $modeloRol->getById(array($this->usuario->getById(array($this->usuario->arrayDatoValor['usuario']))['resource']['id_rol']))['resource']['nombre_rol'];
 
-			$usuarioDatos = [
-				'usuario' => $this->usuario->arrayDatoValor['usuario'],
-				'contrasena' => $this->usuario->arrayDatoValor['contrasena'],
-				'rol' => $rol
-			];
+		$usuarioDatos = [
+			'usuario' => $this->usuario->arrayDatoValor['usuario'],
+			'contrasena' => $this->usuario->arrayDatoValor['contrasena'],
+			'rol' => $rol
+		];
 
-			include_once "./JWT/token.php";
-			$token = MiToken::creaToken($usuarioDatos);
-		}catch(excepcionToken $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		include_once "./JWT/token.php";
+		$token = MiToken::creaToken($usuarioDatos);
 
-			$this->feedback['ok'] = true;
-			$this->feedback['code'] = $mensaje;
-			$this->feedback['resource'] = $token;
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		$this->feedback['resource'] = $token;
 		return $this->feedback;
 
 	}
@@ -117,68 +79,29 @@ class auth_SERVICE extends ServiceBase{
 /////////////////////////////////////////////////////REGISTRO//////////////////////////////////////////////////////
 
 	function validar_registro(){
-		try{
-			$this->clase_validacion->validar_registro();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->clase_validacion->validar_registro();
 	}
 	
 	function registrar($mensaje){
-		try{
-				$this->usuario->ADD();
-				$this->feedback['ok'] = true;
-				$this->feedback['code'] = $mensaje;
-			return $this->feedback;
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->usuario->ADD();
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		return $this->feedback;
 	}
 
 //////////////////////////////////////////OBTENER_CONTRASENA_CORREO///////////////////////////////////////////////
 
 	function validar_obtenerContrasenaCorreo(){
-		try{
-			$this->clase_validacion->validar_obtenerContrasenaCorreo();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->clase_validacion->validar_obtenerContrasenaCorreo();
 	}
 
 	function obtenerContrasenaCorreo($mensaje){
-		try{
-				$contrasenaclaro = $this->modelo->obtenerContrasenaCorreo($this->usuario);
-				$this->modelo->enviarCorreo($contrasenaclaro, $this->usuario);
-				$this->feedback['ok'] = true;
-				$this->feedback['code'] = $mensaje;
-				$this->feedback['resource'] = $contrasenaclaro;
-			return $this->feedback;
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}	
+		$contrasenaclaro = $this->modelo->obtenerContrasenaCorreo($this->usuario);
+		$this->modelo->enviarCorreo($contrasenaclaro, $this->usuario);
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		$this->feedback['resource'] = $contrasenaclaro;
+		return $this->feedback;	
 	}
 
 }
