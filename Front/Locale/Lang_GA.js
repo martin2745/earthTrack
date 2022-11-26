@@ -475,6 +475,7 @@ arrayGA = {
 
   //Mensajes error
   ERROR: "ERROR",
+  ERROR_TEST: "Error na realización do test",
   ERROR_AUTENTICACION: "Non tes permiso para acceder. Volve  intentalo",
   ERROR_LISTAR_FUNCIONALIDADES_MENU:
     "Ocurriu un erro ao listar as funcionalidades do usuario",

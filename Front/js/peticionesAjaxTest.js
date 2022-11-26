@@ -1,5 +1,5 @@
 /**Función para recuperar los test con ajax y promesas*/
-function test(code, controladorTest, actionTest) {
+function test(code, codeFracaso, controladorTest, actionTest) {
   var token = getCookie("token");
 
   crearformocultoSinAction("formularioTest");
@@ -17,7 +17,7 @@ function test(code, controladorTest, actionTest) {
         headers: { Authorization: token },
       })
         .done((res) => {
-          if (res.code != code) {
+          if (res.code != code && res.code != codeFracaso) {
             reject(res);
           }
           resolve(res);
@@ -38,6 +38,7 @@ async function testAutenticacion(accion, tipoTest) {
   imagenErrorTestOcultar();
 
   var code = "";
+  var codeFracaso = "";
   var controladorTest = "";
   var actionTest = "";
 
@@ -47,14 +48,18 @@ async function testAutenticacion(accion, tipoTest) {
       switch (accion) {
         case "Login":
           code = "PETICION_TEST_LOGIN_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_LOGIN_ATRIBUTOS_FRACASO";
           actionTest = "login";
           break;
         case "Registro":
           code = "PETICION_TEST_REGISTRO_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_REGISTRO_ATRIBUTOS_FRACASO";
           actionTest = "registrar";
           break;
         case "ObtenerContrasenaCorreo":
           code = "PETICION_TEST_OBTENER_CONTRASENA_CORREO_ATRIBUTOS_EXITO";
+          codeFracaso =
+            "PETICION_TEST_OBTENER_CONTRASENA_CORREO_ATRIBUTOS_FRACASO";
           actionTest = "obtenerContrasenaCorreo";
           break;
       }
@@ -64,21 +69,25 @@ async function testAutenticacion(accion, tipoTest) {
       switch (accion) {
         case "Login":
           code = "PETICION_TEST_LOGIN_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_LOGIN_ACCIONES_FRACASO";
           actionTest = "login";
           break;
         case "Registro":
           code = "PETICION_TEST_REGISTRO_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_REGISTRO_ACCIONES_FRACASO";
           actionTest = "registrar";
           break;
         case "ObtenerContrasenaCorreo":
           code = "PETICION_TEST_OBTENER_CONTRASENA_CORREO_ACCIONES_EXITO";
+          codeFracaso =
+            "PETICION_TEST_OBTENER_CONTRASENA_CORREO_ACCIONES_FRACASO";
           actionTest = "obtenerContrasenaCorreo";
           break;
       }
       break;
   }
 
-  await test(code, controladorTest, actionTest)
+  await test(code, codeFracaso, controladorTest, actionTest)
     .then((res) => {
       let idElementoList = [
         "iconoTestAuth",
@@ -96,7 +105,7 @@ async function testAutenticacion(accion, tipoTest) {
       );
     })
     .catch((res) => {
-      cargarModalErroresTest(res.code);
+      cargarModalErroresTest();
     });
   eliminarCampos();
 }
@@ -110,6 +119,7 @@ async function testRol(accion, tipoTest) {
   imagenErrorTestOcultar();
 
   var code = "";
+  var codeFracaso = "";
   var controladorTest = "";
   var actionTest = "";
 
@@ -119,26 +129,32 @@ async function testRol(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ROL_INSERTAR_ATRIBUTOS_EXITO";
+          codeFacaso = "PETICION_TEST_ROL_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ROL_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_BUSCAR_ATRIBUTOS_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ROL_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_EDITAR_ATRIBUTOS_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ROL_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_BORRAR_ATRIBUTOS_FRACASO";
           actionTest = "borrar";
           break;
         case "VerEnDetalle":
           code = "PETICION_TEST_ROL_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_VERENDETALLE_ATRIBUTOS_FRACASO";
           actionTest = "verEnDetalle";
           break;
         case "Reactivar":
           code = "PETICION_TEST_ROL_REACTIVAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_REACTIVAR_ATRIBUTOS_FRACASO";
           actionTest = "reactivar";
           break;
       }
@@ -148,29 +164,34 @@ async function testRol(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ROL_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_INSERTAR_ACCIONES_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ROL_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_BUSCAR_ACCIONES_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ROL_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_EDITAR_ACCIONES_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ROL_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_BORRAR_ACCIONES_FRACASO";
           actionTest = "borrar";
           break;
         case "Reactivar":
           code = "PETICION_TEST_ROL_REACTIVAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ROL_REACTIVAR_ACCIONES_FRACASO";
           actionTest = "reactivar";
           break;
       }
       break;
   }
 
-  await test(code, controladorTest, actionTest)
+  await test(code, codeFracaso, controladorTest, actionTest)
     .then((res) => {
       let idElementoList = [
         "iconoTestRol",
@@ -188,7 +209,7 @@ async function testRol(accion, tipoTest) {
       );
     })
     .catch((res) => {
-      cargarModalErroresTest(res.code);
+      cargarModalErroresTest();
     });
   eliminarCampos();
 }
@@ -202,6 +223,7 @@ async function testFuncionalidad(accion, tipoTest) {
   imagenErrorTestOcultar();
 
   var code = "";
+  var codeFracaso = "";
   var controladorTest = "";
   var actionTest = "";
 
@@ -211,22 +233,29 @@ async function testFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_FUNCIONALIDAD_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso =
+            "PETICION_TEST_FUNCIONALIDAD_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_FUNCIONALIDAD_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_BUSCAR_ATRIBUTOS_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_FUNCIONALIDAD_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_EDITAR_ATRIBUTOS_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_FUNCIONALIDAD_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_BORRAR_ATRIBUTOS_FRACASO";
           actionTest = "borrar";
           break;
         case "VerEnDetalle":
           code = "PETICION_TEST_FUNCIONALIDAD_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso =
+            "PETICION_TEST_FUNCIONALIDAD_VERENDETALLE_ATRIBUTOS_FRACASO";
           actionTest = "verEnDetalle";
           break;
       }
@@ -236,25 +265,29 @@ async function testFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_FUNCIONALIDAD_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_INSERTAR_ACCIONES_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_FUNCIONALIDAD_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_BUSCAR_ACCIONES_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_FUNCIONALIDAD_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_EDITAR_ACCIONES_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_FUNCIONALIDAD_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_FUNCIONALIDAD_BORRAR_ACCIONES_FRACASO";
           actionTest = "borrar";
           break;
       }
       break;
   }
 
-  await test(code, controladorTest, actionTest)
+  await test(code, codeFracaso, controladorTest, actionTest)
     .then((res) => {
       let idElementoList = [
         "iconoTestFuncionalidad",
@@ -272,7 +305,7 @@ async function testFuncionalidad(accion, tipoTest) {
       );
     })
     .catch((res) => {
-      cargarModalErroresTest(res.code);
+      cargarModalErroresTest();
     });
   eliminarCampos();
 }
@@ -286,6 +319,7 @@ async function testAccion(accion, tipoTest) {
   imagenErrorTestOcultar();
 
   var code = "";
+  var codeFracaso = "";
   var controladorTest = "";
   var actionTest = "";
 
@@ -295,22 +329,27 @@ async function testAccion(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ACCION_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ATRIBUTOS_EXITO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ACCION_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ATRIBUTOS_EXITO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ACCION_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ATRIBUTOS_EXITO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ACCION_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ATRIBUTOS_EXITO";
           actionTest = "borrar";
           break;
         case "VerEnDetalle":
           code = "PETICION_TEST_ACCION_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_VERENDETALLE_ATRIBUTOS_EXITO";
           actionTest = "verEnDetalle";
           break;
       }
@@ -320,25 +359,29 @@ async function testAccion(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ACCION_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ACCIONES_EXITO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ACCION_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ACCIONES_EXITO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ACCION_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ACCIONES_EXITO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ACCION_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ACCIONES_EXITO";
           actionTest = "borrar";
           break;
       }
       break;
   }
 
-  await test(code, controladorTest, actionTest)
+  await test(code, codeFracaso, controladorTest, actionTest)
     .then((res) => {
       let idElementoList = [
         "iconoTestAccion",
@@ -356,7 +399,7 @@ async function testAccion(accion, tipoTest) {
       );
     })
     .catch((res) => {
-      cargarModalErroresTest(res.code);
+      cargarModalErroresTest();
     });
   eliminarCampos();
 }
@@ -370,6 +413,7 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
   imagenErrorTestOcultar();
 
   var code = "";
+  var codeFracaso = "";
   var controladorTest = "";
   var actionTest = "";
 
@@ -379,14 +423,17 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_PERMISO_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ATRIBUTOS_EXITO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_PERMISO_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BUSCAR_ATRIBUTOS_EXITO";
           actionTest = "buscar";
           break;
         case "Borrar":
           code = "PETICION_TEST_PERMISO_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ATRIBUTOS_EXITO";
           actionTest = "borrar";
           break;
       }
@@ -396,17 +443,19 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_PERMISO_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ACCIONES_EXITO";
           actionTest = "insertar";
           break;
         case "Borrar":
           code = "PETICION_TEST_PERMISO_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ACCIONES_EXITO";
           actionTest = "borrar";
           break;
       }
       break;
   }
 
-  await test(code, controladorTest, actionTest)
+  await test(code, codeFracaso, controladorTest, actionTest)
     .then((res) => {
       let idElementoList = [
         "iconoTestRolAccionFuncionalidad",
@@ -424,7 +473,7 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
       );
     })
     .catch((res) => {
-      cargarModalErroresTest(res.code);
+      cargarModalErroresTest();
     });
   eliminarCampos();
 }

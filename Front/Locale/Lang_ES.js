@@ -481,6 +481,7 @@ arrayES = {
 
   //Mensajes error
   ERROR: "ERROR",
+  ERROR_TEST: "Error en la realización del test",
   ERROR_AUTENTICACION: "No tienes permiso para acceder. Vuelve  intentarlo",
   ERROR_LISTAR_FUNCIONALIDADES_MENU:
     "Ha ocurrido un error al listar las funcionalidades del usuario",

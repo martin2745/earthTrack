@@ -137,13 +137,13 @@ function cargarTablasTest(
 }
 
 /*Función para cargar los errores en la modal si falla la petición de los test*/
-function cargarModalErroresTest(code) {
+function cargarModalErroresTest() {
   $("#modal-title").removeClass();
   $("#modal-title").addClass("ERROR");
   document.getElementById("modal-title").style.color = "#a50707";
   $(".imagenAviso").attr("src", "images/failed.png");
   $("#modal-mensaje").removeClass();
-  $("#modal-mensaje").addClass(code);
+  $("#modal-mensaje").addClass("ERROR_TEST");
   setLang(getCookie("lang"));
   document.getElementById("modal").style.display = "block";
 }

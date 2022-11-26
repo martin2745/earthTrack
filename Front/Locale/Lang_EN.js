@@ -461,6 +461,7 @@ arrayEN = {
 
   //Mensajes error
   ERROR: "ERROR",
+  ERROR_TEST: "Error in performing the test",
   ERROR_AUTENTICACION: "You do not have permission to access. Please try again",
   ERROR_LISTAR_FUNCIONALIDADES_MENU:
     "An error occurred while listing user features",
