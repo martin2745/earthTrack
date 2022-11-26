@@ -129,7 +129,7 @@ async function testRol(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ROL_INSERTAR_ATRIBUTOS_EXITO";
-          codeFacaso = "PETICION_TEST_ROL_INSERTAR_ATRIBUTOS_FRACASO";
+          codeFracaso = "PETICION_TEST_ROL_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
@@ -329,27 +329,27 @@ async function testAccion(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ACCION_INSERTAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ACCION_BUSCAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ATRIBUTOS_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ACCION_EDITAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ATRIBUTOS_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ACCION_BORRAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ATRIBUTOS_FRACASO";
           actionTest = "borrar";
           break;
         case "VerEnDetalle":
           code = "PETICION_TEST_ACCION_VERENDETALLE_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_VERENDETALLE_ATRIBUTOS_FRACASO";
           actionTest = "verEnDetalle";
           break;
       }
@@ -359,22 +359,22 @@ async function testAccion(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_ACCION_INSERTAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_INSERTAR_ACCIONES_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_ACCION_BUSCAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BUSCAR_ACCIONES_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
           code = "PETICION_TEST_ACCION_EDITAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_EDITAR_ACCIONES_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
           code = "PETICION_TEST_ACCION_BORRAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_ACCION_BORRAR_ACCIONES_FRACASO";
           actionTest = "borrar";
           break;
       }
@@ -423,17 +423,17 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_PERMISO_INSERTAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
           code = "PETICION_TEST_PERMISO_BUSCAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_PERMISO_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BUSCAR_ATRIBUTOS_FRACASO";
           actionTest = "buscar";
           break;
         case "Borrar":
           code = "PETICION_TEST_PERMISO_BORRAR_ATRIBUTOS_EXITO";
-          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ATRIBUTOS_FRACASO";
           actionTest = "borrar";
           break;
       }
@@ -443,12 +443,12 @@ async function testRolAccionFuncionalidad(accion, tipoTest) {
       switch (accion) {
         case "Insertar":
           code = "PETICION_TEST_PERMISO_INSERTAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_INSERTAR_ACCIONES_FRACASO";
           actionTest = "insertar";
           break;
         case "Borrar":
           code = "PETICION_TEST_PERMISO_BORRAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PERMISO_BORRAR_ACCIONES_FRACASO";
           actionTest = "borrar";
           break;
       }

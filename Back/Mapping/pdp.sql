@@ -48,8 +48,7 @@ INSERT INTO `accion` (`id_accion`, `nombre_accion`, `descripcion_accion`) VALUES
 (3, 'editar', 'Editar un elemento en base de datos'),
 (4, 'buscar', 'Buscar un elemento en base de datos'),
 (5, 'reactivar', 'Reactivar un elemento borrado de forma lógica'),
-(6, 'verEnDetalle', 'Ver toda la información para una tupla'),
-(7, 'ejecutarTest', 'El usuario tiene la posibilidad de ejecutar el test');
+(6, 'verEnDetalle', 'Ver toda la información para una tupla');
 
 -- --------------------------------------------------------
 
@@ -73,9 +72,8 @@ INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descri
 (3, 'funcionalidad', 'Gestión de funcionalidades'),
 (4, 'accion', 'Gestión de acciones'),
 (5, 'permiso', 'Gestión de permisos'),
-(6, 'test', 'Ejecución de test'),
-(7, 'logexcepcionaccion', 'Log de excepcion de acciones'),
-(8, 'logexcepcionatributo', 'Log de excepcion de atributo');
+(6, 'logexcepcionaccion', 'Log de excepcion de acciones'),
+(7, 'logexcepcionatributo', 'Log de excepcion de atributo');
 
 -- --------------------------------------------------------
 
@@ -106,13 +104,6 @@ CREATE TABLE `logexcepcionatributo` (
   `mensaje` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `tiempo` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `logexcepcionatributo`
---
-
-INSERT INTO `logexcepcionatributo` (`usuario`, `funcionalidad`, `accion`, `codigo`, `mensaje`, `tiempo`) VALUES
-('usuario', 'funcionalidad', 'accion', 'OKOKOK', 'MENSAJE', '2022-11-24 01:03:50');
 
 -- --------------------------------------------------------
 
@@ -157,9 +148,8 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 2, 5),
 (1, 4, 5),
 (1, 6, 5),
-(1, 7, 6),
-(1, 4, 7),
-(1, 4, 8);
+(1, 4, 6),
+(1, 4, 7);
 
 -- --------------------------------------------------------
 

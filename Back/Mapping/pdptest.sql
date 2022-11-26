@@ -69,9 +69,8 @@ INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descri
 (3, 'funcionalidad', 'Gestión de funcionalidades.'),
 (4, 'accion', 'Gestión de acciones.'),
 (5, 'permiso', 'Gestión de permisos.'),
-(6, 'test', 'Ejecución de test.'),
-(7, 'logExcepcionAccion', 'Log de excepcion de acciones'),
-(8, 'logExcepcionAtributo', 'Log de excepcion de atributo');
+(6, 'logExcepcionAccion', 'Log de excepcion de acciones'),
+(7, 'logExcepcionAtributo', 'Log de excepcion de atributo');
 
 -- --------------------------------------------------------
 
@@ -116,9 +115,8 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 2, 5),
 (1, 4, 5),
 (1, 6, 5),
-(1, 7, 6),
-(1, 4, 7),
-(1, 4, 8);
+(1, 4, 6),
+(1, 4, 7);
 
 -- --------------------------------------------------------
 
