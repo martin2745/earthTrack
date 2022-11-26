@@ -9,6 +9,7 @@ class accion_VALIDATION_ACCION extends Validar{
     function validar_insertar(){		
 		if ($this->existe_nombre_accion()){
 			throw new excepcionAccion('ACCION_YA_EXISTE');
+            
         }
         if(!$this->accion_denegada_insertar()){
 			throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_ACCION');

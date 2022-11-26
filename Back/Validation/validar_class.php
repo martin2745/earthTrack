@@ -1,6 +1,7 @@
 <?php
+include_once './Validation/validar_base.php';
 
-class Validar{
+class Validar extends ValidationBase {
 
 	var $validation = array();
 

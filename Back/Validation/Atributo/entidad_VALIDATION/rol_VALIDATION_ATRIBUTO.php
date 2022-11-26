@@ -44,19 +44,23 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_nombre_rol(){
 		
 		if($this->Es_Vacio($this->nombre_rol)===true){
-			throw new excepcionAtributos('ROL_NOMBRE_VACIO');
+			//throw new excepcionAtributos('ROL_NOMBRE_VACIO');
+			$this->rellenarExcepcion('ROL_NOMBRE_VACIO');
 		}
 
 		if($this->Longitud_minima($this->nombre_rol,3)===false){
-			throw new excepcionAtributos('ROL_NOMBRE_MENOR_QUE_3');
+			//throw new excepcionAtributos('ROL_NOMBRE_MENOR_QUE_3');
+			$this->rellenarExcepcion('ROL_NOMBRE_MENOR_QUE_3');
 		}
 
 		if($this->Longitud_maxima($this->nombre_rol,48)===false){
-			throw new excepcionAtributos('ROL_NOMBRE_MAYOR_QUE_48');
+			//throw new excepcionAtributos('ROL_NOMBRE_MAYOR_QUE_48');
+			$this->rellenarExcepcion('ROL_NOMBRE_MAYOR_QUE_48');
 		}
 
 		if($this->comprobarLetrasNumerosSinEspacios($this->nombre_rol)===false){
-			throw new excepcionAtributos('ROL_NOMBRE_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('ROL_NOMBRE_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('ROL_NOMBRE_FORMATO_INCORRECTO');
 		}
 	
 	}
@@ -64,34 +68,41 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_descripcion_rol(){
 
 		if($this->Es_Vacio($this->descripcion_rol)===true){
-			throw new excepcionAtributos('ROL_DESCRIPCION_VACIO');
+			//throw new excepcionAtributos('ROL_DESCRIPCION_VACIO');
+			$this->rellenarExcepcion('ROL_DESCRIPCION_VACIO');
 		}
 
 		if($this->Longitud_minima($this->descripcion_rol,3)===false){
-			throw new excepcionAtributos('ROL_DESCRIPCION_MENOR_QUE_3');
+			//throw new excepcionAtributos('ROL_DESCRIPCION_MENOR_QUE_3');
+			$this->rellenarExcepcion('ROL_DESCRIPCION_MENOR_QUE_3');
 		}
 
 		if($this->Longitud_maxima($this->descripcion_rol,200)===false){
-			throw new excepcionAtributos('ROL_DESCRIPCION_MAYOR_QUE_200');
+			//throw new excepcionAtributos('ROL_DESCRIPCION_MAYOR_QUE_200');
+			$this->rellenarExcepcion('ROL_DESCRIPCION_MAYOR_QUE_200');
 		}
 
 		if($this->comprobarLetrasNumerosEspaciosSignos($this->descripcion_rol)===false){
-			throw new excepcionAtributos('ROL_DESCRIPCION_FORMATO_INCORRECTO');
+			//throw new excepcionAtributos('ROL_DESCRIPCION_FORMATO_INCORRECTO');
+			$this->rellenarExcepcion('ROL_DESCRIPCION_FORMATO_INCORRECTO');
 		}
 	}
 
 	function validar_id(){
 		if($this->Es_Vacio($this->id_rol)===true){
-			throw new excepcionAtributos('ID_ROL_VACIO');
+			//throw new excepcionAtributos('ID_ROL_VACIO');
+			$this->rellenarExcepcion('ID_ROL_VACIO');
 		}
 		if(!$this->Es_numerico($this->id_rol)===true){
-			throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+			//throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+			$this->rellenarExcepcion('ID_ROL_ERROR_FORMATO');
 		}
 	}
 
 	function validar_borrado(){
 		if($this->Es_flag($this->borrado_logico)===false){
-			throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+			//throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+			$this->rellenarExcepcion('BORRADO_LOGICO_DIFERENTE_0_1');
 		}
 	}
 
@@ -101,11 +112,13 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_nombre_rol_buscar(){
 		if(!empty($this->nombre_rol)){
 			if($this->Longitud_maxima($this->nombre_rol,48)===false){
-				throw new excepcionAtributos('ROL_NOMBRE_MAYOR_QUE_48');
+				//throw new excepcionAtributos('ROL_NOMBRE_MAYOR_QUE_48');
+				$this->rellenarExcepcion('ROL_NOMBRE_MAYOR_QUE_48');
 			}
 
 			if($this->comprobarLetrasNumerosSinEspacios($this->nombre_rol)===false){
-				throw new excepcionAtributos('ROL_NOMBRE_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('ROL_NOMBRE_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('ROL_NOMBRE_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -113,11 +126,13 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_descripcion_rol_buscar(){
 		if(!empty($this->descripcion_rol)){
 			if($this->Longitud_maxima($this->descripcion_rol,200)===false){
-				throw new excepcionAtributos('ROL_DESCRIPCION_MAYOR_QUE_200');
+				//throw new excepcionAtributos('ROL_DESCRIPCION_MAYOR_QUE_200');
+				$this->rellenarExcepcion('ROL_DESCRIPCION_MAYOR_QUE_200');
 			}
 
 			if($this->comprobarLetrasNumerosEspaciosSignos($this->descripcion_rol)===false){
-				throw new excepcionAtributos('ROL_DESCRIPCION_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('ROL_DESCRIPCION_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('ROL_DESCRIPCION_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -125,7 +140,8 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_id_buscar(){
 		if(!empty($this->id_rol)){
 			if(!$this->Es_numerico($this->id_rol)===true){
-				throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+				//throw new excepcionAtributos('ID_ROL_ERROR_FORMATO');
+				$this->rellenarExcepcion('ID_ROL_ERROR_FORMATO');
 			}
 		}
 	}
@@ -133,7 +149,8 @@ class rol_VALIDATION_ATRIBUTO extends Validar{
 	function validar_borrado_logico_buscar(){
 		if(!empty($this->borrado_logico)){
 			if($this->Es_flag($this->borrado_logico)===false){
-				throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+				//throw new excepcionAtributos('BORRADO_LOGICO_DIFERENTE_0_1');
+				$this->rellenarExcepcion('BORRADO_LOGICO_DIFERENTE_0_1');
 			}
 		}
 	}

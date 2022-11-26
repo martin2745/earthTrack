@@ -66,19 +66,23 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	function validar_usuario(){
 		
 		if($this->Es_Vacio($this->usuario)===true){
-			throw new excepcionAtributos('LOGIN_USUARIO_VACIO');
+			//throw new excepcionAtributos('LOGIN_USUARIO_VACIO');
+			$this->rellenarExcepcion('LOGIN_USUARIO_VACIO');
 		}
 
 		if($this->Longitud_minima($this->usuario,3)===false){
-			throw new excepcionAtributos('LOGIN_USUARIO_MENOR_QUE_3');
+			//throw new excepcionAtributos('LOGIN_USUARIO_MENOR_QUE_3');
+			$this->rellenarExcepcion('LOGIN_USUARIO_MENOR_QUE_3');
 		}
 
 		if($this->Longitud_maxima($this->usuario,15)===false){
-			throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+			//throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+			$this->rellenarExcepcion('LOGIN_USUARIO_MAYOR_QUE_15');
 		}
 			
 		if($this->comprobarFormatoLoginContrasena($this->usuario)===false){
-			throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+			//throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+			$this->rellenarExcepcion('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
 		}			
 	}
 

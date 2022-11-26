@@ -20,11 +20,13 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
     function validar_usuario_buscar(){
         if(!empty($this->usuario)){
             if($this->Longitud_maxima($this->usuario,15)===false){
-                throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+                //throw new excepcionAtributos('LOGIN_USUARIO_MAYOR_QUE_15');
+				$this->rellenarExcepcion('LOGIN_USUARIO_MAYOR_QUE_15');
             }
                 
             if($this->comprobarFormatoLoginContrasena($this->usuario)===false){
-                throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+                //throw new excepcionAtributos('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
+				$this->rellenarExcepcion('LOGIN_USUARIO_ALFANUMERICO_INCORRECTO');
             }			
         }
     }
@@ -32,11 +34,13 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
 	function validar_funcionalidad_buscar(){
 		if(!empty($this->nombre_funcionalidad)){
 			if($this->Longitud_maxima($this->nombre_funcionalidad,48)===false){
-				throw new excepcionAtributos('FUNCIONALIDAD_NAME_MAYOR_QUE_48');
+				//throw new excepcionAtributos('FUNCIONALIDAD_NAME_MAYOR_QUE_48');
+				$this->rellenarExcepcion('FUNCIONALIDAD_NAME_MAYOR_QUE_48');
 			}
 			
 			if($this->comprobarLetrasNumerosEspacios($this->nombre_funcionalidad)===false){
-				throw new excepcionAtributos('FUNCIONALIDAD_NAME_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('FUNCIONALIDAD_NAME_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('FUNCIONALIDAD_NAME_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -44,11 +48,13 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
 	function validar_accion_buscar(){
 		if(!empty($this->nombre_accion)){
 			if($this->Longitud_maxima($this->nombre_accion,48)===false){
-				throw new excepcionAtributos('ACCION_NAME_MAYOR_QUE_48');
+				//throw new excepcionAtributos('ACCION_NAME_MAYOR_QUE_48');
+				$this->rellenarExcepcion('ACCION_NAME_MAYOR_QUE_48');
 			}
 			
 			if($this->comprobarLetrasNumerosEspacios($this->nombre_accion)===false){
-				throw new excepcionAtributos('ACCION_NAME_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('ACCION_NAME_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('ACCION_NAME_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -56,11 +62,13 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
 	function validar_codigo_buscar(){
 		if(!empty($this->codigo)){
 			if($this->Longitud_maxima($this->codigo,48)===false){
-				throw new excepcionAtributos('CODIGO_MAYOR_QUE_48');
+				//throw new excepcionAtributos('CODIGO_MAYOR_QUE_48');
+				$this->rellenarExcepcion('CODIGO_MAYOR_QUE_48');
 			}
 			
 			if($this->comprobarLetrasNumerosEspaciosGuiones($this->codigo)===false){
-				throw new excepcionAtributos('CODIGO_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('CODIGO_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('CODIGO_FORMATO_INCORRECTO');
 			}
 		}
 	}
@@ -68,10 +76,12 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
     function validar_mensaje_buscar(){
 		if(!empty($this->mensaje)){
 			if($this->comprobarLetrasNumerosEspacios($this->mensaje)===false){
-				throw new excepcionAtributos('MENSAJE_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('MENSAJE_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('MENSAJE_FORMATO_INCORRECTO');
 			}
 			if($this->Longitud_maxima($this->mensaje,48)===false){
-				throw new excepcionAtributos('MENSAJE_MAYOR_QUE_48');
+				//throw new excepcionAtributos('MENSAJE_MAYOR_QUE_48');
+				$this->rellenarExcepcion('MENSAJE_MAYOR_QUE_48');
 			}
 		}
 	}
@@ -79,11 +89,13 @@ class logExcepcionAtributos_VALIDATION_ATRIBUTO extends Validar{
     function validar_tiempo_buscar(){
 		if(!empty($this->tiempo)){
 			if($this->Longitud_maxima($this->tiempo,200)===false){
-				throw new excepcionAtributos('TIEMPO_MAYOR_QUE_200');
+				//throw new excepcionAtributos('TIEMPO_MAYOR_QUE_200');
+				$this->rellenarExcepcion('TIEMPO_MAYOR_QUE_200');
 			}
 			
 			if($this->comprobarLetrasNumerosEspaciosGuiones($this->tiempo)===false){
-				throw new excepcionAtributos('TIEMPO_FORMATO_INCORRECTO');
+				//throw new excepcionAtributos('TIEMPO_FORMATO_INCORRECTO');
+				$this->rellenarExcepcion('TIEMPO_FORMATO_INCORRECTO');
 			}
 		}
 	}
