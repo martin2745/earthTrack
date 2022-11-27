@@ -110,7 +110,7 @@ class mapping extends MappingBase{
         $this->datosValores($arrayDatoValor);  
 
         if (!empty($this->datosQuery)){
-            $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+            $toret = $this->filtradoSentenciaWHERE_Generico($arrayDatoValor);
             $this->query = $this->query.' WHERE ('.$toret[0].')';
             $valores = $toret[1];
         }
