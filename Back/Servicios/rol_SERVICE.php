@@ -37,9 +37,5 @@ class rol_SERVICE extends ServiceBase{
 			$this->clase_validacion->modelo = $this->modelo;
 
 	}
-
-	function validar_entrada_atributos(){
-		validar_entrada_rol();
-	}
 }
 ?>

@@ -15,9 +15,5 @@ class logExcepcionAcciones_SERVICE extends ServiceBase{
 		}
 		$this->modelo = $this->crearModelOne('logExcepcionAcciones');
 	}
-
-	function validar_entrada_atributos(){
-		validar_entrada_logExcepcionAcciones();	
-	}
 }
 ?>

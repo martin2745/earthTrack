@@ -40,11 +40,7 @@ class usuario_SERVICE extends ServiceBase{
 			$this->clase_validacion->modelo = $this->modelo;
 
 	}
-
-	function validar_entrada_atributos(){
-		validar_entrada_usuario();
-	}
-
+	
 	function editarContrasena($mensaje){
 		$this->modelo->arrayDatoValor['usuario'] = usuarioSistema;
 		$this->modelo->EDIT();

@@ -1,9 +1,6 @@
 <?php
 
-include_once './JWT/JWTErrorLaunch.php';
-
-class JWT extends JWTErrorLaunch
-{
+class JWT{
     const ASN1_INTEGER = 0x02;
     const ASN1_SEQUENCE = 0x10;
     const ASN1_BIT_STRING = 0x03;
@@ -30,12 +27,12 @@ class JWT extends JWTErrorLaunch
         $timestamp = \is_null(static::$timestamp) ? \time() : static::$timestamp;
 
         if (empty($key)) {
-            $this->rellenarExcepcion('TOKEN_CLAVE_VACIA');
+            rellenarExcepcionAccion('TOKEN_CLAVE_VACIA');
         }
         $tks = \explode('.', $jwt);
         
         if (\count($tks) != 3) {
-            $this->rellenarExcepcion('TOKEN_NUMERO_INCORRECTO_SEGMENTOS');
+            rellenarExcepcionAccion('TOKEN_NUMERO_INCORRECTO_SEGMENTOS');
         }
         
         $headb64 = substr($tks[0], 7);
@@ -43,25 +40,25 @@ class JWT extends JWTErrorLaunch
         $cryptob64 = $tks[2];
         
         if (null === ($header = static::jsonDecode(static::urlsafeB64Decode($headb64)))) {
-            $this->rellenarExcepcion('TOKEN_HEADER_NO_VALIDO');
+            rellenarExcepcionAccion('TOKEN_HEADER_NO_VALIDO');
         }
         if (null === $payload = static::jsonDecode(static::urlsafeB64Decode($bodyb64))) {
-            $this->rellenarExcepcion('TOKEN_PAYLOAD_NO_VALIDO');
+            rellenarExcepcionAccion('TOKEN_PAYLOAD_NO_VALIDO');
         }
         if (false === ($sig = static::urlsafeB64Decode($cryptob64))) {
-            $this->rellenarExcepcion('TOKEN_SIGN_NO_VALIDO');
+            rellenarExcepcionAccion('TOKEN_SIGN_NO_VALIDO');
         }
         if ($header->alg === 'ES256') {
             $sig = self::signatureToDER($sig);
         }
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
-            $this->rellenarExcepcion('TOKEN_FALLO_VERIFICACION_SIGN');
+            rellenarExcepcionAccion('TOKEN_FALLO_VERIFICACION_SIGN');
         }
         if (isset($payload->iat) && $payload->iat > ($timestamp + static::$leeway)) {
-            $this->rellenarExcepcion('TOKEN_USO_FUTURO');
+            rellenarExcepcionAccion('TOKEN_USO_FUTURO');
         }
         if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
-            $this->rellenarExcepcion('TOKEN_CADUCADO');
+            rellenarExcepcionAccion('TOKEN_CADUCADO');
         }
         
         return $payload;
@@ -90,7 +87,7 @@ class JWT extends JWTErrorLaunch
     public static function sign($msg, $key, $alg = 'HS256')
     {
         if (empty(static::$supported_algs[$alg])) {
-            $this->rellenarExcepcion('ALGORITMO_NO_SOPORTADO');
+            rellenarExcepcionAccion('ALGORITMO_NO_SOPORTADO');
         }
         list($function, $algorithm) = static::$supported_algs[$alg];
         switch ($function) {
@@ -102,7 +99,7 @@ class JWT extends JWTErrorLaunch
     private static function verify($msg, $signature, $key, $alg)
     {
         if (empty(static::$supported_algs[$alg])) {
-            $this->rellenarExcepcion('TOKEN_ALGORITMO_NO_SOPORTADO');
+            rellenarExcepcionAccion('TOKEN_ALGORITMO_NO_SOPORTADO');
         }
 
         list($function, $algorithm) = static::$supported_algs[$alg];
@@ -138,7 +135,7 @@ class JWT extends JWTErrorLaunch
         if ($errno = \json_last_error()) {
             static::handleJsonError($errno);
         } elseif ($obj === null && $input !== 'null') {
-            $this->rellenarExcepcion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            rellenarExcepcionAccion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
         }
         return $obj;
     }
@@ -149,7 +146,7 @@ class JWT extends JWTErrorLaunch
         if ($errno = \json_last_error()) {
             static::handleJsonError($errno);
         } elseif ($json === 'null' && $input !== null) {
-            $this->rellenarExcepcion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
+            rellenarExcepcionAccion('TOKEN_NULL_RESULT_WITH_NON_NULL_INPUT');
         }
         return $json;
     }
@@ -179,7 +176,7 @@ class JWT extends JWTErrorLaunch
             JSON_ERROR_SYNTAX => 'TOKEN_SYNTAX_ERROR_MALFORMED_JSON',
             JSON_ERROR_UTF8 => 'TOKEN_MALFORMED_UTF8_CHARACTERS' //PHP >= 5.3.3
         );
-        $this->rellenarExcepcion(isset($messages[$errno]) ? $messages[$errno] : 'TOKEN_ERROR_TOKEN_INTRODUCIDO');
+        rellenarExcepcionAccion(isset($messages[$errno]) ? $messages[$errno] : 'TOKEN_ERROR_TOKEN_INTRODUCIDO');
     }
 
     private static function safeStrlen($str)

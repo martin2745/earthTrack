@@ -102,9 +102,9 @@ class mapping extends MappingBase{
       $this->execute_single_query($this->valoresQuery);
     }
 
-//////////////////////////////////////////////////////SEARCH_Generico///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH_GENERICO///////////////////////////////////////////////////////
 
-    function SEARCH_Generico($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    function SEARCH_GENERICO($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
         $valores = array();
         $this->query = "SELECT * FROM ".$tabla;
         $this->datosValores($arrayDatoValor);  
