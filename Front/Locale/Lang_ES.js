@@ -113,7 +113,7 @@ arrayES = {
     "La fecha de nacimiento sólo puede contener números",
   //direccion
   DIRECCION_VACIA: "Dirección  vacía",
-  DIRECCION_MENOR_QUE_5: "La dirección tiene menos de 3 caracteres",
+  DIRECCION_MENOR_5: "La dirección tiene menos de 5 caracteres",
   DIRECCION_MAYOR_200: "La dirección tiene más de 128 caracteres",
   DIRECCION_FORMATO_INCORRECTO:
     "La dirección sólo puede contener números, letras y º ª / -",

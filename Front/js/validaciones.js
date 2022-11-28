@@ -263,7 +263,7 @@ function comprobarDireccion(idElemento, idElementoError, campo) {
 
   if (
     validaNoVacio(idElemento, idElementoError, campo) &&
-    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 5, idElementoError, campo) &&
     comprobarTamañoMaximo(idElemento, 200, idElementoError, campo) &&
     comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo)
   ) {

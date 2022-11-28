@@ -1,5 +1,6 @@
 <?php
       include_once './Comun/codigos.php';
+      include_once './Comun/rellenarExcepcion.php';
       include_once './TestPuntosAcceso/funcionesComunes_TestPuntosAcceso.php';
 
       header('Access-Control-Allow-Origin: *');

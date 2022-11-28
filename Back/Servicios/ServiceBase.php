@@ -112,8 +112,8 @@ class ServiceBase{
 	}
 	
 	/*Función que invoca la validación de atributos en función del action correspondiente.*/
-	function validar_entrada_atributos($accion){
-		$validacion = 'validar_entrada_'.$accion;	
+	function validar_entrada_atributos(){
+		$validacion = 'validar_entrada_'.controlador;	
 		$validacion();
 	}
 
