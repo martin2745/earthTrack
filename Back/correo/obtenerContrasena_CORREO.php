@@ -1,8 +1,6 @@
 <?php
 
-include_once './correo/OCCErrorLaunch.php';
-
-class obtenerContrasena_CORREO extends OCCErrorLaunch{
+class obtenerContrasena_CORREO{
 
     function obtenerContrasenaCorreo($usuario){
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -54,7 +52,7 @@ class obtenerContrasena_CORREO extends OCCErrorLaunch{
 		$resultado = $phpmailer->Send();
 
 		if (!$resultado) {
-			$this->rellenarExcepcion('CONTRASENA_CAMBIADA_EMAIL_KO');
+			rellenarExcepcionAccion('CONTRASENA_CAMBIADA_EMAIL_KO');
 		}
 	}
 

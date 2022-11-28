@@ -18,7 +18,7 @@ class permiso extends ControllerBase{
 		$this->permiso_SERVICE->inicializarRest();
 		$this->permiso_SERVICE->validar_insertar();
 		$respuesta = $this->permiso_SERVICE->insertar('PERMISO_INSERTAR_OK');
-		$this->devolverRest($respuesta);		
+		devolverRest($respuesta);		
 	}
 
 	function borrar(){
@@ -26,7 +26,7 @@ class permiso extends ControllerBase{
 		$this->permiso_SERVICE->inicializarRest();
 		$this->permiso_SERVICE->validar_borrar();
 		$respuesta = $this->permiso_SERVICE->borrar('PERMISO_BORRAR_OK');
-		$this->devolverRest($respuesta);	
+		devolverRest($respuesta);	
 	}
 
 	function buscar(){
@@ -34,7 +34,7 @@ class permiso extends ControllerBase{
 		$this->permiso_SERVICE->inicializarRest();
 		$this->permiso_SERVICE->validar_buscar();
 		$respuesta = $this->permiso_SERVICE->buscar();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}	
 }
 ?>

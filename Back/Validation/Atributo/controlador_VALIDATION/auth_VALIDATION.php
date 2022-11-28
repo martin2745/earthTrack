@@ -1,7 +1,6 @@
 <?php
     
-    include_once './Validation/validar_class.php';
-    include_once './Validation/excepciones.php';
+include_once './Validation/validar_class.php';
 
 function validar_entrada_auth(){
     

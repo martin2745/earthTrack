@@ -22,7 +22,7 @@ class auth extends ControllerBase{
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_login();
 		$respuestaFront = $this->auth_SERVICE->login('LOGIN_USUARIO_CORRECTO');
-		$this->devolverRest($respuestaFront);
+		devolverRest($respuestaFront);
 	}
 
 	function registrar(){
@@ -30,7 +30,7 @@ class auth extends ControllerBase{
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_registro();
 		$respuesta = $this->auth_SERVICE->registrar('REGISTRAR_USUARIO_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function obtenerContrasenaCorreo(){
@@ -38,7 +38,7 @@ class auth extends ControllerBase{
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_obtenerContrasenaCorreo();
 		$respuesta = $this->auth_SERVICE->obtenerContrasenaCorreo('RECUPERAR_CONTRASENA_EMAIL_OK');
-		$this->devolverRest($respuesta);		
+		devolverRest($respuesta);		
 	}
 	
 }

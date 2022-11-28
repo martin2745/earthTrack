@@ -18,7 +18,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_insertar();
 		$respuesta = $this->rol_SERVICE->insertar('ROL_INSERTAR_OK');
-		$this->devolverRest($respuesta);		
+		devolverRest($respuesta);		
 	}
 	
 	function editar(){
@@ -26,7 +26,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_editar();
 		$respuesta = $this->rol_SERVICE->editar('ROL_EDITAR_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function borrar(){
@@ -35,7 +35,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_borrar();
 		$respuesta = $this->rol_SERVICE->borrar('ROL_BORRAR_OK');
-		$this->devolverRest($respuesta);	
+		devolverRest($respuesta);	
 	}
 
 	function reactivar(){
@@ -44,7 +44,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_reactivar();
 		$respuesta = $this->rol_SERVICE->reactivar('ROL_REACTIVAR_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function buscar(){
@@ -52,7 +52,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_buscar();
 		$respuesta = $this->rol_SERVICE->buscar();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}	
 	
 	function verEnDetalle(){
@@ -60,7 +60,7 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->rol_SERVICE->verEnDetalle();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 }

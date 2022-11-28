@@ -1,9 +1,8 @@
 <?php
 
 include_once './Comun/config.php';
-include_once './Mapping/MappingErrorLaunch.php';
 
-abstract class MappingBase extends MappingErrorLaunch{
+abstract class MappingBase{
 
 	private static $db_host = host;
 	private static $db_user = user;
@@ -51,11 +50,11 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function execute_single_query($valores) {
 		
 		if (!($this->connection())){
-			$this->rellenarExcepcion('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!($this->stmt->execute($valores))){
-				$this->rellenarExcepcion('SQL_KO');
+				rellenarExcepcionAccion('SQL_KO');
 			}
 		}
 
@@ -65,12 +64,12 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function get_results_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			$this->rellenarExcepcion('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					throw new falloQuery('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 	
 					if ($this->stmt->rowCount() == 0){
@@ -89,7 +88,7 @@ abstract class MappingBase extends MappingErrorLaunch{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					$this->rellenarExcepcion('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 	
 					if ($this->stmt->rowCount() == 0){
@@ -114,12 +113,12 @@ abstract class MappingBase extends MappingErrorLaunch{
 	protected function get_one_result_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			$this->rellenarExcepcion('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					$this->rellenarExcepcion('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;
@@ -136,7 +135,7 @@ abstract class MappingBase extends MappingErrorLaunch{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					$this->rellenarExcepcion('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;

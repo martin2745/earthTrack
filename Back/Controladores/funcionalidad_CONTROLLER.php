@@ -18,7 +18,7 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_insertar();
 		$respuesta = $this->funcionalidad_SERVICE->insertar('FUNCIONALIDAD_INSERTAR_OK');
-		$this->devolverRest($respuesta);		
+		devolverRest($respuesta);		
 	}
 	
 	function editar(){
@@ -26,7 +26,7 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_editar();
 		$respuesta = $this->funcionalidad_SERVICE->editar('FUNCIONALIDAD_EDITAR_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function borrar(){
@@ -34,7 +34,7 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_borrar();
 		$respuesta = $this->funcionalidad_SERVICE->borrar('FUNCIONALIDAD_BORRAR_OK');
-		$this->devolverRest($respuesta);	
+		devolverRest($respuesta);	
 	}
 
 	function buscar(){
@@ -42,7 +42,7 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_buscar();
 		$respuesta = $this->funcionalidad_SERVICE->buscar();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}	
 	
 	function verEnDetalle(){
@@ -50,19 +50,19 @@ class funcionalidad extends ControllerBase{
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$this->funcionalidad_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->funcionalidad_SERVICE->verEnDetalle();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function accionesFuncionalidad(){
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$respuesta = $this->funcionalidad_SERVICE->accionesFuncionalidad('ACCIONES_FUNCIONALIDAD');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function funcionalidadesSistema(){
 		$this->funcionalidad_SERVICE->inicializarRest();
 		$respuesta = $this->funcionalidad_SERVICE->funcionalidadesSistema('FUNCIONALIDADES_SISTEMA');
-		$this->devolverRest($respuesta);	
+		devolverRest($respuesta);	
 	}
 
 }

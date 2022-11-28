@@ -18,7 +18,7 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_insertar();
 		$respuesta = $this->usuario_SERVICE->insertar('USUARIO_INSERTAR_OK');
-		$this->devolverRest($respuesta);		
+		devolverRest($respuesta);		
 	}
 	
 	function editar(){
@@ -26,14 +26,14 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_editar();
 		$respuesta = $this->usuario_SERVICE->editar('USUARIO_EDITAR_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 			function editarContrasena(){
 				$this->usuario_SERVICE->validar_entrada_atributos();
 				$this->usuario_SERVICE->inicializarRest();
 				$respuesta = $this->usuario_SERVICE->editarContrasena('USUARIO_EDITAR_CONTRASENA_OK');
-				$this->devolverRest($respuesta);
+				devolverRest($respuesta);
 			}
 
 	function borrar(){
@@ -42,7 +42,7 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_borrar();
 		$respuesta = $this->usuario_SERVICE->borrar('USUARIO_BORRAR_OK');
-		$this->devolverRest($respuesta);	
+		devolverRest($respuesta);	
 	}
 
 	function reactivar(){
@@ -51,7 +51,7 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_reactivar();
 		$respuesta = $this->usuario_SERVICE->reactivar('USUARIO_REACTIVAR_OK');
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 	function buscar(){
@@ -59,7 +59,7 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_buscar();
 		$respuesta = $this->usuario_SERVICE->buscar();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}	
 	
 	function verEnDetalle(){
@@ -67,7 +67,7 @@ class usuario extends ControllerBase{
 		$this->usuario_SERVICE->inicializarRest();
 		$this->usuario_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->usuario_SERVICE->verEnDetalle();
-		$this->devolverRest($respuesta);
+		devolverRest($respuesta);
 	}
 
 }
