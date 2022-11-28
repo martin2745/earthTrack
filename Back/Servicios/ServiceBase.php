@@ -110,6 +110,12 @@ class ServiceBase{
 		}
 		return $objeto;
 	}
+	
+	/*Función que invoca la validación de atributos en función del action correspondiente.*/
+	function validar_entrada_atributos($accion){
+		$validacion = 'validar_entrada_'.$accion;	
+		$validacion();
+	}
 
 ////////////////////////////////////////////////////////insertar////////////////////////////////////////////////////////
 

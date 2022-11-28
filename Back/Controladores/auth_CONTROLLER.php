@@ -11,14 +11,12 @@ class auth extends ControllerBase{
 		$this->auth_SERVICE = new auth_SERVICE();
 	}
 
-	
-
 	function verificacionToken(){	
 		$this->auth_SERVICE->verificacionToken();
 	}
 
 	function login(){
-		$this->auth_SERVICE->validar_entrada_atributos();	
+		$this->auth_SERVICE->validar_entrada_atributos('auth');	
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_login();
 		$respuestaFront = $this->auth_SERVICE->login('LOGIN_USUARIO_CORRECTO');
@@ -26,7 +24,7 @@ class auth extends ControllerBase{
 	}
 
 	function registrar(){
-		$this->auth_SERVICE->validar_entrada_atributos();		
+		$this->auth_SERVICE->validar_entrada_atributos('auth');		
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_registro();
 		$respuesta = $this->auth_SERVICE->registrar('REGISTRAR_USUARIO_OK');
@@ -34,7 +32,7 @@ class auth extends ControllerBase{
 	}
 
 	function obtenerContrasenaCorreo(){
-		$this->auth_SERVICE->validar_entrada_atributos();
+		$this->auth_SERVICE->validar_entrada_atributos('auth');
 		$this->auth_SERVICE->inicializarRest();
 		$this->auth_SERVICE->validar_obtenerContrasenaCorreo();
 		$respuesta = $this->auth_SERVICE->obtenerContrasenaCorreo('RECUPERAR_CONTRASENA_EMAIL_OK');

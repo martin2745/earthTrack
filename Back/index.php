@@ -1,6 +1,6 @@
 <?php
       include_once './Comun/codigos.php';
-      include_once './Comun/relenarExcepcion.php';
+      include_once './Comun/rellenarExcepcion.php';
 
       header('Access-Control-Allow-Origin: *');
 

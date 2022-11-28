@@ -12,9 +12,8 @@ class accion extends ControllerBase{
 		$this->accion_SERVICE = new accion_SERVICE();
 	}
 
-
 	function insertar(){
-		$this->accion_SERVICE->validar_entrada_atributos();
+		$this->accion_SERVICE->validar_entrada_atributos('accion');	
 		$this->accion_SERVICE->inicializarRest();
 		$this->accion_SERVICE->validar_insertar();
 		$respuesta = $this->accion_SERVICE->insertar('ACCION_INSERTAR_OK');
@@ -22,7 +21,7 @@ class accion extends ControllerBase{
 	}
 	
 	function editar(){
-		$this->accion_SERVICE->validar_entrada_atributos();
+		$this->accion_SERVICE->validar_entrada_atributos('accion');	
 		$this->accion_SERVICE->inicializarRest();
 		$this->accion_SERVICE->validar_editar();
 		$respuesta = $this->accion_SERVICE->editar('ACCION_EDITAR_OK');
@@ -30,7 +29,7 @@ class accion extends ControllerBase{
 	}
 
 	function borrar(){
-		$this->accion_SERVICE->validar_entrada_atributos();
+		$this->accion_SERVICE->validar_entrada_atributos('accion');	
 		$this->accion_SERVICE->inicializarRest();
 		$this->accion_SERVICE->validar_borrar();
 		$respuesta = $this->accion_SERVICE->borrar('ACCION_BORRAR_OK');
@@ -38,7 +37,7 @@ class accion extends ControllerBase{
 	}
 
 	function buscar(){
-		$this->accion_SERVICE->validar_entrada_atributos();
+		$this->accion_SERVICE->validar_entrada_atributos('accion');	
 		$this->accion_SERVICE->inicializarRest();
 		$this->accion_SERVICE->validar_buscar();
 		$respuesta = $this->accion_SERVICE->buscar();
@@ -46,7 +45,7 @@ class accion extends ControllerBase{
 	}	
 	
 	function verEnDetalle(){
-		$this->accion_SERVICE->validar_entrada_atributos();
+		$this->accion_SERVICE->validar_entrada_atributos('accion');	
 		$this->accion_SERVICE->inicializarRest();
 		$this->accion_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->accion_SERVICE->verEnDetalle();

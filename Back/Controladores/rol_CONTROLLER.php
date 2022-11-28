@@ -12,9 +12,8 @@ class rol extends ControllerBase{
 		$this->rol_SERVICE = new rol_SERVICE();
 	}
 
-
 	function insertar(){
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_insertar();
 		$respuesta = $this->rol_SERVICE->insertar('ROL_INSERTAR_OK');
@@ -22,7 +21,7 @@ class rol extends ControllerBase{
 	}
 	
 	function editar(){
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_editar();
 		$respuesta = $this->rol_SERVICE->editar('ROL_EDITAR_OK');
@@ -31,7 +30,7 @@ class rol extends ControllerBase{
 
 	function borrar(){
 		$_POST['borrado_logico'] = 1;
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_borrar();
 		$respuesta = $this->rol_SERVICE->borrar('ROL_BORRAR_OK');
@@ -40,7 +39,7 @@ class rol extends ControllerBase{
 
 	function reactivar(){
 		$_POST['borrado_logico'] = 0;
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_reactivar();
 		$respuesta = $this->rol_SERVICE->reactivar('ROL_REACTIVAR_OK');
@@ -48,7 +47,7 @@ class rol extends ControllerBase{
 	}
 
 	function buscar(){
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_buscar();
 		$respuesta = $this->rol_SERVICE->buscar();
@@ -56,7 +55,7 @@ class rol extends ControllerBase{
 	}	
 	
 	function verEnDetalle(){
-		$this->rol_SERVICE->validar_entrada_atributos();
+		$this->rol_SERVICE->validar_entrada_atributos('rol');
 		$this->rol_SERVICE->inicializarRest();
 		$this->rol_SERVICE->validar_verEnDetalle();
 		$respuesta = $this->rol_SERVICE->verEnDetalle();

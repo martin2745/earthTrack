@@ -11,9 +11,8 @@ class logExcepcionAcciones extends ControllerBase{
 		$this->logExcepcionAcciones_SERVICE = new logExcepcionAcciones_SERVICE();
 	}
 
-
 	function buscar(){
-		$this->logExcepcionAcciones_SERVICE->validar_entrada_atributos();
+		$this->logExcepcionAcciones_SERVICE->validar_entrada_atributos('logExcepcionAcciones');
 		$this->logExcepcionAcciones_SERVICE->inicializarRest();
 		$respuesta = $this->logExcepcionAcciones_SERVICE->buscar();
 		devolverRest($respuesta);

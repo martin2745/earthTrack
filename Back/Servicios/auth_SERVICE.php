@@ -36,10 +36,6 @@ class auth_SERVICE extends ServiceBase{
 		}
 	}
 
-	function validar_entrada_atributos(){
-		validar_entrada_auth();
-	}
-
 	function verificacionToken(){				
 		include_once "./JWT/token.php";
 		$tokenFront = $this->cargarTokenCabecera();

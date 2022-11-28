@@ -44,10 +44,6 @@ class funcionalidad_SERVICE extends ServiceBase{
 
 	}
 
-	function validar_entrada_atributos(){
-		validar_entrada_funcionalidad();
-	}
-
 	function accionesFuncionalidad($mensaje){
 		$funcionalidad = $this->modelo->seek(array('nombre_funcionalidad'), array($this->modelo->arrayDatoValor['nombre_funcionalidad']))['resource']['id_funcionalidad'];
         include_once './Modelos/permiso_MODEL.php';

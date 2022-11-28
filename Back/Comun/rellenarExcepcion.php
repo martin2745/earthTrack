@@ -9,7 +9,7 @@
 		$feedback['ok'] = false;
 		$feedback['code'] = $mensaje;
 		if(!isset($_POST['test'])){
-			$this->logExcepcionesAtributo($feedback);
+			logExcepcionesAtributo($feedback);
 		}
 		header('Content-type: application/json');
 		echo(json_encode($feedback)); 
@@ -20,7 +20,7 @@
 		$feedback['ok'] = false;
 		$feedback['code'] = $mensaje;
 		if(!isset($_POST['test'])){
-			$this->logExcepcionesAccion($feedback);
+			logExcepcionesAccion($feedback);
 		}
 		header('Content-type: application/json');
 		echo(json_encode($feedback)); 
