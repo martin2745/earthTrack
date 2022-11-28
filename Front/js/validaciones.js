@@ -430,7 +430,7 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo) {
         codigo = "FECHA_NACIMIENTO_MENOR_QUE_8";
         break;
       case "direccionPersonaRegistro":
-        codigo = "DIRECCION_MENOR_QUE_5";
+        codigo = "DIRECCION_MENOR_5";
         break;
       case "telefonoPersonaRegistro":
         codigo = "TELEFONO_MENOR_QUE_9";
