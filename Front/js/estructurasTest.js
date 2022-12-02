@@ -719,3 +719,155 @@ function cargarTestGestionRolAccionFuncionalidad() {
 
   $("#testRolAccionFuncionalidad").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de Usuarios*/
+function cargarTestGestionUsuarios() {
+  $("#testUsuario").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarUsuario",
+    "javascript:testUsuario('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestUsuarioAtributosInsertar",
+    "cabeceraAtributosUsuarioInsertar",
+    "cuerpoAtributosUsuarioInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseUsuarioAtributoBuscar",
+    "javascript:testUsuario('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestUsuarioAtributosBuscar",
+    "cabeceraAtributosUsuarioBuscar",
+    "cuerpoAtributosUsuarioBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseUsuarioAtributoModificar",
+    "javascript:testUsuario('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestUsuarioAtributosModificar",
+    "cabeceraAtributosUsuarioModificar",
+    "cuerpoAtributosUsuarioModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarUsuario",
+    "javascript:testUsuario('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestUsuarioAtributosBorrar",
+    "cabeceraAtributosUsuarioBorrar",
+    "cuerpoAtributosUsuarioBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseUsuarioAtributoVerEnDetalle",
+    "javascript:testUsuario('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestUsuarioAtributosVerEnDetalle",
+    "cabeceraAtributosUsuarioVerEnDetalle",
+    "cuerpoAtributosUsuarioVerEnDetalle",
+  ];
+  let arraySubAccordionSeis = [
+    "collapseUsuarioAtributoReactivar",
+    "javascript:testUsuario('Reactivar', 'Atributos')",
+    "Reactivar",
+    "iconoTestUsuarioAtributosReactivar",
+    "cabeceraAtributosUsuarioReactivar",
+    "cuerpoAtributosUsuarioReactivar",
+  ];
+  let arraySubAccordionSiete = [
+    "collapseUsuarioAtributoEditarContrasena",
+    "javascript:testUsuario('EditarContrasena', 'Atributos')",
+    "EditarContrasena",
+    "iconoTestUsuarioAtributosEditarContrasena",
+    "cabeceraAtributosUsuarioEditarContrasena",
+    "cuerpoAtributosUsuarioEditarContrasena",
+  ];
+  let arrayAccordionUno = [
+    "accordion19",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+    arraySubAccordionSeis,
+    arraySubAccordionSiete,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseUsuarioAccionesInsertar",
+    "javascript:testUsuario('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestUsuarioAccionesInsertar",
+    "cabeceraAccionesUsuarioInsertar",
+    "cuerpoAccionesUsuarioInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseUsuarioAccionesBuscar",
+    "javascript:testUsuario('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestUsuarioAccionesBuscar",
+    "cabeceraAccionesUsuarioBuscar",
+    "cuerpoAccionesUsuarioBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseUsuarioAccionesModificar",
+    "javascript:testUsuario('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestUsuarioAccionesModificar",
+    "cabeceraAccionesUsuarioModificar",
+    "cuerpoAccionesUsuarioModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseUsuarioAccionesBorrar",
+    "javascript:testUsuario('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestUsuarioAccionesBorrar",
+    "cabeceraAccionesUsuarioBorrar",
+    "cuerpoAccionesUsuarioBorrar",
+  ];
+  let arraySubAccordionDoce = [
+    "collapseUsuarioAccionesReactivar",
+    "javascript:testUsuario('Reactivar', 'Acciones')",
+    "Reactivar",
+    "iconoTestUsuarioAccionesReactivar",
+    "cabeceraAccionesUsuarioReactivar",
+    "cuerpoAccionesUsuarioReactivar",
+  ];
+  let arraySubAccordionTrece = [
+    "collapseUsuarioAccionesEditarContrasena",
+    "javascript:testUsuario('EditarContrasena', 'Acciones')",
+    "EditarContrasena",
+    "iconoTestUsuarioAccionesEditarContrasena",
+    "cabeceraAccionesUsuarioEditarContrasena",
+    "cuerpoAccionesUsuarioEditarContrasena",
+  ];
+  let arrayAccordionDos = [
+    "accordion20",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+    arraySubAccordionDoce,
+    arraySubAccordionTrece,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion18",
+    "collapseUsuarioAtributos",
+    null,
+    "Atributos",
+    "iconoTestUsuarioAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseUsuarioAcciones",
+    null,
+    "Acciones",
+    "iconoTestUsuarioAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testUsuario").append(contenidoTest);
+}
