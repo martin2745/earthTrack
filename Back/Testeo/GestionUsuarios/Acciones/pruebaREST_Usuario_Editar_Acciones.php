@@ -66,16 +66,6 @@ function pruebaREST_Usuario_Editar_Acciones(){
 
 //---------------------------------------------------------------------------------------------------------------------
 
-	//USUARIO_ROL_NO_VALIDO
-	$POST['usuario'] = 'usuarioTest2';
-	$POST['id_rol'] = '1';
-
-	$prueba = 'No se puede editar el rol del usuario a ser un administrador.';
-	$codeEsperado = 'USUARIO_ROL_NO_VALIDO';
-	$pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
-
-//---------------------------------------------------------------------------------------------------------------------
-
 	//EMAIL_USUARIO_YA_EXISTE
 	$POST['usuario'] = 'usuarioTest2';
 	$POST['id_rol'] = '4';

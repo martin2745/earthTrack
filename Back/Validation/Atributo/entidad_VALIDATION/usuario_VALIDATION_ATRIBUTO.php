@@ -17,8 +17,7 @@ class usuario_VALIDATION_ATRIBUTO extends Validar{
 	}
 
 	function validar_atributos_editar(){
-		$this->validar_usuario();	
-		$this->validar_id_rol();	
+		$this->validar_usuario();		
 		$this->validar_nombre();
 		$this->validar_apellidos();
 		$this->validar_fechaNacimiento();

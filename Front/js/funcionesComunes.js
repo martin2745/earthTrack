@@ -634,42 +634,6 @@ function comprobarOcultos() {
   setLang(getCookie("lang"));
 }*/
 
-/* Función para comprobar errrores en los tabs de registro */
-function comprobarErroresTabs() {
-  var contrasenasNoCoinciden =
-    $("#passwdUsuario1").val() != $("#passwdUsuario2").val();
-
-  if (
-    $("#errorFormatoDni").attr("style") == "" ||
-    $("#errorFormatoNombrePersona").attr("style") == "" ||
-    $("#errorFormatoApellidosP").attr("style") == "" ||
-    $("#errorFormatoFecha").attr("style") == "" ||
-    $("#errorFormatoDireccion").attr("style") == "" ||
-    $("#errorFormatoTelefono").attr("style") == "" ||
-    $("#errorFormatoEmail").attr("style") == ""
-  ) {
-    $("#iconoTabDatosPersonales").prop("hidden", false);
-  }
-
-  if (
-    $("#errorFormatoUserRegistro").attr("style") == "" ||
-    $("#errorFormatoPassRegistro").attr("style") == "" ||
-    $("#errorFormatoPassRegistro2").attr("style") == "" ||
-    contrasenasNoCoinciden === true
-  ) {
-    $("#iconoTabDatosUsuario").prop("hidden", false);
-  }
-
-  if (
-    $("#errorFormatoCifEmpresa").attr("style") == "" ||
-    $("#errorFormatoNombreEmpresa").attr("style") == "" ||
-    $("#errorFormatoDireccionEmpresa").attr("style") == "" ||
-    $("#errorFormatoTelefonoEmpresa").attr("style") == ""
-  ) {
-    $("#iconoTabDatosEmpresa").prop("hidden", false);
-  }
-}
-
 /**Función para cambiar valores del formulario.*/
 function cambiarFormulario(tituloForm, action, onsubmit) {
   $("#formularioAcciones").attr("style", "display: block");
@@ -682,6 +646,8 @@ function cambiarFormulario(tituloForm, action, onsubmit) {
 
   if (onsubmit != "") {
     $("#formularioGenerico").attr("onsubmit", onsubmit);
+  } else {
+    $("#formularioGenerico").attr("onsubmit", "");
   }
 }
 

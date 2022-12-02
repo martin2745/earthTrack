@@ -28,10 +28,6 @@ USE `pdp`;
 -- Estructura de tabla para la tabla `accion`
 --
 
---
--- Estructura de tabla para la tabla `accion`
---
-
 CREATE TABLE `accion` (
   `id_accion` int(11) NOT NULL,
   `nombre_accion` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -48,7 +44,8 @@ INSERT INTO `accion` (`id_accion`, `nombre_accion`, `descripcion_accion`) VALUES
 (3, 'editar', 'Editar un elemento en base de datos'),
 (4, 'buscar', 'Buscar un elemento en base de datos'),
 (5, 'reactivar', 'Reactivar un elemento borrado de forma lógica'),
-(6, 'verEnDetalle', 'Ver toda la información para una tupla');
+(6, 'verEnDetalle', 'Ver toda la información para una tupla'),
+(7, 'listar', 'Listado de las tuplas de una entidad');
 
 -- --------------------------------------------------------
 
@@ -149,7 +146,14 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 4, 5),
 (1, 6, 5),
 (1, 4, 6),
-(1, 4, 7);
+(1, 4, 7),
+(1, 7, 4),
+(1, 7, 3),
+(1, 7, 6),
+(1, 7, 7),
+(1, 7, 5),
+(1, 7, 2),
+(1, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -199,8 +203,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'admin@admin.com', 0),
-('martin', '21232f297a57a5a743894a0e4a801fc3', 4, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
+('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
+('martin', '925d7518fc597af0e43f5606f9a51512', 4, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -247,7 +251,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `accion`
 --
 ALTER TABLE `accion`
-  MODIFY `id_accion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_accion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidad`

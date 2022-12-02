@@ -13,7 +13,7 @@ class usuario_SERVICE extends ServiceBase{
 				$this->listaAtributos = array('usuario', 'contrasena', 'dni', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('usuario', 'id_rol', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
+				$this->listaAtributos = array('usuario', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
 				break;
 			case 'editarContrasena':
 				$this->listaAtributos = array('usuario', 'contrasena');

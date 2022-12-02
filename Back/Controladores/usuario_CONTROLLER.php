@@ -20,5 +20,7 @@ class usuario extends ControllerBase{
 		devolverRest($respuesta);
 	}
 
+	//Es necesario un método específico para editar el rol.
+
 }
 ?>

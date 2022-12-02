@@ -1,0 +1,363 @@
+@media only screen and (min-width: 320px) and (max-width: 415px) {
+  .refreshIcon {
+    margin-left: 43.5% !important;
+  }
+
+  .table {
+    width: 250% !important;
+    max-width: 300% !important;
+  }
+
+  .table thead tr th {
+    width: 14% !important;
+  }
+
+  .personaInfoParaUsuario {
+    position: fixed !important;
+    top: 20% !important;
+    width: 90% !important;
+    height: 70% !important;
+    margin-left: 5% !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-person {
+    width: 75% !important;
+    position: absolute !important;
+    top: 1 !important;
+    left: 15% !important;
+  }
+
+  .h4,
+  h4 {
+    font-size: 1.2rem !important;
+  }
+
+  .card-person .card-body {
+    height: 290px !important;
+  }
+
+  .card-text {
+    font-size: 0.9rem !important;
+  }
+
+  .card-body {
+    padding: 1rem !important;
+  }
+
+  #cardBodyUsuario {
+    margin-bottom: 20%;
+  }
+
+  .editarCard {
+    width: 31px !important;
+    margin-top: -50px !important;
+    margin-left: 214px !important;
+  }
+
+  .card-body .tooltip .tooltiptext {
+    width: 94px !important;
+    bottom: 264% !important;
+    left: 101% !important;
+  }
+
+  .card-user {
+    width: 75% !important;
+    position: absolute !important;
+    top: 95% !important;
+    left: 15% !important;
+  }
+
+  .card-user .card-body {
+    height: 172px !important;
+  }
+
+  .card-enterprise {
+    width: 75% !important;
+    position: absolute !important;
+    top: 193% !important;
+    left: 15% !important;
+  }
+
+  .card-enterprise .card-body {
+    height: 182px !important;
+  }
+
+  #tituloFormsModal3 {
+    font-size: 1.4rem !important;
+    margin-left: 16% !important;
+  }
+
+  #form-modal .modal-dialog {
+    margin: 1rem auto !important;
+  }
+
+  .nav-item {
+    font-size: 0.8rem !important;
+    width: 32% !important;
+  }
+
+  #iconoEditarPersona {
+    left: 10%;
+    position: relative;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .refreshIcon {
+    margin-left: 61.5% !important;
+  }
+
+  .table thead tr th {
+    width: 14% !important;
+  }
+
+  #form-modal .modal-dialog {
+    margin: 2rem auto !important;
+  }
+
+  .personaInfoParaUsuario {
+    position: fixed !important;
+    top: 27% !important;
+    left: 14% !important;
+    width: 70% !important;
+    height: 60% !important;
+    margin-left: 5% !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .card-person {
+    width: 21% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 15% !important;
+  }
+
+  .card-user {
+    width: 21% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 38% !important;
+  }
+
+  .card-enterprise {
+    width: 21% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 61% !important;
+  }
+
+  .volver {
+    width: 33%;
+  }
+
+  .editarCard {
+    margin-left: 127px !important;
+  }
+
+  .nombreApellidos,
+  .user,
+  .nombreE {
+    font-size: 1rem !important;
+  }
+
+  .dniP,
+  .fechaNacimiento,
+  .direccion,
+  .telefono,
+  .email,
+  .dni,
+  .pas,
+  .rol,
+  .cif,
+  .direccionE,
+  .telefonoE {
+    font-size: 0.8rem !important;
+  }
+}
+
+#iconoEditarPersona {
+  right: 15%;
+  position: relative;
+}
+.formularioAcciones-container p,
+.labelForm {
+  font-family: Roboto;
+  color: #311b92;
+  display: block;
+}
+
+.formularioAcciones-container input[type="submit"] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.formularioAcciones-container input[type="text"],
+.formularioAcciones-container input[type="password"] {
+  height: 30px;
+  font-size: 14px;
+  width: 90%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #12a291;
+  border-top: 2px solid #0d6e63;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formularioAcciones-container input[type="email"] {
+  height: 30px;
+  font-size: 14px;
+  width: 50%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #12a291;
+  border-top: 2px solid #00695c;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formularioAcciones-container input[type="date"],
+input[type="tel"] {
+  height: 30px;
+  font-size: 14px;
+  width: 36%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #12a291;
+  border-top: 2px solid #00695c;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.dni,
+.cif {
+  width: 36% !important;
+}
+
+.formularioGenerico-container input[type="date"],
+input[type="tel"] {
+  height: 30px;
+  font-size: 14px;
+  width: 36%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #4db6ac;
+  border-top: 2px solid #00897b;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formularioGenerico-container input[type="text"]:hover,
+input[type="password"]:hover,
+.formularioGenerico-container input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="date"]:hover,
+input[type="tel"]:hover,
+input[type="email"]:hover,
+select:hover,
+.recuperarcontrasenamodal-container input[type="text"]:hover,
+input[type="email"]:hover {
+  border: 1px solid #b2dfdb;
+  border-top: 2px solid #80cbc4;
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.formularioAcciones-container-submit {
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #00695c;
+  padding: 17px 0px;
+  font-family: Roboto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.formularioAcciones-container-submit:hover {
+  border: 0px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  background-color: #673ab7;
+}
+
+.formularioAcciones-container p,
+.labelForm {
+  font-family: Roboto;
+  color: #311b92;
+  display: block;
+}
+
+.form-check-label {
+  font-size: 14px !important;
+}
+
+.container {
+  max-height: 350px;
+}
+
+.formularioComun h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+  color: #311b92;
+}
+
+/********* ICONOS ***********/
+
+.cabecera {
+  position: fixed;
+  top: 12%;
+  left: 6%;
+  width: 100%;
+}
+
+.cabeceraEliminados {
+  position: fixed;
+  top: 13%;
+  left: 6%;
+  width: 100%;
+}
+
+.refreshIcon {
+  margin-left: 65%;
+}
+
+/********* CARDS *************/
+.card-person {
+  width: 16%;
+  position: fixed;
+  top: 21%;
+  left: 24%;
+  border: 1px solid #00695c;
+  z-index: 1000;
+}
+
+.card-enterprise {
+  width: 16%;
+  position: fixed;
+  top: 21%;
+  left: 60%;
+  border: 1px solid #00695c;
+  z-index: 1000;
+}
+
+.editarCard {
+  display: inline;
+  width: 37px;
+  margin-top: -10px;
+  margin-left: 230px;
+}

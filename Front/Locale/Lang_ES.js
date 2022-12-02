@@ -444,6 +444,15 @@ arrayES = {
   LOGEXCEPCION_TIEMPO: "Tiempo",
   GESTION_USUARIO: "Gestión de usuarios",
   DATOS_USUARIO: "Datos del usuario",
+  USUARIO_DNI: "DNI",
+  USUARIO_USUARIO: "Usuario",
+  USUARIO_ROL: "Rol",
+  USUARIO_NOMBRE: "Nombre",
+  USUARIO_APELLIDOS: "Apellidos",
+  USUARIO_FECHANACIMIENTO: "Fecha de nacimiento",
+  USUARIO_DIRECCION: "Direccion",
+  USUARIO_EMAIL: "Email",
+  USUARIO_TELEFONO: "Telefono",
   TESTS: "Tests",
 
   //Idiomas

@@ -13,7 +13,7 @@ function validar_entrada_usuario(){
             $usuario_validacion->validar_atributos_insertar();
             break;
         case 'editar':
-            $listaAtributos = array('usuario', 'id_rol', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
+            $listaAtributos = array('usuario', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
             contruirLista($listaAtributos, $usuario_validacion);
             $usuario_validacion->validar_atributos_editar();
             break;
@@ -33,6 +33,11 @@ function validar_entrada_usuario(){
             $usuario_validacion->validar_atributos_reactivar();
             break;
         case 'buscar':
+            if(isset($_POST['fechaNacimiento'])){
+                if($_POST['fechaNacimiento'] == '1900-01-01'){
+                    $_POST['fechaNacimiento'] = '';
+                }
+            }
             $listaAtributos = array('usuario', 'contrasena', 'id_rol', 'dni', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email', 'borrado_logico');
             contruirLista($listaAtributos, $usuario_validacion);
             $usuario_validacion->validar_atributos_buscar();
