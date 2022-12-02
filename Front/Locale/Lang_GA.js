@@ -471,6 +471,15 @@ arrayGA = {
   LOGEXCEPCION_TIEMPO: "Tempo",
   GESTION_USUARIO: "Xestión de usuarios",
   DATOS_USUARIO: "Datos do usuario",
+  USUARIO_DNI: "DNI",
+  USUARIO_USUARIO: "Usuario",
+  USUARIO_ROL: "Rol",
+  USUARIO_NOMBRE: "Nome",
+  USUARIO_APELLIDOS: "Apelidos",
+  USUARIO_DIRECCION: "Direccion",
+  USUARIO_FECHANACIMIENTO: "Data de nacemento",
+  USUARIO_EMAIL: "Email",
+  USUARIO_TELEFONO: "Telefono",
   TESTS: "Tests",
 
   //Mensajes error

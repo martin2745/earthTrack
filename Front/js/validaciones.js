@@ -37,6 +37,29 @@ function comprobarUser(idElemento, idElementoError, campo) {
   }
 }
 
+/**Función que valida el login de usuario en el buscar*/
+function comprobarUserSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /**Función que valida la password de usuario*/
 function comprobarPass(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -183,6 +206,29 @@ function comprobarEmail(idElemento, idElementoError, campo) {
   }
 }
 
+/** Función que valida el email **/
+function comprobarEmailSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarFormatoEmail(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /** Funcion que valida el formato del DNI **/
 function comprobarDNI(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -200,6 +246,34 @@ function comprobarDNI(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/**Función que valida el login de usuario en el buscar*/
+function comprobarDNISearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarEnhe(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        if (comprobarDNICorrecto(idElemento, idElementoError, campo)) {
+          validacionOK(idElemento, idElementoError);
+          return true;
+        } else {
+          validacionKO(idElemento, idElementoError);
+          return false;
+        }
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -221,6 +295,29 @@ function comprobarNombre(idElemento, idElementoError, campo) {
   }
 }
 
+/** Funcion que valida el formato del Nombre **/
+function comprobarNombreSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 56, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /** Funcion que valida el formato de los apellidos **/
 function comprobarApellidos(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -236,6 +333,29 @@ function comprobarApellidos(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/**Función que valida los apellidos en el buscar*/
+function comprobarApellidosSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -275,6 +395,29 @@ function comprobarDireccion(idElemento, idElementoError, campo) {
   }
 }
 
+/** Funcion que valida el format para buscar la direccion **/
+function comprobarDireccionSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /** Funcion que valida el formato del telefono**/
 function comprobarTelefono(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -290,6 +433,29 @@ function comprobarTelefono(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/**Función que valida el formato del teléfono al buscar **/
+function comprobarTelefonoSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -1412,6 +1578,171 @@ function comprobarMensajeSearch(idElemento, idElementoError, campo) {
     }
   } else {
     validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////GESTION USUARIOS//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function comprobarAddUsuario() {
+  if (
+    comprobarDNI("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombre(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidos(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccion(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefono(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmail(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUser(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    ) &&
+    comprobarPass(
+      "passwdUsuario1",
+      "errorFormatoPassRegistro",
+      "passwdUsuarioRegistro"
+    ) &&
+    comprobarPassRepetida(
+      "passwdUsuario2",
+      "errorFormatoPassRegistro2",
+      "passwdUsuarioRegistro"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function comprobarSearchUsuario() {
+  if (
+    comprobarDNISearch("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombreSearch(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidosSearch(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccionSearch(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefonoSearch(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmailSearch(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUserSearch(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function comprobarEditUsuario() {
+  if (
+    comprobarDNI("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombre(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidos(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccion(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefono(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmail(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUser(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**Función verificar passwd**/
+function verificarPasswd() {
+  passwdUsuario1 = $("#passwdUsuario1").val();
+  passwdUsuario2 = $("#passwdUsuario2").val();
+
+  if (passwdUsuario1 != passwdUsuario2) {
+    addCodeError("error", "CONTRASEÑAS_NO_COINCIDEN");
+    return false;
+  } else {
+    $("#error").removeClass();
+    $("#error").html("");
+    $("#error").css("display", "none");
     return true;
   }
 }

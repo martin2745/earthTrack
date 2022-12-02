@@ -457,6 +457,15 @@ arrayEN = {
   LOGEXCEPCION_TIEMPO: "Time",
   GESTION_USUARIO: "User management",
   DATOS_USUARIO: "User info",
+  USUARIO_USUARIO: "User",
+  USUARIO_DNI: "DNI",
+  USUARIO_ROL: "Rol",
+  USUARIO_NOMBRE: "Name",
+  USUARIO_APELLIDOS: "Surname",
+  USUARIO_FECHANACIMIENTO: "Birthday",
+  USUARIO_DIRECCION: "Address",
+  USUARIO_EMAIL: "Email",
+  USUARIO_TELEFONO: "Phone",
   TESTS: "Tests",
 
   //Mensajes error

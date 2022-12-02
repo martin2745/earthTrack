@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/gestionUsuarios.css" media="screen" />
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/funcionesComunes.js"></script>
+    <script type="text/javascript" src="js/funcionesFormulario.js"></script>
+    <script type="text/javascript" src="js/constantes.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/gestionUsuarios.js"></script>
+    <script type="text/javascript" src="js/paginacion.js"></script>
+    <script type="text/javascript" src="Locale/idioma.js"></script>
+    <script type="text/javascript" src="Locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="Locale/Lang_ES.js"></script>
+    <script type="text/javascript" src="Locale/Lang_GA.js"></script>
+    <link rel="shortcut icon" type="image/png" href="images/iconoIndex2.png">
+    <title>earthTrack</title>
+</head>
+
+<body onload="(async ()=>{
+    await deleteCookiesEntrePaginas('usuarioGestion');
+  	await includeTopMenu();
+	await rellenarTopMenu();
+    await accionesPermitidas();
+    setInterval(function(){accionesPermitidas()}, 30000);
+    modalCambioPass();cargarIdioma();includeFooter();setLang('');
+	await ajustarCookies();
+	await cargarDatosUsuario();
+  })();">
+
+    <div id="topMenu"></div>
+    <h1 class="gestion GESTION_USUARIO"></h1>
+
+    <div class="cabecera" id="accionesCabecera"></div>
+
+    <div id="personaInfoParaUsuario" style="display: none;">
+        <div id="cardPersona" class="card card-person" style="display: none;">
+            <img class="card-img-top" src="images/users.png" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <div class="nombreApellidosInfo">
+                    <img class="nombreApellidosImg" src="images/users.png" alt="nombreApellidos">
+                    <h4 class="card-title nombreApellidos" id="nombreApellidos"></h4>
+                </div>
+                <div class="dniPInfo">
+                    <img class="dniPImg" src="images/dni.png" alt="dniP">
+                    <p class="card-text dniP" id="dniP"></p>
+                </div>
+                <div class="fechaNacimientoInfo">
+                    <img class="fechaNacimientoImg" src="images/cumpleanhos.png" alt="fechaNacimiento">
+                    <p class="card-text fechaNacimiento" id="fechaNacimiento"></p>
+                </div>
+                <div class="direccionInfo">
+                    <img class="direccionImg" src="images/direccion.png" alt="direccion">
+                    <p class="card-text direccion" id="direccion"></p>
+                </div>
+                <div class="telefonoInfo">
+                    <img class="telefonoImg" src="images/telefono.png" alt="telefono">
+                    <p class="card-text telefono" id="telefono"></p>
+                </div>
+                <div class="emailInfo">
+                    <img class="emailImg" src="images/email.png" alt="email">
+                    <p class="card-text email" id="email"></p>
+                </div>
+                <div class="tooltip">
+                    <div class="tooltip" id="iconoEditarPersona">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="cardUsuario" class="card card-user" style="display: none;">
+            <img class="card-img-top" src="images/user.png" alt="Card image">
+            <div class="card-body" id="cardBodyUsuario">
+                <div class="userInfo">
+                    <img class="userImg" src="images/user.png" alt="usuario">
+                    <h4 class="card-title user" id="user"></h4>
+                </div>
+                <div class="passInfo">
+                    <img class="passImg" src="images/pass.png" alt="pass">
+                    <p class="card-text pass">******************</p>
+                </div>
+                <div class="rolInfo">
+                    <img class="rolImg" src="images/rol.png" alt="rol">
+                    <p class="card-text rol" id="rol"></p>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div id="tablaDatos" style="display: none;">
+        <table class="table table-bordered" id="tablaUsuarios">
+            <thead class="headerGestionRoles">
+                <th scope="col" class="USUARIO_USUARIO_COLUMN">
+                    <div class="usuarioColumn USUARIO_USUARIO"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconUsuario">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="USUARIO_ROL_COLUMN">
+                    <div class="rolColumn USUARIO_ROL"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconRol">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="USUARIO_NOMBRE_COLUMN">
+                    <div class="nombreColumn USUARIO_NOMBRE"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconNombre">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="USUARIO_APELLIDOS_COLUMN">
+                    <div class="apellidosColumn USUARIO_APELLIDOS"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconApellidos">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="USUARIO_EMAIL_COLUMN">
+                    <div class="emailColumn USUARIO_EMAIL"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconEmail">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="BORRADO_LOGICO_COLUMN">
+                    <div class="borradoLogicoColumn BORRADO_LOGICO"></div>
+                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(6, 'tablaUsuarios')"
+                        class="tooltip7 ordenarIconBorradoLogico">
+                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
+                        <span class="tooltiptext ORDENAR"></span>
+                    </div>
+                </th>
+                <th scope="col" class="ACTION colLast"></th>
+
+            </thead>
+            <tbody id="datosEntidades" class="bodyGestionUsuarios">
+        </table>
+    </div>
+
+    <div id="showHideColumns" style="display: none;">
+        <a id="cerrarOcultarColumnas" href="#" onclick="cerrarModal('showHideColumns')" class="tooltip5">
+            <img class="iconCerrar" alt="Cerrar" src="images/close2.png" />
+            <span class="tooltiptext5 ICONO_CERRAR"></span>
+        </a>
+        <div id='ckeckboxColumnas'></div>
+    </div>
+
+    <div class="modal fade" id="formularioAcciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" id="contenidoForm">
+            <div class="formularioAcciones-container">
+                <h1 class="TITULO_MODAL"></h1>
+                <form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active DATOS_PERSONALES" data-toggle="tab" href="#datosPersonales"></a>
+                            <img class="iconTab" id="iconoTabDatosPersonales" src="images/failed.png" hidden>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link DATOS_USUARIO" data-toggle="tab" href="#datosUsuario"></a>
+                            <img class="iconTab" id="iconoTabDatosUsuario" src="images/failed.png" hidden>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="datosPersonales" class="container tab-pane active overflow-auto"><br>
+                            <label class="USUARIO_DNI" id="label_usuario_dni" style="display:none"></label>
+                            <input type="text" maxlength="48" placeholder="" name="dni" id="input_dni_usuario"
+                                style="display:none" class="USUARIO_DNI dni" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_dni" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <small class="FORMATO_DNI" id="ayudaDNI"></small>
+                            <div id="errorFormatoDni" style="display:none"></div>
+
+                            <label class="USUARIO_NOMBRE" id="label_usuario_nombre" style="display:none"></label>
+                            <input type="text" maxlength="48" placeholder="" name="nombre" id="input_nombre_usuario"
+                                style="display:none" class="USUARIO_NOMBRE" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_nombre" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <div id="errorFormatoNombre" style="display:none"></div>
+
+                            <label class="USUARIO_APELLIDOS" id="label_usuario_apellidos" style="display:none"></label>
+                            <input type="text" maxlength="48" placeholder="" name="apellidos"
+                                id="input_apellidos_usuario" style="display:none" class="USUARIO_APELLIDOS" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_apellidos" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <div id="errorFormatoApellidos" style="display:none"></div>
+
+                            <label class="USUARIO_FECHANACIMIENTO" id="label_usuario_fechaNacimiento"
+                                style="display:none"></label>
+                            <input type="date" value="1900-01-01" min="1900-01-01" max="3000-01-01" placeholder=""
+                                name="fechaNacimiento" id="input_fechaNacimiento_usuario" style="display:none"
+                                class="USUARIO_APELLIDOS" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_fechaNacimiento"
+                                style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <div id="errorFormatoFecha" style="display:none"></div>
+
+                            <label class="USUARIO_DIRECCION" id="label_usuario_direccion" style="display:none"></label>
+                            <input type="text" maxlength="48" placeholder="" name="direccion"
+                                id="input_direccion_usuario" style="display:none" class="USUARIO_DIRECCION" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_direccion" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <div id="errorFormatoDireccion" style="display:none"></div>
+
+                            <label class="USUARIO_TELEFONO" id="label_usuario_telefono" style="display:none"></label>
+                            <input type="tel" name="telefono" id='input_telefono_usuario' placeholder="988212121"
+                                pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" class="USUARIO_TELEFONO"
+                                onblur="">
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_telefono" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <small class="FORMATO_TELF" id="ayudaTEL"></small>
+                            <div id="errorFormatoTelefono" style="display:none"></div>
+
+                            <label class="USUARIO_EMAIL" id="label_usuario_email" style="display:none"></label>
+                            <input type="email" name="email" id="input_email_usuario" placeholder="Email"
+                                class="EMAIL_USUARIO" maxlength="40" size="40" onblur="">
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_email" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div><small class="FORMATO_EMAIL" id="ayudaEMAIL"></small>
+                            <div id="errorFormatoEmail" style="display:none"></div>
+                        </div>
+
+                        <div id="datosUsuario" class="container tab-pane fade"><br>
+
+                            <label class="USUARIO_USUARIO" id="label_usuario_usuario" style="display:none"></label>
+                            <input type="text" maxlength="15" size="15" placeholder="" name="usuario"
+                                id="input_usuario_usuario" style="display:none" class="USUARIO_USUARIO" onblur="" />
+                            <div class="obligatorio tooltip2" id="obligatorio_usuario_usuario" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO"></span>
+                            </div>
+                            <div id="errorFormatoUsuario" style="display:none"></div>
+
+                            <label class="USUARIO_ROL" id="label_usuario_rol" style="display:none"></label>
+                            <input type="text" maxlength="48" size="15" placeholder="" name="nombre_rol"
+                                id="input_rol_usuario" style="display:none" class="USUARIO_ROL" onblur="" />
+                            <input type="text" maxlength="48" size="15" placeholder="" name="id_rol"
+                                id="input_id_rol_usuario" style="display:none" class="USUARIO_ROL" onblur="" />
+                            <select name='id_rol' id='select_id_rol' style="display:none"></select>
+
+                            <label class="BORRADO_LOGICO" id="label_usuario_borrado_logico"
+                                style="display:none"></label>
+                            <input type="text" name="borrado_logico" placeholder="" id="input_usuario_borrado_logico"
+                                style="display:none" class="BORRADO_LOGICO" />
+                            <select name='borrado_logico' id='select_borrado_logico' style="display:none"></select>
+
+                            <input type="password" name="contrasena" id="passwdUsuario1" placeholder="Contraseña"
+                                class="PASS_USUARIO" maxlength="45" size="45"
+                                onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur=""
+                                autocomplete="new-password" style="display:none">
+                            <div class="obligatorio tooltip2" id="obligatorioPass1" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO" style="display:none">Campo
+                                    obligatorio</span>
+                            </div>
+                            <div style="display:none" id="errorFormatoPassRegistro"></div>
+
+                            <input type="password" name="confirmarPass" id="passwdUsuario2"
+                                placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45"
+                                size="45" onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur=""
+                                autocomplete="new-password" style="display:none">
+                            <div class="obligatorio tooltip2" id="obligatorioPass2" style="display:none">*
+                                <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO" style="display:none">Campo
+                                    obligatorio</span>
+                            </div>
+                            <div style="display:none" id="errorFormatoPassRegistro2"></div>
+
+                            <div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning"
+                                id="bloqueoMayusculasRegistro"></div>
+
+                            <div id="error" class="alert alert-danger ocultar" role="alert"
+                                class="CONTRASEÑAS_NO_COINCIDEN"></div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
+                        <img class="" src="" alt="" id="iconoAcciones" />
+                        <span class="tooltiptext" id="spanAcciones"></span>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="filasTabla" id="contadorPaginacion">
+        <div id="contadorPaginas"></div>
+    </div>
+
+    <div class="paginacion" id="paginacion">
+    </div>
+
+    <div class="modal modal3 fade" id="editarcontrasena-modal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;"></div>
+
+    <div class="volver">
+        <div name="btnBack" value="Volver" class="tooltip backIcon">
+            <a href="menu.html">
+                <img class="iconoBack ICONO_VOLVER" src="images/home2.png" alt="Volver" />
+                <span class="tooltiptext ICONO_VOLVER"></span>
+            </a>
+        </div>
+    </div>
+
+    <div id="modal" tabindex="-1" role="dialog" style="display:none">
+        <div class="modal-dialog" role="document" id="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="" name="aviso" class="imagenAviso" />
+                    <h3 id="modal-title" class=""></h3>
+                </div>
+                <div id='modal-mensaje' class="modal-body"></div>
+                <div class="modal-footer">
+                    <a id="cerrar" href="#" onclick="cerrarModal('modal')" class="tooltip5">
+                        <img class="iconCerrar" id="iconoModalMensaje" alt="Cerrar" src="images/close.png" />
+                        <span class="tooltiptext5 ICONO_CERRAR"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+</body>
+
+</html>

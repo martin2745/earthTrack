@@ -17,9 +17,9 @@ class usuario_VALIDATION_ACCION extends Validar{
 		if(!$this->existe_usuario()){
 			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
-		if(!$this->rol_admin()){
+		/*if(!$this->rol_admin()){
 			rellenarExcepcionAccion('USUARIO_ROL_NO_VALIDO');
-		}
+		}*/
         if(!$this->existe_usuario_email()){
 			rellenarExcepcionAccion('EMAIL_USUARIO_YA_EXISTE');
         }
