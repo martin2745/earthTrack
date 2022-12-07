@@ -593,3 +593,119 @@ async function testUsuario(accion, tipoTest) {
     });
   eliminarCampos();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////GESTION DE CATEGORIA///////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*Función que obtiene los test de usuario */
+async function testCategoria(accion, tipoTest) {
+  imagenErrorTestOcultar();
+
+  var code = "";
+  var codeFracaso = "";
+  var controladorTest = "";
+  var actionTest = "";
+
+  switch (tipoTest) {
+    case "Atributos":
+      controladorTest = "categoriaAtributos";
+      switch (accion) {
+        case "Insertar":
+          code = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_FRACASO";
+          actionTest = "insertar";
+          break;
+        case "Buscar":
+          code = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_FRACASO";
+          actionTest = "buscar";
+          break;
+        case "Modificar":
+          code = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_FRACASO";
+          actionTest = "editar";
+          break;
+        case "Borrar":
+          code = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_FRACASO";
+          actionTest = "borrar";
+          break;
+        case "VerEnDetalle":
+          code = "PETICION_TEST_CATEGORIA_VERENDETALLE_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_VERENDETALLE_ACCIONES_FRACASO";
+          actionTest = "verEnDetalle";
+          break;
+        case "Reactivar":
+          code = "PETICION_TEST_CATEGORIA_REACTIVAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_REACTIVAR_ATRIBUTOS_FRACASO";
+          actionTest = "reactivar";
+          break;
+        case "EditarContrasena":
+          code = "PETICION_TEST_CATEGORIA_EDITARCONTRASENA_ATRIBUTOS_EXITO";
+          codeFracaso =
+            "PETICION_TEST_CATEGORIA_EDITARCONTRASENA_ATRIBUTOS_FRACASO";
+          actionTest = "editarContrasena";
+          break;
+      }
+      break;
+    case "Acciones":
+      controladorTest = "categoriaAcciones";
+      switch (accion) {
+        case "Insertar":
+          code = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_FRACASO";
+          actionTest = "insertar";
+          break;
+        case "Buscar":
+          code = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_FRACASO";
+          actionTest = "buscar";
+          break;
+        case "Modificar":
+          code = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_FRACASO";
+          actionTest = "editar";
+          break;
+        case "Borrar":
+          code = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_FRACASO";
+          actionTest = "borrar";
+          break;
+        case "Reactivar":
+          code = "PETICION_TEST_CATEGORIA_REACTIVAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_REACTIVAR_ACCIONES_FRACASO";
+          actionTest = "reactivar";
+          break;
+        case "EditarContrasena":
+          code = "PETICION_TEST_CATEGORIA_EDITARCONTRASENA_ACCIONES_EXITO";
+          codeFracaso =
+            "PETICION_TEST_CATEGORIA_EDITARCONTRASENA_ACCIONES_FRACASO";
+          actionTest = "editarContrasena";
+          break;
+      }
+      break;
+  }
+
+  await test(code, codeFracaso, controladorTest, actionTest)
+    .then((res) => {
+      let idElementoList = [
+        "iconoTestCategoria",
+        "iconoTestCategoria" + tipoTest,
+        "iconoTestCategoria" + tipoTest + accion,
+      ];
+      cargarRespuestaOkTest(
+        res.datos,
+        "cabecera" + tipoTest + "Categoria" + accion,
+        "cuerpo" + tipoTest + "Categoria" + accion,
+        "",
+        "",
+        idElementoList,
+        tipoTest.toLowerCase()
+      );
+    })
+    .catch((res) => {
+      cargarModalErroresTest();
+    });
+  eliminarCampos();
+}

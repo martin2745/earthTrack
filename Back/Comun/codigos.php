@@ -164,6 +164,23 @@
 	define('ACCION_DESCRIPCION_MAYOR_QUE_200', 'La desripción de la accion es mayor de 200');
 	define('ACCION_DESCRIPCION_FORMATO_INCORRECTO', 'La descripción de la accion tiene un formato erroneo, solo letras y números');
 
+	//////categoria_VALIDATION_ATRIBUTO
+	//id_categoria
+	define('ID_CATEGORIA_VACIO', 'El id del categoria está vacío');
+	define('ID_CATEGORIA_ERROR_FORMATO', 'El formato del id del categoria es incorrecto');
+
+	//nombre_categoria
+	define('CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio');
+	define('CATEGORIA_NOMBRE_MENOR_QUE_3', 'El nombre de la categoria es menor de 3');
+	define('CATEGORIA_NOMBRE_MAYOR_QUE_48', 'El nombre de la categoria es mayor de 48');
+	define('CATEGORIA_NOMBRE_FORMATO_INCORRECTO', 'El nombre de la categoria tiene un formato erroneo, solo letras y números');
+
+	//descripcion_categoria
+	define('CATEGORIA_DESCRIPCION_VACIO', 'La descripción de la categoria no puede ser vacía');
+	define('CATEGORIA_DESCRIPCION_MENOR_QUE_3', 'La descripción de la categoria es menor de 3');
+	define('CATEGORIA_DESCRIPCION_MAYOR_QUE_200', 'La desripción de la categoria es mayor de 200');
+	define('CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO', 'La descripción de la categoria tiene un formato erroneo, solo letras y números');
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////ACCION///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -254,7 +271,7 @@
 	
 	//verEnDetalle
 
-////accion_VALIDATION_ACCION
+////permiso_VALIDATION_ACCION
 	//insertar
 	define('PERMISO_YA_EXISTE', 'No se puede insertar un permiso que ya existe.');
 	define('ACCION_DENEGADA_INSERTAR_PERMISO', 'Solo el administrador puede insertar un nuevo permiso.');
@@ -268,6 +285,29 @@
 	//buscar
 	
 	//verEnDetalle
+
+////categoria_VALIDATION_ACCION
+	//insertar
+	define('CATEGORIA_YA_EXISTE', 'No se puede insertar una categoria que ya existe.');
+	define('ACCION_DENEGADA_INSERTAR_CATEGORIA', 'Solo el administrador puede insertar una nueva categoria.');
+	define('CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.');
+
+	//editar
+
+	//borrar
+	define('CATEGORIA_NO_EXISTE', 'La categoria que se pretende editar no existe.');
+	define('ACCION_DENEGADA_BORRAR_CATEGORIA', 'Solo el administrador puede borrar una categoria.');
+	define('CATEGORIA_NO_BORRAR_BASE', 'No se puede borrar la categoria base.');
+	
+	//buscar
+	
+	//verEnDetalle
+
+	//devolverPadre
+
+	//devolverHijos
+	define('CATEGORIA_NO_HIJOS', 'La categoria seleccionada no tiene hijos.');
+	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////CONTROLLER/////////////////////////////////////////////
@@ -285,29 +325,37 @@
 	define('USUARIO_BORRAR_OK', 'Usuario eliminado con éxito.');
 	define('USUARIO_REACTIVAR_OK', 'Usuario reactivado con éxito.');
 
-////rol_SERVICE
+////rol_CONTROLLER
 	define('ROL_INSERTAR_OK', 'El rol ha sido insertado correctamente');
 	define('ROL_EDITAR_OK', 'El rol ha sido modificado correctamente');
 	define('ROL_BORRAR_OK', 'El rol ha sido borrado correctamente');
 	define('ROL_REACTIVAR_OK', 'El rol ha sido reactivado');
 
-////funcionalidad_SERVICE
+////funcionalidad_CONTROLLER
 	define('FUNCIONALIDAD_INSERTAR_OK', 'La funcionalidad ha sido insertada correctamente');
 	define('FUNCIONALIDAD_EDITAR_OK', 'La funcionalidad ha sido modificada correctamente');
 	define('FUNCIONALIDAD_BORRAR_OK', 'La funcionalidad ha sido borrada correctamente');
 	define('ACCIONES_FUNCIONALIDAD', 'Acciones que posee una funcionalidad.');
 	define('FUNCIONALIDADES_SISTEMA', 'Funcionalidades existentes en el sistema.');
 
-////accion_SERVICE
+////accion_CONTROLLER
 	define('ACCION_INSERTAR_OK', 'La accion ha sido insertada correctamente');
 	define('ACCION_EDITAR_OK', 'La accion ha sido modificada correctamente');
 	define('ACCION_BORRAR_OK', 'La accion ha sido borrada correctamente');
 
-////permiso_SERVICE
+////permiso_CONTROLLER
 	define('PERMISO_INSERTAR_OK', 'La permiso ha sido insertada correctamente');
 	define('PERMISO_EDITAR_OK', 'La permiso ha sido modificada correctamente');
 	define('PERMISO_BORRAR_OK', 'La permiso ha sido borrada correctamente');
 	define('PERMISOS_OBTENIDOS', 'Permisos obtenidos para una funcionalidad');
+
+////categoria_CONTROLLER
+	define('CATEGORIA_INSERTAR_OK', 'La categoria ha sido insertada correctamente');
+	define('CATEGORIA_EDITAR_OK', 'La categoria ha sido modificada correctamente');
+	define('CATEGORIA_BORRAR_OK', 'La categoria ha sido borrada correctamente');
+	define('CATEGORIA_DEVOLVER_PADRE', 'La categoria padre ha sido devuelta correctamente');
+	define('CATEGORIA_DEVOLVER_HIJOS', 'Las categorias hijos has sido devueltas correctamente');
+	define('CATEGORIA_REACTIVAR_OK', 'La categoria ha sido reactivado');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////CORREOS//////////////////////////////////////////////

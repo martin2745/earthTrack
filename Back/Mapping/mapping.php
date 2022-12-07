@@ -110,7 +110,7 @@ class mapping extends MappingBase{
         $this->datosValores($arrayDatoValor);  
 
         if (!empty($this->datosQuery)){
-            $toret = $this->filtradoSentenciaWHERE_Generico($arrayDatoValor);
+            $toret = $this->filtradoSentenciaWHERE_GENERICO($arrayDatoValor);
             $this->query = $this->query.' WHERE ('.$toret[0].')';
             $valores = $toret[1];
         }
@@ -147,7 +147,7 @@ class mapping extends MappingBase{
         return $this->feedback;
       }
 
-    function filtradoSentenciaWHERE_Generico($arrayDatoValor){
+    function filtradoSentenciaWHERE_GENERICO($arrayDatoValor){
         $arrayDatoValorLIKE = array();
         $arrayDatoValorIGUAL = array();
         $valoresQuery = array();
@@ -434,7 +434,7 @@ function filtradoSentenciaWHERE($arrayDatoValor){
         $this->query = "SELECT COUNT(*) FROM ". $tabla;
   
         if (!empty($this->datosQuery)){
-          $toret = $this->filtradoSentenciaWHERE_Generico($arrayDatoValor);
+          $toret = $this->filtradoSentenciaWHERE_GENERICO($arrayDatoValor);
           $this->query = $this->query.' WHERE ('.$toret[0].')';
           $valores = $toret[1];
         }
