@@ -25,6 +25,12 @@ CREATE DATABASE `pdp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `pdp`;
 
 --
+-- Base de datos: `pdp`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `accion`
 --
 
@@ -86,6 +92,13 @@ CREATE TABLE `logexcepcionaccion` (
   `mensaje` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `tiempo` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `logexcepcionaccion`
+--
+
+INSERT INTO `logexcepcionaccion` (`usuario`, `funcionalidad`, `accion`, `codigo`, `mensaje`, `tiempo`) VALUES
+('DESCONOCIDO', 'auth', 'login', 'USUARIO_NO_EXISTE', 'El usuario no existe en el sistema.', '2022-12-07 18:27:54');
 
 -- --------------------------------------------------------
 
@@ -153,7 +166,11 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 7, 7),
 (1, 7, 5),
 (1, 7, 2),
-(1, 7, 1);
+(1, 7, 1),
+(4, 3, 5),
+(2, 3, 5),
+(4, 3, 1),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -174,8 +191,7 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
 (1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades del sistema', 0),
-(2, 'gestionCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías', 0),
-(3, 'gestorProcesos', 'Solicita la aprobación del proceso que el mismo crea y se encarga de la gestión de procesos', 0),
+(2, 'responsableCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías', 0),
 (4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema', 0);
 
 -- --------------------------------------------------------
@@ -204,7 +220,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
-('martin', '925d7518fc597af0e43f5606f9a51512', 4, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
+('martin', '925d7518fc597af0e43f5606f9a51512', 4, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'biotero18@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
