@@ -51,7 +51,7 @@ class ModelBase{
 //////////////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
 
 	function SEARCH(){
-		$result = $this->mapping->SEARCH_GENERICO($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden);
+		$result = $this->mapping->SEARCH_GENERICO($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden, $this->id);
 		$filas = $result['resource'];
 
 		if($this->empieza == 'nulo') {$this->empieza = 0;}

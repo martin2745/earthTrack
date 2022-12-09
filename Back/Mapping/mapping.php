@@ -104,7 +104,7 @@ class mapping extends MappingBase{
 
 //////////////////////////////////////////////////////SEARCH_GENERICO///////////////////////////////////////////////////////
 
-    function SEARCH_GENERICO($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    function SEARCH_GENERICO($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden, $id){
         $valores = array();
         $this->query = "SELECT * FROM ".$tabla;
         $this->datosValores($arrayDatoValor);  
@@ -141,7 +141,7 @@ class mapping extends MappingBase{
 
         if (!empty($this->feedback['resource']) && !empty($foraneas)){
             foreach ($foraneas as $key => $value) {
-                $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+                $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value, $id);
             }
         }
         return $this->feedback;
@@ -227,8 +227,8 @@ class mapping extends MappingBase{
                 $this->get_results_from_query(array());
                 return $this->feedback;
             }
-        
-            function incluirforaneas($principal, $tabla, $clave){
+            
+            function incluirforaneas($principal, $tabla, $clave, $id){
                 $filasforaneas = $this->buscarforaneas($tabla);
                 $auxiliar = array();
 
@@ -236,9 +236,16 @@ class mapping extends MappingBase{
                 else{
                     foreach ($principal as $fila) {
                         foreach ($filasforaneas['resource'] as $filasforanea) {
-                            if ($fila[$clave] == $filasforanea[$clave]){
-                                $fila[$clave] = $filasforanea;
-                            }       
+                            if(strpos($id[0], $tabla) != false){
+                                if ($fila[$clave] == $filasforanea[$id[0]]){
+                                    $fila[$clave] = $filasforanea;                               
+                                }
+                            }else{
+                                if ($fila[$clave] == $filasforanea[$clave]){
+                                    $fila[$clave] = $filasforanea;                               
+                                }
+                            }
+                                  
                         }
                     array_push($auxiliar, $fila);
                   }
