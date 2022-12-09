@@ -47,13 +47,18 @@ class categoria_SERVICE extends ServiceBase{
 		
 		$resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
         $fila = $resultado['resource'];
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		
         if ($fila['id_padre'] == 0){
-            return $fila;
+			$this->feedback['resource'] =  $fila;
         }
         else{
 			$categoria = $this->modelo->seek(array('id_categoria'), array($fila['id_padre']));
-            return $categoria;
+			$this->feedback['resource'] =  $categoria;
         }
+		return $this->feedback;
 	}
 
 	function validar_devolverPadre(){
@@ -68,7 +73,11 @@ class categoria_SERVICE extends ServiceBase{
         $filas = $resultado['resource'];
 
         if (!empty($filas)){
-            return $filas;
+			$this->feedback['ok'] = true;
+			$this->feedback['code'] = $mensaje;
+            $this->feedback['resource'] = $filas;
+
+			return $this->feedback; 
         }
         else{
 			rellenarExcepcionAccion('CATEGORIA_NO_HIJOS');
