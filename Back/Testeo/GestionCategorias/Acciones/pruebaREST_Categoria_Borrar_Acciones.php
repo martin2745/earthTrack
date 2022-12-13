@@ -28,6 +28,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+    $POST['responsabe'] = 'admin';
     
     $pruebas->peticionCurlNoTest($POST);
 
@@ -90,6 +91,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
     $POST['action'] = 'insertar';
     $POST['nombre_categoria'] = 'categoriaTest';
     $POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+    $POST['responsabe'] = 'admin';
     
     $pruebas->peticionCurlNoTest($POST);
 

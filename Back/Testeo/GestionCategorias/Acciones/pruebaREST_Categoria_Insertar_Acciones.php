@@ -32,6 +32,7 @@ function pruebaREST_Categoria_Insertar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+	$POST['responsabe'] = 'admin';
 
 	$prueba = 'Insertar categoria';
 	$codeEsperado = 'CATEGORIA_INSERTAR_OK';
@@ -85,6 +86,7 @@ function pruebaREST_Categoria_Insertar_Acciones(){
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
 	$POST['id_padre'] = '0';
+	$POST['responsabe'] = 'admin';
 
 	$prueba = 'Solo un usuario administrador puede insertar una categoria.';
 	$codeEsperado = 'CATEGORIA_DENEGADA_INSERTAR_CATEGORIA';

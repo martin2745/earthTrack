@@ -61,16 +61,17 @@ CREATE TABLE `categoria` (
   `nombre_categoria` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_categoria` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `id_padre` int(11) NOT NULL,
-  `borrado_logico` int(1) NOT NULL DEFAULT 0
+  `borrado_logico` int(1) NOT NULL DEFAULT 0,
+  `responsable` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`) VALUES
-(1, 'superCategoria', 'Categoria Base', 0, 0),
-(2, 'nuevaCat', 'Categoria uno', 1, 0);
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `responsable`) VALUES
+(1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
+(2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
 
 -- --------------------------------------------------------
 
@@ -343,4 +344,11 @@ ALTER TABLE `permiso`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
+COMMIT;
+
+--
+-- Filtros para la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`usuario`);
 COMMIT;

@@ -30,6 +30,7 @@ function pruebaREST_Categoria_Insertar_Atributos(){
    $POST['action'] = 'insertar';
    $POST['nombre_categoria'] = '';
    $POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+   $POST['id_padre'] = '1';
    
 
    $prueba = 'Nombre de categoria vacío';

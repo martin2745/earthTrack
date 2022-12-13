@@ -16,6 +16,10 @@ class categoria_VALIDATION_ACCION extends Validar{
         if(!$this->categoria_no_existe_padre()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_PADRE');
         }
+        /*
+        if(!$this->categoria_no_existe_responsable()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
+        }*/
 	}
 
 	function validar_editar(){
@@ -112,6 +116,21 @@ class categoria_VALIDATION_ACCION extends Validar{
          */
         function categoria_no_existe_padre(){
 			$categoria = $this->modelo->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_padre']));
+            $fila = $categoria['resource'];
+
+            if (empty($fila)){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+         /**
+         * No se puede insertar una categoria si su responsable no existe
+         */
+        function categoria_no_existe_responsable(){
+			$categoria = $this->modelo->seek(array('usuario'), array($this->modelo->arrayDatoValor['responsable']));
             $fila = $categoria['resource'];
 
             if (empty($fila)){

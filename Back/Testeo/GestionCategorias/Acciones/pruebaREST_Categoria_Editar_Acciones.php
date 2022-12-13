@@ -28,6 +28,7 @@ function pruebaREST_Categoria_Editar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+	$POST['responsabe'] = 'admin';
 
 	$pruebas->peticionCurlNoTest($POST);
 
@@ -53,6 +54,7 @@ function pruebaREST_Categoria_Editar_Acciones(){
     $POST['id_categoria'] = $infoCategoria['id_categoria'];
 	$POST['nombre_categoria'] = 'categoriaTestDos';
 	$POST['descripcion_categoria'] = 'Edicion de un categoria';
+	$POST['responsabe'] = 'admin';
 
 	$prueba = 'Editar categoria';
 	$codeEsperado = 'CATEGORIA_EDITAR_OK';
@@ -79,6 +81,7 @@ function pruebaREST_Categoria_Editar_Acciones(){
     $POST['id_categoria'] = $infoCategoria['id_categoria'];
     $POST['nombre_categoria'] = 'categoriaTest';
     $POST['descripcion_categoria'] = 'Edicion de una categoria';
+	$POST['responsabe'] = 'admin';
 
     $prueba = 'Editar una categoria que no existe';
     $codeEsperado = 'CATEGORIA_NO_EXISTE';
@@ -102,6 +105,7 @@ function pruebaREST_Categoria_Editar_Acciones(){
     $POST['id_categoria'] = '1';
     $POST['nombre_categoria'] = 'categoriaDos';
     $POST['descripcion_categoria'] = 'Edicion de categoria por parte del test';
+	$POST['responsabe'] = 'admin';
 
     $prueba = 'Solo el usuario administrador puede editar los datos de un categoria';
     $codeEsperado = 'CATEGORIA_DENEGADA_EDITAR_CATEGORIA';
