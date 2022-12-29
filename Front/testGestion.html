@@ -139,10 +139,25 @@
 			</div>
 		</div>
 
+		<div class="card">
+			<div class="card-header">
+				<a class="collapsed card-link gestionCategoriasTest" data-toggle="collapse" href="#collapseCategoria"
+					onclick="javascript:cargarTestGestionCategorias()">Categoria
+				</a>
+				<img class="iconTab" id="iconoTestCategoria" src="images/failed.png" hidden>
+			</div>
+
+			<div id="collapseCategoria" class="collapse" data-parent="#accordion">
+				<div class="card-body" id="testCategoria">
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<div class="modal modal3 fade" id="editarcontrasena-modal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;"></div>
+		aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+	</div>
 
 	<div class="volver">
 		<div name="btnBack" value="Volver" class="tooltip backIcon">

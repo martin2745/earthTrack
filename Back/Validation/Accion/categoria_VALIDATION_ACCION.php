@@ -37,10 +37,7 @@ class categoria_VALIDATION_ACCION extends Validar{
     function validar_borrar(){
 		if (!$this->existe_categoria_id()){ 
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
-        }
-        if($this->existe_permiso()){
-            rellenarExcepcionAccion('CATEGORIA_ASOCIADO_PERMISO');
-        }
+        } 
         if(!$this->categoria_denegada_borrar()){
             rellenarExcepcionAccion('CATEGORIA_DENEGADA_BORRAR_CATEGORIA');
         }
@@ -189,24 +186,6 @@ class categoria_VALIDATION_ACCION extends Validar{
     /**
      * BORRAR
      */
-
-        /**
-         * Se comprueba que no exista un categoria asignado a un permiso en el sistema
-         */
-        function existe_permiso(){
-            include_once './Modelos/permiso_MODEL.php';
-            $modeloPermiso = new permiso_MODEL();
-            $resultado = $modeloPermiso->seek_multiple(array('id_categoria'), array($this->modelo->arrayDatoValor['id_categoria']));
-    
-            $fila = $resultado['resource'];
-    
-            if (empty($fila)){
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
 
         /**
          * Se mira si el usuario que intenta eliminar un categoria es un administrador.

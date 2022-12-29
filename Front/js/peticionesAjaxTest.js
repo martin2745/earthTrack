@@ -612,28 +612,28 @@ async function testCategoria(accion, tipoTest) {
       controladorTest = "categoriaAtributos";
       switch (accion) {
         case "Insertar":
-          code = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_CATEGORIA_INSERTAR_ACCIONES_FRACASO";
+          code = "PETICION_TEST_CATEGORIA_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_INSERTAR_ATRIBUTOS_FRACASO";
           actionTest = "insertar";
           break;
         case "Buscar":
-          code = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_CATEGORIA_BUSCAR_ACCIONES_FRACASO";
+          code = "PETICION_TEST_CATEGORIA_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BUSCAR_ATRIBUTOS_FRACASO";
           actionTest = "buscar";
           break;
         case "Modificar":
-          code = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_CATEGORIA_EDITAR_ACCIONES_FRACASO";
+          code = "PETICION_TEST_CATEGORIA_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_EDITAR_ATRIBUTOS_FRACASO";
           actionTest = "editar";
           break;
         case "Borrar":
-          code = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_CATEGORIA_BORRAR_ACCIONES_FRACASO";
+          code = "PETICION_TEST_CATEGORIA_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_BORRAR_ATRIBUTOS_FRACASO";
           actionTest = "borrar";
           break;
         case "VerEnDetalle":
-          code = "PETICION_TEST_CATEGORIA_VERENDETALLE_ACCIONES_EXITO";
-          codeFracaso = "PETICION_TEST_CATEGORIA_VERENDETALLE_ACCIONES_FRACASO";
+          code = "PETICION_TEST_CATEGORIA_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_CATEGORIA_VERENDETALLE_ATRIBUTOS_FRACASO";
           actionTest = "verEnDetalle";
           break;
         case "Reactivar":

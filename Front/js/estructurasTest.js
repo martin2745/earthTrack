@@ -874,11 +874,11 @@ function cargarTestGestionUsuarios() {
 
 /*Función para cargar las opciones de Tests de Categorias*/
 function cargarTestGestionCategorias() {
-  $("#testCategorias").html("");
+  $("#testCategoria").html("");
 
   let arraySubAccordionUno = [
     "collapseAtributosInsertarCategoria",
-    "javascript:testAccion('Insertar', 'Atributos')",
+    "javascript:testCategoria('Insertar', 'Atributos')",
     "Añadir",
     "iconoTestCategoriaAtributosInsertar",
     "cabeceraAtributosCategoriaInsertar",
@@ -917,7 +917,7 @@ function cargarTestGestionCategorias() {
     "cuerpoAtributosCategoriaVerEnDetalle",
   ];
   let arrayAccordionUno = [
-    "accordion13",
+    "accordion22",
     arraySubAccordionUno,
     arraySubAccordionDos,
     arraySubAccordionTres,
@@ -925,15 +925,15 @@ function cargarTestGestionCategorias() {
     arraySubAccordionCinco,
   ];
 
-  let arraySubAccordionSeis = [
+  let arraySubAccordionOcho = [
     "collapseCategoriaAccionesInsertar",
-    "javascript:testAccion('Insertar', 'Acciones')",
+    "javascript:testCategoria('Insertar', 'Acciones')",
     "Añadir",
     "iconoTestCategoriaAccionesInsertar",
     "cabeceraAccionesCategoriaInsertar",
     "cuerpoAccionesCategoriaInsertar",
   ];
-  let arraySubAccordionSiete = [
+  let arraySubAccordionNueve = [
     "collapseCategoriaAccionesBuscar",
     "javascript:testCategoria('Buscar', 'Acciones')",
     "Buscar",
@@ -941,7 +941,7 @@ function cargarTestGestionCategorias() {
     "cabeceraAccionesCategoriaBuscar",
     "cuerpoAccionesCategoriaBuscar",
   ];
-  let arraySubAccordionOcho = [
+  let arraySubAccordionDiez = [
     "collapseCategoriaAccionesModificar",
     "javascript:testCategoria('Modificar', 'Acciones')",
     "Modificar",
@@ -949,7 +949,7 @@ function cargarTestGestionCategorias() {
     "cabeceraAccionesCategoriaModificar",
     "cuerpoAccionesCategoriaModificar",
   ];
-  let arraySubAccordionNueve = [
+  let arraySubAccordionOnce = [
     "collapseCategoriaAccionesBorrar",
     "javascript:testCategoria('Borrar', 'Acciones')",
     "Borrar",
@@ -958,15 +958,15 @@ function cargarTestGestionCategorias() {
     "cuerpoAccionesCategoriaBorrar",
   ];
   let arrayAccordionDos = [
-    "accordion14",
-    arraySubAccordionSeis,
-    arraySubAccordionSiete,
+    "accordion23",
     arraySubAccordionOcho,
     arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
   ];
 
   let arrayAccordionTres = [
-    "accordion12",
+    "accordion21",
     "collapseCategoriaAtributos",
     null,
     "Atributos",
