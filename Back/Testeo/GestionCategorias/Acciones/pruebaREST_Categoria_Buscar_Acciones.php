@@ -26,7 +26,7 @@ function pruebaREST_Categoria_Buscar_Acciones(){
     $POST = $vaciarPost;
     $POST['controlador'] = 'categoria';
     $POST['action'] = 'buscar';
-    $POST['id_categoria'] = 5;
+    $POST['id_categoria'] = 2;
 
     $prueba = 'Buscar categoria';
     $codeEsperado = 'RECORDSET_DATOS';

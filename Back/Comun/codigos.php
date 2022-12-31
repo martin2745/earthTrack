@@ -292,6 +292,8 @@
 	define('ACCION_DENEGADA_INSERTAR_CATEGORIA', 'Solo el administrador puede insertar una nueva categoria.');
 	define('CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.');
 	define('CATEGORIA_NO_EXISTE_RESPONSABLE', 'No se puede insertar una categoria con un responsable inexistente.');
+	define('CATEGORIA_DENEGADA_BORRAR_CATEGORIA', 'No se puede insertar una categoria con un padre inexistente.');
+	define('CATEGORIA_EXISTE_HIJO', 'No se puede insertar una categoria con un responsable inexistente.');
 
 	//editar
 

@@ -13,7 +13,7 @@ class categoria_SERVICE extends ServiceBase{
 				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'responsable');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'responsable');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'responsable');
 				break;
 			case 'borrar':
 				$this->listaAtributos = array('id_categoria');

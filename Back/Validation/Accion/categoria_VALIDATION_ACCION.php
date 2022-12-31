@@ -35,15 +35,18 @@ class categoria_VALIDATION_ACCION extends Validar{
 	}
 
     function validar_borrar(){
+        if(!$this->categoria_no_borrar_base()){
+            rellenarExcepcionAccion('CATEGORIA_NO_BORRAR_BASE');
+        }
 		if (!$this->existe_categoria_id()){ 
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
         } 
         if(!$this->categoria_denegada_borrar()){
             rellenarExcepcionAccion('CATEGORIA_DENEGADA_BORRAR_CATEGORIA');
         }
-        if(!$this->categoria_no_borrar_base()){
-            rellenarExcepcionAccion('CATEGORIA_NO_BORRAR_BASE');
-        }
+        if (!$this->existe_hijo()){ 
+            rellenarExcepcionAccion('CATEGORIA_EXISTE_HIJO');
+        } 
 	}
 
     function validar_reactivar(){
@@ -145,9 +148,8 @@ class categoria_VALIDATION_ACCION extends Validar{
         /**
          * Se comprueba que exista el id en el sistema
          */
-        function existe_categoria_id(){
+        function existe_categoria_id(){            
             $resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
-        
             $fila = $resultado['resource'];
 
             if (empty($fila)){
@@ -199,8 +201,20 @@ class categoria_VALIDATION_ACCION extends Validar{
          * Se mira si el usuario que intenta eliminar un categoria es un administrador.
          */
         function categoria_no_borrar_base(){
-			if ('id_categoria' == 1){ return false; }
+			if ($this->modelo->arrayDatoValor['id_categoria'] == 1){ return false; }
             else{ return true; }
+        }
+
+        function existe_hijo(){
+            $categoria = $this->modelo->seek(array('id_padre'), array($this->modelo->arrayDatoValor['id_categoria']));
+            $fila = $categoria['resource'];
+
+            if (empty($fila)){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
 
         /**
