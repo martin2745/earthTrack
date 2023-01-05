@@ -48,6 +48,9 @@ class categoria_SERVICE extends ServiceBase{
 		$modeloUsuario = new usuario_MODEL();
 		$resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
         $fila = $resultado['resource'];
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
 		
         if ($fila['id_padre'] == 0){
 			$this->feedback['resource'] =  $fila;
@@ -81,6 +84,8 @@ class categoria_SERVICE extends ServiceBase{
 		}
 
         if (!empty($filas)){
+			$this->feedback['ok'] = true;
+			$this->feedback['code'] = $mensaje;
             $this->feedback['resource'] = $filas;
 
 			return $this->feedback; 
