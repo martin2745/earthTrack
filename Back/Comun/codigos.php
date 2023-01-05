@@ -294,7 +294,7 @@
 	define('CATEGORIA_NO_EXISTE_RESPONSABLE', 'No se puede insertar una categoria con un responsable inexistente.');
 	define('CATEGORIA_DENEGADA_BORRAR_CATEGORIA', 'No se puede insertar una categoria con un padre inexistente.');
 	define('CATEGORIA_EXISTE_HIJO', 'No se puede insertar una categoria con un responsable inexistente.');
-	define('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA', '?');
+	define('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA', 'No se pudo insertar la categoria al no contar con los permisos necesarios');
 
 	//editar
 
@@ -325,6 +325,7 @@
 ////usuario_CONTROLLER
 	define('USUARIO_INSERTAR_OK', 'Usuario insertado con éxito.');
 	define('USUARIO_EDITAR_OK', 'Usuario editado con éxito.');
+	define('USUARIO_EDITAR_ROL_OK', 'Rol de usuario editado con éxito.');
 	define('USUARIO_EDITAR_CONTRASENA_OK', 'Contraseña editada con éxito.');
 	define('USUARIO_BORRAR_OK', 'Usuario eliminado con éxito.');
 	define('USUARIO_REACTIVAR_OK', 'Usuario reactivado con éxito.');

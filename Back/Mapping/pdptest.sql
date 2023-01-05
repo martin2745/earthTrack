@@ -87,13 +87,14 @@ CREATE TABLE `funcionalidad` (
 --
 
 INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descripcion_funcionalidad`) VALUES
-(1, 'usuario', 'Gestión de usuarios.'),
-(2, 'rol', 'Gestión de roles.'),
-(3, 'funcionalidad', 'Gestión de funcionalidades.'),
-(4, 'accion', 'Gestión de acciones.'),
-(5, 'permiso', 'Gestión de permisos.'),
-(6, 'logExcepcionAccion', 'Log de excepcion de acciones'),
-(7, 'logExcepcionAtributo', 'Log de excepcion de atributo');
+(1, 'usuario', 'Gestión de usuarios'),
+(2, 'rol', 'Gestión de roles'),
+(3, 'funcionalidad', 'Gestión de funcionalidades'),
+(4, 'accion', 'Gestión de acciones'),
+(5, 'permiso', 'Gestión de permisos'),
+(6, 'logexcepcionaccion', 'Log de excepcion de acciones'),
+(7, 'logexcepcionatributo', 'Log de excepcion de atributo'),
+(12, 'categorias', 'Gestion de categorias');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,28 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 4, 5),
 (1, 6, 5),
 (1, 4, 6),
-(1, 4, 7);
+(1, 4, 7),
+(1, 7, 4),
+(1, 7, 3),
+(1, 7, 6),
+(1, 7, 7),
+(1, 7, 5),
+(1, 7, 2),
+(1, 7, 1),
+(1, 4, 12),
+(1, 2, 12),
+(1, 3, 12),
+(1, 1, 12),
+(1, 7, 12),
+(1, 5, 12),
+(1, 6, 12),
+(2, 6, 12),
+(2, 5, 12),
+(2, 7, 12),
+(2, 1, 12),
+(2, 3, 12),
+(2, 4, 12),
+(2, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -161,7 +183,7 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
 (1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades. del sistema', 0),
 (2, 'responsable', 'Asigna responsables de procesos y gestiona las acciones de categorías.', 0),
-(4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
+(3, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
 (5, 'existeUsuarioRolActivo', 'Excepcion de rol accion. EXISTE_USUARIO_ROL_ACTIVO', 0),
 (6, 'existeUsuarioRolInactivo', 'Nueva insercion de rol por parte del test', 0);
 

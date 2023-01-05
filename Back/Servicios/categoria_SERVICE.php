@@ -74,10 +74,13 @@ class categoria_SERVICE extends ServiceBase{
 		
 		$resultado = $this->modelo->seek_multiple(array('id_padre'),array($objetoActual['id_categoria']));
         $filas = $resultado['resource'];
+
+		$devolverPadreValor = $this->devolverPadre('CATEGORIA_DEVOLVER_PADRE');
 		
 		for ($i=0; $i<count($filas); $i++) {
 			$filas[$i]['usuario'] = $modeloUsuario->seek(array('usuario'),array($filas[$i]['usuario']))['resource'];	
-			$filas[$i]['usuario']['contrasena'] = '*****';		
+			$filas[$i]['usuario']['contrasena'] = '*****';
+			$filas[$i]['id_padre']	= $devolverPadreValor['resource'];
 		}
 
         if (!empty($filas)){
