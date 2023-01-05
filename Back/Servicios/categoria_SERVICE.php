@@ -54,7 +54,7 @@ class categoria_SERVICE extends ServiceBase{
         }
         else{
 			$categoria = $this->modelo->seek(array('id_categoria'), array($fila['id_padre']));
-			$this->feedback['resource'] =  $categoria;
+			$this->feedback['resource'] =  $categoria['resource'];
         }
 		return $this->feedback;
 	}
