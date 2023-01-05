@@ -44,7 +44,8 @@ class categoria_SERVICE extends ServiceBase{
 	}
 
 	function devolverPadre($mensaje){
-		
+		include_once './Modelos/usuario_model.php';
+		$modeloUsuario = new usuario_MODEL();
 		$resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
         $fila = $resultado['resource'];
 
@@ -66,11 +67,18 @@ class categoria_SERVICE extends ServiceBase{
 	}
 
 	function devolverHijos($mensaje){
+		include_once './Modelos/usuario_model.php';
+		$modeloUsuario = new usuario_MODEL();
 		$actual = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
         $objetoActual = $actual['resource'];
 		
-		$resultado = $this->modelo->seek_multiple(array('id_padre'),array($objetoActual['id_categoria']));		
+		$resultado = $this->modelo->seek_multiple(array('id_padre'),array($objetoActual['id_categoria']));
         $filas = $resultado['resource'];
+		
+		for ($i=0; $i<count($filas); $i++) {
+			$filas[$i]['usuario'] = $modeloUsuario->seek(array('usuario'),array($filas[$i]['usuario']))['resource'];	
+			$filas[$i]['usuario']['contrasena'] = '*****';		
+		}
 
         if (!empty($filas)){
 			$this->feedback['ok'] = true;
