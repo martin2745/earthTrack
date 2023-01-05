@@ -10,10 +10,10 @@ class categoria_SERVICE extends ServiceBase{
 
 		switch(action){
 			case 'insertar':
-				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'responsable');
+				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'responsable');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
 				break;
 			case 'borrar':
 				$this->listaAtributos = array('id_categoria');
@@ -22,7 +22,7 @@ class categoria_SERVICE extends ServiceBase{
 				$this->listaAtributos = array('id_categoria');
 				break;
 			case 'buscar':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'responsable');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'usuario');
 				$this->listaAtributosIGUAL = array('id_categoria');
 				break;
 			case 'verEnDetalle':

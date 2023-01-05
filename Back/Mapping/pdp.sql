@@ -62,14 +62,14 @@ CREATE TABLE `categoria` (
   `descripcion_categoria` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `id_padre` int(11) NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0,
-  `responsable` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+  `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `responsable`) VALUES
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
 (1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
 (2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
 
@@ -224,8 +224,7 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
 (1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades del sistema', 0),
-(2, 'gestionCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías', 0),
-(3, 'gestorProcesos', 'Solicita la aprobación del proceso que el mismo crea y se encarga de la gestión de procesos', 0),
+(2, 'responsable', 'Asigna responsables de procesos y gestiona las acciones de categorías', 0),
 (4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema', 0);
 
 -- --------------------------------------------------------
@@ -350,5 +349,5 @@ COMMIT;
 -- Filtros para la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`usuario`);
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 COMMIT;

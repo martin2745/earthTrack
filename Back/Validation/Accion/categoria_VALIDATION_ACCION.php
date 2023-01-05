@@ -107,7 +107,7 @@ class categoria_VALIDATION_ACCION extends Validar{
          * Solo un administrador puede insertar un nuevo categoria
          */
         function categoria_denegada_insertar(){
-			if (rolUsuarioSistema != 'administrador'){ return false; }
+			if (rolUsuarioSistema != 'administrador' || rolUsuarioSistema != 'responsable'){ return false; }
             else{ return true; }
         }
 
@@ -181,7 +181,7 @@ class categoria_VALIDATION_ACCION extends Validar{
          * Solo un administrador puede editar un categoria
          */
         function categoria_denegada_editar(){
-			if (rolUsuarioSistema != 'administrador'){ return false; }
+			if (rolUsuarioSistema != 'administrador' || rolUsuarioSistema != 'responsable'){ return false; }
             else{ return true; }
         }
 
@@ -193,7 +193,7 @@ class categoria_VALIDATION_ACCION extends Validar{
          * Se mira si el usuario que intenta eliminar un categoria es un administrador.
          */
         function categoria_denegada_borrar(){
-			if (rolUsuarioSistema != 'administrador'){ return false; }
+			if (rolUsuarioSistema != 'administrador' || rolUsuarioSistema != 'responsable'){ return false; }
             else{ return true; }
         }
 
@@ -225,7 +225,7 @@ class categoria_VALIDATION_ACCION extends Validar{
          * Se mira si el usuario que intenta reactivar un rol es un administrador.
          */
         function accion_denegada_reactivar(){
-			if (rolUsuarioSistema != 'administrador'){ return false; }
+			if (rolUsuarioSistema != 'administrador' || rolUsuarioSistema != 'responsable'){ return false; }
             else{ return true; }
         }
 

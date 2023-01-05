@@ -8,7 +8,7 @@ class categoria_MODEL extends ModelBase{
       parent::__construct();
       $this->tabla = 'categoria';
       $this->id = array('id_categoria');
-      $this->foraneas = array('categoria' => 'id_padre');
+      $this->foraneas = array('categoria' => 'id_padre', 'usuario' => 'usuario');
       $this->orden = '';
       $this->tipoOrden = '';
     }
