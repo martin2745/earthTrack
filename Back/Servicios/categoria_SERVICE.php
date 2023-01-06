@@ -78,7 +78,7 @@ class categoria_SERVICE extends ServiceBase{
 		for ($i=0; $i<count($filas); $i++) {
 			$filas[$i]['usuario'] = $modeloUsuario->seek(array('usuario'),array($filas[$i]['usuario']))['resource'];	
 			$filas[$i]['usuario']['contrasena'] = '*****';
-			$filas[$i]['id_padre']	= $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
+			$filas[$i]['id_padre']	= $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
 			
 		}
 
