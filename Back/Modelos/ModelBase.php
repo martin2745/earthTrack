@@ -30,7 +30,7 @@ class ModelBase{
 				}
 			}
 		} 
-
+		
 		foreach ($this->id as $value) { 
 			foreach($this->arrayDatoValor as $dato => $valor){
 				if($value == $dato){
@@ -38,7 +38,7 @@ class ModelBase{
 				}
 			}
 		}
-
+		
 		$this->mapping->EDIT($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
 	}
 

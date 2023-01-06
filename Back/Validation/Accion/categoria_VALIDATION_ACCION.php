@@ -7,8 +7,7 @@ class categoria_VALIDATION_ACCION extends Validar{
 
     function validar_insertar(){		
 		if ($this->existe_nombre_categoria()){
-            rellenarExcepcionAccion('CATEGORIA_YA_EXISTE');
-            
+            rellenarExcepcionAccion('CATEGORIA_YA_EXISTE');            
         }
         if(!$this->categoria_denegada_insertar()){
             rellenarExcepcionAccion('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA');

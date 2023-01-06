@@ -76,12 +76,12 @@ class mapping extends MappingBase{
           foreach($condicion as $valorCondicion){
             $infoWhere = $infoWhere.$valorCondicion.'=? AND ';
           }
-
+          
           $infoQuery = substr($infoQuery,0,-2);
           $infoWhere = substr($infoWhere,0,-5);
 
         $this->query = "UPDATE $tabla SET $infoQuery WHERE $infoWhere";
-          //var_dump($this->query);exit;
+          
         $this->stmt = $this->conexion->prepare($this->query);
         $this->execute_single_query($valores);
     }
