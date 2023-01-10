@@ -119,5 +119,31 @@ class proceso_SERVICE extends ServiceBase
 		return $this->feedback;
 	}
 
+	function buscar()
+	{
+		$infoBusqueda = $this->modelo->SEARCH($this->modelo->arrayDatoValor, $this->modelo->orden, $this->modelo->tipoOrden);
+		include_once './Modelos/parametro_MODEL.php';
+		$modelo_parametro = new parametro_MODEL();
+		for ($i = 0; $i < count($infoBusqueda['resource']); $i++) {
+			$id_proceso_actual=$infoBusqueda['resource'][$i]['id_proceso'];
+			$resultado = $modelo_parametro->seek_multiple(array('id_proceso'), array($id_proceso_actual))['resource'];
+			if ($resultado){
+				$infoBusqueda['resource'][$i]['parametros']=$resultado;
+			}
+				
+			
+		}
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $infoBusqueda['code'];
+		$this->feedback['resource'] = $infoBusqueda['resource'];
+		//Información de pagincación
+		$this->feedback['total'] = $infoBusqueda['total'];
+		$this->feedback['empieza'] = $infoBusqueda['empieza'];
+		$this->feedback['filas'] = $infoBusqueda['filas'];
+		$this->feedback['criteriosbusqueda'] = $infoBusqueda['criteriosbusqueda'];
+		return $this->feedback;
+	}
+
 }
 ?>
