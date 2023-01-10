@@ -15,7 +15,7 @@ class proceso_SERVICE extends ServiceBase
 				$this->listaAtributos = array('nombre_proceso', 'descripcion_proceso', 'id_categoria', 'formula');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('nombre_proceso', 'descripcion_proceso', 'id_categoria');
+				$this->listaAtributos = array('id_proceso','nombre_proceso', 'descripcion_proceso', 'id_categoria','formula');
 				break;
 			case 'borrar':
 				$this->listaAtributos = array('id_proceso');
