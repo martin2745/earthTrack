@@ -32,7 +32,7 @@ CREATE TABLE `accion` (
   `id_accion` int(11) NOT NULL,
   `nombre_accion` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_accion` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `accion`
@@ -50,6 +50,29 @@ INSERT INTO `accion` (`id_accion`, `nombre_accion`, `descripcion_accion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `id_categoria` int(11) NOT NULL,
+  `nombre_categoria` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `descripcion_categoria` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `id_padre` int(11) NOT NULL,
+  `borrado_logico` int(1) NOT NULL DEFAULT 0,
+  `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
+(1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
+(2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `funcionalidad`
 --
 
@@ -57,20 +80,21 @@ CREATE TABLE `funcionalidad` (
   `id_funcionalidad` int(11) NOT NULL,
   `nombre_funcionalidad` varchar(48) NOT NULL,
   `descripcion_funcionalidad` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `funcionalidad`
 --
 
 INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descripcion_funcionalidad`) VALUES
-(1, 'usuario', 'Gestión de usuarios.'),
-(2, 'rol', 'Gestión de roles.'),
-(3, 'funcionalidad', 'Gestión de funcionalidades.'),
-(4, 'accion', 'Gestión de acciones.'),
-(5, 'permiso', 'Gestión de permisos.'),
-(6, 'logExcepcionAccion', 'Log de excepcion de acciones'),
-(7, 'logExcepcionAtributo', 'Log de excepcion de atributo');
+(1, 'usuario', 'Gestión de usuarios'),
+(2, 'rol', 'Gestión de roles'),
+(3, 'funcionalidad', 'Gestión de funcionalidades'),
+(4, 'accion', 'Gestión de acciones'),
+(5, 'permiso', 'Gestión de permisos'),
+(6, 'logexcepcionaccion', 'Log de excepcion de acciones'),
+(7, 'logexcepcionatributo', 'Log de excepcion de atributo'),
+(12, 'categorias', 'Gestion de categorias');
 
 -- --------------------------------------------------------
 
@@ -82,7 +106,7 @@ CREATE TABLE `permiso` (
   `id_rol` int(11) NOT NULL,
   `id_accion` int(11) NOT NULL,
   `id_funcionalidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -116,7 +140,28 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 4, 5),
 (1, 6, 5),
 (1, 4, 6),
-(1, 4, 7);
+(1, 4, 7),
+(1, 7, 4),
+(1, 7, 3),
+(1, 7, 6),
+(1, 7, 7),
+(1, 7, 5),
+(1, 7, 2),
+(1, 7, 1),
+(1, 4, 12),
+(1, 2, 12),
+(1, 3, 12),
+(1, 1, 12),
+(1, 7, 12),
+(1, 5, 12),
+(1, 6, 12),
+(2, 6, 12),
+(2, 5, 12),
+(2, 7, 12),
+(2, 1, 12),
+(2, 3, 12),
+(2, 4, 12),
+(2, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -129,7 +174,7 @@ CREATE TABLE `rol` (
   `nombre_rol` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_rol` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -137,9 +182,8 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
 (1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades. del sistema', 0),
-(2, 'gestorCategorias', 'Asigna responsables de procesos y gestiona las acciones de categorías.', 0),
-(3, 'gestorProcesos', 'Solicita la aprobación del proceso que él mismo crea y se encarga de la gestión de procesos.', 0),
-(4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
+(2, 'responsable', 'Asigna responsables de procesos y gestiona las acciones de categorías.', 0),
+(3, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
 (5, 'existeUsuarioRolActivo', 'Excepcion de rol accion. EXISTE_USUARIO_ROL_ACTIVO', 0),
 (6, 'existeUsuarioRolInactivo', 'Nueva insercion de rol por parte del test', 0);
 
@@ -161,7 +205,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -183,6 +227,12 @@ INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apel
 --
 ALTER TABLE `accion`
   ADD PRIMARY KEY (`id_accion`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id_categoria`);
 
 --
 -- Indices de la tabla `funcionalidad`
@@ -222,6 +272,12 @@ ALTER TABLE `accion`
   MODIFY `id_accion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `funcionalidad`
 --
 ALTER TABLE `funcionalidad`
@@ -250,4 +306,11 @@ ALTER TABLE `permiso`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
+COMMIT;
+
+--
+-- Filtros para la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
 COMMIT;

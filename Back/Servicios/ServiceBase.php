@@ -81,7 +81,7 @@ class ServiceBase{
 
 	function paginacion($objeto, $listaAtributos){
 		//Si el action empieza por buscar
-		if (substr(action, 0, 6) == 'buscar'){
+		if (substr(action, 0, 6) == 'buscar' || action == 'verEnDetalle' ){
 			foreach ($listaAtributos as $atributo){
 				if (!isset($_POST[$atributo])){
 					$_POST[$atributo] = '';

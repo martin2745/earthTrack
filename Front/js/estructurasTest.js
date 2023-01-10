@@ -871,3 +871,119 @@ function cargarTestGestionUsuarios() {
 
   $("#testUsuario").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de Categorias*/
+function cargarTestGestionCategorias() {
+  $("#testCategoria").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarCategoria",
+    "javascript:testCategoria('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestCategoriaAtributosInsertar",
+    "cabeceraAtributosCategoriaInsertar",
+    "cuerpoAtributosCategoriaInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseCategoriaAtributoBuscar",
+    "javascript:testCategoria('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestCategoriaAtributosBuscar",
+    "cabeceraAtributosCategoriaBuscar",
+    "cuerpoAtributosCategoriaBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseCategoriaAtributoModificar",
+    "javascript:testCategoria('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestCategoriaAtributosModificar",
+    "cabeceraAtributosCategoriaModificar",
+    "cuerpoAtributosCategoriaModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarCategoria",
+    "javascript:testCategoria('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestCategoriaAtributosBorrar",
+    "cabeceraAtributosCategoriaBorrar",
+    "cuerpoAtributosCategoriaBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseCategoriaAtributoVerEnDetalle",
+    "javascript:testCategoria('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestCategoriaAtributosVerEnDetalle",
+    "cabeceraAtributosCategoriaVerEnDetalle",
+    "cuerpoAtributosCategoriaVerEnDetalle",
+  ];
+  let arrayAccordionUno = [
+    "accordion22",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseCategoriaAccionesInsertar",
+    "javascript:testCategoria('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestCategoriaAccionesInsertar",
+    "cabeceraAccionesCategoriaInsertar",
+    "cuerpoAccionesCategoriaInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseCategoriaAccionesBuscar",
+    "javascript:testCategoria('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestCategoriaAccionesBuscar",
+    "cabeceraAccionesCategoriaBuscar",
+    "cuerpoAccionesCategoriaBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseCategoriaAccionesModificar",
+    "javascript:testCategoria('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestCategoriaAccionesModificar",
+    "cabeceraAccionesCategoriaModificar",
+    "cuerpoAccionesCategoriaModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseCategoriaAccionesBorrar",
+    "javascript:testCategoria('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestCategoriaAccionesBorrar",
+    "cabeceraAccionesCategoriaBorrar",
+    "cuerpoAccionesCategoriaBorrar",
+  ];
+  let arrayAccordionDos = [
+    "accordion23",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion21",
+    "collapseCategoriaAtributos",
+    null,
+    "Atributos",
+    "iconoTestCategoriaAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseCategoriaAcciones",
+    null,
+    "Acciones",
+    "iconoTestCategoriaAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testCategoria").append(contenidoTest);
+}
