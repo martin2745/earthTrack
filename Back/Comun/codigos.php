@@ -361,9 +361,6 @@
 	define('CATEGORIA_DEVOLVER_PADRE', 'La categoria padre ha sido devuelta correctamente');
 	define('CATEGORIA_DEVOLVER_HIJOS', 'Las categorias hijos has sido devueltas correctamente');
 	define('CATEGORIA_REACTIVAR_OK', 'La categoria ha sido reactivado');
-	define('CATEGORIA_INSERTAR_CON_RESP', 'La categoria se ha insertado comprobando el rol del responsable');
-	define('CATEGORIA_EDITAR_CON_RESP', 'La categoria se ha insertado comprobando el rol del responsable');
-	define('CATEGORIA_BORRAR_CON_RESP', 'La categoria se ha insertado comprobando el rol del responsable');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////CORREOS//////////////////////////////////////////////

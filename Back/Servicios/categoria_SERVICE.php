@@ -35,15 +35,6 @@ class categoria_SERVICE extends ServiceBase{
 			case 'devolverHijos':
 				$this->listaAtributos = array('id_categoria');
 				break;
-			case 'insertarConResposable':
-				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
-				break;
-			case 'editarConResposable':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
-				break;
-			case 'borrarConResposable':
-				$this->listaAtributos = array('id_categoria', 'borrado_logico');
-				break;
 		}
 
 		$this->modelo = $this->crearModelOne('categoria');
@@ -107,7 +98,7 @@ class categoria_SERVICE extends ServiceBase{
 		$this->clase_validacion->validar_devolverHijos();
 	}
 	
-	function insertarConResposable($mensaje){
+	function insertar($mensaje){
 		include_once './Modelos/usuario_model.php';
 		$modeloUsuario = new usuario_MODEL();
 
@@ -126,11 +117,7 @@ class categoria_SERVICE extends ServiceBase{
 		return $this->feedback;
 	}
 
-	function validar_insertarConResposable(){
-		$this->clase_validacion->validar_insertarConResposable();
-	}
-
-	function editarConResposable($mensaje){
+	function editar($mensaje){
 		include_once './Modelos/usuario_model.php';
 		$modeloUsuario = new usuario_MODEL();
 
@@ -155,11 +142,7 @@ class categoria_SERVICE extends ServiceBase{
 		return $this->feedback;
 	}
 
-	function validar_editarConResposable(){
-		$this->clase_validacion->validar_editarConResposable();
-	}
-
-	function borrarConResposable($mensaje){
+	function borrar($mensaje){
 		include_once './Modelos/usuario_model.php';
 		$modeloUsuario = new usuario_MODEL();
 
@@ -181,10 +164,6 @@ class categoria_SERVICE extends ServiceBase{
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;
-	}
-
-	function validar_borrarConResposable(){
-		$this->clase_validacion->validar_borrarConResposable();
 	}
 }
 ?>
