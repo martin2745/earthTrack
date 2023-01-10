@@ -79,11 +79,21 @@ class categoria_SERVICE extends ServiceBase
 		$resultado = $this->modelo->seek_multiple(array('id_padre'), array($objetoActual['id_categoria']));
 		$filas = $resultado['resource'];
 
+		include_once './Modelos/proceso_model.php';
+		$modelo_proceso = new proceso_MODEL();
+
 		for ($i = 0; $i < count($filas); $i++) {
 			$filas[$i]['usuario'] = $modeloUsuario->seek(array('usuario'), array($filas[$i]['usuario']))['resource'];
 			$filas[$i]['usuario']['contrasena'] = '*****';
 			$filas[$i]['id_padre'] = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
+			$filas[$i]['tiene_proceso'] = false;
 
+			$id_categoria_actual=$filas[$i]['id_categoria'];
+			$resultado = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
+			//var_dump($resultado);
+			if ($resultado){
+				$filas[$i]['tiene_proceso']=true;
+			}
 		}
 
 		if (!empty($filas)) {
@@ -181,12 +191,10 @@ class categoria_SERVICE extends ServiceBase
 		for ($i = 0; $i < count($infoBusqueda['resource']); $i++) {
 			$infoBusqueda['resource'][$i]['tiene_proceso']=false;
 			$id_categoria_actual=$infoBusqueda['resource'][$i]['id_categoria'];
-			$resultado = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource']['id_categoria'];
+			$resultado = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
 			if ($resultado){
 				$infoBusqueda['resource'][$i]['tiene_proceso']=true;
 			}
-				
-			
 		}
 
 		$this->feedback['ok'] = true;
