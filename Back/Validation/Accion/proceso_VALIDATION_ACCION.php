@@ -6,7 +6,7 @@ class proceso_VALIDATION_ACCION extends Validar{
 	
 	function validar_insertar(){
 		if($this->existe_categoria()){
-			rellenarExcepcionAccion('NO_EXISTE_CATEGORIA');
+	 		rellenarExcepcionAccion('NO_EXISTE_CATEGORIA');
 		}
 		if($this->existe_proceso_en_categoria()){
 			rellenarExcepcionAccion('EXISTE_PROCESO_EN_CATEGORIA');
@@ -143,7 +143,7 @@ class proceso_VALIDATION_ACCION extends Validar{
                     return false;                               
                 }
                 else{
-                     //El usuario esta borrado lógicamente, sino antes saltaria una excepcion. ROL_ASOCIADO_USUARIO_ACTIVO
+                    //El proceso esta borrado lógicamente, sino antes saltaria una excepcion
                     return true;
                 }
             }
