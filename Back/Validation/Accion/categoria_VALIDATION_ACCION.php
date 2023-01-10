@@ -14,7 +14,8 @@ class categoria_VALIDATION_ACCION extends Validar{
         }
         if(!$this->categoria_no_existe_padre()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_PADRE');
-        }if(!$this->tiene_permisos_sobre_categoria()){
+        }
+        if(!$this->tiene_permisos_sobre_categoria()){
             rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
         }
         if(!$this->categoria_no_existe_responsable()){
@@ -108,6 +109,66 @@ class categoria_VALIDATION_ACCION extends Validar{
             else{
                 return true;
             }
+        }
+
+        function tiene_permisos_sobre_categoria(){
+			if (rolUsuarioSistema == 'administrador')
+            { return true; }
+            else if(rolUsuarioSistema == 'responsable'){
+
+                //compruebo que es o propietario o que es hija de algún propietario
+
+                //busqueda para ver si existe alguna categoría con ese responsable
+                $resultado = $this->modelo->seek(array('usuario'), [usuarioSistema]);
+
+                $fila=$resultado['resource'];
+
+
+                if(empty($fila)){
+                    //no existe ninguna categoria a su nombre, por tanto no sería Responsable
+                    return false;
+                }else{
+                    if($fila['id_categoria'] == $this->modelo->arrayDatoValor['id_categoria']){
+                        //esta intentando modificar su categoria
+                        return true;
+                    }else{
+
+                        //hay que comprobar si es alguna categoria hija de la actual
+
+                            $id_padre=[];
+                            array_push($id_padre,$fila['id_categoria']);
+                           
+                            
+                        do{
+                            $helper=array_pop($id_padre);
+                            $resultado=$this->modelo->seek_multiple(['id_padre'],[$helper]);
+                            
+                            $hijas=$resultado['resource'];
+
+                           
+                            if(!empty($hijas)){
+                                //recorro las hijas y compruebo si alguna coincide con la categoría actual
+                                foreach($hijas as $categoria){
+                                    
+                                    if($categoria["id_categoria"]==$this->modelo->arrayDatoValor['id_categoria']){
+                                        
+                                        return true;
+                                        
+                                    }
+                                    array_push($id_padre,$categoria["id_categoria"]);
+                                }
+
+                            }
+
+                        }while(!empty($id_padre));
+
+                        return false;
+                    }
+                }
+                
+
+            }
+            else{ return false; }
         }
 
         /**
