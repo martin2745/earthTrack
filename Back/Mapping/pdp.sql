@@ -1,5 +1,4 @@
 
-
 --
 -- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
 --
@@ -64,14 +63,6 @@ CREATE TABLE `categoria` (
   `borrado_logico` int(1) NOT NULL DEFAULT 0,
   `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `categoria`
---
-
-INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
-(1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
-(2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
 
 -- --------------------------------------------------------
 
@@ -220,8 +211,6 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (2, 4, 12),
 (2, 2, 12);
 
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `rol`
 --
@@ -251,7 +240,7 @@ INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) 
 CREATE TABLE `usuario` (
   `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `contrasena` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `id_rol` int(11) NOT NULL DEFAULT 4,
+  `id_rol` int(11) NOT NULL DEFAULT 3,
   `dni` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `apellidos` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -261,14 +250,6 @@ CREATE TABLE `usuario` (
   `email` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
-('martin', '925d7518fc597af0e43f5606f9a51512', 4, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -310,8 +291,7 @@ ALTER TABLE `rol`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`usuario`),
-  ADD KEY `id_rol` (`id_rol`);
+  ADD PRIMARY KEY (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -357,12 +337,147 @@ ALTER TABLE `permiso`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
+	ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
 COMMIT;
 
 --
 -- Filtros para la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
+('martin', '925d7518fc597af0e43f5606f9a51512', 3, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
+(1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
+(2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proceso`
+--
+
+CREATE TABLE `proceso` (
+  `id_proceso` int(11) NOT NULL,
+  `nombre_proceso` varchar(255) DEFAULT NULL,
+  `descripcion_proceso` varchar(255) DEFAULT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `formula` varchar(255) NOT NULL,
+  `borrado_logico` int(2) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Indices de la tabla `proceso`
+--
+ALTER TABLE `proceso`
+  ADD PRIMARY KEY (`id_proceso`),
+  ADD KEY `proceso_ibfk_1` (`id_categoria`);
+
+--
+-- AUTO_INCREMENT de la tabla `proceso`
+--
+ALTER TABLE `proceso`
+  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Filtros para la tabla `proceso`
+--
+ALTER TABLE `proceso`
+  ADD CONSTRAINT `proceso_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parametro`
+--
+
+CREATE TABLE `parametro` (
+  `id_parametro` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `unidad` varchar(11) DEFAULT NULL,
+  `id_proceso` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Indices de la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  ADD PRIMARY KEY (`id_parametro`),
+  ADD KEY `id_proceso_rel` (`id_proceso`);
+
+--
+-- AUTO_INCREMENT de la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  MODIFY `id_parametro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Filtros para la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  ADD CONSTRAINT `id_proceso_rel` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proceso_usuario`
+--
+
+CREATE TABLE `proceso_usuario` (
+  `id_proceso` int(11) NOT NULL,
+  `usuario` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Indices de la tabla `proceso_usuario`
+--
+ALTER TABLE `proceso_usuario`
+  ADD KEY `id_proceso` (`id_proceso`),
+  ADD KEY `usuario` (`usuario`);
+
+--
+-- Filtros para la tabla `proceso_usuario`
+--
+ALTER TABLE `proceso_usuario`
+  ADD CONSTRAINT `id_proceso` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `parametro_usuario`
+--
+
+CREATE TABLE `parametro_usuario` (
+  `id_parametro` int(11) NOT NULL,
+  `id_proceso` int(11) NOT NULL,
+  `usuario` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+--
+-- Indices de la tabla `parametro_usuario`
+--
+ALTER TABLE `parametro_usuario`
+  ADD KEY `id_parametro` (`id_parametro`),
+  ADD KEY `id_proceso` (`id_proceso`),
+  ADD KEY `usuario` (`usuario`);
+
+--
+-- Filtros para la tabla `parametro_usuario`
+--
+ALTER TABLE `parametro_usuario`
+  ADD CONSTRAINT `parametro_usuario_ibfk_1` FOREIGN KEY (`id_parametro`) REFERENCES `parametro` (`id_parametro`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `parametro_usuario_ibfk_2` FOREIGN KEY (`id_proceso`) REFERENCES `proceso_usuario` (`id_proceso`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `parametro_usuario_ibfk_3` FOREIGN KEY (`usuario`) REFERENCES `proceso_usuario` (`usuario`) ON UPDATE CASCADE;
