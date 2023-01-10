@@ -28,5 +28,29 @@ class categoria extends ControllerBase{
 		$respuesta = $this->servicio->devolverHijos('CATEGORIA_DEVOLVER_HIJOS');
 		devolverRest($respuesta);
 	}
+
+	function insertarConResposable(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_insertarConResposable();
+		$respuesta = $this->servicio->insertarConResposable('CATEGORIA_INSERTAR_CON_RESP');
+		devolverRest($respuesta);
+	}
+
+	function editarConResposable(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_editarConResposable();
+		$respuesta = $this->servicio->editarConResposable('CATEGORIA_EDITAR_CON_RESP');
+		devolverRest($respuesta);
+	}
+
+	function borrarConResposable(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_borrarConResposable();
+		$respuesta = $this->servicio->borrarConResposable('CATEGORIA_BORRAR_CON_RESP');
+		devolverRest($respuesta);
+	}
 }
 ?>

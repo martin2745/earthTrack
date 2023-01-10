@@ -15,10 +15,9 @@ class categoria_VALIDATION_ACCION extends Validar{
         if(!$this->categoria_no_existe_padre()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_PADRE');
         }
-        /*
         if(!$this->categoria_no_existe_responsable()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
-        }*/
+        }
 	}
 
 	function validar_editar(){
@@ -30,6 +29,9 @@ class categoria_VALIDATION_ACCION extends Validar{
         }
         if(!$this->categoria_denegada_editar()){
             rellenarExcepcionAccion('CATEGORIA_DENEGADA_EDITAR_CATEGORIA');
+        }
+        if(!$this->categoria_no_existe_responsable()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
         }
 	}
 
@@ -73,6 +75,57 @@ class categoria_VALIDATION_ACCION extends Validar{
     function validar_devolverHijos(){ /*Excepciones para devolverHijos categoria*/ 
         if (!$this->existe_categoria_id()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
+        }
+    }
+
+    function validar_insertarConResposable(){
+        if ($this->existe_nombre_categoria()){
+            rellenarExcepcionAccion('CATEGORIA_YA_EXISTE');            
+        }
+        if(!$this->categoria_denegada_insertar()){
+            rellenarExcepcionAccion('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA');
+        }
+        if(!$this->categoria_no_existe_padre()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_PADRE');
+        }if(!$this->tiene_permisos_sobre_categoria()){
+            rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
+        }
+        if(!$this->categoria_no_existe_responsable()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
+        }
+    }
+
+    function validar_editarConResposable(){
+        if (!$this->existe_categoria_id()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
+        }	
+		if ($this->existe_nombre_categoria_editar()){
+            rellenarExcepcionAccion('CATEGORIA_YA_EXISTE');
+        }
+        if(!$this->categoria_denegada_editar()){
+            rellenarExcepcionAccion('CATEGORIA_DENEGADA_EDITAR_CATEGORIA');
+        }if(!$this->tiene_permisos_sobre_categoria()){
+            rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
+        }
+        if(!$this->categoria_no_existe_responsable()){
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
+        }
+    }
+
+    function validar_borrarConResposable(){
+        if(!$this->categoria_no_borrar_base()){
+            rellenarExcepcionAccion('CATEGORIA_NO_BORRAR_BASE');
+        }
+		if (!$this->existe_categoria_id()){ 
+            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
+        } 
+        if(!$this->categoria_denegada_borrar()){
+            rellenarExcepcionAccion('CATEGORIA_DENEGADA_BORRAR_CATEGORIA');
+        }
+        if (!$this->existe_hijo()){ 
+            rellenarExcepcionAccion('CATEGORIA_EXISTE_HIJO');
+        }if(!$this->tiene_permisos_sobre_categoria()){
+            rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
         }
     }
 
@@ -129,10 +182,12 @@ class categoria_VALIDATION_ACCION extends Validar{
          * No se puede insertar una categoria si su responsable no existe
          */
         function categoria_no_existe_responsable(){
-			$categoria = $this->modelo->seek(array('usuario'), array($this->modelo->arrayDatoValor['responsable']));
-            $fila = $categoria['resource'];
+            include_once './Modelos/usuario_model.php';
+		    $modeloUsuario = new usuario_MODEL();
+			
+            $usuarioNuevo = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
 
-            if (empty($fila)){
+            if (empty($usuarioNuevo)){
                 return false;
             }
             else{

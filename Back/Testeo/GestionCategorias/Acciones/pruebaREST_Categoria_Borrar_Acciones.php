@@ -28,7 +28,8 @@ function pruebaREST_Categoria_Borrar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
-    $POST['responsabe'] = 'admin';
+	$POST['usuario'] = 'admin';
+	$POST['id_padre'] = '1';
     
     $pruebas->peticionCurlNoTest($POST);
 
@@ -79,19 +80,20 @@ function pruebaREST_Categoria_Borrar_Acciones(){
     $POST['action'] = 'borrar';
     $POST['id_categoria'] = 1;
 
-    $prueba = 'No se puede eliminar una categoria asociado a un permiso';
-    $codeEsperado = 'CATEGORIA_ASOCIADO_PERMISO';
+    $prueba = 'No se puede eliminar la categoria base';
+    $codeEsperado = 'CATEGORIA_NO_BORRAR_BASE';
     $pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
 
 //---------------------------------------------------------------------------------------------------------------------
 
     //insertar categoria
-    $POST = $vaciarPost;
-    $POST['controlador'] = 'categoria';
-    $POST['action'] = 'insertar';
-    $POST['nombre_categoria'] = 'categoriaTest';
-    $POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
-    $POST['responsabe'] = 'admin';
+	$POST = $vaciarPost;
+	$POST['controlador'] = 'categoria';
+	$POST['action'] = 'insertar';
+	$POST['nombre_categoria'] = 'categoriaTest';
+	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
+	$POST['usuario'] = 'admin';
+	$POST['id_padre'] = '1';
     
     $pruebas->peticionCurlNoTest($POST);
 

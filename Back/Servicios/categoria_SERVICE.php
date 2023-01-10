@@ -10,13 +10,13 @@ class categoria_SERVICE extends ServiceBase{
 
 		switch(action){
 			case 'insertar':
-				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
+				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
 				break;
 			case 'borrar':
-				$this->listaAtributos = array('id_categoria');
+				$this->listaAtributos = array('id_categoria', 'borrado_logico');
 				break;
 			case 'reactivar':
 				$this->listaAtributos = array('id_categoria');
@@ -34,6 +34,15 @@ class categoria_SERVICE extends ServiceBase{
 				break;
 			case 'devolverHijos':
 				$this->listaAtributos = array('id_categoria');
+				break;
+			case 'insertarConResposable':
+				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
+				break;
+			case 'editarConResposable':
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
+				break;
+			case 'borrarConResposable':
+				$this->listaAtributos = array('id_categoria', 'borrado_logico');
 				break;
 		}
 
@@ -96,6 +105,86 @@ class categoria_SERVICE extends ServiceBase{
 
 	function validar_devolverHijos(){
 		$this->clase_validacion->validar_devolverHijos();
+	}
+	
+	function insertarConResposable($mensaje){
+		include_once './Modelos/usuario_model.php';
+		$modeloUsuario = new usuario_MODEL();
+
+		$this->modelo->ADD('categoria',$this->modelo->arrayDatoValor);
+
+		$usuario = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
+
+		if($usuario['id_rol'] > 2){
+			$usuario['id_rol'] = 2;
+			$modeloUsuario->arrayDatoValor = $usuario;
+			$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuario['usuario']);
+		}
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		return $this->feedback;
+	}
+
+	function validar_insertarConResposable(){
+		$this->clase_validacion->validar_insertarConResposable();
+	}
+
+	function editarConResposable($mensaje){
+		include_once './Modelos/usuario_model.php';
+		$modeloUsuario = new usuario_MODEL();
+
+		$usuarioNuevo = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
+
+		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
+
+		if($usuarioNuevo['usuario'] != $categoriaAct['usuario']){
+			$categoriaUsuario = $this->modelo->seek_multiple(array('usuario'),array($categoriaAct['usuario']))['resource'];
+			if(sizeof($categoriaUsuario) == 1){
+				$usuarioAntiguo = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
+				$usuarioAntiguo['id_rol'] = 4;
+				$modeloUsuario->arrayDatoValor = $usuarioAntiguo;
+				$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAntiguo['usuario']);
+			}
+		}
+
+		$this->modelo->EDIT('categoria', $this->modelo->arrayDatoValor, 'id_categoria', $categoriaAct['id_categoria']);
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		return $this->feedback;
+	}
+
+	function validar_editarConResposable(){
+		$this->clase_validacion->validar_editarConResposable();
+	}
+
+	function borrarConResposable($mensaje){
+		include_once './Modelos/usuario_model.php';
+		$modeloUsuario = new usuario_MODEL();
+
+		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
+
+		$usuarioAct = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
+		
+		$categoriaUsuario = $this->modelo->seek_multiple(array('usuario'),array($categoriaAct['usuario']))['resource'];
+		
+		if(sizeof($categoriaUsuario) == 1){
+			$usuarioAct = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
+			$usuarioAct['id_rol'] = 4;
+			$modeloUsuario->arrayDatoValor = $usuarioAct;
+			$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAct['usuario']);
+		}
+
+		$this->modelo->DELETE('categoria', $this->modelo->arrayDatoValor, 'id_categoria', $categoriaAct['id_categoria']);
+
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;
+		return $this->feedback;
+	}
+
+	function validar_borrarConResposable(){
+		$this->clase_validacion->validar_borrarConResposable();
 	}
 }
 ?>

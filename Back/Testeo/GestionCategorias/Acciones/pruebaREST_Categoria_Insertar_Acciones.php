@@ -32,7 +32,8 @@ function pruebaREST_Categoria_Insertar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
-	$POST['responsabe'] = 'admin';
+	$POST['usuario'] = 'admin';
+	$POST['id_padre'] = '1';
 
 	$prueba = 'Insertar categoria';
 	$codeEsperado = 'CATEGORIA_INSERTAR_OK';

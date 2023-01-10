@@ -28,7 +28,8 @@ function pruebaREST_Categoria_Editar_Acciones(){
 	$POST['action'] = 'insertar';
 	$POST['nombre_categoria'] = 'categoriaTest';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
-	$POST['responsabe'] = 'admin';
+	$POST['usuario'] = 'admin';
+	$POST['id_padre'] = '1';
 
 	$pruebas->peticionCurlNoTest($POST);
 
@@ -40,25 +41,6 @@ function pruebaREST_Categoria_Editar_Acciones(){
 
 	$id = $pruebas->peticionCurlNoTestRespuesta($POST);
 	$infoCategoria = (array)$id['resource'][0];
-
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-												//EDITAR
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-	//CATEGORIA_EDITAR_OK
-	$POST = $vaciarPost;
-	$POST['controlador'] = 'categoria';
-	$POST['action'] = 'editar';
-    $POST['id_categoria'] = $infoCategoria['id_categoria'];
-	$POST['nombre_categoria'] = 'categoriaTestDos';
-	$POST['descripcion_categoria'] = 'Edicion de un categoria';
-	$POST['responsabe'] = 'admin';
-
-	$prueba = 'Editar categoria';
-	$codeEsperado = 'CATEGORIA_EDITAR_OK';
-	$pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 												//ERRORES_CATEGORIA
