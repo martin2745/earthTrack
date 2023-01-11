@@ -21,9 +21,6 @@ class proceso_VALIDATION_ACCION extends Validar{
 		if($this->existe_categoria()){
 			rellenarExcepcionAccion('NO_EXISTE_CATEGORIA');
 		}
-		if($this->existe_proceso_en_categoria()){
-			rellenarExcepcionAccion('EXISTE_PROCESO_EN_CATEGORIA');
-		}
         if($this->accion_denegada_editar()){
 			rellenarExcepcionAccion('ACCION_DENEGADA_EDITAR_PROCESO');
         }
