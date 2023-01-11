@@ -89,14 +89,14 @@ class categoria_SERVICE extends ServiceBase
 			$filas[$i]['tiene_proceso'] = false;
 			$filas[$i]['tiene_hijos'] = false;
 
-			$id_categoria_actual=$filas[$i]['id_categoria'];
+			$id_categoria_actual = $filas[$i]['id_categoria'];
 			$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
 			$resultado_hijos = $this->modelo->seek(array('id_padre'), array($id_categoria_actual))['resource'];
-			if ($resultado_proceso){
-				$filas[$i]['tiene_proceso']=true;
+			if ($resultado_proceso) {
+				$filas[$i]['tiene_proceso'] = true;
 			}
-			if($resultado_hijos){
-				$filas[$i]['tiene_hijos']=true;
+			if ($resultado_hijos) {
+				$filas[$i]['tiene_hijos'] = true;
 			}
 		}
 
@@ -139,8 +139,8 @@ class categoria_SERVICE extends ServiceBase
 
 		$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
 		//var_dump($resultado_proceso);
-		if($resultado_proceso){
-			$resultado_proceso['id_categoria']=$categoria_insertada['id_categoria'];
+		if ($resultado_proceso) {
+			$resultado_proceso['id_categoria'] = $categoria_insertada['id_categoria'];
 			$modelo_proceso->arrayDatoValor = $resultado_proceso;
 			$modelo_proceso->EDIT('id_proceso', $modelo_proceso, 'id_proceso', $resultado_proceso['id_proceso']);
 		}
@@ -187,15 +187,20 @@ class categoria_SERVICE extends ServiceBase
 
 		$categoriaUsuario = $this->modelo->seek_multiple(array('usuario'), array($categoriaAct['usuario']))['resource'];
 
-		if (sizeof($categoriaUsuario) == 1) {
+		if (sizeof($categoriaUsuario) == 1) { // si era la ultima categoria de la que era responsable se le cambia el rol a usuario
 			$usuarioAct = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
-			$usuarioAct['id_rol'] = 4;
+			$usuarioAct['id_rol'] = 3;
 			$modeloUsuario->arrayDatoValor = $usuarioAct;
 			$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAct['usuario']);
 		}
 
-		$this->modelo->DELETE('categoria', $this->modelo->arrayDatoValor, 'id_categoria', $categoriaAct['id_categoria']);
-
+		if (isset($this->modelo->arrayDatoValor['borrado_logico'])) {
+			$indiceBorradoLogico = count($this->modelo->arrayDatoValor) - 1;
+			unset($this->modelo->datosQuery[$indiceBorradoLogico]);
+			unset($this->modelo->valoresQuery[$indiceBorradoLogico]);
+			unset($this->modelo->arrayDatoValor['borrado_logico']);
+		}
+		$this->modelo->DELETE();
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;
@@ -207,16 +212,16 @@ class categoria_SERVICE extends ServiceBase
 		include_once './Modelos/proceso_MODEL.php';
 		$modelo_proceso = new proceso_MODEL();
 		for ($i = 0; $i < count($infoBusqueda['resource']); $i++) {
-			$infoBusqueda['resource'][$i]['tiene_proceso']=false;
-			$infoBusqueda['resource'][$i]['tiene_hijos']=false;
-			$id_categoria_actual=$infoBusqueda['resource'][$i]['id_categoria'];
+			$infoBusqueda['resource'][$i]['tiene_proceso'] = false;
+			$infoBusqueda['resource'][$i]['tiene_hijos'] = false;
+			$id_categoria_actual = $infoBusqueda['resource'][$i]['id_categoria'];
 			$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
 			$resultado_hijos = $this->modelo->seek(array('id_padre'), array($id_categoria_actual))['resource'];
-			if ($resultado_proceso){
-				$infoBusqueda['resource'][$i]['tiene_proceso']=true;
+			if ($resultado_proceso) {
+				$infoBusqueda['resource'][$i]['tiene_proceso'] = true;
 			}
-			if($resultado_hijos){
-				$infoBusqueda['resource'][$i]['tiene_hijos']=true;
+			if ($resultado_hijos) {
+				$infoBusqueda['resource'][$i]['tiene_hijos'] = true;
 			}
 		}
 
