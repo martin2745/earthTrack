@@ -131,6 +131,20 @@ class categoria_SERVICE extends ServiceBase
 			$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuario['usuario']);
 		}
 
+		$categoria_insertada = $this->modelo->seek(array('id_padre'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
+		//var_dump($categoria_insertada['id_categoria']);
+
+		include_once './Modelos/proceso_model.php';
+		$modelo_proceso = new proceso_MODEL();
+
+		$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
+		//var_dump($resultado_proceso);
+		if($resultado_proceso){
+			$resultado_proceso['id_categoria']=$categoria_insertada['id_categoria'];
+			$modelo_proceso->arrayDatoValor = $resultado_proceso;
+			$modelo_proceso->EDIT('id_proceso', $modelo_proceso, 'id_proceso', $resultado_proceso['id_proceso']);
+		}
+
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;
