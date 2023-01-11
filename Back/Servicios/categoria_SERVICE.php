@@ -87,12 +87,16 @@ class categoria_SERVICE extends ServiceBase
 			$filas[$i]['usuario']['contrasena'] = '*****';
 			$filas[$i]['id_padre'] = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
 			$filas[$i]['tiene_proceso'] = false;
+			$filas[$i]['tiene_hijos'] = false;
 
 			$id_categoria_actual=$filas[$i]['id_categoria'];
-			$resultado = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
-			//var_dump($resultado);
-			if ($resultado){
+			$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
+			$resultado_hijos = $this->modelo->seek(array('id_padre'), array($id_categoria_actual))['resource'];
+			if ($resultado_proceso){
 				$filas[$i]['tiene_proceso']=true;
+			}
+			if($resultado_hijos){
+				$filas[$i]['tiene_hijos']=true;
 			}
 		}
 
@@ -190,10 +194,15 @@ class categoria_SERVICE extends ServiceBase
 		$modelo_proceso = new proceso_MODEL();
 		for ($i = 0; $i < count($infoBusqueda['resource']); $i++) {
 			$infoBusqueda['resource'][$i]['tiene_proceso']=false;
+			$infoBusqueda['resource'][$i]['tiene_hijos']=false;
 			$id_categoria_actual=$infoBusqueda['resource'][$i]['id_categoria'];
-			$resultado = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
-			if ($resultado){
+			$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($id_categoria_actual))['resource'];
+			$resultado_hijos = $this->modelo->seek(array('id_padre'), array($id_categoria_actual))['resource'];
+			if ($resultado_proceso){
 				$infoBusqueda['resource'][$i]['tiene_proceso']=true;
+			}
+			if($resultado_hijos){
+				$infoBusqueda['resource'][$i]['tiene_hijos']=true;
 			}
 		}
 
