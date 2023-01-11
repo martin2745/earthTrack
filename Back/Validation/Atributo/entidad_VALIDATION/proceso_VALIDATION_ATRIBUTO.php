@@ -5,7 +5,7 @@ include_once './Validation/validar_class.php';
 class proceso_VALIDATION_ATRIBUTO extends Validar{
 
 	function validar_atributos_insertar(){
-		$this->validar_nombre_proceso();
+		$this->validar_nombre_proceso();		
 		$this->validar_descripcion_proceso();
 		$this->validar_id_categoria();
 		$this->validar_formula();
@@ -109,6 +109,21 @@ class proceso_VALIDATION_ATRIBUTO extends Validar{
 
 	}
 
+		function repetidos(){
+			if($this->Longitud_maxima($this->formula,254)===false){
+				rellenarExcepcionAtributo('FORMULA_MAYOR_QUE_254');
+			}
+		}
+
+
+		function coincidencia($cadena) {
+			$expresion = '/pattern/'; // aquí debes poner tu expresión regular
+			if (preg_match($expresion, $cadena)) {
+			  // si la expresión regular coincide con la cadena, mostramos el aviso
+			  echo 'Aviso: la cadena contiene una coincidencia con la expresión regular';
+			}
+		  }
+
 	function formato_formula(){
 		$checking_unit=false;
 		$has_unit=false;
@@ -130,7 +145,8 @@ class proceso_VALIDATION_ATRIBUTO extends Validar{
 					}else if($this->formula[$i]=='}'){
 						$checking_param=false;
 						if (!$has_unit){
-							rellenarExcepcionAtributo('PARAMETRO_FORMULA_FALTA_UNIDAD');
+							// aceptamos parametros sin unidad
+							// rellenarExcepcionAtributo('PARAMETRO_FORMULA_FALTA_UNIDAD');
 						}
 					}
 				}else if($checking_unit){
