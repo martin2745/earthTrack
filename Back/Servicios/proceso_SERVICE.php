@@ -22,7 +22,7 @@ class proceso_SERVICE extends ServiceBase
 				break;
 			case 'buscar':
 				$this->listaAtributos = array('id_proceso', 'nombre_proceso', 'descripcion_proceso', 'id_categoria');
-				$this->listaAtributosIGUAL = array('id_proceso'); //Si establezco que quiero buscar los id_proceso = 1 no quiero que vengan usuarios con id_rol = 10...
+				$this->listaAtributosIGUAL = array('id_proceso', 'id_categoria'); //Si establezco que quiero buscar los id_proceso = 1 no quiero que vengan usuarios con id_rol = 10...
 				break;
 			case 'verEnDetalle':
 				$this->listaAtributos = array('id_proceso');
@@ -130,8 +130,6 @@ class proceso_SERVICE extends ServiceBase
 			if ($resultado){
 				$infoBusqueda['resource'][$i]['parametros']=$resultado;
 			}
-				
-			
 		}
 
 		$this->feedback['ok'] = true;

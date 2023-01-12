@@ -18,7 +18,7 @@ class categoria_VALIDATION_ATRIBUTO extends Validar{
 
 	function validar_atributos_editar(){
 		$this->validar_id();
-		//$this->validar_nombre_categoria();
+		$this->validar_nombre_categoria();
 		$this->validar_descripcion_categoria();
 	}
 
@@ -55,7 +55,7 @@ class categoria_VALIDATION_ATRIBUTO extends Validar{
 			rellenarExcepcionAtributo('CATEGORIA_NOMBRE_MAYOR_QUE_48');
 		}
 
-		if($this->comprobarLetrasNumerosSinEspacios($this->nombre_categoria)===false){
+		if($this->comprobarLetrasNumerosEspacios($this->nombre_categoria)===false){
 			rellenarExcepcionAtributo('CATEGORIA_NOMBRE_FORMATO_INCORRECTO');
 		}
 	
@@ -106,7 +106,7 @@ class categoria_VALIDATION_ATRIBUTO extends Validar{
 				rellenarExcepcionAtributo('CATEGORIA_NOMBRE_MAYOR_QUE_48');
 			}
 
-			if($this->comprobarLetrasNumerosSinEspacios($this->nombre_categoria)===false){
+			if($this->comprobarLetrasNumerosEspacios($this->nombre_categoria)===false){
 				rellenarExcepcionAtributo('CATEGORIA_NOMBRE_FORMATO_INCORRECTO');
 			}
 		}
