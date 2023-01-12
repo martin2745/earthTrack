@@ -88,7 +88,8 @@ INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descri
 (5, 'permiso', 'Gestión de permisos'),
 (6, 'logexcepcionaccion', 'Log de excepcion de acciones'),
 (7, 'logexcepcionatributo', 'Log de excepcion de atributo'),
-(12, 'categorias', 'Gestion de categorias');
+(12, 'categoria', 'Gestion de categorias'),
+(13, 'proceso', 'Gestion de procesos');
 
 -- --------------------------------------------------------
 
@@ -375,7 +376,6 @@ CREATE TABLE `proceso` (
   `descripcion_proceso` varchar(255) DEFAULT NULL,
   `id_categoria` int(11) NOT NULL,
   `formula` varchar(255) NOT NULL,
-  `borrado_logico` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
