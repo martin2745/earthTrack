@@ -145,5 +145,71 @@ class proceso_SERVICE extends ServiceBase
 		return $this->feedback;
 	}
 
+	function editar($mensaje){
+		include_once './Modelos/parametro_MODEL.php';
+		$modelo_parametro = new parametro_MODEL();
+
+		$nombres_param = array();
+		$unidades_param = array();
+
+		$reding_unit = false;
+		$current_unit = '';
+		$reading_param = false;
+		$current_param_name = '';
+		$formula = $this->modelo->arrayDatoValor['formula'];
+		for ($i = 0; $i < strlen($formula); $i++) {
+			if ($reading_param) {
+
+				// COMPROBAR SI LAS UNIDADES ABREN Y CIERRAN CON PARÉNTESIS
+				if (!$reding_unit) {
+					if ($formula[$i] == '(') {
+						$reding_unit = true;
+					} else if ($formula[$i] == '}') {
+						$reading_param = false;
+						// se ha finalizado de leer un parámetro
+						// meter en un array cada uno de los parametros ( array_push() )
+						array_push($nombres_param, $current_param_name);
+						array_push($unidades_param, $current_unit);
+						$current_param_name = '';
+						$current_unit = '';
+					} else {
+						$current_param_name = $current_param_name . $formula[$i];
+					}
+
+				} else if ($reding_unit) {
+					if ($formula[$i] == ')') {
+						$reding_unit = false;
+					} else {
+						$current_unit = $current_unit . $formula[$i];
+					}
+
+				}
+			} else if (!$reading_param) {
+				if ($formula[$i] == '{') {
+					$reading_param = true;
+				}
+			}
+		}
+		$id_proceso_actual = $this->modelo->arrayDatoValor['id_proceso'];
+		// hacer un bucle para eliminar los parámetros que hubiera antes asociados a este proceso
+		$parametros_viejos = $modelo_parametro->seek_multiple(array('id_proceso'), array($id_proceso_actual))['resource'];
+		for ($x = 0; $x < count($parametros_viejos); $x++){
+			$modelo_parametro->arrayDatoValor = $parametros_viejos[$x];
+			$modelo_parametro->DELETE();
+		}
+		//  hacer otro bucle para crear tantos parametros como haya en el array anterior, e insertarlos en la bd
+		for ($i = 0; $i < count($unidades_param); $i++) {
+			$modelo_parametro->arrayDatoValor['nombre'] = $nombres_param[$i];
+			$modelo_parametro->arrayDatoValor['unidad'] = $unidades_param[$i];
+			$modelo_parametro->arrayDatoValor['id_proceso'] = $id_proceso_actual;
+			$modelo_parametro->ADD();
+		}
+
+		$this->modelo->EDIT();
+		$this->feedback['ok'] = true;
+		$this->feedback['code'] = $mensaje;		
+		return $this->feedback;
+	}
+
 }
 ?>
