@@ -146,9 +146,8 @@ class proceso_SERVICE extends ServiceBase
 	}
 
 	function editar($mensaje){
-		include_once './Modelos/parametro_MODEL.php';
-		$modelo_parametro = new parametro_MODEL();
-
+		echo('Editando...');
+		$id_proceso_actual = $this->modelo->arrayDatoValor['id_proceso'];
 		$nombres_param = array();
 		$unidades_param = array();
 
@@ -159,8 +158,6 @@ class proceso_SERVICE extends ServiceBase
 		$formula = $this->modelo->arrayDatoValor['formula'];
 		for ($i = 0; $i < strlen($formula); $i++) {
 			if ($reading_param) {
-
-				// COMPROBAR SI LAS UNIDADES ABREN Y CIERRAN CON PARÉNTESIS
 				if (!$reding_unit) {
 					if ($formula[$i] == '(') {
 						$reding_unit = true;
@@ -190,14 +187,19 @@ class proceso_SERVICE extends ServiceBase
 				}
 			}
 		}
-		$id_proceso_actual = $this->modelo->arrayDatoValor['id_proceso'];
+
+		include_once './Modelos/parametro_MODEL.php';
+		$modelo_parametro = new parametro_MODEL();
+
 		// hacer un bucle para eliminar los parámetros que hubiera antes asociados a este proceso
 		$parametros_viejos = $modelo_parametro->seek_multiple(array('id_proceso'), array($id_proceso_actual))['resource'];
+		$num_param_viejos = count($parametros_viejos);
 		for ($x = 0; $x < count($parametros_viejos); $x++){
 			$modelo_parametro->arrayDatoValor = $parametros_viejos[$x];
 			$modelo_parametro->DELETE();
 		}
-		//  hacer otro bucle para crear tantos parametros como haya en el array anterior, e insertarlos en la bd
+		$modelo_parametro = new parametro_MODEL();
+		// hacer otro bucle para crear tantos parametros como haya en el array anterior, e insertarlos en la bd
 		for ($i = 0; $i < count($unidades_param); $i++) {
 			$modelo_parametro->arrayDatoValor['nombre'] = $nombres_param[$i];
 			$modelo_parametro->arrayDatoValor['unidad'] = $unidades_param[$i];
