@@ -146,7 +146,6 @@ class proceso_SERVICE extends ServiceBase
 	}
 
 	function editar($mensaje){
-		echo('Editando...');
 		$id_proceso_actual = $this->modelo->arrayDatoValor['id_proceso'];
 		$nombres_param = array();
 		$unidades_param = array();
