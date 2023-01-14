@@ -333,7 +333,6 @@
 	define('CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.');
 	define('CATEGORIA_NO_EXISTE_RESPONSABLE', 'No se puede insertar una categoria con un responsable inexistente.');
 	define('CATEGORIA_DENEGADA_BORRAR_CATEGORIA', 'No se puede insertar una categoria con un padre inexistente.');
-	define('CATEGORIA_EXISTE_HIJO', 'No se puede insertar una categoria con un responsable inexistente.');
 	define('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA', 'No se pudo insertar la categoria al no contar con los permisos necesarios');
 
 	//editar
@@ -342,6 +341,8 @@
 	define('CATEGORIA_NO_EXISTE', 'La categoria que se pretende editar no existe.');
 	define('ACCION_DENEGADA_BORRAR_CATEGORIA', 'Solo el administrador puede borrar una categoria.');
 	define('CATEGORIA_NO_BORRAR_BASE', 'No se puede borrar la categoria base.');
+	define('CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.');
+	define('CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.');
 	
 	//buscar
 	

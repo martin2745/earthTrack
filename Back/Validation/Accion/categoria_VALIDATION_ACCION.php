@@ -35,9 +35,6 @@ class categoria_VALIDATION_ACCION extends Validar{
         }if(!$this->tiene_permisos_sobre_categoria()){
             rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
         }
-        if(!$this->categoria_no_existe_responsable()){
-            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
-        }
 	}
 
     function validar_borrar(){
@@ -54,6 +51,9 @@ class categoria_VALIDATION_ACCION extends Validar{
             rellenarExcepcionAccion('CATEGORIA_EXISTE_HIJO');
         }if(!$this->tiene_permisos_sobre_categoria()){
             rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
+        }
+        if(!$this->categoria_tiene_proceso()){
+            rellenarExcepcionAccion('CATEGORIA_TIENE_PROCESO');
         }
 	}
 
@@ -374,6 +374,21 @@ class categoria_VALIDATION_ACCION extends Validar{
             }
             else{
                 return true;
+            }
+        }
+
+        function categoria_tiene_proceso(){
+            include_once './Modelos/proceso_model.php';
+		    $modeloProceso = new proceso_MODEL();
+            $resultado = $this->modeloProceso->seek(array('id_categoria'), $this->modelo->arrayDatoValor['id_categoria']);
+
+            $fila = $resultado['resource'];
+
+            if (empty($fila)){
+                return true;
+            }
+            else{
+                return false;
             }
         }
 

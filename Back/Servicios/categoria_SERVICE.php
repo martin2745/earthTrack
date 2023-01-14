@@ -132,13 +132,11 @@ class categoria_SERVICE extends ServiceBase
 		}
 
 		$categoria_insertada = $this->modelo->seek(array('id_padre'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
-		//var_dump($categoria_insertada['id_categoria']);
 
 		include_once './Modelos/proceso_model.php';
 		$modelo_proceso = new proceso_MODEL();
 
 		$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
-		//var_dump($resultado_proceso);
 		if ($resultado_proceso) {
 			$resultado_proceso['id_categoria'] = $categoria_insertada['id_categoria'];
 			$modelo_proceso->arrayDatoValor = $resultado_proceso;
@@ -159,13 +157,19 @@ class categoria_SERVICE extends ServiceBase
 
 		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
 
-		if ($usuarioNuevo['usuario'] != $categoriaAct['usuario']) {
-			$categoriaUsuario = $this->modelo->seek_multiple(array('usuario'), array($categoriaAct['usuario']))['resource'];
-			if (sizeof($categoriaUsuario) == 1) {
+		if($usuarioNuevo['usuario'] != $categoriaAct['usuario']){
+			$categoriasUsuarioAntiguo = $this->modelo->seek_multiple(array('usuario'),array($categoriaAct['usuario']))['resource'];
+			if(sizeof($categoriasUsuarioAntiguo) == 1){
 				$usuarioAntiguo = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
 				$usuarioAntiguo['id_rol'] = 4;
 				$modeloUsuario->arrayDatoValor = $usuarioAntiguo;
 				$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAntiguo['usuario']);
+			}
+			$categoriasUsuarioNuevo = $this->modelo->seek_multiple(array('usuario'),array($categoriaAct['usuario']))['resource'];
+			if(sizeof($categoriasUsuarioNuevo) != 0){
+				$usuarioNuevo['id_rol'] = 2;
+				$modeloUsuario->arrayDatoValor = $usuarioNuevo;
+				$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioNuevo['usuario']);
 			}
 		}
 
@@ -201,6 +205,7 @@ class categoria_SERVICE extends ServiceBase
 			unset($this->modelo->arrayDatoValor['borrado_logico']);
 		}
 		$this->modelo->DELETE();
+
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;
