@@ -66,9 +66,28 @@ function includeTopMenu() {
     '<img id="imagenHome" src="images/home.png"/>' +
     '<div class="home MENU">Menú</div>' +
     "</a>" +
-    '<div class="dropdown-menu" id="listadoFuncionalidades">' +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesUsuario">' +
     "</div>" +
     "</li>" +
+
+    '<li class="nav-item dropdown">' +
+    '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+    '<img id="imagenHome" src="images/categorias.png"/>' +
+    '<div class="home CATEGORIAS">Categorias</div>' +
+    "</a>" +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesCategorias">' +
+    "</div>" +
+    "</li>" +
+
+    '<li class="nav-item dropdown">' +
+    '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+    '<img id="imagenHome" src="images/rol.png"/>' +
+    '<div class="home PROCESOS"></div>' +
+    "</a>" +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesProcesos">' +
+    "</div>" +
+    "</li>" +
+
     '<li class="nav-item dropdown">' +
     '<a class="nav-link dropdown-toggle" href="#" id="navbardrop2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
     '<img id="imagenUsuario" src="images/usuario.png"/>' +
@@ -322,6 +341,7 @@ function deleteCookiesEntrePaginas(vista) {
     var cookie = cookies[i];
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    
     if (
       name == "token" ||
       name == " token" ||
@@ -330,9 +350,12 @@ function deleteCookiesEntrePaginas(vista) {
       name == "rolUsuario" ||
       name == " rolUsuario" ||
       name == "usuarioSistema" ||
-      name == " usuarioSistema"
+      name == " usuarioSistema" ||
+      name == "navigateToProceso" ||
+      name == " navigateToProceso" 
     ) {
     } else {
+      
       setCookie(name, "");
     }
   }
@@ -1036,6 +1059,45 @@ function inicioUsuario() {
         "</div>" +
         "</div>";
       break;
+      case "responsable":
+        contenidoModal =
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_1"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_1"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_2"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_2"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_3"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_3"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>";
+        break;
   }
 
   $("#inicioUsuario").append(contenidoModal);

@@ -1,26 +1,25 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-01-2023 a las 11:24:04
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.4.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
+-- Base de datos: `pdptest`
 --
--- GRANT USAGE ON * . * TO `pdp`@`localhost`;
--- DROP USER `pdp`@`localhost`;
-
---
--- CREAMOS EL USUARIO Y LE DAMOS PASSWORD,DAMOS PERMISO DE USO Y DAMOS PERMISOS SOBRE LA BASE DE DATOS.
---
-CREATE USER IF NOT EXISTS `pdp`@`localhost` IDENTIFIED BY 'pdp';
-/*GRANT USAGE ON *.* TO `pdp`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;*/
-/*GRANT ALL PRIVILEGES ON `pdptest`.* TO `pdp`@`localhost` WITH GRANT OPTION;*/
-GRANT ALL ON *.* TO 'pdp'@'localhost';
-FLUSH PRIVILEGES;
-/*CREACIÓN DE TABLAS*/
-DROP DATABASE IF EXISTS `pdptest`;
-CREATE DATABASE `pdptest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
---
--- SELECCIONAMOS PARA USAR
---
-USE `pdptest`;
-
 
 -- --------------------------------------------------------
 
@@ -32,7 +31,7 @@ CREATE TABLE `accion` (
   `id_accion` int(11) NOT NULL,
   `nombre_accion` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_accion` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `accion`
@@ -60,7 +59,7 @@ CREATE TABLE `categoria` (
   `id_padre` int(11) NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0,
   `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -80,21 +79,20 @@ CREATE TABLE `funcionalidad` (
   `id_funcionalidad` int(11) NOT NULL,
   `nombre_funcionalidad` varchar(48) NOT NULL,
   `descripcion_funcionalidad` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `funcionalidad`
 --
 
 INSERT INTO `funcionalidad` (`id_funcionalidad`, `nombre_funcionalidad`, `descripcion_funcionalidad`) VALUES
-(1, 'usuario', 'Gestión de usuarios'),
-(2, 'rol', 'Gestión de roles'),
-(3, 'funcionalidad', 'Gestión de funcionalidades'),
-(4, 'accion', 'Gestión de acciones'),
-(5, 'permiso', 'Gestión de permisos'),
-(6, 'logexcepcionaccion', 'Log de excepcion de acciones'),
-(7, 'logexcepcionatributo', 'Log de excepcion de atributo'),
-(12, 'categorias', 'Gestion de categorias');
+(1, 'usuario', 'Gestión de usuarios.'),
+(2, 'rol', 'Gestión de roles.'),
+(3, 'funcionalidad', 'Gestión de funcionalidades.'),
+(4, 'accion', 'Gestión de acciones.'),
+(5, 'permiso', 'Gestión de permisos.'),
+(6, 'logExcepcionAccion', 'Log de excepcion de acciones'),
+(7, 'logExcepcionAtributo', 'Log de excepcion de atributo');
 
 -- --------------------------------------------------------
 
@@ -106,7 +104,7 @@ CREATE TABLE `permiso` (
   `id_rol` int(11) NOT NULL,
   `id_accion` int(11) NOT NULL,
   `id_funcionalidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -140,28 +138,7 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 4, 5),
 (1, 6, 5),
 (1, 4, 6),
-(1, 4, 7),
-(1, 7, 4),
-(1, 7, 3),
-(1, 7, 6),
-(1, 7, 7),
-(1, 7, 5),
-(1, 7, 2),
-(1, 7, 1),
-(1, 4, 12),
-(1, 2, 12),
-(1, 3, 12),
-(1, 1, 12),
-(1, 7, 12),
-(1, 5, 12),
-(1, 6, 12),
-(2, 6, 12),
-(2, 5, 12),
-(2, 7, 12),
-(2, 1, 12),
-(2, 3, 12),
-(2, 4, 12),
-(2, 2, 12);
+(1, 4, 7);
 
 -- --------------------------------------------------------
 
@@ -174,7 +151,7 @@ CREATE TABLE `rol` (
   `nombre_rol` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_rol` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -183,7 +160,7 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion_rol`, `borrado_logico`) VALUES
 (1, 'administrador', 'Rol de administrador que tiene acceso a todas las funcionalidades. del sistema', 0),
 (2, 'responsable', 'Asigna responsables de procesos y gestiona las acciones de categorías.', 0),
-(3, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
+(4, 'usuario', 'Usuario que puede calcular su huella de carbono en base a los procesos del sistema.', 0),
 (5, 'existeUsuarioRolActivo', 'Excepcion de rol accion. EXISTE_USUARIO_ROL_ACTIVO', 0),
 (6, 'existeUsuarioRolInactivo', 'Nueva insercion de rol por parte del test', 0);
 
@@ -205,7 +182,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -232,7 +209,8 @@ ALTER TABLE `accion`
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`id_categoria`);
+  ADD PRIMARY KEY (`id_categoria`),
+  ADD KEY `categoria_ibfk_1` (`usuario`);
 
 --
 -- Indices de la tabla `funcionalidad`
@@ -275,7 +253,7 @@ ALTER TABLE `accion`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidad`
@@ -294,6 +272,12 @@ ALTER TABLE `rol`
 --
 
 --
+-- Filtros para la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
+
+--
 -- Filtros para la tabla `permiso`
 --
 ALTER TABLE `permiso`
@@ -308,9 +292,6 @@ ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
 COMMIT;
 
---
--- Filtros para la tabla `categoria`
---
-ALTER TABLE `categoria`
-  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
-COMMIT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

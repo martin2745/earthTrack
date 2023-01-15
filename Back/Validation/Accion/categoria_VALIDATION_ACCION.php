@@ -380,7 +380,7 @@ class categoria_VALIDATION_ACCION extends Validar{
         function categoria_tiene_proceso(){
             include_once './Modelos/proceso_model.php';
 		    $modeloProceso = new proceso_MODEL();
-            $resultado = $this->modeloProceso->seek(array('id_categoria'), $this->modelo->arrayDatoValor['id_categoria']);
+            $resultado = $modeloProceso->seek(array('id_categoria'),array($this->modelo->arrayDatoValor['id_categoria']));
 
             $fila = $resultado['resource'];
 

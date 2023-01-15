@@ -40,6 +40,12 @@ function escogeTamanho(entidad) {
     case "usuario":
       numFilasPagina = 5;
       break;
+    case "categoria":
+      numFilasPagina = 5;
+      break;
+    case "proceso":
+      numFilasPagina = 5;
+        break;
   }
   return numFilasPagina;
 }

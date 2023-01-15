@@ -51,15 +51,17 @@ function eliminarcampo(name) {
 
 /**Función para eliminar campos del formulario*/
 function eliminarcampoId(idElementoError) {
+  
   document.getElementById(idElementoError).style.display = "none";
 }
 
 /**Función que resetear los valores del formulario*/
 function resetearFormulario(idFormulario, idElementoList) {
-  document.getElementById(idFormulario).reset();
 
+  document.getElementById(idFormulario).reset();
   //Devuelve el color por defecto.
   idElementoList.forEach(function (idElemento) {
+    
     document.getElementById(idElemento).style.borderColor = "#c8c8c8";
   });
 }
@@ -104,6 +106,9 @@ function addActionControler(form, action, controller) {
       break;
     case "funcionalidadesSistema":
       accion = "funcionalidadesSistema";
+      break;
+    case "devolverHijos":
+        accion = "devolverHijos";
       break;
   }
   //(form, name, value)

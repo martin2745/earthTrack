@@ -24,7 +24,7 @@ class categoria_SERVICE extends ServiceBase
 				$this->listaAtributos = array('id_categoria');
 				break;
 			case 'buscar':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'usuario');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'usuario','id_padre');
 				$this->listaAtributosIGUAL = array('id_categoria');
 				break;
 			case 'verEnDetalle':

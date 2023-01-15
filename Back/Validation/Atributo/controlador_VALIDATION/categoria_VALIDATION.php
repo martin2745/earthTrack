@@ -17,7 +17,7 @@ function validar_entrada_categoria(){
                 $categoria_validacion->validar_atributos_borrado();
             break;
         case 'editar':
-                $listaAtributos = array('id_categoria', 'descripcion_categoria');
+                $listaAtributos = array('id_categoria','nombre_categoria', 'descripcion_categoria','id_padre');
                 contruirLista($listaAtributos, $categoria_validacion);
                 $categoria_validacion->validar_atributos_editar();
             break;
