@@ -3,23 +3,28 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2023 a las 11:24:04
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.33
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pdptest`
+-- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
 --
+-- GRANT USAGE ON * . * TO `pdp`@`localhost`;
+-- DROP USER `pdp`@`localhost`;
+
+--
+-- CREAMOS EL USUARIO Y LE DAMOS PASSWORD,DAMOS PERMISO DE USO Y DAMOS PERMISOS SOBRE LA BASE DE DATOS.
+--
+CREATE USER IF NOT EXISTS `pdp`@`localhost` IDENTIFIED BY 'pdp';
+/*GRANT USAGE ON *.* TO `pdp`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;*/
+/*GRANT ALL PRIVILEGES ON `pdptest`.* TO `pdp`@`localhost` WITH GRANT OPTION;*/
+GRANT ALL ON *.* TO 'pdp'@'localhost';
+FLUSH PRIVILEGES;
+/*CREACIÓN DE TABLAS*/
+DROP DATABASE IF EXISTS `pdptest`;
+CREATE DATABASE `pdptest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+--
+-- SELECCIONAMOS PARA USAR
+--
+USE `pdptest`;
 
 -- --------------------------------------------------------
 
