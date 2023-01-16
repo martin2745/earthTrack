@@ -367,7 +367,7 @@ CREATE TABLE `proceso` (
 
 INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descripcion_proceso`, `id_categoria`, `formula`, `borrado_logico`) VALUES
 (35, 'Ir al trabajo', 'Proceso para ver cuanto emites yendo al trabajo', 24, '{numeroDeViajes}*5', 0),
-(36, 'Viaje avion corta distancia', 'Viaje en avion de menos de 1000km', 25, '{numeroDeViajes}*5/({altitud(metros)})', 0);
+(36, 'Viaje avion corta distancia', 'Viaje en avion de menos de 1000km', 25, '{numeroDeVuelos}*5/({altitud(metros)})', 0);
 
 -- --------------------------------------------------------
 
