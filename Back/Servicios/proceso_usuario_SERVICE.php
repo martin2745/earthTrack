@@ -216,6 +216,11 @@ class proceso_usuario_SERVICE extends ServiceBase
 
 		$procesosUserActual =  $this->modelo->seek_multiple(array('usuario'), array($this->modelo->arrayDatoValor['usuario']))['resource'];
 
+		for ($i = 0; $i < count($procesosUserActual); $i++){
+			$parametros_proceso_usuario = $modelo_parametro_usuario->seek_multiple(array('id_proceso', 'usuario'), array($procesosUserActual[$i]['id_proceso'], $this->modelo->arrayDatoValor['usuario']))['resource'];
+			$procesosUserActual[$i]['parametros'] = $parametros_proceso_usuario;
+		}
+
 		$this->feedback['resource'] = $procesosUserActual;
 
 		$this->feedback['ok'] = true;
