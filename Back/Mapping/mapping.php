@@ -37,7 +37,7 @@ class mapping extends MappingBase{
         }
         $y = substr($y,0,-1);
         $datos = $this->queryDatosAdd($this->datosQuery);
-
+       
         $this->query = "INSERT INTO $tabla ($datos) values ($y)";
         $this->stmt = $this->conexion->prepare($this->query);
         $this->execute_single_query($this->valoresQuery);  

@@ -375,7 +375,7 @@ CREATE TABLE `proceso` (
   `nombre_proceso` varchar(255) DEFAULT NULL,
   `descripcion_proceso` varchar(255) DEFAULT NULL,
   `id_categoria` int(11) NOT NULL,
-  `formula` varchar(255) NOT NULL,
+  `formula` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -437,7 +437,8 @@ ALTER TABLE `parametro`
 
 CREATE TABLE `proceso_usuario` (
   `id_proceso` int(11) NOT NULL,
-  `usuario` varchar(15) NOT NULL
+  `usuario` varchar(15) NOT NULL,
+  `total` float(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -462,7 +463,8 @@ ALTER TABLE `proceso_usuario`
 CREATE TABLE `parametro_usuario` (
   `id_parametro` int(11) NOT NULL,
   `id_proceso` int(11) NOT NULL,
-  `usuario` varchar(15) NOT NULL
+  `usuario` varchar(15) NOT NULL,
+  `valor` float(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
