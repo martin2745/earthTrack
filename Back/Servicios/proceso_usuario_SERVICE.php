@@ -214,9 +214,21 @@ class proceso_usuario_SERVICE extends ServiceBase
 		include_once './Modelos/parametro_usuario_MODEL.php';
 		$modelo_parametro_usuario = new parametro_usuario_MODEL();
 
+		include_once './Modelos/proceso_MODEL.php';
+		$modelo_proceso = new proceso_MODEL();
+
+		include_once './Modelos/categoria_MODEL.php';
+		$modelo_categoria = new categoria_MODEL();
+
 		$procesosUserActual =  $this->modelo->seek_multiple(array('usuario'), array($this->modelo->arrayDatoValor['usuario']))['resource'];
 
 		for ($i = 0; $i < count($procesosUserActual); $i++){
+			$procesoAct = $modelo_proceso->getById(array($procesosUserActual[$i]['id_proceso']))['resource'];
+			$procesosUserActual[$i]['nombre_proceso'] = $procesoAct['nombre_proceso'];
+			$procesosUserActual[$i]['descripcion_proceso'] = $procesoAct['descripcion_proceso'];
+			$procesosUserActual[$i]['formula'] = $procesoAct['formula'];
+			$categoriaAct = $modelo_categoria->getById(array($procesoAct['id_categoria']))['resource'];
+			$procesosUserActual[$i]['categoria'] = $categoriaAct;
 			$parametros_proceso_usuario = $modelo_parametro_usuario->seek_multiple(array('id_proceso', 'usuario'), array($procesosUserActual[$i]['id_proceso'], $this->modelo->arrayDatoValor['usuario']))['resource'];
 			$procesosUserActual[$i]['parametros'] = $parametros_proceso_usuario;
 		}
