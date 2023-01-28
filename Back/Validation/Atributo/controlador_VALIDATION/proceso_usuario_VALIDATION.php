@@ -33,7 +33,7 @@ function validar_entrada_proceso_usuario(){
             break;
         case 'devolverHuella':
             $listaAtributos = array('usuario');
-            contruirLista($listaAtributos, $validar_atributos_devolverHuella);
+            contruirLista($listaAtributos, $proceso_usuario_validacion);
             $proceso_usuario_validacion->validar_atributos_devolverHuella();
         break;
         case 'devolverProcesos':
