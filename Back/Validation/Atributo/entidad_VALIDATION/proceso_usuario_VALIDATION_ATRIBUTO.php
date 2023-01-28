@@ -11,8 +11,6 @@ class proceso_usuario_VALIDATION_ATRIBUTO extends Validar{
 	}
 
 	function validar_atributos_buscar(){
-		$this->validar_usuario();		
-		$this->validar_id();
 	}
 
 	function validar_atributos_editar(){
