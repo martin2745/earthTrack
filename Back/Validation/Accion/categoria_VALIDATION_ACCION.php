@@ -21,9 +21,6 @@ class categoria_VALIDATION_ACCION extends Validar{
         if(!$this->categoria_no_existe_responsable()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
         }
-        if(!$this->no_ser_padre_propio_insertar()){
-            rellenarExcepcionAccion('CATEGORIA_NO_SER_PROPIO_PADRE_INSERTAR');
-        }
 	}
 
 	function validar_editar(){
@@ -113,14 +110,6 @@ class categoria_VALIDATION_ACCION extends Validar{
                 return false;
             }
             else{
-                return true;
-            }
-        }
-
-        function no_ser_padre_propio_insertar(){
-            if($this->modelo->arrayDatoValor['id_categoria'] == $this->modelo->arrayDatoValor['id_padre']){
-                return false;
-            }else{
                 return true;
             }
         }
