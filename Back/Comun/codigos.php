@@ -354,24 +354,24 @@
 	define('CATEGORIA_NO_HIJOS', 'La categoria seleccionada no tiene hijos.');
 
 	////proceso_usuario_VALIDATION_ACCION
-	//insertar
+
 	define('PROCESO_USUARIO_YA_EXISTE', 'No se puede insertar una categoria que ya existe.');
 	define('PROCESO_USUARIO_DENEGADA_INSERTAR', 'No se pudo insertar el proceso usuario al no contar con los permisos necesarios');
 
-	//editar
-
-	//borrar
 	define('PROCESO_USUARIO_NO_EXISTE', 'El proceso de usuario que se pretende editar no existe.');
-	
-	//buscar
-	
-	//verEnDetalle
-
-	//devolverPadre
-
-	//devolverHijos
 
 	define('EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario');
+
+	define('PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio');
+	define('PROCESO_USUARIO_USUARIO_ALFANUMERICO_INCORRECTO', 'El usuario tiene formato incorrecto');
+	define('PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia');
+	define('PROCESO_USUARIO_ID_PROCESO_USUARIO_FORMATO', 'Id del proceso mal formada');
+	define('PROCESO_USUARIO_PARAMETROS_VACIO', 'El usuario es vacio');
+	define('PROCESO_USUARIO_PROCESO_USUARIO__FORMATO', 'Mal formato de proceso usuario');
+
+	define('NO_EXISTE_USUARIO', 'No existe el usuario');
+	define('EXISTE_PROCESO_USUARIO', 'Ya existe el proceso usuario');
+	define('PROCESO_USUARIO_PROCESO_USUARIO__FORMATO', 'Mal formato de proceso usuario');
 	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -422,6 +422,14 @@
 	define('CATEGORIA_DEVOLVER_PADRE', 'La categoria padre ha sido devuelta correctamente');
 	define('CATEGORIA_DEVOLVER_HIJOS', 'Las categorias hijos has sido devueltas correctamente');
 	define('CATEGORIA_REACTIVAR_OK', 'La categoria ha sido reactivado');
+
+	///proceso_usuario_CONTROLLER
+	define('PROCESO_USUARIO_INSERTAR_OK', 'El proceso de usuario ha sido insertada correctamente');
+	define('PROCESO_USUARIO_EDITAR_OK', 'El proceso de usuario ha sido modificada correctamente');
+	define('PROCESO_USUARIO_BORRAR_OK', 'El proceso de usuario ha sido borrada correctamente');
+	define('PROCESO_USUARIO_REACTIVAR_OK', 'El proceso de usuario ha sido reactivado');
+	define('PROCESO_USUARIO_DEVOLVER_PROCESOS_OK', 'Se ha devuelto todos los procesos de dicho usuario');
+	define('PROCESO_USUARIO_DEVOLVER_HUELLA_OK', 'Se ha devuelto la huella del usuario');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////CORREOS//////////////////////////////////////////////
