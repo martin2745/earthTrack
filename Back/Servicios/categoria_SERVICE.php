@@ -187,6 +187,9 @@ class categoria_SERVICE extends ServiceBase
 
 		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
 
+		include_once './Modelos/proceso_model.php';
+		$modeloProceso= new proceso_MODEL();
+
 		$usuarioAct = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
 
 		$categoriaUsuario = $this->modelo->seek_multiple(array('usuario'), array($categoriaAct['usuario']))['resource'];

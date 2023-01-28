@@ -21,6 +21,9 @@ class categoria_VALIDATION_ACCION extends Validar{
         if(!$this->categoria_no_existe_responsable()){
             rellenarExcepcionAccion('CATEGORIA_NO_EXISTE_RESPONSABLE');
         }
+        if(!$this->no_ser_padre_propio_insertar()){
+            rellenarExcepcionAccion('CATEGORIA_NO_SER_PROPIO_PADRE_INSERTAR');
+        }
 	}
 
 	function validar_editar(){
@@ -34,6 +37,9 @@ class categoria_VALIDATION_ACCION extends Validar{
             rellenarExcepcionAccion('CATEGORIA_DENEGADA_EDITAR_CATEGORIA');
         }if(!$this->tiene_permisos_sobre_categoria()){
             rellenarExcepcionAccion('CATEGORIA_NO_TIENE_PERMISO');
+        }
+        if(!$this->no_ser_padre_propio_editar()){
+            rellenarExcepcionAccion('CATEGORIA_NO_SER_PROPIO_PADRE_EDITAR');
         }
 	}
 
@@ -107,6 +113,14 @@ class categoria_VALIDATION_ACCION extends Validar{
                 return false;
             }
             else{
+                return true;
+            }
+        }
+
+        function no_ser_padre_propio_insertar(){
+            if($this->modelo->arrayDatoValor['id_categoria'] == $this->modelo->arrayDatoValor['id_padre']){
+                return false;
+            }else{
                 return true;
             }
         }
@@ -292,6 +306,14 @@ class categoria_VALIDATION_ACCION extends Validar{
             }
         }
 
+        function no_ser_padre_propio_editar(){
+            if($this->modelo->arrayDatoValor['id_categoria'] == $this->modelo->arrayDatoValor['id_padre']){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
         /**
          * Se comprueba que ya exista un categoria en el sistema con ese nombre y que no sea la misma categoria
          * que estamos editando.
@@ -378,10 +400,11 @@ class categoria_VALIDATION_ACCION extends Validar{
         }
 
         function categoria_tiene_proceso(){
-            include_once './Modelos/proceso_model.php';
+            include_once './Modelos/proceso_MODEL.php';
 		    $modeloProceso = new proceso_MODEL();
-            $resultado = $this->modeloProceso->seek(array('id_categoria'), $this->modelo->arrayDatoValor['id_categoria']);
-
+           
+            $resultado = $modeloProceso->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_categoria']));
+            
             $fila = $resultado['resource'];
 
             if (empty($fila)){

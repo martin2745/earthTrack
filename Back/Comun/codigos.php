@@ -334,7 +334,8 @@
 	define('CATEGORIA_NO_EXISTE_RESPONSABLE', 'No se puede insertar una categoria con un responsable inexistente.');
 	define('CATEGORIA_DENEGADA_BORRAR_CATEGORIA', 'No se puede insertar una categoria con un padre inexistente.');
 	define('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA', 'No se pudo insertar la categoria al no contar con los permisos necesarios');
-
+	define('CATEGORIA_NO_SER_PROPIO_PADRE_INSERTAR', 'Una categoria no puede ser padre de si misma');
+	define('CATEGORIA_NO_SER_PROPIO_PADRE_EDITAR', 'Una categoria no puede ser padre de si misma');
 	//editar
 
 	//borrar
