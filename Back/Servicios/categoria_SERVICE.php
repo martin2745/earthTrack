@@ -156,12 +156,12 @@ class categoria_SERVICE extends ServiceBase
 		$usuarioNuevo = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
 
 		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
-
+		
 		if($usuarioNuevo['usuario'] != $categoriaAct['usuario']){
 			$categoriasUsuarioAntiguo = $this->modelo->seek_multiple(array('usuario'),array($categoriaAct['usuario']))['resource'];
 			if(sizeof($categoriasUsuarioAntiguo) == 1){
 				$usuarioAntiguo = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];
-				$usuarioAntiguo['id_rol'] = 4;
+				$usuarioAntiguo['id_rol'] = 3;
 				$modeloUsuario->arrayDatoValor = $usuarioAntiguo;
 				$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAntiguo['usuario']);
 			}
