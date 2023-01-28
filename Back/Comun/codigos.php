@@ -370,8 +370,6 @@
 	define('PROCESO_USUARIO_PROCESO_USUARIO__FORMATO', 'Mal formato de proceso usuario');
 
 	define('NO_EXISTE_USUARIO', 'No existe el usuario');
-	define('EXISTE_PROCESO_USUARIO', 'Ya existe el proceso usuario');
-	define('PROCESO_USUARIO_PROCESO_USUARIO__FORMATO', 'Mal formato de proceso usuario');
 	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
