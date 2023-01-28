@@ -202,7 +202,6 @@ class categoria_VALIDATION_ACCION extends Validar{
                     //no existe ninguna categoria a su nombre, por tanto no sería Responsable
                     return false;
                 }else{
-                    var_dump($fila);
                     // cat actual -- encontrada
                     if($fila['id_categoria'] == $this->modelo->arrayDatoValor['id_padre']){
                         //esta intentando modificar su categoria
