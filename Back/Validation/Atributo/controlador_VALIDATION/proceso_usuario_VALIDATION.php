@@ -7,7 +7,7 @@ function validar_entrada_proceso_usuario(){
 
     switch(action){
         case 'insertar':
-                $listaAtributos = array('id_proceso', 'usuario');
+                $listaAtributos = array('id_proceso', 'usuario', 'parametros');
                 contruirLista($listaAtributos, $proceso_usuario_validacion);
                 $proceso_usuario_validacion->validar_atributos_insertar();
                 break;
@@ -31,8 +31,17 @@ function validar_entrada_proceso_usuario(){
                 contruirLista($listaAtributos, $proceso_usuario_validacion);
                 $proceso_usuario_validacion->validar_atributos_verEnDetalle();
             break;
+        case 'devolverHuella':
+            $listaAtributos = array('usuario');
+            contruirLista($listaAtributos, $validar_atributos_devolverHuella);
+            $proceso_usuario_validacion->validar_atributos_verEnDetalle();
+        break;
+        case 'devolverProcesos':
+            $listaAtributos = array('usuario');
+            contruirLista($listaAtributos, $proceso_usuario_validacion);
+            $proceso_usuario_validacion->validar_atributos_devolverProcesos();
+        break;
     }
-
 }
 
 ?>

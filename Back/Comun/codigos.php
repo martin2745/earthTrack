@@ -352,6 +352,26 @@
 
 	//devolverHijos
 	define('CATEGORIA_NO_HIJOS', 'La categoria seleccionada no tiene hijos.');
+
+	////proceso_usuario_VALIDATION_ACCION
+	//insertar
+	define('PROCESO_USUARIO_YA_EXISTE', 'No se puede insertar una categoria que ya existe.');
+	define('PROCESO_USUARIO_DENEGADA_INSERTAR', 'No se pudo insertar el proceso usuario al no contar con los permisos necesarios');
+
+	//editar
+
+	//borrar
+	define('PROCESO_USUARIO_NO_EXISTE', 'El proceso de usuario que se pretende editar no existe.');
+	
+	//buscar
+	
+	//verEnDetalle
+
+	//devolverPadre
+
+	//devolverHijos
+
+	define('EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario');
 	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -202,7 +202,7 @@ class proceso_usuario_SERVICE extends ServiceBase
 			$modelo_parametro_usuario->arrayDatoValor['usuario'] = $parametros_proceso_usuario[$i]['usuario'];
 			$modelo_parametro_usuario->DELETE();
 		}
-
+		
 		$this->modelo->DELETE();
 
 		$this->feedback['ok'] = true;
@@ -220,6 +220,10 @@ class proceso_usuario_SERVICE extends ServiceBase
 		include_once './Modelos/categoria_MODEL.php';
 		$modelo_categoria = new categoria_MODEL();
 
+		include_once './Modelos/parametro_MODEL.php';
+		$modelo_parametro = new parametro_MODEL();
+
+
 		$procesosUserActual =  $this->modelo->seek_multiple(array('usuario'), array($this->modelo->arrayDatoValor['usuario']))['resource'];
 
 		for ($i = 0; $i < count($procesosUserActual); $i++){
@@ -230,7 +234,14 @@ class proceso_usuario_SERVICE extends ServiceBase
 			$categoriaAct = $modelo_categoria->getById(array($procesoAct['id_categoria']))['resource'];
 			$procesosUserActual[$i]['categoria'] = $categoriaAct;
 			$parametros_proceso_usuario = $modelo_parametro_usuario->seek_multiple(array('id_proceso', 'usuario'), array($procesosUserActual[$i]['id_proceso'], $this->modelo->arrayDatoValor['usuario']))['resource'];
+			
+			for ($j = 0; $j < count($parametros_proceso_usuario); $j++){
+				$parametros_proceso = $modelo_parametro->getById(array($parametros_proceso_usuario[$j]['id_parametro']))['resource'];
+				$parametros_proceso_usuario[$j]['nombre'] = $parametros_proceso['nombre'];
+				$parametros_proceso_usuario[$j]['unidad'] = $parametros_proceso['unidad'];
+			}
 			$procesosUserActual[$i]['parametros'] = $parametros_proceso_usuario;
+			
 		}
 
 		$this->feedback['resource'] = $procesosUserActual;

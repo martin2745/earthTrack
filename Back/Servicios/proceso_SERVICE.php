@@ -104,6 +104,30 @@ class proceso_SERVICE extends ServiceBase
 		// $borradoLogico = $this->clase_validacion->existen_relaciones(); // Se hace borrado físico de todas a todas
 		$tipoBorrado = '';
 
+		include_once './Modelos/proceso_usuario_MODEL.php';
+		$modelo_proceso_usuario = new proceso_usuario_MODEL();
+
+		include_once './Modelos/parametro_usuario_MODEL.php';
+		$modelo_parametro_usuario = new parametro_usuario_MODEL();
+
+		$procesosUsuario =  $modelo_proceso_usuario->seek_multiple(array('id_proceso'), array($this->modelo->arrayDatoValor['id_proceso']))['resource'];
+		
+		for ($i = 0; $i < count($procesosUsuario); $i++){			
+			$parametros_proceso_usuario = $modelo_parametro_usuario->seek_multiple(array('id_proceso', 'usuario'), array($procesosUsuario[$i]['id_proceso'], $procesosUsuario[$i]['usuario']))['resource'];
+			if(count($parametros_proceso_usuario) > 0){
+				for ($j = 0; $j < count($parametros_proceso_usuario); $j++){
+					$modelo_parametro_usuario->arrayDatoValor['id_parametro'] = $parametros_proceso_usuario[$j]['id_parametro'];
+					$modelo_parametro_usuario->arrayDatoValor['id_proceso'] = $parametros_proceso_usuario[$j]['id_proceso'];
+					$modelo_parametro_usuario->arrayDatoValor['usuario'] = $parametros_proceso_usuario[$j]['usuario'];
+					$modelo_parametro_usuario->DELETE();
+				}
+			}
+			
+				$modelo_proceso_usuario->arrayDatoValor['id_proceso'] = $procesosUsuario[$i]['id_proceso'];
+				$modelo_proceso_usuario->arrayDatoValor['usuario'] = $procesosUsuario[$i]['usuario'];
+				$modelo_proceso_usuario->DELETE();
+		}
+
 		if (isset($this->modelo->arrayDatoValor['borrado_logico'])) {
 			$indiceBorradoLogico = count($this->modelo->arrayDatoValor) - 1;
 			unset($this->modelo->datosQuery[$indiceBorradoLogico]);
@@ -148,11 +172,40 @@ class proceso_SERVICE extends ServiceBase
 		$nombres_param = array();
 		$unidades_param = array();
 
+		$formulaActual = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_proceso']))['resource']['formula'];
+
 		$reding_unit = false;
 		$current_unit = '';
 		$reading_param = false;
 		$current_param_name = '';
 		$formula = $this->modelo->arrayDatoValor['formula'];
+		
+		if($formulaActual != $formula){
+			include_once './Modelos/proceso_usuario_MODEL.php';
+			$modelo_proceso_usuario = new proceso_usuario_MODEL();
+
+			include_once './Modelos/parametro_usuario_MODEL.php';
+			$modelo_parametro_usuario = new parametro_usuario_MODEL();
+
+			$procesosUsuario =  $modelo_proceso_usuario->seek_multiple(array('id_proceso'), array($this->modelo->arrayDatoValor['id_proceso']))['resource'];
+			
+			for ($i = 0; $i < count($procesosUsuario); $i++){			
+				$parametros_proceso_usuario = $modelo_parametro_usuario->seek_multiple(array('id_proceso', 'usuario'), array($procesosUsuario[$i]['id_proceso'], $procesosUsuario[$i]['usuario']))['resource'];
+				if(count($parametros_proceso_usuario) > 0){
+					for ($j = 0; $j < count($parametros_proceso_usuario); $j++){
+						$modelo_parametro_usuario->arrayDatoValor['id_parametro'] = $parametros_proceso_usuario[$j]['id_parametro'];
+						$modelo_parametro_usuario->arrayDatoValor['id_proceso'] = $parametros_proceso_usuario[$j]['id_proceso'];
+						$modelo_parametro_usuario->arrayDatoValor['usuario'] = $parametros_proceso_usuario[$j]['usuario'];
+						$modelo_parametro_usuario->DELETE();
+					}
+				}
+				
+					$modelo_proceso_usuario->arrayDatoValor['id_proceso'] = $procesosUsuario[$i]['id_proceso'];
+					$modelo_proceso_usuario->arrayDatoValor['usuario'] = $procesosUsuario[$i]['usuario'];
+					$modelo_proceso_usuario->DELETE();
+			}
+		}
+
 		for ($i = 0; $i < strlen($formula); $i++) {
 			if ($reading_param) {
 				if (!$reding_unit) {
