@@ -3,18 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-01-2023 a las 15:45:14
--- Versión del servidor: 10.4.27-MariaDB
+-- Tiempo de generación: 29-01-2023 a las 10:52:28
+-- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.33
 
---
--- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
---
--- GRANT USAGE ON * . * TO `pdp`@`localhost`;
--- DROP USER `pdp`@`localhost`;
-
--- Comentario
-
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 --
 -- CREAMOS EL USUARIO Y LE DAMOS PASSWORD,DAMOS PERMISO DE USO Y DAMOS PERMISOS SOBRE LA BASE DE DATOS.
@@ -31,7 +26,6 @@ CREATE DATABASE `pdp` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- SELECCIONAMOS PARA USAR
 --
 USE `pdp`;
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,7 +46,7 @@ CREATE TABLE `accion` (
   `id_accion` int(11) NOT NULL,
   `nombre_accion` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_accion` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `accion`
@@ -80,7 +74,7 @@ CREATE TABLE `categoria` (
   `id_padre` int(11) NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0,
   `usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `categoria`
@@ -88,7 +82,11 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
 (1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
-(2, 'nuevaCat', 'Categoria uno', 1, 0, 'admin');
+(2, 'Viajes en coche', 'Viajes en coche de corta distancia', 1, 0, 'martin'),
+(3, 'Procesos industriales', 'Categoria relacionados con la industria', 1, 0, 'user1'),
+(4, 'Industria IT', 'Categoria relacionada hola con IT', 3, 0, 'user1'),
+(5, 'Industria textil', 'Categoria relacionada con la industria textil', 3, 0, 'user2'),
+(9, 'Camisetas', 'Categoria de camisetas', 5, 0, 'user2');
 
 -- --------------------------------------------------------
 
@@ -100,7 +98,7 @@ CREATE TABLE `funcionalidad` (
   `id_funcionalidad` int(11) NOT NULL,
   `nombre_funcionalidad` varchar(48) NOT NULL,
   `descripcion_funcionalidad` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `funcionalidad`
@@ -130,7 +128,7 @@ CREATE TABLE `logexcepcionaccion` (
   `codigo` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `mensaje` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `tiempo` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `logexcepcionaccion`
@@ -155,7 +153,33 @@ INSERT INTO `logexcepcionaccion` (`usuario`, `funcionalidad`, `accion`, `codigo`
 ('admin', 'categoria', 'insertar', 'CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.', '2022-12-05 15:41:26'),
 ('admin', 'categoria', 'insertar', 'CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.', '2022-12-05 15:41:33'),
 ('admin', 'categoria', 'insertar', 'CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.', '2022-12-05 15:41:37'),
-('admin', 'proceso_usuario', 'devolverProcesos', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 15:37:44');
+('admin', 'proceso_usuario', 'devolverProcesos', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 15:37:44'),
+('martin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:44:31'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:44:49'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:45:47'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:46:15'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:46:16'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:46:16'),
+('admin', 'proceso_usuario', 'devolverHuella', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:47:34'),
+('admin', 'proceso_usuario', 'buscar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 17:47:41'),
+('admin', 'proceso_usuario', 'buscar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 18:01:39'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:20:45'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:24:24'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:28:36'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:28:51'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:29:18'),
+('admin', 'proceso_usuario', 'insertar', 'EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario', '2023-01-28 18:31:14'),
+('user1', 'categoria', 'insertar', 'CATEGORIA_YA_EXISTE', 'No se puede insertar una categoria que ya existe.', '2023-01-28 19:11:09'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.', '2023-01-28 19:37:09'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.', '2023-01-28 19:39:00'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.', '2023-01-28 19:42:02'),
+('user2', 'categoria', 'insertar', 'CATEGORIA_YA_EXISTE', 'No se puede insertar una categoria que ya existe.', '2023-01-28 19:50:21'),
+('user1', 'categoria', 'editar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 19:58:55'),
+('user1', 'categoria', 'editar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 19:59:35'),
+('user1', 'categoria', 'editar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 20:05:33'),
+('user1', 'categoria', 'editar', 'SQL_KO', 'Error al ejecutar el sql.', '2023-01-28 20:05:50'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.', '2023-01-28 20:33:04'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.', '2023-01-28 20:33:10');
 
 -- --------------------------------------------------------
 
@@ -170,7 +194,7 @@ CREATE TABLE `logexcepcionatributo` (
   `codigo` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `mensaje` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `tiempo` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `logexcepcionatributo`
@@ -180,7 +204,23 @@ INSERT INTO `logexcepcionatributo` (`usuario`, `funcionalidad`, `accion`, `codig
 ('admin', 'proceso', 'editar', 'DESCRIPCION_PROCESO_VACIA', 'La descripción del proceso está vacía', '2023-01-28 14:44:43'),
 ('admin', 'proceso', 'editar', 'DESCRIPCION_PROCESO_VACIA', 'La descripción del proceso está vacía', '2023-01-28 14:44:53'),
 ('admin', 'proceso', 'editar', 'ID_CATEGORIA_VACIO', 'El id del categoria está vacío', '2023-01-28 14:45:02'),
-('admin', 'proceso', 'editar', 'FORMULA_VACIA', 'La fórmula está vacía', '2023-01-28 14:45:52');
+('admin', 'proceso', 'editar', 'FORMULA_VACIA', 'La fórmula está vacía', '2023-01-28 14:45:52'),
+('admin', 'proceso_usuario', 'devolverHuella', 'PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio', '2023-01-28 18:04:28'),
+('admin', 'proceso_usuario', 'devolverHuella', 'PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio', '2023-01-28 18:04:36'),
+('admin', 'proceso_usuario', 'buscar', 'PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia', '2023-01-28 18:05:10'),
+('admin', 'proceso_usuario', 'devolverHuella', 'PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio', '2023-01-28 18:05:13'),
+('admin', 'proceso_usuario', 'buscar', 'PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia', '2023-01-28 18:05:16'),
+('admin', 'proceso_usuario', 'devolverHuella', 'PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio', '2023-01-28 18:06:12'),
+('admin', 'proceso_usuario', 'buscar', 'PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia', '2023-01-28 18:06:23'),
+('admin', 'proceso_usuario', 'buscar', 'PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia', '2023-01-28 18:13:10'),
+('admin', 'proceso_usuario', 'buscar', 'PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia', '2023-01-28 18:13:44'),
+('admin', 'proceso_usuario', 'insertar', 'PROCESO_USUARIO_PARAMETROS_VACIO', 'El usuario es vacio', '2023-01-28 18:20:53'),
+('admin', 'proceso_usuario', 'insertar', 'PROCESO_USUARIO_PARAMETROS_VACIO', 'El usuario es vacio', '2023-01-28 18:25:48'),
+('admin', 'proceso_usuario', 'insertar', 'PROCESO_USUARIO_PARAMETROS_VACIO', 'El usuario es vacio', '2023-01-28 18:31:19'),
+('admin', 'categoria', 'editar', 'CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio', '2023-01-28 18:52:53'),
+('admin', 'categoria', 'editar', 'CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio', '2023-01-28 18:53:04'),
+('admin', 'categoria', 'editar', 'CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio', '2023-01-28 18:53:04'),
+('admin', 'categoria', 'editar', 'CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio', '2023-01-28 18:53:08');
 
 -- --------------------------------------------------------
 
@@ -193,15 +233,18 @@ CREATE TABLE `parametro` (
   `nombre` varchar(255) NOT NULL,
   `unidad` varchar(11) DEFAULT NULL,
   `id_proceso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `parametro`
 --
 
 INSERT INTO `parametro` (`id_parametro`, `nombre`, `unidad`, `id_proceso`) VALUES
-(19, 'numeroDeViajes', '', 13),
-(20, 'otra', '', 13);
+(21, 'numeroDeViajes', '', 13),
+(22, 'ordenadores', '', 15),
+(23, 'capacidad', 'TB', 15),
+(26, 'numeroDeCamisetas', '', 17),
+(27, 'masa', 'g', 17);
 
 -- --------------------------------------------------------
 
@@ -212,7 +255,7 @@ INSERT INTO `parametro` (`id_parametro`, `nombre`, `unidad`, `id_proceso`) VALUE
 CREATE TABLE `parametro_usuario` (
   `id_parametro` int(11) NOT NULL,
   `id_proceso` int(11) NOT NULL,
-  `usuario` varchar(15) NOT NULL,
+  `usuario` varchar(15) COLLATE utf8_bin NOT NULL,
   `valor` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -221,8 +264,13 @@ CREATE TABLE `parametro_usuario` (
 --
 
 INSERT INTO `parametro_usuario` (`id_parametro`, `id_proceso`, `usuario`, `valor`) VALUES
-(19, 13, 'martin', 2),
-(20, 13, 'martin', 3);
+(21, 13, 'user2', 10),
+(22, 15, 'user2', 1),
+(23, 15, 'user2', 1),
+(26, 17, 'admin', 5),
+(26, 17, 'user2', 5),
+(27, 17, 'admin', 30),
+(27, 17, 'user2', 5);
 
 -- --------------------------------------------------------
 
@@ -234,7 +282,7 @@ CREATE TABLE `permiso` (
   `id_rol` int(11) NOT NULL,
   `id_accion` int(11) NOT NULL,
   `id_funcionalidad` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -303,14 +351,16 @@ CREATE TABLE `proceso` (
   `descripcion_proceso` varchar(255) DEFAULT NULL,
   `id_categoria` int(11) NOT NULL,
   `formula` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proceso`
 --
 
 INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descripcion_proceso`, `id_categoria`, `formula`) VALUES
-(13, 'editado', 'desc editada', 2, '{numeroDeViajes}*{otra}');
+(13, 'Ir al trabajo', 'Proceso que describe los trayectos para ir al trabajo', 2, '{numeroDeViajes}*12'),
+(15, 'Ordenadores domesticos', 'Proceso que calcula cuanto carbono produce tus ordenadores', 4, '{ordenadores}*{capacidad(TB)}'),
+(17, 'Comprar una camiseta', 'Proceso para comprar una camiseta', 9, '{numeroDeCamisetas}*{masa(g)}');
 
 -- --------------------------------------------------------
 
@@ -320,7 +370,7 @@ INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descripcion_proceso`, `i
 
 CREATE TABLE `proceso_usuario` (
   `id_proceso` int(11) NOT NULL,
-  `usuario` varchar(15) NOT NULL,
+  `usuario` varchar(15) COLLATE utf8_bin NOT NULL,
   `total` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -329,7 +379,10 @@ CREATE TABLE `proceso_usuario` (
 --
 
 INSERT INTO `proceso_usuario` (`id_proceso`, `usuario`, `total`) VALUES
-(13, 'martin', 6);
+(13, 'user2', 120),
+(15, 'user2', 1),
+(17, 'user2', 25),
+(17, 'admin', 150);
 
 -- --------------------------------------------------------
 
@@ -342,7 +395,7 @@ CREATE TABLE `rol` (
   `nombre_rol` varchar(48) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `descripcion_rol` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rol`
@@ -371,7 +424,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(9) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `email` varchar(40) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `borrado_logico` int(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -379,7 +432,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
-('martin', '925d7518fc597af0e43f5606f9a51512', 3, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0);
+('martin', '925d7518fc597af0e43f5606f9a51512', 2, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0),
+('user1', '24c9e15e52afc47c225b757e7bee1f9d', 2, '36230724C', 'usuario uno', 'usuario uno', '1900-01-01', 'Avenida Celanova', '617291722', 'user1@gmail.com', 0),
+('user2', '7e58d63b60197ceb55a1c487989a3720', 2, '36230724C', 'usuario dos', 'usuario dos', '1900-01-01', 'Avenida Celanova nº46 2º', '617292222', 'user2@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -469,7 +524,7 @@ ALTER TABLE `accion`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidad`
@@ -481,13 +536,13 @@ ALTER TABLE `funcionalidad`
 -- AUTO_INCREMENT de la tabla `parametro`
 --
 ALTER TABLE `parametro`
-  MODIFY `id_parametro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_parametro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
