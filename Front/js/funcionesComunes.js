@@ -66,9 +66,28 @@ function includeTopMenu() {
     '<img id="imagenHome" src="images/home.png"/>' +
     '<div class="home MENU">Menú</div>' +
     "</a>" +
-    '<div class="dropdown-menu" id="listadoFuncionalidades">' +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesUsuario">' +
     "</div>" +
     "</li>" +
+
+    '<li class="nav-item dropdown">' +
+    '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+    '<img id="imagenHome" src="images/categorias.png"/>' +
+    '<div class="home CATEGORIAS">Categorias</div>' +
+    "</a>" +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesCategorias">' +
+    "</div>" +
+    "</li>" +
+
+    '<li class="nav-item dropdown">' +
+    '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+    '<img id="imagenHome" src="images/rol.png"/>' +
+    '<div class="home PROCESOS"></div>' +
+    "</a>" +
+    '<div class="dropdown-menu" id="listadoFuncionalidadesProcesos">' +
+    "</div>" +
+    "</li>" +
+
     '<li class="nav-item dropdown">' +
     '<a class="nav-link dropdown-toggle" href="#" id="navbardrop2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
     '<img id="imagenUsuario" src="images/usuario.png"/>' +
@@ -322,6 +341,7 @@ function deleteCookiesEntrePaginas(vista) {
     var cookie = cookies[i];
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    
     if (
       name == "token" ||
       name == " token" ||
@@ -330,9 +350,12 @@ function deleteCookiesEntrePaginas(vista) {
       name == "rolUsuario" ||
       name == " rolUsuario" ||
       name == "usuarioSistema" ||
-      name == " usuarioSistema"
+      name == " usuarioSistema" ||
+      name == "navigateToProceso" ||
+      name == " navigateToProceso" 
     ) {
     } else {
+      
       setCookie(name, "");
     }
   }
@@ -977,6 +1000,7 @@ usuario o si es un administrador o no tiene procesos carga la información por d
 function inicioUsuario() {
   var rol = getCookie("rolUsuario");
   var idioma = getCookie("lang");
+  var huella =getCookie("huella");
 
   $("#inicioUsuario").html("");
   var contenidoModal = "";
@@ -1023,20 +1047,87 @@ function inicioUsuario() {
       break;
     case "usuario":
       contenidoModal =
+      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+      '<div class="card">' +
+      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+      '<div class="card-body-news">' +
+      '<h4 class="card-title TITULO_NOTICIA_1"></h4>' +
+      '<p class="card-text CONTENIDO_NOTICIA_1"></p>' +
+      "</div>" +
+      '<div class="card-footer">' +
+      '<small class="text-muted"></small>' +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+      '<div class="card">' +
+      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+      '<div class="card-body-news">' +
+      '<h4 class="card-title TITULO_NOTICIA_2"></h4>' +
+      '<p class="card-text CONTENIDO_NOTICIA_2"></p>' +
+      "</div>" +
+      '<div class="card-footer">' +
+      '<small class="text-muted"></small>' +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+      '<div class="card">' +
+      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+      '<div class="card-body-news">' +
+      '<h4 class="card-title TITULO_NOTICIA_3"></h4>' +
+      '<p class="card-text CONTENIDO_NOTICIA_3"></p>' +
+      "</div>" +
+      '<div class="card-footer">' +
+      '<small class="text-muted"></small>' +
+      "</div>" +
+      "</div>" +
+      "</div>";
+      break;
+      case "responsable":
+        contenidoModal =
         '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
         '<div class="card">' +
         '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
         '<div class="card-body-news">' +
-        '<h4 class="card-title">Vuelo Madrid-Vigo</h4>' +
-        '<p class="card-text">Para la distancia de 500 km, en un boing 747 el total de CO2 por persona en este proceso corresponde a 1,5KG de C02.</p>' +
+        '<h4 class="card-title TITULO_NOTICIA_1"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_1"></p>' +
         "</div>" +
         '<div class="card-footer">' +
-        '<small class="text-muted">Fecha de emisión: 12/07/2022</small>' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_2"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_2"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_3"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_3"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
         "</div>" +
         "</div>" +
         "</div>";
-      break;
+        break;
   }
+
+  var tarjetaHuella=construyeTarjetaHuella(huella);
+
+  contenidoModal=tarjetaHuella+contenidoModal;
 
   $("#inicioUsuario").append(contenidoModal);
   setLang(idioma);
@@ -1054,3 +1145,77 @@ $(document).ready(function () {
     }
   });
 });
+
+function construyeTarjetaHuella(huella){
+
+  console.log("MECAGO EN DIOS");
+   var tarjeta='<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+                '<div class="card">' +
+                '<img src="images/iconoIndex2.png" class="card-img-top" alt="Noticias">' +
+                '<div class="card-body-news">' +
+                '<h4 class="card-title MI_HUELLA"> MI HUELLA</h4>' +
+                '<p class="card-text EMISIONES" > </p>' +
+                '<strong><p class="card-text ">'+ (parseFloat(huella)).toFixed(2) +'</p></strong>' +
+                "</div>" +
+                '<div class="card-footer">' +
+                '<small class="text-muted GENERAS_HUELLA">Emisiones de CO2</small>' +
+                "</div>" +
+                "</div>" +
+                "</div>";
+
+  return(tarjeta);
+}
+
+
+function buscarHuellaAjaxPromesa() {
+
+  crearformoculto("formularioGenerico", "");
+  addActionControler(document.formularioGenerico, "devolverHuella", "proceso_usuario");
+
+  insertacampo(
+    document.formularioGenerico,
+    "usuario",
+    getCookie("usuarioSistema")
+  );
+  var token = getCookie("token");
+  var idioma = getCookie("lang");
+
+  if (token == null) {
+    errorAutenticado("ACCESO_DENEGADO", idioma);
+  } else {
+    return new Promise(function (resolve, reject) {
+      $.ajax({
+        method: "POST",
+        url: URL,
+        data: $("#formularioGenerico").serialize(),
+        headers: { Authorization: token },
+      })
+        .done((res) => {
+          if (res.code != "PROCESO_USUARIO_DEVOLVER_HUELLA_OK" && res.code != "RECORDSET_DATOS" && res.code != "RECORDSET_VACIO") {
+            reject(res);
+          }
+          resolve(res);
+        })
+        .fail(function (jqXHR) {
+          errorFailAjax(jqXHR.status);
+        });
+    });
+  }
+}
+
+async function buscarHuella() {
+  var idioma = getCookie("lang");
+
+  await buscarHuellaAjaxPromesa()
+    .then((res) => {
+      setCookie("huella", res.resource.toString());
+    })
+    .catch((res) => {
+      $("#modal-title").addClass("modalMensajeError");
+      respuestaKOAjax();
+      actualizaMensajesRespuestAjax(res.code);
+      setLang(idioma);
+      //limpiarModalTitulo();
+    });
+  deleteActionController();
+}

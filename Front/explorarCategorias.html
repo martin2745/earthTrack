@@ -11,6 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -19,6 +20,7 @@
 	<script type="text/javascript" src="js/funcionesFormulario.js"></script>
 	<script type="text/javascript" src="js/constantes.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/explorarCategorias.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
@@ -31,7 +33,7 @@
 
 <body onload="
   (async ()=>{
-			await deleteCookiesEntrePaginas('menu');
+			await deleteCookiesEntrePaginas('explorarCategorias');
 			await rolUsuario();
 			await includeTopMenu();
 			await rellenarTopMenu();
@@ -39,24 +41,36 @@
 			cargarIdioma(); 
 			includeFooter(); 
 			setLang(''); 
-			await buscarHuella();
-			await inicioUsuario();
-			
+			await explorarCategorias();
   })();">
 
 	<div id="topMenu"></div>
 
-	<div id="bienvenida" class="bienvenida MENSAJE_BIENVENIDA" style="display: block;">Bienvenido a earthTrack</div>
+	<div id="bienvenida" class="bienvenida EXPLORAR_CATEGORIA" style="display: block;">Bienvenido a earthTrack</div>
 
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true" style="display: none;">
 	</div>
 
 	<div class="noticias overflow-auto">
-		<div id="inicioUsuario" class="row">
+		<div id="explorarCategorias" class="row">
 
 		</div>
 	</div>
+
+    <div class="volver">
+        <div name="btnBack" value="Volver" class="tooltip backIcon">
+            <a href="menu.html">
+                <img class="iconoBack ICONO_VOLVER" src="images/home2.png" alt="Volver" />
+                <span class="tooltiptext ICONO_VOLVER"></span>
+            </a>
+        </div>
+
+		<div name="btnBackFather" value="Volver" class="tooltip backIcon" style="display:inline;">
+                <img class="iconoBack ICONO_VOLVER" src="images/back3.png" alt="Volver a la anterior padre" onclick="javascript:volverAnteriorPadre()" />
+                <span class="tooltiptext VOLVER_PADRE_ANTERIOR"></span>
+        </div>
+    </div>
 
 	<div id="modal" tabindex="-1" role="dialog" style="display:none">
 		<div class="modal-dialog" role="document" id="modal-dialog">

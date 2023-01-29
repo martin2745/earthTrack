@@ -83,12 +83,14 @@ function rellenarTopMenu() {
   var desplegable = "";
   var arrayfuncionalidades = [];
 
-  $("#listadoFuncionalidades").html("");
+  $("#listadoFuncionalidadesUsuario").html("");
 
   if (rol == "administrador") {
     arrayfuncionalidades = [
       "usuarioGestion",
       "rolGestion",
+      "categoriaGestion",
+      "procesoGestion",
       "funcionalidadGestion",
       "accionGestion",
       "logExcepcionAtributosGestion",
@@ -99,15 +101,85 @@ function rellenarTopMenu() {
     for (var i = 0; i < arrayfuncionalidades.length; i++) {
       desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
     }
-  } else if (rol == "usuario") {
-    arrayfuncionalidades = ["usuarioGestion"];
+  } else if (rol == "responsable") {
+    arrayfuncionalidades = ["usuarioGestion",];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  }else if (rol == "usuario") {
+    arrayfuncionalidades = ["usuarioGestion",];
 
     for (var i = 0; i < arrayfuncionalidades.length; i++) {
       desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
     }
   }
 
-  $("#listadoFuncionalidades").append(desplegable);
+  $("#listadoFuncionalidadesUsuario").append(desplegable);
+
+  //Menu categorias
+  desplegable = "";
+  arrayfuncionalidades = [];
+  $("#listadoFuncionalidadesCategorias").html("");
+
+  if (rol == "administrador") {
+    arrayfuncionalidades = [
+      "explorarCategorias",
+      "categoriaGestion",
+      "miCategoria",
+    ];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  } else if (rol == "responsable") {
+    arrayfuncionalidades = ["explorarCategorias","miCategoria",];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  }else if (rol == "usuario") {
+    arrayfuncionalidades = ["explorarCategorias",];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  }
+
+  $("#listadoFuncionalidadesCategorias").append(desplegable);
+
+  //Menu procesos
+  desplegable = "";
+  arrayfuncionalidades = [];
+  $("#listadoFuncionalidadesProcesos").html("");
+
+  if (rol == "administrador") {
+    arrayfuncionalidades = [
+      "procesoGestion",
+      "explorarProcesos",
+      "miProcesos"
+    ];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  } else if (rol == "responsable") {
+    arrayfuncionalidades = ["explorarProcesos","miProcesos"];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  }else if (rol == "usuario") {
+    arrayfuncionalidades = ["explorarProcesos","miProcesos"];
+
+    for (var i = 0; i < arrayfuncionalidades.length; i++) {
+      desplegable += opcionesDesplegable(arrayfuncionalidades[i]);
+    }
+  }
+
+  $("#listadoFuncionalidadesProcesos").append(desplegable);
+
+  
   setLang(getCookie("lang"));
 }
 
@@ -123,6 +195,21 @@ function opcionesDesplegable(funcionalidad) {
       if (funcionalidad == "usuarioGestion") {
         toret =
           '<a class="dropdown-item GESTION_USUARIO" href="usuarioGestion.html"></a>' +
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "explorarCategorias") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_CATEGORIA" href="explorarCategorias.html"></a>' +
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "categoriaGestion") {
+        toret =
+          '<a class="dropdown-item GESTION_CATEGORIA" href="categoriaGestion.html"></a>' +
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "procesoGestion") {
+        toret =
+          '<a class="dropdown-item GESTION_PROCESO" href="procesoGestion.html"></a>' +
           '<div class="dropdown-divider"></div>';
       }
       if (funcionalidad == "rolGestion") {
@@ -153,12 +240,67 @@ function opcionesDesplegable(funcionalidad) {
       if (funcionalidad == "testGestion") {
         toret = '<a class="dropdown-item TESTS" href="testGestion.html"></a>';
       }
+      if (funcionalidad == "miCategoria") {
+        toret =
+          '<a class="dropdown-item MI_CATEGORIA" href="miCategoria.html"></a>' ;
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "explorarProcesos") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_PROCESOS" href="explorarProcesos.html"></a>'+
+          '<div class="dropdown-divider"></div>';
+      }if (funcionalidad == "miProcesos") {
+        toret =
+          '<a class="dropdown-item MIS_PROCESOS" href="misProcesos.html"></a>';
+          '<div class="dropdown-divider"></div>';
+      }
       break;
     //Resto de roles de la aplicación
     case "usuario":
       if (funcionalidad == "usuarioGestion") {
         toret =
           '<a class="dropdown-item DATOS_USUARIO datosUsuario" href="usuarioGestion.html"></a>';
+          //'<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "explorarCategorias") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_CATEGORIA" href="explorarCategorias.html"></a>' ;
+          
+      }
+      if (funcionalidad == "explorarProcesos") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_PROCESOS" href="explorarProcesos.html"></a>'+
+          '<div class="dropdown-divider"></div>';
+      }if (funcionalidad == "miProcesos") {
+        toret =
+          '<a class="dropdown-item MIS_PROCESOS" href="misProcesos.html"></a>';
+          '<div class="dropdown-divider"></div>';
+      }
+      break;
+     case "responsable":
+      if (funcionalidad == "usuarioGestion") {
+        toret =
+          '<a class="dropdown-item DATOS_USUARIO datosUsuario" href="usuarioGestion.html"></a>';
+          //'<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "explorarCategorias") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_CATEGORIA" href="explorarCategorias.html"></a>'+
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "miCategoria") {
+        toret =
+          '<a class="dropdown-item MI_CATEGORIA" href="miCategoria.html"></a>' ;
+          '<div class="dropdown-divider"></div>';
+      }
+      if (funcionalidad == "explorarProcesos") {
+        toret =
+          '<a class="dropdown-item EXPLORAR_PROCESOS" href="explorarProcesos.html"></a>'+
+          '<div class="dropdown-divider"></div>';
+      }if (funcionalidad == "miProcesos") {
+        toret =
+          '<a class="dropdown-item MIS_PROCESOS" href="misProcesos.html"></a>' ;
+          '<div class="dropdown-divider"></div>';
       }
       break;
   }
