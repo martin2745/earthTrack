@@ -213,10 +213,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'admin@admin.com', 0),
-('usuarioCorreo', '1fb4dd8cf34de6f65fe5bfd2118c089f', 4, '85537205K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioCorreo@gmail.com', 0),
+('usuarioCorreo', '1fb4dd8cf34de6f65fe5bfd2118c089f', 3, '85537205K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioCorreo@gmail.com', 0),
 ('usuarioDelete', '21232f297a57a5a743894a0e4a801fc3', 6, '58551442C', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'responsable@responsable.com', 1),
 ('usuarioRolAccio', '21232f297a57a5a743894a0e4a801fc3', 5, '39426866J', 'usuarioRolAccion', 'rol acciones', '2022-05-01', 'Salvador dalí', '666666666', 'usuarioRolAccion@gmail.com', 0),
-('usuarioTest', '21232f297a57a5a743894a0e4a801fc3', 4, '10147483K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioTest@gmail.com', 0);
+('usuarioTest', '21232f297a57a5a743894a0e4a801fc3', 3, '10147483K', 'responsable', 'responsable responsable', '2020-05-01', 'Rúa 12, Parcela 5, 6, 32901, Ourense', '666666666', 'usuarioTest@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
