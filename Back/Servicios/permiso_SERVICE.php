@@ -108,20 +108,27 @@ class permiso_SERVICE extends ServiceBase{
 			case 'accion':
 				$acciones = array('borrar', 'buscar', 'editar', 'insertar', 'verEnDetalle');
 				break;
-			case 'logExcepcionAcciones':
+			case 'permiso':
 				$acciones = array('buscar');
 				break;
-			case 'logExcepcionAtributos':
-				$acciones = array('buscar');
+			case 'categoria':
+				$acciones = array('borrar', 'buscar', 'editar', 'insertar', 'verEnDetalle');
 				break;
-			case 'test':
-				$acciones = array('ejecutarTest');
+			case 'proceso':
+				$acciones = array('borrar', 'buscar', 'editar', 'insertar', 'verEnDetalle');
+				break;
+			case 'logExcepcionAccion':
+				$acciones = array('buscar', 'listar');
+				break;
+			case 'logExcepcionAtributo':
+				$acciones = array('buscar', 'listar');
 				break;
 		}
 		
-		if($funcionalidad != 'logExcepcionAcciones' && $funcionalidad != 'logExcepcionAtributos' && $funcionalidad != 'test'){
+		if($funcionalidad != 'funcionalidad' && $funcionalidad != 'accion' && $funcionalidad != 'permiso' &&
+			$funcionalidad != 'logExcepcionAccion' && $funcionalidad != 'logExcepcionAtributo' ){
 			//Añadimos nuevas acciones que no sean las base, buscamos todas las acciones y descartamos las base
-			$accionesBase = array('borrar', 'buscar', 'editar', 'insertar', 'reactivar', 'verEnDetalle', 'ejecutarTest');
+			$accionesBase = array('borrar', 'buscar', 'editar', 'insertar', 'reactivar', 'verEnDetalle');
 			$accionesSistema = $this->accionesSistema();
 
 			foreach($accionesSistema as $accion){

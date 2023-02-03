@@ -1,6 +1,6 @@
 <?php
 
-include_once './Validation/Validar_class.php';
+include_once './Validation/validar_class.php';
 include_once './Modelos/permiso_MODEL.php';
 
 class proceso_usuario_VALIDATION_ACCION extends Validar{

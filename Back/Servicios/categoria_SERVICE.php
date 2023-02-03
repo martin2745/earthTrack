@@ -12,16 +12,13 @@ class categoria_SERVICE extends ServiceBase
 
 		switch (action) {
 			case 'insertar':
-				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
+				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
 				break;
 			case 'editar':
 				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
 				break;
 			case 'borrar':
 				$this->listaAtributos = array('id_categoria', 'borrado_logico');
-				break;
-			case 'reactivar':
-				$this->listaAtributos = array('id_categoria');
 				break;
 			case 'buscar':
 				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'usuario', 'id_padre');
@@ -47,7 +44,7 @@ class categoria_SERVICE extends ServiceBase
 
 	function devolverPadre($mensaje)
 	{
-		include_once './Modelos/usuario_model.php';
+		include_once './Modelos/usuario_MODEL.php';
 		$modeloUsuario = new usuario_MODEL();
 		$resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
 		$fila = $resultado['resource'];
@@ -71,7 +68,7 @@ class categoria_SERVICE extends ServiceBase
 
 	function devolverHijos($mensaje)
 	{
-		include_once './Modelos/usuario_model.php';
+		include_once './Modelos/usuario_MODEL.php';
 		$modeloUsuario = new usuario_MODEL();
 		$actual = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
 		$objetoActual = $actual['resource'];
@@ -79,7 +76,7 @@ class categoria_SERVICE extends ServiceBase
 		$resultado = $this->modelo->seek_multiple(array('id_padre'), array($objetoActual['id_categoria']));
 		$filas = $resultado['resource'];
 
-		include_once './Modelos/proceso_model.php';
+		include_once './Modelos/proceso_MODEL.php';
 		$modelo_proceso = new proceso_MODEL();
 
 		for ($i = 0; $i < count($filas); $i++) {
@@ -118,7 +115,7 @@ class categoria_SERVICE extends ServiceBase
 
 	function insertar($mensaje)
 	{
-		include_once './Modelos/usuario_model.php';
+		include_once './Modelos/usuario_MODEL.php';
 		$modeloUsuario = new usuario_MODEL();
 
 		$this->modelo->ADD('categoria', $this->modelo->arrayDatoValor);
@@ -133,7 +130,7 @@ class categoria_SERVICE extends ServiceBase
 
 		$categoria_insertada = $this->modelo->seek(array('id_padre'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
 
-		include_once './Modelos/proceso_model.php';
+		include_once './Modelos/proceso_MODEL.php';
 		$modelo_proceso = new proceso_MODEL();
 
 		$resultado_proceso = $modelo_proceso->seek(array('id_categoria'), array($this->modelo->arrayDatoValor['id_padre']))['resource'];
@@ -150,7 +147,7 @@ class categoria_SERVICE extends ServiceBase
 
 	function editar($mensaje)
 	{
-		include_once './Modelos/usuario_model.php';
+		include_once './Modelos/usuario_MODEL.php';
 		$modeloUsuario = new usuario_MODEL();
 
 		$usuarioNuevo = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
@@ -182,12 +179,12 @@ class categoria_SERVICE extends ServiceBase
 
 	function borrar($mensaje)
 	{
-		include_once './Modelos/usuario_model.php';
+		include_once './Modelos/usuario_MODEL.php';
 		$modeloUsuario = new usuario_MODEL();
 
 		$categoriaAct = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']))['resource'];
 
-		include_once './Modelos/proceso_model.php';
+		include_once './Modelos/proceso_MODEL.php';
 		$modeloProceso= new proceso_MODEL();
 
 		$usuarioAct = $modeloUsuario->getById(array($categoriaAct['usuario']))['resource'];

@@ -69,7 +69,6 @@ function includeTopMenu() {
     '<div class="dropdown-menu" id="listadoFuncionalidadesUsuario">' +
     "</div>" +
     "</li>" +
-
     '<li class="nav-item dropdown">' +
     '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
     '<img id="imagenHome" src="images/categorias.png"/>' +
@@ -78,7 +77,6 @@ function includeTopMenu() {
     '<div class="dropdown-menu" id="listadoFuncionalidadesCategorias">' +
     "</div>" +
     "</li>" +
-
     '<li class="nav-item dropdown">' +
     '<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
     '<img id="imagenHome" src="images/rol.png"/>' +
@@ -87,7 +85,6 @@ function includeTopMenu() {
     '<div class="dropdown-menu" id="listadoFuncionalidadesProcesos">' +
     "</div>" +
     "</li>" +
-
     '<li class="nav-item dropdown">' +
     '<a class="nav-link dropdown-toggle" href="#" id="navbardrop2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
     '<img id="imagenUsuario" src="images/usuario.png"/>' +
@@ -341,7 +338,7 @@ function deleteCookiesEntrePaginas(vista) {
     var cookie = cookies[i];
     var eqPos = cookie.indexOf("=");
     var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    
+
     if (
       name == "token" ||
       name == " token" ||
@@ -352,10 +349,9 @@ function deleteCookiesEntrePaginas(vista) {
       name == "usuarioSistema" ||
       name == " usuarioSistema" ||
       name == "navigateToProceso" ||
-      name == " navigateToProceso" 
+      name == " navigateToProceso"
     ) {
     } else {
-      
       setCookie(name, "");
     }
   }
@@ -1000,7 +996,7 @@ usuario o si es un administrador o no tiene procesos carga la información por d
 function inicioUsuario() {
   var rol = getCookie("rolUsuario");
   var idioma = getCookie("lang");
-  var huella =getCookie("huella");
+  var huella = getCookie("huella");
 
   $("#inicioUsuario").html("");
   var contenidoModal = "";
@@ -1047,45 +1043,6 @@ function inicioUsuario() {
       break;
     case "usuario":
       contenidoModal =
-      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
-      '<div class="card">' +
-      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
-      '<div class="card-body-news">' +
-      '<h4 class="card-title TITULO_NOTICIA_1"></h4>' +
-      '<p class="card-text CONTENIDO_NOTICIA_1"></p>' +
-      "</div>" +
-      '<div class="card-footer">' +
-      '<small class="text-muted"></small>' +
-      "</div>" +
-      "</div>" +
-      "</div>" +
-      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
-      '<div class="card">' +
-      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
-      '<div class="card-body-news">' +
-      '<h4 class="card-title TITULO_NOTICIA_2"></h4>' +
-      '<p class="card-text CONTENIDO_NOTICIA_2"></p>' +
-      "</div>" +
-      '<div class="card-footer">' +
-      '<small class="text-muted"></small>' +
-      "</div>" +
-      "</div>" +
-      "</div>" +
-      '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
-      '<div class="card">' +
-      '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
-      '<div class="card-body-news">' +
-      '<h4 class="card-title TITULO_NOTICIA_3"></h4>' +
-      '<p class="card-text CONTENIDO_NOTICIA_3"></p>' +
-      "</div>" +
-      '<div class="card-footer">' +
-      '<small class="text-muted"></small>' +
-      "</div>" +
-      "</div>" +
-      "</div>";
-      break;
-      case "responsable":
-        contenidoModal =
         '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
         '<div class="card">' +
         '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
@@ -1122,12 +1079,51 @@ function inicioUsuario() {
         "</div>" +
         "</div>" +
         "</div>";
-        break;
+      break;
+    case "responsable":
+      contenidoModal =
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_1"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_1"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_2"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_2"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+        '<div class="card">' +
+        '<img src="images/news.png" class="card-img-top" alt="Noticias">' +
+        '<div class="card-body-news">' +
+        '<h4 class="card-title TITULO_NOTICIA_3"></h4>' +
+        '<p class="card-text CONTENIDO_NOTICIA_3"></p>' +
+        "</div>" +
+        '<div class="card-footer">' +
+        '<small class="text-muted"></small>' +
+        "</div>" +
+        "</div>" +
+        "</div>";
+      break;
   }
 
-  var tarjetaHuella=construyeTarjetaHuella(huella);
+  var tarjetaHuella = construyeTarjetaHuella(huella);
 
-  contenidoModal=tarjetaHuella+contenidoModal;
+  contenidoModal = tarjetaHuella + contenidoModal;
 
   $("#inicioUsuario").append(contenidoModal);
   setLang(idioma);
@@ -1146,31 +1142,34 @@ $(document).ready(function () {
   });
 });
 
-function construyeTarjetaHuella(huella){
+function construyeTarjetaHuella(huella) {
+  var tarjeta =
+    '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
+    '<div class="card">' +
+    '<img src="images/iconoIndex2.png" class="card-img-top" alt="Noticias">' +
+    '<div class="card-body-news">' +
+    '<h4 class="card-title MI_HUELLA"> MI HUELLA</h4>' +
+    '<p class="card-text EMISIONES" > </p>' +
+    '<strong><p class="card-text ">' +
+    parseFloat(huella).toFixed(2) +
+    "</p></strong>" +
+    "</div>" +
+    '<div class="card-footer">' +
+    '<small class="text-muted GENERAS_HUELLA">Emisiones de CO2</small>' +
+    "</div>" +
+    "</div>" +
+    "</div>";
 
-  console.log("MECAGO EN DIOS");
-   var tarjeta='<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' +
-                '<div class="card">' +
-                '<img src="images/iconoIndex2.png" class="card-img-top" alt="Noticias">' +
-                '<div class="card-body-news">' +
-                '<h4 class="card-title MI_HUELLA"> MI HUELLA</h4>' +
-                '<p class="card-text EMISIONES" > </p>' +
-                '<strong><p class="card-text ">'+ (parseFloat(huella)).toFixed(2) +'</p></strong>' +
-                "</div>" +
-                '<div class="card-footer">' +
-                '<small class="text-muted GENERAS_HUELLA">Emisiones de CO2</small>' +
-                "</div>" +
-                "</div>" +
-                "</div>";
-
-  return(tarjeta);
+  return tarjeta;
 }
 
-
 function buscarHuellaAjaxPromesa() {
-
   crearformoculto("formularioGenerico", "");
-  addActionControler(document.formularioGenerico, "devolverHuella", "proceso_usuario");
+  addActionControler(
+    document.formularioGenerico,
+    "devolverHuella",
+    "proceso_usuario"
+  );
 
   insertacampo(
     document.formularioGenerico,
@@ -1191,7 +1190,11 @@ function buscarHuellaAjaxPromesa() {
         headers: { Authorization: token },
       })
         .done((res) => {
-          if (res.code != "PROCESO_USUARIO_DEVOLVER_HUELLA_OK" && res.code != "RECORDSET_DATOS" && res.code != "RECORDSET_VACIO") {
+          if (
+            res.code != "PROCESO_USUARIO_DEVOLVER_HUELLA_OK" &&
+            res.code != "RECORDSET_DATOS" &&
+            res.code != "RECORDSET_VACIO"
+          ) {
             reject(res);
           }
           resolve(res);

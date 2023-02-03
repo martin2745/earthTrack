@@ -46,7 +46,9 @@ function setLang(lang = "") {
     var textAreas = document.getElementsByTagName("textarea");
 
     for (var elem in elementos) {
-      elementos[elem].innerHTML = traduccion[clave];
+      if (elementos[elem] != undefined) {
+        elementos[elem].innerHTML = traduccion[clave];
+      }
     }
 
     for (var i = 0; i < etiquetas.length; i++) {

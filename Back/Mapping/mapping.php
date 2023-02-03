@@ -99,7 +99,6 @@ class mapping extends MappingBase{
           
       $this->query = "DELETE FROM $tabla WHERE( $infoQuery )";
       $this->stmt = $this->conexion->prepare($this->query);
-      //var_dump($this->query);var_dump($this->valoresQuery);exit;
       $this->execute_single_query($this->valoresQuery);
     }
 

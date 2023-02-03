@@ -51,17 +51,14 @@ function eliminarcampo(name) {
 
 /**Función para eliminar campos del formulario*/
 function eliminarcampoId(idElementoError) {
-  
   document.getElementById(idElementoError).style.display = "none";
 }
 
 /**Función que resetear los valores del formulario*/
 function resetearFormulario(idFormulario, idElementoList) {
-
   document.getElementById(idFormulario).reset();
   //Devuelve el color por defecto.
   idElementoList.forEach(function (idElemento) {
-    
     document.getElementById(idElemento).style.borderColor = "#c8c8c8";
   });
 }
@@ -108,14 +105,14 @@ function addActionControler(form, action, controller) {
       accion = "funcionalidadesSistema";
       break;
     case "devolverHijos":
-        accion = "devolverHijos";
+      accion = "devolverHijos";
       break;
     case "devolverHuella":
-        accion = "devolverHuella";
+      accion = "devolverHuella";
       break;
     case "devolverProcesos":
-        accion="devolverProcesos";
-        break;
+      accion = "devolverProcesos";
+      break;
   }
   //(form, name, value)
   insertacampo(form, "action", accion);

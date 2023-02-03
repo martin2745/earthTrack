@@ -229,6 +229,7 @@
 
 	//editar
 	define('EMAIL_USUARIO_YA_EXISTE', 'Ya existe un usuario con ese email.');
+	define('RESPONSABLE_TIENE_CATEGORIA', 'No se puede borrar un responsable con categoría, elimine primero su categoría.');
 	define('ACCION_DENEGADA_EDITAR_USUARIO', 'Solo el administrador puede editar los datos de un usuario y un usuario los suyos propios.');
 
 	//borrar
@@ -420,7 +421,6 @@
 	define('CATEGORIA_BORRAR_OK', 'La categoria ha sido borrada correctamente');
 	define('CATEGORIA_DEVOLVER_PADRE', 'La categoria padre ha sido devuelta correctamente');
 	define('CATEGORIA_DEVOLVER_HIJOS', 'Las categorias hijos has sido devueltas correctamente');
-	define('CATEGORIA_REACTIVAR_OK', 'La categoria ha sido reactivado');
 
 	///proceso_usuario_CONTROLLER
 	define('PROCESO_USUARIO_INSERTAR_OK', 'El proceso de usuario ha sido insertada correctamente');
