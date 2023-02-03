@@ -72,7 +72,6 @@ CREATE TABLE `categoria` (
   `nombre_categoria` varchar(48) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
   `descripcion_categoria` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL,
   `id_padre` int NOT NULL,
-  `borrado_logico` int NOT NULL DEFAULT '0',
   `usuario` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
@@ -80,13 +79,13 @@ CREATE TABLE `categoria` (
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `borrado_logico`, `usuario`) VALUES
-(1, 'superCategoria', 'Categoria Base', 0, 0, 'admin'),
-(2, 'Viajes en coche', 'Viajes en coche de corta distancia', 1, 0, 'martin'),
-(3, 'Procesos industriales', 'Categoria relacionados con la industria', 1, 0, 'user1'),
-(4, 'Industria IT', 'Categoria relacionada hola con IT', 3, 0, 'user1'),
-(5, 'Industria textil', 'Categoria relacionada con la industria textil', 3, 0, 'user2'),
-(9, 'Camisetas', 'Categoria de camisetas', 5, 0, 'user2');
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `usuario`) VALUES
+(1, 'superCategoria', 'Categoria Base', 0, 'admin'),
+(2, 'Viajes en coche', 'Viajes en coche de corta distancia', 1, 'martin'),
+(3, 'Procesos industriales', 'Categoria relacionados con la industria', 1, 'user1'),
+(4, 'Industria IT', 'Categoria relacionada hola con IT', 3, 'user1'),
+(5, 'Industria textil', 'Categoria relacionada con la industria textil', 3, 'user2'),
+(9, 'Camisetas', 'Categoria de camisetas', 5, 'user2');
 
 -- --------------------------------------------------------
 
@@ -134,9 +133,10 @@ CREATE TABLE `logexcepcionaccion` (
 --
 
 INSERT INTO `logexcepcionaccion` (`usuario`, `funcionalidad`, `accion`, `codigo`, `mensaje`, `tiempo`) VALUES
-('admin', 'categoria', 'insertar', 'CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.', '2022-12-04 19:51:44'),
-('admin', 'categoria', 'insertar', 'CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.', '2022-12-04 19:53:21'),
-('admin', 'permiso', 'buscar', 'FUNCIONALIDAD_NO_EXISTE', 'La funcionalidad que se pretende editar no existe.', '2023-02-02 20:14:51');
+('admin', 'categoria', 'borrar', 'CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.', '2023-02-03 17:05:59'),
+('admin', 'categoria', 'borrar', 'CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.', '2023-02-03 17:15:38'),
+('DESCONOCIDO', 'auth', 'login', 'CONTRASENA_INCORRECTO', 'La contraseña no es correcta.', '2023-02-03 17:35:02'),
+('admin', 'usuario', 'borrar', 'USUARIO_NO_EXISTE', 'El usuario no existe en el sistema.', '2023-02-03 23:22:56');
 
 -- --------------------------------------------------------
 
@@ -255,41 +255,37 @@ INSERT INTO `permiso` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES
 (1, 7, 4),
 (1, 7, 3),
 (1, 7, 6),
-(1, 7, 7),
 (1, 7, 1),
-(1, 2, 12),
-(1, 5, 12),
 (1, 6, 12),
 (2, 6, 12),
-(2, 5, 12),
 (2, 7, 12),
 (2, 1, 12),
 (2, 3, 12),
 (2, 4, 12),
 (2, 2, 12),
-(1, 5, 13),
 (1, 6, 13),
 (2, 2, 13),
 (2, 4, 13),
 (2, 3, 13),
 (2, 1, 13),
 (2, 7, 13),
-(2, 5, 13),
 (2, 6, 13),
-(1, 2, 13),
 (1, 3, 4),
 (1, 2, 4),
 (1, 4, 12),
-(1, 3, 12),
-(1, 1, 12),
-(1, 1, 13),
-(1, 3, 13),
 (1, 4, 13),
 (1, 7, 2),
 (1, 7, 12),
 (1, 7, 13),
 (2, 3, 1),
-(3, 3, 1);
+(3, 3, 1),
+(1, 7, 7),
+(1, 1, 12),
+(1, 3, 12),
+(1, 2, 12),
+(1, 1, 13),
+(1, 3, 13),
+(1, 2, 13);
 
 -- --------------------------------------------------------
 
@@ -385,9 +381,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`usuario`, `contrasena`, `id_rol`, `dni`, `nombre`, `apellidos`, `fechaNacimiento`, `direccion`, `telefono`, `email`, `borrado_logico`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 1, '34888012W', 'administrador', 'administrador administrador', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'admin@admin.com', 0),
 ('martin', '925d7518fc597af0e43f5606f9a51512', 2, '34888012W', 'martin', 'gil blanco', '2020-05-01', 'Rua 12 Parcela 56 32901 Ourense', '666666666', 'gilblancomartin@gmail.com', 0),
-('ramon', '266575d3c2b8a34f83817458f96152b1', 3, '05346796D', 'Ramón', 'Gil González', '1987-05-25', 'Rua 12 Parcela 56 32901 Ourense', '988647382', 'ramon@gmail.com', 0),
 ('user1', '24c9e15e52afc47c225b757e7bee1f9d', 2, '36230724C', 'usuario uno', 'usuario uno', '1990-01-03', 'Avenida Celanova', '617291722', 'user1@gmail.com', 0),
-('user2', '7e58d63b60197ceb55a1c487989a3720', 2, '36230724C', 'usuario dos', 'usuario dos', '1992-02-05', 'Avenida Celanova nº46 2º', '617292222', 'user2@gmail.com', 0);
+('user2', '7e58d63b60197ceb55a1c487989a3720', 2, '36230724C', 'usuario dos', 'usuario dos', '1992-02-05', 'Avenida Celanova nº46 2º', '617292222', 'user2@gmail.com', 0),
+('ramon', '266575d3c2b8a34f83817458f96152b1', 3, '05346796D', 'Ramón', 'Gil González', '1987-05-25', 'Rua 12 Parcela 56 32901 Ourense', '988647382', 'ramon@gmail.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -477,7 +473,7 @@ ALTER TABLE `accion`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidad`
@@ -489,13 +485,13 @@ ALTER TABLE `funcionalidad`
 -- AUTO_INCREMENT de la tabla `parametro`
 --
 ALTER TABLE `parametro`
-  MODIFY `id_parametro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_parametro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `id_proceso` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_proceso` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -546,7 +542,3 @@ ALTER TABLE `proceso_usuario`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

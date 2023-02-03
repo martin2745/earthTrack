@@ -15,8 +15,6 @@ function ajustarCookies() {
 
 /*Función en la que guardamos los parametros de las busquedas en cookies.*/
 function guardarParametrosBusqueda(criterios) {
-  console.log(criterios);
-
   setCookie("id_categoria", criterios.id_categoria);
   setCookie("nombre_categoria", criterios.nombre_categoria);
   setCookie("descripcion_categoria", criterios.descripcion_categoria);
@@ -214,8 +212,6 @@ function accionesInsertarBuscar() {
 
 /**Función que construye cada línea que se va a rellenar en la tabla*/
 function construyeFila(fila) {
-  console.log(fila);
-
   let atributosFunciones = [
     "'" + fila.id_categoria + "'",
     "'" + fila.nombre_categoria + "'",
@@ -346,7 +342,6 @@ function construyeFila(fila) {
   return filaTabla;
 }
 function navigateToProcesos(id_categoria) {
-  console.log(id_categoria);
   setCookie("navigateToProceso", id_categoria);
 
   window.location.href = "procesoGestion.html";
@@ -1470,7 +1465,6 @@ function rellenaSelectUsuarioResponsable(dni, nombre) {
     if (usuariosArray[i] != "") {
       option2 = document.createElement("option");
 
-      console.log(usuariosArray[i]);
       usuario = usuariosArray[i].split("/");
       option2.setAttribute("value", usuario[1]);
       option2.setAttribute("name", i);

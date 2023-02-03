@@ -33,7 +33,7 @@ function pruebaREST_Permiso_Insertar_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'permiso';
 	$POST['action'] = 'insertar';
-	$POST['id_rol'] = 4;
+	$POST['id_rol'] = 3;
 	$POST['id_accion'] = 1;
 	$POST['id_funcionalidad'] = 1;
 
@@ -49,7 +49,7 @@ function pruebaREST_Permiso_Insertar_Acciones(){
     $POST = $vaciarPost;
 	$POST['controlador'] = 'permiso';
 	$POST['action'] = 'insertar';
-	$POST['id_rol'] = 4;
+	$POST['id_rol'] = 3;
 	$POST['id_accion'] = 1;
 	$POST['id_funcionalidad'] = 1;
 
@@ -63,7 +63,7 @@ function pruebaREST_Permiso_Insertar_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'permiso';
 	$POST['action'] = 'borrar';
-	$POST['id_rol'] = 4;
+	$POST['id_rol'] = 3;
 	$POST['id_accion'] = 1;
 	$POST['id_funcionalidad'] = 1;
 
@@ -84,7 +84,7 @@ function pruebaREST_Permiso_Insertar_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'permiso';
 	$POST['action'] = 'insertar';
-	$POST['id_rol'] = 4;
+	$POST['id_rol'] = 3;
 	$POST['id_accion'] = 1;
 	$POST['id_funcionalidad'] = 1;
 

@@ -15,8 +15,6 @@ function ajustarCookies() {
 
 /*Función en la que guardamos los parametros de las busquedas en cookies.*/
 function guardarParametrosBusqueda(criterios) {
-  console.log(criterios);
-
   setCookie("id_proceso", criterios.id_proceso);
   setCookie("nombre_proceso", criterios.nombre_proceso);
   setCookie("descripcion_proceso", criterios.descripcion_proceso);
@@ -228,8 +226,6 @@ function accionesInsertarBuscar() {
 
 /**Función que construye cada línea que se va a rellenar en la tabla*/
 function construyeFila(fila) {
-  console.log(fila);
-
   let atributosFunciones = [
     "'" + fila.id_proceso + "'",
     "'" + fila.nombre_proceso + "'",
