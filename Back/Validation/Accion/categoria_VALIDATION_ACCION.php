@@ -1,6 +1,6 @@
 <?php
 
-include_once './Validation/Validar_class.php';
+include_once './Validation/validar_class.php';
 include_once './Modelos/permiso_MODEL.php';
 
 class categoria_VALIDATION_ACCION extends Validar{
@@ -59,18 +59,6 @@ class categoria_VALIDATION_ACCION extends Validar{
             rellenarExcepcionAccion('CATEGORIA_TIENE_PROCESO');
         }
 	}
-
-    function validar_reactivar(){
-        if (!$this->existe_categoria_id()){ 
-            rellenarExcepcionAccion('CATEGORIA_NO_EXISTE');
-        }
-        if (!$this->existe_categoria_borrado_logicamente()){ 
-            rellenarExcepcionAccion('CATEGORIA_YA_ACTIVA');
-        }
-        if(!$this->accion_denegada_reactivar()){
-            rellenarExcepcionAccion('ACCION_DENEGADA_REACTIVAR_CATEGORIA');
-        }
-    }
 
     function validar_buscar(){ /*Excepciones para buscar categoria*/ }
 
@@ -262,7 +250,7 @@ class categoria_VALIDATION_ACCION extends Validar{
          * No se puede insertar una categoria si su responsable no existe
          */
         function categoria_no_existe_responsable(){
-            include_once './Modelos/usuario_model.php';
+            include_once './Modelos/usuario_MODEL.php';
 		    $modeloUsuario = new usuario_MODEL();
 			
             $usuarioNuevo = $modeloUsuario->getById(array($this->modelo->arrayDatoValor['usuario']))['resource'];
@@ -359,34 +347,6 @@ class categoria_VALIDATION_ACCION extends Validar{
             }
         }
 
-        /**
-        * REACTIVAR
-        */
-
-        /**
-         * Se mira si el usuario que intenta reactivar un rol es un administrador.
-         */
-        function accion_denegada_reactivar(){
-			if (rolUsuarioSistema != 'administrador' && rolUsuarioSistema != 'responsable'){ return false; }
-            else{ return true; }
-        }
-
-        /**
-         * Se comprueba que el categoria que se intenta reactivar esta borrado de forma lógica en el sistema
-         */
-        function existe_categoria_borrado_logicamente(){
-            $resultado = $this->modelo->getById(array($this->modelo->arrayDatoValor['id_categoria']));
-
-            $fila = $resultado['resource'];
-
-            if ($fila['borrado_logico'] == 0){
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
-
         function categoria_tiene_proceso(){
             include_once './Modelos/proceso_MODEL.php';
 		    $modeloProceso = new proceso_MODEL();
@@ -402,7 +362,6 @@ class categoria_VALIDATION_ACCION extends Validar{
                 return false;
             }
         }
-
         
 }
 

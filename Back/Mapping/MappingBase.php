@@ -26,7 +26,7 @@ abstract class MappingBase{
 	public $mapping;
 
 	function connection(){
-		if (isset($_POST['test']) && $_POST['test'] == 'concetardbTest'){
+		if (isset($_POST['test']) && $_POST['test'] == 'conectardbTest'){
 			try{
 				$this->conn = new PDO('mysql:host='.self::$db_host.';dbname='.self::$bdTest,self::$db_user,self::$db_pass);
 			}catch(Exception $e){

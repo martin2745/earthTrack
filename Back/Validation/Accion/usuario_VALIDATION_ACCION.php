@@ -17,9 +17,6 @@ class usuario_VALIDATION_ACCION extends Validar{
 		if(!$this->existe_usuario()){
 			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
-		/*if(!$this->rol_admin()){
-			rellenarExcepcionAccion('USUARIO_ROL_NO_VALIDO');
-		}*/
         if(!$this->existe_usuario_email()){
 			rellenarExcepcionAccion('EMAIL_USUARIO_YA_EXISTE');
         }
@@ -42,6 +39,9 @@ class usuario_VALIDATION_ACCION extends Validar{
 		if(!$this->existe_usuario()){
 			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
+        if($this->existe_responsable_con_categoria()){
+			rellenarExcepcionAccion('RESPONSABLE_TIENE_CATEGORIA');
+        }
         if(!$this->accion_denegada_borrar()){
 			rellenarExcepcionAccion('ACCION_DENEGADA_BORRAR_USUARIO');
         }
@@ -65,8 +65,7 @@ class usuario_VALIDATION_ACCION extends Validar{
 
 	function existen_relaciones(){
 		$toret = false;
-		/*Si el usuario está relacionado con otras entidades es necesario indicarlo para que este
-		se borre de forma lógica. Si el usuario no tuviera relaciones el borrado será físico.*/
+        if($this->usuario_con_huella()) $toret = true;
         return $toret;
 	}
 
@@ -131,6 +130,20 @@ class usuario_VALIDATION_ACCION extends Validar{
 	 */
 
 		/**
+		 * No se puede eliminar un usuario responsable con categoría asociada. Primero elimine su categoría.
+		 */
+		function existe_responsable_con_categoria(){
+			include_once './Modelos/categoria_MODEL.php';
+			$modeloCategoria = new categoria_MODEL();
+			$resultado = $modeloCategoria->seek(array('usuario'), array($this->modelo->arrayDatoValor['usuario']));
+			
+			$fila = $resultado['resource'];
+			if (empty($fila)){ return false; }
+			else{ return true; }
+
+		}
+
+		/**
          * Se mira si el usuario es un administrador.
          */
         function accion_denegada_borrar(){
@@ -174,8 +187,19 @@ class usuario_VALIDATION_ACCION extends Validar{
      */
 
         /**
-         * Funciones correspondientes a las relaciones que presenta la entidad usuario.
+         * Se borra de forma lógica un usuario con huella calculada. Esto nos permite no tener que eliminar
+		 * sus huella y tener un histórico de todas las huellas, incluso de los usuarios ya no activos.
          */
+		function usuario_con_huella(){
+			include_once './Modelos/proceso_usuario_MODEL.php';
+			$modeloProcesoUsuario = new proceso_usuario_MODEL();
+			$resultado = $modeloProcesoUsuario->seek(array('usuario'), array($this->modelo->arrayDatoValor['usuario']));
+			
+			$fila = $resultado['resource'];
+			if (empty($fila)){ return false; }
+			else{ return true; }
+
+		}
 		
 }
 ?>

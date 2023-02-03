@@ -224,6 +224,8 @@ arrayES = {
 
   //editar
   EMAIL_USUARIO_YA_EXISTE: "Ya existe un usuario con ese email.",
+  RESPONSABLE_TIENE_CATEGORIA:
+    "Un administrador con categoría no se puede eliminar, primero elimine su categoría.",
   ACCION_DENEGADA_EDITAR_USUARIO:
     "Solo el administrador puede editar los datos de un usuario y un usuario los suyos propios.",
 
@@ -485,7 +487,7 @@ arrayES = {
   ICONO_BACK: "Volver",
   ICON_PERMISOS: "Gestión de permisos",
   ICONO_DETALLE: "Detalle",
-  ICONO_NAVEGAR_PROCESO:'Ver sus procesos',
+  ICONO_NAVEGAR_PROCESO: "Ver sus procesos",
   ANTERIOR: "Anterior",
   SIGUIENTE: "Siguiente",
 
@@ -539,99 +541,114 @@ arrayES = {
   CONTENIDO_NOTICIA_3:
     "Que cada usuario poda aportar o seu grano de area na loita contra o cambio climático. É o deber de todos axudar no sostemento do planeta.",
 
-     //////////////
-    //////////////  CATEGORIAS
-    //////////7////
+  //////////////
+  //////////////  CATEGORIAS
+  //////////7////
 
-    GESTION_CATEGORIA: "Gestion categorias",
-    EXPLORAR_CATEGORIA: "Explora las categorias",
-    ACCEDER_CATEGORIA: "Adentrate en esta categoría",
-    ACLARACION_CATEGORIA: "Accede para ver sus subcategorías",
-    NUEVA_CATEGORIA: "Crea nueva categoria",
-    NOMBRE: "Nombre",
-   DESCRIPCION: "Descripción",
-   SELECCIONAR_RESPONSABLE: "Escoge un responsable de esta categoria",
-   SELECCIONAR_CATEGORIA_PADRE: "Escoge una categoría padre de esta",
-   PADRE_CATEGORIA:"Categoria padre",
-   RESPONSABLE_CATEGORIA:"Responsable",
-   VOLVER_PADRE_ANTERIOR: 'Volver a la sección anterior',
-   CATEGORIAS:'Categorias',
-   PROCESOS: 'Procesos',
-   CATEGORIA_NOMBRE_VACIO :'El nombre de la categoría no puede ser vacía',
-   MI_CATEGORIA: 'Mi categoría',
-   CATEGORIA_DESCRIPCION_VACIO:'La descripción de la categoría no puede ser vacía',
-   CATEGORIA_PADRE_VACIO:'Debes escoger un padre para esta categoría',
-   CATEGORIA_RESPONSABLE_VACIO:'Debes escoger un responsable para esta categoría',
-   CATEGORIA_NOMBRE_MENOR_QUE_3:'La longitud del nombre debe ser entre 3 y 48 caracteres',
-   CATEGORIA_NOMBRE_MAYOR_QUE_48:'La longitud del nombre debe ser entre 3 y 48 caracteres',
-   CATEGORIA_DESCRIPCION_MAYOR_QUE_200:'La descripcion no puede tener mas de 200 caracteres',
-   CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO:'La descripcion tiene un formato incorrecto. Solo letras, puntos y espacios',
-   NOMBRE_CATEGORIA_FORMATO_INCORRECTO:'El nombre tiene un formato incorrecto. Solo letras y espacios',
-   CATEGORIA_NOMBRE_SOLO_LETRAS:'El nombre solo admite letras, sin espacios',
-   EDITAR_CATEGORIA:'Edita esta categoría',
-   ELIMINAR_CATEGORIA:'Elimina esta categoría',
-   CATEGORIA_YA_EXISTE : 'Ya existe una categoria con ese nombre',
-   CATEGORIA_NOMBRE_FORMATO_INCORRECTO: 'El formato del nombre de la categoria es incorrecto',
-   NOMBRE_CATEGORIA:'Nombre de la categoria',
-   
-      // codigos categoria 
-      CATEGORIA_EDITAR_OK: 'La categoría se ha actualizado correctamente',
-      CATEGORIA_INSERTAR_OK: 'La categoría se ha insertado correctamente',
-      CATEGORIA_BORRAR_OK: 'La categoría se eliminó correctamente',
-      CATEGORIA_DEVOLVER_PADRE:'La categoria padre ha sido devuelta correctamente',
-      CATEGORIA_DEVOLVER_HIJOS:'Las categorias hijos has sido devueltas correctamente',
-      CATEGORIA_REACTIVAR_OK:'La categoria ha sido reactivado',
+  GESTION_CATEGORIA: "Gestion categorias",
+  EXPLORAR_CATEGORIA: "Explora las categorias",
+  ACCEDER_CATEGORIA: "Adentrate en esta categoría",
+  ACLARACION_CATEGORIA: "Accede para ver sus subcategorías",
+  NUEVA_CATEGORIA: "Crea nueva categoria",
+  NOMBRE: "Nombre",
+  DESCRIPCION: "Descripción",
+  SELECCIONAR_RESPONSABLE: "Escoge un responsable de esta categoria",
+  SELECCIONAR_CATEGORIA_PADRE: "Escoge una categoría padre de esta",
+  PADRE_CATEGORIA: "Categoria padre",
+  RESPONSABLE_CATEGORIA: "Responsable",
+  VOLVER_PADRE_ANTERIOR: "Volver a la sección anterior",
+  CATEGORIAS: "Categorias",
+  PROCESOS: "Procesos",
+  CATEGORIA_NOMBRE_VACIO: "El nombre de la categoría no puede ser vacía",
+  MI_CATEGORIA: "Mi categoría",
+  CATEGORIA_DESCRIPCION_VACIO:
+    "La descripción de la categoría no puede ser vacía",
+  CATEGORIA_PADRE_VACIO: "Debes escoger un padre para esta categoría",
+  CATEGORIA_RESPONSABLE_VACIO:
+    "Debes escoger un responsable para esta categoría",
+  CATEGORIA_NOMBRE_MENOR_QUE_3:
+    "La longitud del nombre debe ser entre 3 y 48 caracteres",
+  CATEGORIA_NOMBRE_MAYOR_QUE_48:
+    "La longitud del nombre debe ser entre 3 y 48 caracteres",
+  CATEGORIA_DESCRIPCION_MAYOR_QUE_200:
+    "La descripcion no puede tener mas de 200 caracteres",
+  CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO:
+    "La descripcion tiene un formato incorrecto. Solo letras, puntos y espacios",
+  NOMBRE_CATEGORIA_FORMATO_INCORRECTO:
+    "El nombre tiene un formato incorrecto. Solo letras y espacios",
+  CATEGORIA_NOMBRE_SOLO_LETRAS: "El nombre solo admite letras, sin espacios",
+  EDITAR_CATEGORIA: "Edita esta categoría",
+  ELIMINAR_CATEGORIA: "Elimina esta categoría",
+  CATEGORIA_YA_EXISTE: "Ya existe una categoria con ese nombre",
+  CATEGORIA_NOMBRE_FORMATO_INCORRECTO:
+    "El formato del nombre de la categoria es incorrecto",
+  NOMBRE_CATEGORIA: "Nombre de la categoria",
 
-      //codigos proceso
-      CALCULAR_PROCESO:'Calcular proceso',
-      GESTION_PROCESO:'Gestión de procesos',
-      PROCESO_INSERTAR_OK:'Proceso insertado correctamente',
-   INSERTAR_PROCESO: 'Crea un proceso',
-   EDITAR_PROCESO:'Editar proceso',
-   BORRAR_PROCESO: 'Eliminar proceso',
-   NOTAS_FORMULA_PROCESO: 'Nota: para escribir la fórmula introduce los parámetros entre llaves y las unidades de los mismos entre parentesis, no es necesario indicar la unidad.',
-   FORMULA_PROCESO: 'Fórmula para calcular el proceso',
-   DESCRIPCION_PROCESO_VACIO:'La descripción no puede estar vacía',
-   NOMBRE_PROCESO_VACIO:'Debes indicar un nombre',
-   FORMULA_PROCESO_VACIO: 'Debes indicar una formula',
-   PROCESO_NOMBRE_MAYOR_QUE_48:'La longitud del nombre debe ser entre 3 y 48 caracteres',
-   CATEGORIA_NOMBRE_MENOR_QUE_3:'La longitud del nombre debe ser entre 3 y 48 caracteres',
-   PROCESO_DESCRIPCION_FORMATO_INCORRECTO:'El nombre tiene un formato incorrecto. Solo letras,puntos y espacios',
-   NOMBRE_PROCESO_FORMATO_INCORRECTO:'El nombre tiene un formato incorrecto. Solo letras y espacios',
-   FORMULA_PARAMETROS_MAL: 'Los parámetros se han introducido de forma incorrecta, por favor mire la nota que indica cómo hacerlo',
-    FORMULA_MAL_FORMADA : 'La fórmula está mal formada. Los operadores disponibles son +,-,*,/,^',
-    FORMULA_PARENTESIS_MAL : 'La formula presenta parentesis o llaves mal cerrados',
-    FORMULA_VACIA: 'La formula no puede ser vacia',
-    PARAMETRO_FORMULA_VACIO: 'No puedo haber parámetros vacíos',
-    PARAMETRO_FORMULA_INCORRECTO: 'El parametro debe ser numerico',
-    EJEMPLO_FORMULA: '{masa(kg)} * 2 / ( {altura(metros)} * {edad} )',
-    CATEGORIA_PROCESO: 'Categoria a la que pertenece el proceso',
-    CATEGORIA_PROCESO_VACIA: 'Debes asignar el proceso a una categoria',
-    EXISTE_PROCESO_EN_CATEGORIA: 'Existe un proceso en la categoria',
-    PROCESO_EDITAR_OK:'El proceso se actualizó correctamente',
-    PROCESO_BORRAR_OK: 'El proceso se ha eliminado correctamente',
-    EXPLORAR_PROCESOS:'Explora procesos',
-    CATEGORIA_PROCESO_EXPLAIN:'Categoria:',
-    CATEGORIA_PROCESO_INCORRECTO:'Categoria de proceso incorrecta',
-    ICONO_BUSCAR_PROCESO:'Buscar proceso',
-    CATEGORIA_EXISTE_HIJO:'Existen hijos de esta categoria',
-    CATEGORIA_NO_EXISTE:'No existe la categoria',
-    CATEGORIA_TIENE_PROCESO:'La categoría tiene proceso',
-    MI_HUELLA:'MI HUELLA',
-    EMISIONES:'Generas una huella de',
-    GENERAS_HUELLA:'Emisiones de CO2',
+  // codigos categoria
+  CATEGORIA_EDITAR_OK: "La categoría se ha actualizado correctamente",
+  CATEGORIA_INSERTAR_OK: "La categoría se ha insertado correctamente",
+  CATEGORIA_BORRAR_OK: "La categoría se eliminó correctamente",
+  CATEGORIA_DEVOLVER_PADRE: "La categoria padre ha sido devuelta correctamente",
+  CATEGORIA_DEVOLVER_HIJOS:
+    "Las categorias hijos has sido devueltas correctamente",
 
-        //PARAMETROS
-        PROCESO_USUARIO_INSERTAR_OK: 'El proceso se introdujo correctamente',
-        MIS_PROCESOS:'Mis procesos',
-        PROCESO_USUARIO_BORRAR_OK:'Se han eliminado los datos correctamente',
-        SIN_PROCESOS_CALCULADOS: 'No se han calculado procesos',
-        PROCESO_CALCULADO:'Usted ya ha añadido este proceso a su huella de carbono, para revisar los procesos que la componen puede visitar el apartado de "Mis procesos"',
-        NAVEGAR_MIS_PROCESOS: 'Ir a mis procesos',
-        PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO:'ID del proceso vacío',
-        EXISTE_PROCESO_USUARIO:'Ya has rellenado este proceso',
-        PROCESO_USUARIO_EDITAR_OK:'Cálculo actualizado',
-        CATEGORIA_TIENE_PROCESO:'Esta categoría tiene un proceso'
+  //codigos proceso
+  CALCULAR_PROCESO: "Calcular proceso",
+  GESTION_PROCESO: "Gestión de procesos",
+  PROCESO_INSERTAR_OK: "Proceso insertado correctamente",
+  INSERTAR_PROCESO: "Crea un proceso",
+  EDITAR_PROCESO: "Editar proceso",
+  BORRAR_PROCESO: "Eliminar proceso",
+  NOTAS_FORMULA_PROCESO:
+    "Nota: para escribir la fórmula introduce los parámetros entre llaves y las unidades de los mismos entre parentesis, no es necesario indicar la unidad.",
+  FORMULA_PROCESO: "Fórmula para calcular el proceso",
+  DESCRIPCION_PROCESO_VACIO: "La descripción no puede estar vacía",
+  NOMBRE_PROCESO_VACIO: "Debes indicar un nombre",
+  FORMULA_PROCESO_VACIO: "Debes indicar una formula",
+  PROCESO_NOMBRE_MAYOR_QUE_48:
+    "La longitud del nombre debe ser entre 3 y 48 caracteres",
+  CATEGORIA_NOMBRE_MENOR_QUE_3:
+    "La longitud del nombre debe ser entre 3 y 48 caracteres",
+  PROCESO_DESCRIPCION_FORMATO_INCORRECTO:
+    "El nombre tiene un formato incorrecto. Solo letras,puntos y espacios",
+  NOMBRE_PROCESO_FORMATO_INCORRECTO:
+    "El nombre tiene un formato incorrecto. Solo letras y espacios",
+  FORMULA_PARAMETROS_MAL:
+    "Los parámetros se han introducido de forma incorrecta, por favor mire la nota que indica cómo hacerlo",
+  FORMULA_MAL_FORMADA:
+    "La fórmula está mal formada. Los operadores disponibles son +,-,*,/,^",
+  FORMULA_PARENTESIS_MAL:
+    "La formula presenta parentesis o llaves mal cerrados",
+  FORMULA_VACIA: "La formula no puede ser vacia",
+  PARAMETRO_FORMULA_VACIO: "No puedo haber parámetros vacíos",
+  PARAMETRO_FORMULA_INCORRECTO: "El parametro debe ser numerico",
+  EJEMPLO_FORMULA: "{masa(kg)} * 2 / ( {altura(metros)} * {edad} )",
+  CATEGORIA_PROCESO: "Categoria a la que pertenece el proceso",
+  CATEGORIA_PROCESO_VACIA: "Debes asignar el proceso a una categoria",
+  EXISTE_PROCESO_EN_CATEGORIA: "Existe un proceso en la categoria",
+  PROCESO_EDITAR_OK: "El proceso se actualizó correctamente",
+  PROCESO_BORRAR_OK: "El proceso se ha eliminado correctamente",
+  EXPLORAR_PROCESOS: "Explora procesos",
+  CATEGORIA_PROCESO_EXPLAIN: "Categoria:",
+  CATEGORIA_PROCESO_INCORRECTO: "Categoria de proceso incorrecta",
+  ICONO_BUSCAR_PROCESO: "Buscar proceso",
+  CATEGORIA_EXISTE_HIJO: "Existen hijos de esta categoria",
+  CATEGORIA_NO_EXISTE: "No existe la categoria",
+  CATEGORIA_TIENE_PROCESO: "La categoría tiene proceso",
+  MI_HUELLA: "MI HUELLA",
+  EMISIONES: "Generas una huella de",
+  GENERAS_HUELLA: "Emisiones de CO2",
 
-
+  //PARAMETROS
+  PROCESO_USUARIO_INSERTAR_OK: "El proceso se introdujo correctamente",
+  MIS_PROCESOS: "Mis procesos",
+  PROCESO_USUARIO_BORRAR_OK: "Se han eliminado los datos correctamente",
+  SIN_PROCESOS_CALCULADOS: "No se han calculado procesos",
+  PROCESO_CALCULADO:
+    'Usted ya ha añadido este proceso a su huella de carbono, para revisar los procesos que la componen puede visitar el apartado de "Mis procesos"',
+  NAVEGAR_MIS_PROCESOS: "Ir a mis procesos",
+  PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO: "ID del proceso vacío",
+  EXISTE_PROCESO_USUARIO: "Ya has rellenado este proceso",
+  PROCESO_USUARIO_EDITAR_OK: "Cálculo actualizado",
+  CATEGORIA_TIENE_PROCESO: "Esta categoría tiene un proceso",
 };

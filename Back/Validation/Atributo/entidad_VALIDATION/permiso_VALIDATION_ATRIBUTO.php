@@ -1,6 +1,6 @@
 <?php
 
-include_once './Validation/Validar_class.php';
+include_once './Validation/validar_class.php';
 
 class permiso_VALIDATION_ATRIBUTO extends Validar{
 

@@ -53,7 +53,7 @@ class testRest{
 	}
 
 	function hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado){
-		$POST['test'] = 'concetardbTest';
+		$POST['test'] = 'conectardbTest';
 		if($accion == 'login'){
 			$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['resource'])){
@@ -104,7 +104,7 @@ class testRest{
 	 * Permite realizar una petición sobre la BD de test y no devolvemos la respuesta.
 	 */
 	function peticionCurlNoTest($POST){
-		$POST['test'] = 'concetardbTest';
+		$POST['test'] = 'conectardbTest';
 		$this->token[0] = $this->tokenTEST;
 		$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['authorization'])){
@@ -117,7 +117,7 @@ class testRest{
 	 * Permite obtener una respuesta sobre una acción de la BD de test.
 	 */
 	function peticionCurlNoTestRespuesta($POST){
-		$POST['test'] = 'concetardbTest';
+		$POST['test'] = 'conectardbTest';
 		$this->token[0] = $this->tokenTEST;
 		$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['authorization'])){
@@ -131,7 +131,7 @@ class testRest{
 	 * Hacer una petición de lógin y obtener un token de autenticación válido
 	 */
 	function peticionLogin($POST){
-		$POST['test'] = 'concetardbTest';
+		$POST['test'] = 'conectardbTest';
 		$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['resource'])){
 				$this->token[0] = 'Authorization: '.$resp['resource'];

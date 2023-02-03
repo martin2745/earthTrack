@@ -65,8 +65,8 @@
                         <span class="tooltiptext ORDENAR"></span>
                     </div>
                 </th>
-                
-                    <th scope="col" class="PADRE_CATEGORIA">
+
+                <th scope="col" class="PADRE_CATEGORIA">
                     <div class="descripcionColumn PADRE_CATEGORIA"></div>
                     <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaCategorias')"
                         class="tooltip7 ordenarIconPadre">
@@ -74,7 +74,7 @@
                         <span class="tooltiptext ORDENAR"></span>
                     </div>
                 </th>
-                
+
                 <th scope="col" class="RESPONSABLE_CATEGORIA">
                     <div class="responsableCategoriaColumn RESPONSABLE_CATEGORIA"></div>
                     <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaCategorias')"
@@ -83,16 +83,7 @@
                         <span class="tooltiptext ORDENAR"></span>
                     </div>
                 </th>
-                
-                
-                <th scope="col" class="BORRADO_LOGICO_COLUMN">
-                    <div class="borradoLogicoColumn BORRADO_LOGICO"></div>
-                    <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaCategorias')"
-                        class="tooltip7 ordenarIconBorradoLogico">
-                        <img class="iconoOrdenar" src="images/ordenacion.png" alt="Ordenar" />
-                        <span class="tooltiptext ORDENAR"></span>
-                    </div>
-                </th>
+
                 <th scope="col" class="ACTION colLast"></th>
 
             </thead>
@@ -114,10 +105,10 @@
             <div class="formularioAcciones-container">
                 <h1 class="TITULO_MODAL"></h1>
                 <form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
-            
+
                     <label class="ID" id="label_categoria_id" style="display:none"></label>
-                    <input type="text" placeholder="" name="id_categoria" id="input_categoria_id" class="ID" style="display:none"
-                        onblur="" />
+                    <input type="text" placeholder="" name="id_categoria" id="input_categoria_id" class="ID"
+                        style="display:none" onblur="" />
                     <div id="errorFormatoId" style="display:none"></div>
 
                     <label class="NOMBRE" id="label_categoria_nombre" style="display:none"></label>
@@ -127,10 +118,10 @@
                         <span class="tooltiptext2 CAMPO_OBLIGATORIO"></span>
                     </div>
                     <div id="errorFormatoNombre" style="display:none"></div>
-                    
+
                     <label class="DESCRIPCION" id="label_categoria_description" style="display:none"></label>
-                    <input type="text" maxlength="200" placeholder="" name="descripcion_categoria" id="input_categoria_descripcion"
-                        style="display:none" class="DESCRIPCION" onblur="" />
+                    <input type="text" maxlength="200" placeholder="" name="descripcion_categoria"
+                        id="input_categoria_descripcion" style="display:none" class="DESCRIPCION" onblur="" />
                     <div class="obligatorio tooltip2" id="obligatorio_categoria_description" style="display:none">*
                         <span class="tooltiptext2 CAMPO_OBLIGATORIO"></span>
                     </div>
@@ -149,7 +140,7 @@
                         <span class="tooltiptext2 CAMPO_OBLIGATORIO"></span>
                     </div>
                     <div id="errorFormatoResponsableCategoria" style="display:none"></div>
-                                        
+
                     <!--
 
                              <label class="PADRE_CATEGORIA" id="label_categoria_padre" style="display:none"></label>
@@ -161,11 +152,6 @@
                     <div id="errorFormatoDescripcion" style="display:none"></div>
 
                     -->
-                    <label class="BORRADO_LOGICO" id="label_categoria_borrado_logico" style="display:none"></label>
-                    <input type="text" name="borrado_logico" placeholder="" id="input_categoria_borrado_logico"
-                        style="display:none" class="BORRADO_LOGICO" />
-                    <select name='borrado_logico' id='select_borrado_logico' style="display:none"></select>
-
                     <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
                         <img class="" src="" alt="" id="iconoAcciones" />
                         <span class="tooltiptext" id="spanAcciones"></span>
