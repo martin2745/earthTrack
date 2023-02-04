@@ -344,6 +344,7 @@
 	define('ACCION_DENEGADA_BORRAR_CATEGORIA', 'Solo el administrador puede borrar una categoria.');
 	define('CATEGORIA_NO_BORRAR_BASE', 'No se puede borrar la categoria base.');
 	define('CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.');
+	define('CATEGORIA_NO_TIENE_PERMISO', 'No tienes permisos para actuar sobre esta categoría, contacta con el administrador en caso de existir un error en el arbol.');
 	define('CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.');
 	
 	//buscar

@@ -603,6 +603,8 @@ arrayEN = {
   CATEGORIA_PROCESO_EXPLAIN: "Category:",
   CATEGORIA_PROCESO_INCORRECTO: "Incorrect category",
   ICONO_BUSCAR_PROCESO: "Search process",
+  CATEGORIA_NO_TIENE_PERMISO:
+    "You don't have permissions to act on this category, contact the administrator in case there is an error in the tree",
   CATEGORIA_EXISTE_HIJO: "There is subcategories that rely on this one",
   CATEGORIA_NO_EXISTE: "The category does not exist",
   CATEGORIA_TIENE_PROCESO: "The category has a process",

@@ -621,6 +621,8 @@ arrayGA = {
   CATEGORIA_PROCESO_EXPLAIN: "Categoria: ",
   CATEGORIA_PROCESO_INCORRECTO: "Categoria do proceso incorrecta",
   ICONO_BUSCAR_PROCESO: "Buscar proceso",
+  CATEGORIA_NO_TIENE_PERMISO:
+    "Non tes permisos para actuar sobre a categoría, contacta co administrador en caso de existir un erro na árbore",
   CATEGORIA_EXISTE_HIJO: "Existen fillos de esta categoria",
   CATEGORIA_NO_EXISTE: "Non existe a categoria",
   CATEGORIA_TIENE_PROCESO: "A categoría ten proceso",

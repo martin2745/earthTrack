@@ -632,6 +632,8 @@ arrayES = {
   CATEGORIA_PROCESO_EXPLAIN: "Categoria:",
   CATEGORIA_PROCESO_INCORRECTO: "Categoria de proceso incorrecta",
   ICONO_BUSCAR_PROCESO: "Buscar proceso",
+  CATEGORIA_NO_TIENE_PERMISO:
+    "No tienes permisos para actuar sobre esta categoría, contacta con el administrador en caso de existir un error en el arbol",
   CATEGORIA_EXISTE_HIJO: "Existen hijos de esta categoria",
   CATEGORIA_NO_EXISTE: "No existe la categoria",
   CATEGORIA_TIENE_PROCESO: "La categoría tiene proceso",
