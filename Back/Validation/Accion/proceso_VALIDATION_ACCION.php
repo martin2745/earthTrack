@@ -18,13 +18,15 @@ class proceso_VALIDATION_ACCION extends Validar{
 	}
 
 	function validar_editar(){
-		if($this->existe_categoria()){
-			rellenarExcepcionAccion('NO_EXISTE_CATEGORIA');
-		}
         if($this->accion_denegada_editar()){
 			rellenarExcepcionAccion('ACCION_DENEGADA_EDITAR_PROCESO');
         }
-
+		if($this->no_existe_proceso()){
+			rellenarExcepcionAccion('NO_EXISTE_PROCESO');
+		}
+		if($this->existe_categoria()){
+			rellenarExcepcionAccion('NO_EXISTE_CATEGORIA');
+		}
 	}
 
 	function validar_borrar(){
@@ -45,6 +47,7 @@ class proceso_VALIDATION_ACCION extends Validar{
 		/*Si el proceso está relacionado con otras entidades es necesario indicarlo para que este
 		se borre de forma lógica. Si el usuario no tuviera relaciones el borrado será físico.*/
 		if($this->existe_relacionProcesoParametro()) $toret = true;
+		
         return $toret;
 	}
 //////////////////////////////////////Funciones para disparar las excepcion/////////////////////////////////////////

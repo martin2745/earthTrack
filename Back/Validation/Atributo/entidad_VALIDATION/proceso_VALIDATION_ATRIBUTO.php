@@ -75,8 +75,8 @@ class proceso_VALIDATION_ATRIBUTO extends Validar{
 			rellenarExcepcionAtributo('NOMBRE_PROCESO_MENOR_QUE_3');
 		}
 
-		if($this->Longitud_maxima($this->nombre_proceso,254)===false){
-			rellenarExcepcionAtributo('NOMBRE_PROCESO_MAYOR_QUE_254');
+		if($this->Longitud_maxima($this->nombre_proceso,48)===false){
+			rellenarExcepcionAtributo('NOMBRE_PROCESO_MAYOR_QUE_48');
 		}		
 	}
 

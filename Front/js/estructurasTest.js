@@ -987,3 +987,119 @@ function cargarTestGestionCategorias() {
 
   $("#testCategoria").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de Procesos*/
+function cargarTestGestionProcesos() {
+  $("#testProceso").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarProceso",
+    "javascript:testProceso('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestProcesoAtributosInsertar",
+    "cabeceraAtributosProcesoInsertar",
+    "cuerpoAtributosProcesoInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseProcesoAtributoBuscar",
+    "javascript:testProceso('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestProcesoAtributosBuscar",
+    "cabeceraAtributosProcesoBuscar",
+    "cuerpoAtributosProcesoBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseProcesoAtributoModificar",
+    "javascript:testProceso('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestProcesoAtributosModificar",
+    "cabeceraAtributosProcesoModificar",
+    "cuerpoAtributosProcesoModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarProceso",
+    "javascript:testProceso('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestProcesoAtributosBorrar",
+    "cabeceraAtributosProcesoBorrar",
+    "cuerpoAtributosProcesoBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseProcesoAtributoVerEnDetalle",
+    "javascript:testProceso('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestProcesoAtributosVerEnDetalle",
+    "cabeceraAtributosProcesoVerEnDetalle",
+    "cuerpoAtributosProcesoVerEnDetalle",
+  ];
+  let arrayAccordionUno = [
+    "accordion22",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseProcesoAccionesInsertar",
+    "javascript:testProceso('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestProcesoAccionesInsertar",
+    "cabeceraAccionesProcesoInsertar",
+    "cuerpoAccionesProcesoInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseProcesoAccionesBuscar",
+    "javascript:testProceso('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestProcesoAccionesBuscar",
+    "cabeceraAccionesProcesoBuscar",
+    "cuerpoAccionesProcesoBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseProcesoAccionesModificar",
+    "javascript:testProceso('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestProcesoAccionesModificar",
+    "cabeceraAccionesProcesoModificar",
+    "cuerpoAccionesProcesoModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseProcesoAccionesBorrar",
+    "javascript:testProceso('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestProcesoAccionesBorrar",
+    "cabeceraAccionesProcesoBorrar",
+    "cuerpoAccionesProcesoBorrar",
+  ];
+  let arrayAccordionDos = [
+    "accordion23",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion21",
+    "collapseProcesoAtributos",
+    null,
+    "Atributos",
+    "iconoTestProcesoAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseProcesoAcciones",
+    null,
+    "Acciones",
+    "iconoTestProcesoAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testProceso").append(contenidoTest);
+}

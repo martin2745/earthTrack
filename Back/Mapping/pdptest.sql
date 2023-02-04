@@ -70,7 +70,8 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_categoria`, `id_padre`, `usuario`) VALUES
 (1, 'superCategoria', 'Categoria Base', 0, 'admin'),
-(2, 'nuevaCat', 'Categoria uno', 1, 'admin');
+(2, 'nuevaCat', 'Categoria uno', 1, 'admin'),
+(10, 'categoriaTest', 'Categoria para test', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -110,6 +111,10 @@ CREATE TABLE `parametro` (
   `unidad` varchar(11) DEFAULT NULL,
   `id_proceso` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+INSERT INTO `permiso` (`id_parametro`, `nombre`, `unidad`, `id_proceso`) VALUES
+(3,'Cilindrada', 'CC', 3),
+(4,'distanciaMediaDiaria', 'km', 3);
 
 -- --------------------------------------------------------
 
@@ -205,6 +210,8 @@ CREATE TABLE `proceso` (
   `formula` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descripcion_proceso`, `id_categoria`,`formula`) VALUES
+(3, 'coche diario diesel', 'Uso habitual de un coche de combustión diesel. Referido especialmente a desplazamientos urbanos.', 2, `{Cilindrada(CC)} * {distanciaMediaDiaria(km)} * 365`),
 -- --------------------------------------------------------
 
 --
@@ -395,6 +402,12 @@ ALTER TABLE `rol`
 --
 ALTER TABLE `categoria`
   ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`usuario`);
+
+--
+-- Filtros para la tabla `parametro`
+--
+ALTER TABLE `parametro`
+  ADD CONSTRAINT `id_proceso_rel` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `permiso`

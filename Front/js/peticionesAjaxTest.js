@@ -709,3 +709,97 @@ async function testCategoria(accion, tipoTest) {
     });
   eliminarCampos();
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////GESTION DE PROCESO///////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*Función que obtiene los test de usuario */
+async function testProceso(accion, tipoTest) {
+  imagenErrorTestOcultar();
+
+  var code = "";
+  var codeFracaso = "";
+  var controladorTest = "";
+  var actionTest = "";
+
+  switch (tipoTest) {
+    case "Atributos":
+      controladorTest = "procesoAtributos";
+      switch (accion) {
+        case "Insertar":
+          code = "PETICION_TEST_PROCESO_INSERTAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_INSERTAR_ATRIBUTOS_FRACASO";
+          actionTest = "insertar";
+          break;
+        case "Buscar":
+          code = "PETICION_TEST_PROCESO_BUSCAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_BUSCAR_ATRIBUTOS_FRACASO";
+          actionTest = "buscar";
+          break;
+        case "Modificar":
+          code = "PETICION_TEST_PROCESO_EDITAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_EDITAR_ATRIBUTOS_FRACASO";
+          actionTest = "editar";
+          break;
+        case "Borrar":
+          code = "PETICION_TEST_PROCESO_BORRAR_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_BORRAR_ATRIBUTOS_FRACASO";
+          actionTest = "borrar";
+          break;
+        case "VerEnDetalle":
+          code = "PETICION_TEST_PROCESO_VERENDETALLE_ATRIBUTOS_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_VERENDETALLE_ATRIBUTOS_FRACASO";
+          actionTest = "verEnDetalle";
+          break;
+      }
+      break;
+    case "Acciones":
+      controladorTest = "procesoAcciones";
+      switch (accion) {
+        case "Insertar":
+          code = "PETICION_TEST_PROCESO_INSERTAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_INSERTAR_ACCIONES_FRACASO";
+          actionTest = "insertar";
+          break;
+        case "Buscar":
+          code = "PETICION_TEST_PROCESO_BUSCAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_BUSCAR_ACCIONES_FRACASO";
+          actionTest = "buscar";
+          break;
+        case "Modificar":
+          code = "PETICION_TEST_PROCESO_EDITAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_EDITAR_ACCIONES_FRACASO";
+          actionTest = "editar";
+          break;
+        case "Borrar":
+          code = "PETICION_TEST_PROCESO_BORRAR_ACCIONES_EXITO";
+          codeFracaso = "PETICION_TEST_PROCESO_BORRAR_ACCIONES_FRACASO";
+          actionTest = "borrar";
+          break;
+      }
+      break;
+  }
+
+  await test(code, codeFracaso, controladorTest, actionTest)
+    .then((res) => {
+      let idElementoList = [
+        "iconoTestProceso",
+        "iconoTestProceso" + tipoTest,
+        "iconoTestProceso" + tipoTest + accion,
+      ];
+      cargarRespuestaOkTest(
+        res.datos,
+        "cabecera" + tipoTest + "Proceso" + accion,
+        "cuerpo" + tipoTest + "Proceso" + accion,
+        "",
+        "",
+        idElementoList,
+        tipoTest.toLowerCase()
+      );
+    })
+    .catch((res) => {
+      cargarModalErroresTest();
+    });
+  eliminarCampos();
+}

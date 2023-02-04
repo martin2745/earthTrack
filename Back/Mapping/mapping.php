@@ -83,6 +83,7 @@ class mapping extends MappingBase{
         $this->query = "UPDATE $tabla SET $infoQuery WHERE $infoWhere";
           
         $this->stmt = $this->conexion->prepare($this->query);
+        //var_dump($this->query);var_dump($this->valoresQuery);exit;
         $this->execute_single_query($valores);
     }
 
@@ -99,6 +100,7 @@ class mapping extends MappingBase{
           
       $this->query = "DELETE FROM $tabla WHERE( $infoQuery )";
       $this->stmt = $this->conexion->prepare($this->query);
+      //var_dump($this->query);var_dump($this->valoresQuery);exit;
       $this->execute_single_query($this->valoresQuery);
     }
 
@@ -123,6 +125,7 @@ class mapping extends MappingBase{
             $this->stmt = $this->conexion->prepare($this->query);
             $this->get_results_from_query($valores);
         }
+        
         else{
         //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
             $this->stmt = $this->conexion->prepare($this->query);

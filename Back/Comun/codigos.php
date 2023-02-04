@@ -125,7 +125,7 @@
 	//nombre_proceso
 	define('NOMBRE_PROCESO_VACIO', 'El nombre del proceso está vacío');
 	define('NOMBRE_PROCESO_MENOR_QUE_3', 'El nombre del proceso es menor que 3');
-	define('NOMBRE_PROCESO_MAYOR_QUE_254', 'El nombre del proceso es mayor que 254');
+	define('NOMBRE_PROCESO_MAYOR_QUE_48', 'El nombre del proceso es mayor que 48');
 
 	//descripcion_proceso
 	define('DESCRIPCION_PROCESO_VACIA', 'La descripción del proceso está vacía');

@@ -259,7 +259,8 @@ class proceso_SERVICE extends ServiceBase
 
 		$this->modelo->EDIT();
 		$this->feedback['ok'] = true;
-		$this->feedback['code'] = $mensaje;		
+		$this->feedback['code'] = $mensaje;
+		//var_dump($mensaje);echo('<br>');var_dump($this->feedback);exit;	
 		return $this->feedback;
 	}
 

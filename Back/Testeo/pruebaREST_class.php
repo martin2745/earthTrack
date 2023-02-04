@@ -54,6 +54,7 @@ class testRest{
 
 	function hacerPrueba($POST, $entidad, $accion, $tipo, $prueba, $codeEsperado){
 		$POST['test'] = 'conectardbTest';
+		//var_dump($POST);exit;
 		if($accion == 'login'){
 			$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['resource'])){
@@ -132,6 +133,7 @@ class testRest{
 	 */
 	function peticionLogin($POST){
 		$POST['test'] = 'conectardbTest';
+		//var_dump($this->cliente);var_dump("***");var_dump($POST);var_dump("***");exit;
 		$resp = $this->peticionCurl($this->cliente, $POST);
 			if(isset($resp['resource'])){
 				$this->token[0] = 'Authorization: '.$resp['resource'];
