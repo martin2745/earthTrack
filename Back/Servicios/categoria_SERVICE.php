@@ -15,10 +15,10 @@ class categoria_SERVICE extends ServiceBase
 				$this->listaAtributos = array('nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario', 'borrado_logico');
+				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'id_padre', 'usuario');
 				break;
 			case 'borrar':
-				$this->listaAtributos = array('id_categoria', 'borrado_logico');
+				$this->listaAtributos = array('id_categoria');
 				break;
 			case 'buscar':
 				$this->listaAtributos = array('id_categoria', 'nombre_categoria', 'descripcion_categoria', 'usuario', 'id_padre');
@@ -198,12 +198,12 @@ class categoria_SERVICE extends ServiceBase
 			$modeloUsuario->EDIT('usuario', $modeloUsuario, 'usuario', $usuarioAct['usuario']);
 		}
 
-		if (isset($this->modelo->arrayDatoValor['borrado_logico'])) {
+		/*if (isset($this->modelo->arrayDatoValor['borrado_logico'])) {
 			$indiceBorradoLogico = count($this->modelo->arrayDatoValor) - 1;
 			unset($this->modelo->datosQuery[$indiceBorradoLogico]);
 			unset($this->modelo->valoresQuery[$indiceBorradoLogico]);
 			unset($this->modelo->arrayDatoValor['borrado_logico']);
-		}
+		}*/
 		$this->modelo->DELETE();
 
 		$this->feedback['ok'] = true;
