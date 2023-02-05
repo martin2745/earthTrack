@@ -495,7 +495,7 @@ function errorInternal(codigoResponse) {
   document.getElementById("modal-title").style.top = "10%";
   $("#modal-mensaje").removeClass();
   $("#modal-mensaje").addClass(codigoResponse);
-  $(".imagenAviso").attr("src", "images/caution.png");
+  $(".imagenAviso").attr("src", "images/failed.png");
   document.getElementById("modal").style.display = "block";
   setLang(idioma);
 }
