@@ -133,7 +133,7 @@ async function accionesPermitidas() {
   insertacampo(
     document.formularioAccionesPermitidas,
     "nombre_funcionalidad",
-    "rol"
+    "categoria"
   );
 
   await accionesPermitidasAjaxPromesa()
