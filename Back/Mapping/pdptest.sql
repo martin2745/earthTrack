@@ -1,4 +1,3 @@
-
 --
 -- DAMOS PERMISO USO Y BORRAMOS EL USUARIO QUE QUEREMOS CREAR POR SI EXISTE
 --
@@ -112,7 +111,7 @@ CREATE TABLE `parametro` (
   `id_proceso` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-INSERT INTO `permiso` (`id_parametro`, `nombre`, `unidad`, `id_proceso`) VALUES
+INSERT INTO `parametro` (`id_parametro`, `nombre`, `unidad`, `id_proceso`) VALUES
 (3,'Cilindrada', 'CC', 3),
 (4,'distanciaMediaDiaria', 'km', 3);
 
@@ -211,7 +210,7 @@ CREATE TABLE `proceso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descripcion_proceso`, `id_categoria`,`formula`) VALUES
-(3, 'coche diario diesel', 'Uso habitual de un coche de combustión diesel. Referido especialmente a desplazamientos urbanos.', 2, `{Cilindrada(CC)} * {distanciaMediaDiaria(km)} * 365`),
+(3, 'coche diario diesel', 'Uso habitual de un coche de combustión diesel. Referido especialmente a desplazamientos urbanos.', 2, '{Cilindrada(CC)} * {distanciaMediaDiaria(km)} * 365');
 -- --------------------------------------------------------
 
 --
