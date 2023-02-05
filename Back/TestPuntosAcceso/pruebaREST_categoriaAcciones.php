@@ -79,19 +79,6 @@
             devolverRespuestaTest($respuesta);
         }
     
-        function reactivar(){
-            include_once './Testeo/GestionCategorias/Acciones/pruebaREST_Categoria_Reactivar_Acciones.php';
-            $rest = pruebaREST_Categoria_Reactivar_Acciones();
-            $respuesta['datos'] = $rest;
-            if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST_CATEGORIA_REACTIVAR_ACCIONES_EXITO';
-            }
-            else{
-                $respuesta['code'] = 'PETICION_TEST_CATEGORIA_REACTIVAR_ACCIONES_FRACASO';
-            }
-            devolverRespuestaTest($respuesta);
-        }
-    
         function devolverHijos(){
             include_once './Testeo/GestionCategorias/Acciones/pruebaREST_Categoria_DevolverHijos_Acciones.php';
             $rest = pruebaREST_Categoria_DevolverHijos_Acciones();

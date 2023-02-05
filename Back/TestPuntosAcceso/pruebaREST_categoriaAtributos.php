@@ -78,20 +78,7 @@
             }
             devolverRespuestaTest($respuesta);
         }
-    
-        function reactivar(){
-            include_once './Testeo/GestionCategorias/Atributos/pruebaREST_Categoria_Reactivar_Atributos.php';
-            $rest = pruebaREST_Categoria_Reactivar_Atributos();
-            $respuesta['datos'] = $rest;
-            if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST_CATEGORIA_REACTIVAR_ATRIBUTOS_EXITO';
-            }
-            else{
-                $respuesta['code'] = 'PETICION_TEST_CATEGORIA_REACTIVAR_ATRIBUTOS_FRACASO';
-            }
-            devolverRespuestaTest($respuesta);
-        }
-    
+        
         function devolverHijos(){
             include_once './Testeo/GestionCategorias/Atributos/pruebaREST_Categoria_DevolverHijos_Atributos.php';
             $rest = pruebaREST_Categoria_DevolverHijos_Atributos();

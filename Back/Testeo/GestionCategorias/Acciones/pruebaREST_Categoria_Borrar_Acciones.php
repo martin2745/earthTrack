@@ -26,7 +26,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'categoria';
 	$POST['action'] = 'insertar';
-	$POST['nombre_categoria'] = 'categoriaTest';
+	$POST['nombre_categoria'] = 'categoriaTest2';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
 	$POST['usuario'] = 'admin';
 	$POST['id_padre'] = '1';
@@ -37,7 +37,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
     $POST = $vaciarPost;
     $POST['controlador'] = 'categoria';
     $POST['action'] = 'buscar';
-    $POST['nombre_categoria'] = 'categoriaTest';
+    $POST['nombre_categoria'] = 'categoriaTest2';
 
     $id = $pruebas->peticionCurlNoTestRespuesta($POST);
     $infoCategoria = (array)$id['resource'][0];
@@ -90,7 +90,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'categoria';
 	$POST['action'] = 'insertar';
-	$POST['nombre_categoria'] = 'categoriaTest';
+	$POST['nombre_categoria'] = 'categoriaTest2';
 	$POST['descripcion_categoria'] = 'Nueva insercion de categoria por parte del test';
 	$POST['usuario'] = 'admin';
 	$POST['id_padre'] = '1';
@@ -101,7 +101,7 @@ function pruebaREST_Categoria_Borrar_Acciones(){
     $POST = $vaciarPost;
     $POST['controlador'] = 'categoria';
     $POST['action'] = 'buscar';
-    $POST['nombre_categoria'] = 'categoriaTest';
+    $POST['nombre_categoria'] = 'categoriaTest2';
 
     $id = $pruebas->peticionCurlNoTestRespuesta($POST);
     $infoCategoria = (array)$id['resource'][0];
