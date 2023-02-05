@@ -602,8 +602,8 @@ arrayES = {
   NOTAS_FORMULA_PROCESO:
     "Nota: para escribir la fórmula introduce los parámetros entre llaves y las unidades de los mismos entre parentesis, no es necesario indicar la unidad.",
   FORMULA_PROCESO: "Fórmula para calcular el proceso",
-  DESCRIPCION_PROCESO_VACIO: "La descripción no puede estar vacía",
-  NOMBRE_PROCESO_VACIO: "Debes indicar un nombre",
+  PROCESO_DESCRIPCION_VACIO: "La descripción no puede estar vacía",
+  PROCESO_NOMBRE_VACIO: "Debes indicar un nombre",
   FORMULA_PROCESO_VACIO: "Debes indicar una formula",
   PROCESO_NOMBRE_MAYOR_QUE_48:
     "La longitud del nombre debe ser entre 3 y 48 caracteres",
@@ -611,7 +611,7 @@ arrayES = {
     "La longitud del nombre debe ser entre 3 y 48 caracteres",
   PROCESO_DESCRIPCION_FORMATO_INCORRECTO:
     "El nombre tiene un formato incorrecto. Solo letras,puntos y espacios",
-  NOMBRE_PROCESO_FORMATO_INCORRECTO:
+  PROCESO_NOMBRE_FORMATO_INCORRECTO:
     "El nombre tiene un formato incorrecto. Solo letras y espacios",
   FORMULA_PARAMETROS_MAL:
     "Los parámetros se han introducido de forma incorrecta, por favor mire la nota que indica cómo hacerlo",

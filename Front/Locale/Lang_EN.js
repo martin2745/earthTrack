@@ -577,13 +577,13 @@ arrayEN = {
   FORMULA_PROCESO: "Formula of the process",
   CALCULAR_PROCESO: "Calculate process",
   EDITAR_PROCESO: "Edit processs",
-  DESCRIPCION_PROCESO_VACIO: "The description can not be empty",
-  NOMBRE_PROCESO_VACIO: "The name can not be empty",
+  PROCESO_DESCRIPCION_VACIO: "The description can not be empty",
+  PROCESO_NOMBRE_VACIO: "The name can not be empty",
   FORMULA_PROCESO_VACIO: "The formula can not be empty",
   PROCESO_NOMBRE_MAYOR_QUE_48: "The name can not have more than 48 characters",
   PROCESO_NOMBRE_MENOR_QUE_3: "The name must be larger",
   PROCESO_DESCRIPCION_FORMATO_INCORRECTO: "Incorrect format of the description",
-  NOMBRE_PROCESO_FORMATO_INCORRECTO: "Incorrect format of the name",
+  PROCESO_NOMBRE_FORMATO_INCORRECTO: "Incorrect format of the name",
   FORMULA_PARAMETROS_MAL:
     "The parameters are not formatted propperly, please check the note below.",
   FORMULA_MAL_FORMADA:

@@ -593,8 +593,8 @@ arrayGA = {
   NOTAS_FORMULA_PROCESO:
     "Nota: para escribir a fórmula introduce os parámetros entre chaves. Non e necesario indicar a unidade.",
   FORMULA_PROCESO: "Fórmula para calcular o proceso",
-  DESCRIPCION_PROCESO_VACIO: "A descripción non pode estar baleira",
-  NOMBRE_PROCESO_VACIO: "Debes indicar un nome",
+  PROCESO_DESCRIPCION_VACIO: "A descripción non pode estar baleira",
+  PROCESO_NOMBRE_VACIO: "Debes indicar un nome",
   FORMULA_PROCESO_VACIO: "Debes indicar unha formula",
   CATEGORIA_NOMBRE_MAYOR_QUE_48:
     "A lonxitude do nome debe ser entre 3 e 48 caracteres",
@@ -602,7 +602,7 @@ arrayGA = {
     "A lonxitude do nome debe ser entre 3 e 48 caracteres",
   PROCESO_DESCRIPCION_FORMATO_INCORRECTO:
     "A descripción ten un formato incorrecto.",
-  NOMBRE_PROCESO_FORMATO_INCORRECTO: "O nome ten un formato incorrecto.",
+  PROCESO_NOMBRE_FORMATO_INCORRECTO: "O nome ten un formato incorrecto.",
   FORMULA_PARAMETROS_MAL:
     "Os parámetros introducironse de forma incorrecta, por favor mire a nota que indica cómo facelo",
   FORMULA_MAL_FORMADA:

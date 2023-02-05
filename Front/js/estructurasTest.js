@@ -1024,21 +1024,12 @@ function cargarTestGestionProcesos() {
     "cabeceraAtributosProcesoBorrar",
     "cuerpoAtributosProcesoBorrar",
   ];
-  let arraySubAccordionCinco = [
-    "collapseProcesoAtributoVerEnDetalle",
-    "javascript:testProceso('VerEnDetalle', 'Atributos')",
-    "Ver en detalle",
-    "iconoTestProcesoAtributosVerEnDetalle",
-    "cabeceraAtributosProcesoVerEnDetalle",
-    "cuerpoAtributosProcesoVerEnDetalle",
-  ];
   let arrayAccordionUno = [
     "accordion22",
     arraySubAccordionUno,
     arraySubAccordionDos,
     arraySubAccordionTres,
     arraySubAccordionCuatro,
-    arraySubAccordionCinco,
   ];
 
   let arraySubAccordionOcho = [

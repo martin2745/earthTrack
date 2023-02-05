@@ -52,31 +52,5 @@
             }
             devolverRespuestaTest($respuesta);
         }
-
-        function verEnDetalle(){
-            include_once './Testeo/GestionProcesos/Atributos/pruebaREST_Proceso_VerEnDetalle_Atributos.php';
-            $rest = pruebaREST_Proceso_VerEnDetalle_Atributos();
-            $respuesta['datos'] = $rest;
-            if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_VERENDETALLE_ATRIBUTOS_EXITO';
-            }
-            else{
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_VERENDETALLE_ATRIBUTOS_FRACASO';
-            }
-            devolverRespuestaTest($respuesta);
-        }
-    
-        function reactivar(){
-            include_once './Testeo/GestionProcesos/Atributos/pruebaREST_Proceso_Reactivar_Atributos.php';
-            $rest = pruebaREST_Proceso_Reactivar_Atributos();
-            $respuesta['datos'] = $rest;
-            if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_REACTIVAR_ATRIBUTOS_EXITO';
-            }
-            else{
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_REACTIVAR_ATRIBUTOS_FRACASO';
-            }
-            devolverRespuestaTest($respuesta);
-        }
     }
 ?>

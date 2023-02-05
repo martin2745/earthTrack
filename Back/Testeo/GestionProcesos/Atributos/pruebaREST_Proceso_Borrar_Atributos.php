@@ -24,7 +24,7 @@ function pruebaREST_Proceso_Borrar_Atributos(){
 												//ERRORES_ATRIBUTO ID_PROCESO
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-   //ID_PROCESO_VACIO
+   //PROCESO_ID_VACIO
    $POST = $vaciarPost;
    $POST['controlador'] = 'proceso';
    $POST['action'] = 'borrar';
@@ -32,20 +32,20 @@ function pruebaREST_Proceso_Borrar_Atributos(){
    
 
    $prueba = 'Id de proceso vacío';
-   $codeEsperado = 'ID_PROCESO_VACIO';
+   $codeEsperado = 'PROCESO_ID_VACIO';
    $pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
 
 //---------------------------------------------------------------------------------------------------------------------
 
-    //ID_PROCESO_ERROR_FORMATO
+    //PROCESO_ID_MAYOR_QUE_12
     $POST = $vaciarPost;
     $POST['controlador'] = 'proceso';
     $POST['action'] = 'borrar';
-    $POST['id_proceso'] = '1$';
+    $POST['id_proceso'] = '199999999999999999999999999999999999999999999999999';
     
 
     $prueba = 'Id de proceso presenta un formato incorrecto';
-    $codeEsperado = 'ID_PROCESO_ERROR_FORMATO';
+    $codeEsperado = 'PROCESO_ID_MAYOR_QUE_12';
     $pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
 
 //---------------------------------------------------------------------------------------------------------------------

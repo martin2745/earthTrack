@@ -118,27 +118,26 @@
 //////proceso_VALIDATION_ATRIBUTO
 	
 	//id_proceso
-	define('ID_PROCESO_VACIO','El id del proceso es vacío.');
-	define('ID_PROCESO_MAYOR_QUE_11','El id del proceso es mayor que 11.');
-	define('ID_PROCESO_NO_NUMERICO','El id del proceso no tiene un formato exclusivamente numérico.');
+	define('PROCESO_ID_VACIO','El id del proceso es vacío.');
+	define('PROCESO_ID_MAYOR_QUE_11','El id del proceso es mayor que 11.');
+	define('PROCESO_ID_NO_NUMERICO','El id del proceso no tiene un formato exclusivamente numérico.');
 
 	//nombre_proceso
-	define('NOMBRE_PROCESO_VACIO', 'El nombre del proceso está vacío');
-	define('NOMBRE_PROCESO_MENOR_QUE_3', 'El nombre del proceso es menor que 3');
-	define('NOMBRE_PROCESO_MAYOR_QUE_48', 'El nombre del proceso es mayor que 48');
+	define('PROCESO_NOMBRE_VACIO', 'El nombre del proceso está vacío');
+	define('PROCESO_NOMBRE_MENOR_QUE_3', 'El nombre del proceso es menor que 3');
+	define('PROCESO_NOMBRE_MAYOR_QUE_48', 'El nombre del proceso es mayor que 48');
 
 	//descripcion_proceso
-	define('DESCRIPCION_PROCESO_VACIA', 'La descripción del proceso está vacía');
-	define('DESCRIPCION_PROCESO_MAYOR_QUE_254', 'La descripción del proceso es mayor que 254.');
+	define('PROCESO_DESCRIPCION_VACIA', 'La descripción del proceso está vacía');
+	define('PROCESO_DESCRIPCION_MAYOR_QUE_254', 'La descripción del proceso es mayor que 254.');
 
 	//formula
-	define('FORMULA_VACIA', 'La fórmula está vacía');
-	define('FORMULA_MAYOR_QUE_254', 'La fórmula es mayor que 254.');
-	define('PARAMETRO_FORMULA_SOBRA_LLAVE_ABRIENDO', 'Se ha encontrado una llave abriendo dentro del parámetro de la formula.');
-	define('PARAMETRO_FORMULA_FALTA_UNIDAD', 'La fórmula introducida no especifica una unidad.');
-	define('PARAMETRO_FORMULA_SOBRA_LLAVE_CERRANDO','Se ha encontrado una llave cerrando sin sentido en la formula.');
-	define('PARAMETRO_FORMULA_CON_OPERADOR', 'Se ha encontrado un operador en un parámetro de la formula.');
-	define('FORMULA_CARACTER_NO_VALIDO','Se ha encontrado un caracter ni numérico ni reservado a lo operadores en la formula, fuera de un parametro.');
+	define('PROCESO_FORMULA_VACIA', 'La fórmula está vacía');
+	define('PROCESO_FORMULA_MAYOR_QUE_254', 'La fórmula es mayor que 254.');
+	define('PROCESO_FORMULA_SOBRA_LLAVE_ABRIENDO', 'Se ha encontrado una llave abriendo dentro del parámetro de la formula.');
+	define('PROCESO_FORMULA_SOBRA_LLAVE_CERRANDO', 'Se ha encontrado una llave cerrando sin sentido en la formula.');
+	define('PROCESO_FORMULA_SOBRA_PARENTESIS_ABRIENDO','Se ha encontrado un paréntesis cerrando sin sentido en la formula.');
+	define('PROCESO_FORMULA_SOBRA_PARENTESIS_CERRANDO','Se ha encontrado un paréntesis cerrando sin sentido en la formula.');
 
 	//////rol_VALIDATION_ATRIBUTO
 	//id_rol recogido en auth_VALIDATION_ATRIBUTO
@@ -157,7 +156,7 @@
 
 //////funcionalidad_VALIDATION_ATRIBUTO
 	//id_funcionalidad
-	define('ID_FUNCIONALIDAD_VACIO', 'El id del funcionalidad está vacío');
+	define('ID_FUNCIONALIDAD_VACIO', 'El id del funcCATEGOionalidad está vacío');
 	define('ID_FUNCIONALIDAD_ERROR_FORMATO', 'El formato del id del funcionalidad es incorrecto');
 
 	//nombre_funcionalidad
@@ -191,8 +190,9 @@
 
 	//////categoria_VALIDATION_ATRIBUTO
 	//id_categoria
-	define('ID_CATEGORIA_VACIO', 'El id del categoria está vacío');
+	define('PROCESO_ID_CATEGORIA_VACIO', 'El id del categoria está vacío');
 	define('ID_CATEGORIA_ERROR_FORMATO', 'El formato del id del categoria es incorrecto');
+	define('PROCESO_ID_CATEGORIA_MAYOR_QUE_12', 'El tamaño del id del categoria es mayor que 11.');
 
 	//nombre_categoria
 	define('CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio');

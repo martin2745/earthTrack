@@ -562,10 +562,10 @@ function validaNoVacio(idElemento, idElementoError, campo) {
         codigo = "ACCION_DESCRIPCION_VACIO";
         break;
       case "nombreProceso":
-        codigo = "NOMBRE_PROCESO_VACIO";
+        codigo = "PROCESO_NOMBRE_VACIO";
         break;
       case "descripcionProceso":
-        codigo = "DESCRIPCION_PROCESO_VACIO";
+        codigo = "PROCESO_DESCRIPCION_VACIO";
         break;
       case "formulaProceso":
         codigo = "FORMULA_PROCESO_VACIA";
@@ -998,7 +998,7 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
         codigo = "NOMBRE_CATEGORIA_FORMATO_INCORRECTO";
         break;
       case "nombreProceso":
-        codigo = "NOMBRE_PROCESO_FORMATO_INCORRECTO";
+        codigo = "PROCESO_NOMBRE_FORMATO_INCORRECTO";
         break;
     }
     addCodeError(idElementoError, codigo);

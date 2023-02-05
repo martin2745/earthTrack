@@ -52,18 +52,5 @@
             }
             devolverRespuestaTest($respuesta);
         }
-
-        function verEnDetalle(){
-            include_once './Testeo/GestionProcesos/Acciones/pruebaREST_Proceso_VerEnDetalle_Acciones.php';
-            $rest = pruebaREST_Proceso_VerEnDetalle_Acciones();
-            $respuesta['datos'] = $rest;
-            if(calcularCodeExito($respuesta['datos'])){
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_VERENDETALLE_ACCIONES_EXITO';
-            }
-            else{
-                $respuesta['code'] = 'PETICION_TEST_PROCESO_VERENDETALLE_ACCIONES_FRACASO';
-            }
-            devolverRespuestaTest($respuesta);
-        }
     }
 ?>
