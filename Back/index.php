@@ -42,5 +42,4 @@
             echo(json_encode(array('ok' => 'false', 'code' => $mensaje))); 
             exit();
 	}
-   
 ?>
