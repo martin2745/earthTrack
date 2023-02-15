@@ -1,6 +1,7 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/logExcepcionAtributos_VALIDATION.php';
 
 class logExcepcionAtributos_SERVICE extends ServiceBase{
 	

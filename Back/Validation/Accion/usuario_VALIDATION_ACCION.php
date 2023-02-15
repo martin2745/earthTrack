@@ -1,31 +1,27 @@
 <?php
 
 include_once './Validation/validar_class.php';
-include_once './Validation/excepciones.php';
 
 class usuario_VALIDATION_ACCION extends Validar{
 	
 	function validar_insertar(){
 		if($this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_YA_EXISTE');
+			rellenarExcepcionAccion('USUARIO_YA_EXISTE');
 		}
         if(!$this->accion_denegada_insertar()){
-			throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_USUARIO');
+			rellenarExcepcionAccion('ACCION_DENEGADA_INSERTAR_USUARIO');
         }
 	}
 
 	function validar_editar(){
 		if(!$this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_NO_EXISTE');
-		}
-		if(!$this->rol_admin()){
-			throw new excepcionAccion('USUARIO_ROL_NO_VALIDO');
+			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
         if(!$this->existe_usuario_email()){
-			throw new excepcionAccion('EMAIL_USUARIO_YA_EXISTE');
+			rellenarExcepcionAccion('EMAIL_USUARIO_YA_EXISTE');
         }
         if(!$this->accion_denegada_editar()){
-			throw new excepcionAccion('ACCION_DENEGADA_EDITAR_USUARIO');
+			rellenarExcepcionAccion('ACCION_DENEGADA_EDITAR_USUARIO');
         }
 	}
 
@@ -38,25 +34,28 @@ class usuario_VALIDATION_ACCION extends Validar{
 
 	function validar_borrar(){
 		if($this->modelo->arrayDatoValor['usuario'] == 'admin'){
-			throw new excepcionAccion('ADMIN_NO_SE_PUEDE_BORRAR');
+			rellenarExcepcionAccion('ADMIN_NO_SE_PUEDE_BORRAR');
 		}
 		if(!$this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_NO_EXISTE');
+			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
+        if($this->existe_responsable_con_categoria()){
+			rellenarExcepcionAccion('RESPONSABLE_TIENE_CATEGORIA');
+        }
         if(!$this->accion_denegada_borrar()){
-			throw new excepcionAccion('ACCION_DENEGADA_BORRAR_USUARIO');
+			rellenarExcepcionAccion('ACCION_DENEGADA_BORRAR_USUARIO');
         }
 	}
 
 	function validar_reactivar(){
 		if(!$this->existe_usuario()){ 
-			throw new excepcionAccion('USUARIO_NO_EXISTE');
+			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
         }
 		if(!$this->usuario_ya_activo()){ 
-			throw new excepcionAccion('USUARIO_YA_ACTIVO');
+			rellenarExcepcionAccion('USUARIO_YA_ACTIVO');
         }
         if(!$this->accion_denegada_reactivar()){
-			throw new excepcionAccion('ACCION_DENEGADA_REACTIVAR_USUARIO');
+			rellenarExcepcionAccion('ACCION_DENEGADA_REACTIVAR_USUARIO');
         }
 	}
 
@@ -66,8 +65,7 @@ class usuario_VALIDATION_ACCION extends Validar{
 
 	function existen_relaciones(){
 		$toret = false;
-		/*Si el usuario está relacionado con otras entidades es necesario indicarlo para que este
-		se borre de forma lógica. Si el usuario no tuviera relaciones el borrado será físico.*/
+        if($this->usuario_con_huella()) $toret = true;
         return $toret;
 	}
 
@@ -132,6 +130,20 @@ class usuario_VALIDATION_ACCION extends Validar{
 	 */
 
 		/**
+		 * No se puede eliminar un usuario responsable con categoría asociada. Primero elimine su categoría.
+		 */
+		function existe_responsable_con_categoria(){
+			include_once './Modelos/categoria_MODEL.php';
+			$modeloCategoria = new categoria_MODEL();
+			$resultado = $modeloCategoria->seek(array('usuario'), array($this->modelo->arrayDatoValor['usuario']));
+			
+			$fila = $resultado['resource'];
+			if (empty($fila)){ return false; }
+			else{ return true; }
+
+		}
+
+		/**
          * Se mira si el usuario es un administrador.
          */
         function accion_denegada_borrar(){
@@ -175,8 +187,19 @@ class usuario_VALIDATION_ACCION extends Validar{
      */
 
         /**
-         * Funciones correspondientes a las relaciones que presenta la entidad usuario.
+         * Se borra de forma lógica un usuario con huella calculada. Esto nos permite no tener que eliminar
+		 * sus huella y tener un histórico de todas las huellas, incluso de los usuarios ya no activos.
          */
+		function usuario_con_huella(){
+			include_once './Modelos/proceso_usuario_MODEL.php';
+			$modeloProcesoUsuario = new proceso_usuario_MODEL();
+			$resultado = $modeloProcesoUsuario->seek(array('usuario'), array($this->modelo->arrayDatoValor['usuario']));
+			
+			$fila = $resultado['resource'];
+			if (empty($fila)){ return false; }
+			else{ return true; }
+
+		}
 		
 }
 ?>

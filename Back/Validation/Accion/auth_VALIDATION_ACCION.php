@@ -1,40 +1,39 @@
 <?php
 
 include_once './Validation/validar_class.php';
-include_once './Validation/excepciones.php';
 
 class auth_VALIDATION_ACCION extends Validar{
 
 	function validar_login(){
 		if(!$this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_NO_EXISTE');
+			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
 		if(!$this->usuario_contrasena_correcto()){
-			throw new excepcionAccion('CONTRASENA_INCORRECTO');
+			rellenarExcepcionAccion('CONTRASENA_INCORRECTO');
 		}		
 		if($this->existe_usuario_eliminado()){
-			throw new excepcionAccion('USUARIO_ELIMINADO');
+			rellenarExcepcionAccion('USUARIO_ELIMINADO');
 		}
 	}
 	
 	function validar_registro(){
 		if($this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_YA_EXISTE');
+			rellenarExcepcionAccion('USUARIO_YA_EXISTE');
 		}
 		if($this->existe_email()){
-			throw new excepcionAccion('EMAIL_YA_EXISTE');
+			rellenarExcepcionAccion('EMAIL_YA_EXISTE');
 		}
 	}
 
 	function validar_obtenerContrasenaCorreo(){
 		if(!$this->existe_usuario()){
-			throw new excepcionAccion('USUARIO_NO_EXISTE');
+			rellenarExcepcionAccion('USUARIO_NO_EXISTE');
 		}
 		if(!$this->existe_correo()){
-			throw new excepcionAccion('EMAIL_NO_EXISTE');
+			rellenarExcepcionAccion('EMAIL_NO_EXISTE');
 		}
 		if(!$this->usuario_correo_misma_usuario()){
-			throw new excepcionAccion('USUARIO_EMAIL_NO_COINCIDEN');
+			rellenarExcepcionAccion('USUARIO_EMAIL_NO_COINCIDEN');
 		}
 	}
 

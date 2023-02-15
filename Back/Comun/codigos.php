@@ -10,9 +10,9 @@
 	define('RECORDSET_DATOS', 'El recordset no esta vacio.');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////apiRest.php////////////////////////////////////////////////
+/////////////////////////////////////////index.php////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Excepciones de apiRest.php
+	//Excepciones de index.php
 	define('PETICION_INVALIDA', 'Petición invalida.');
 	define('ACCION_NO_ENCONTRADA', 'Acción no encontrada.');
 	define('ACCION_DENEGADA_TEST', 'Solo el administrador tiene permitido ejecutar el test.');
@@ -115,7 +115,31 @@
 	//borrado_logico_buscar
 	define('BORRADO_LOGICO_DIFERENTE_0_1', 'El flag de borrado debe ser 0 o 1.');
 
-//////rol_VALIDATION_ATRIBUTO
+//////proceso_VALIDATION_ATRIBUTO
+	
+	//id_proceso
+	define('PROCESO_ID_VACIO','El id del proceso es vacío.');
+	define('PROCESO_ID_MAYOR_QUE_11','El id del proceso es mayor que 11.');
+	define('PROCESO_ID_NO_NUMERICO','El id del proceso no tiene un formato exclusivamente numérico.');
+
+	//nombre_proceso
+	define('PROCESO_NOMBRE_VACIO', 'El nombre del proceso está vacío');
+	define('PROCESO_NOMBRE_MENOR_QUE_3', 'El nombre del proceso es menor que 3');
+	define('PROCESO_NOMBRE_MAYOR_QUE_48', 'El nombre del proceso es mayor que 48');
+
+	//descripcion_proceso
+	define('PROCESO_DESCRIPCION_VACIA', 'La descripción del proceso está vacía');
+	define('PROCESO_DESCRIPCION_MAYOR_QUE_254', 'La descripción del proceso es mayor que 254.');
+
+	//formula
+	define('PROCESO_FORMULA_VACIA', 'La fórmula está vacía');
+	define('PROCESO_FORMULA_MAYOR_QUE_254', 'La fórmula es mayor que 254.');
+	define('PROCESO_FORMULA_SOBRA_LLAVE_ABRIENDO', 'Se ha encontrado una llave abriendo dentro del parámetro de la formula.');
+	define('PROCESO_FORMULA_SOBRA_LLAVE_CERRANDO', 'Se ha encontrado una llave cerrando sin sentido en la formula.');
+	define('PROCESO_FORMULA_SOBRA_PARENTESIS_ABRIENDO','Se ha encontrado un paréntesis cerrando sin sentido en la formula.');
+	define('PROCESO_FORMULA_SOBRA_PARENTESIS_CERRANDO','Se ha encontrado un paréntesis cerrando sin sentido en la formula.');
+
+	//////rol_VALIDATION_ATRIBUTO
 	//id_rol recogido en auth_VALIDATION_ATRIBUTO
 
 	//nombre_rol
@@ -132,7 +156,7 @@
 
 //////funcionalidad_VALIDATION_ATRIBUTO
 	//id_funcionalidad
-	define('ID_FUNCIONALIDAD_VACIO', 'El id del funcionalidad está vacío');
+	define('ID_FUNCIONALIDAD_VACIO', 'El id del funcCATEGOionalidad está vacío');
 	define('ID_FUNCIONALIDAD_ERROR_FORMATO', 'El formato del id del funcionalidad es incorrecto');
 
 	//nombre_funcionalidad
@@ -164,6 +188,27 @@
 	define('ACCION_DESCRIPCION_MAYOR_QUE_200', 'La desripción de la accion es mayor de 200');
 	define('ACCION_DESCRIPCION_FORMATO_INCORRECTO', 'La descripción de la accion tiene un formato erroneo, solo letras y números');
 
+	//////categoria_VALIDATION_ATRIBUTO
+	//id_categoria
+	define('PROCESO_ID_CATEGORIA_VACIO', 'El id del categoria está vacío');
+	define('ID_CATEGORIA_ERROR_FORMATO', 'El formato del id del categoria es incorrecto');
+	define('PROCESO_ID_CATEGORIA_MAYOR_QUE_12', 'El tamaño del id del categoria es mayor que 11.');
+
+	//nombre_categoria
+	define('CATEGORIA_NOMBRE_VACIO', 'El nombre de la categoria está vacio');
+	define('CATEGORIA_NOMBRE_MENOR_QUE_3', 'El nombre de la categoria es menor de 3');
+	define('CATEGORIA_NOMBRE_MAYOR_QUE_48', 'El nombre de la categoria es mayor de 48');
+	define('CATEGORIA_NOMBRE_FORMATO_INCORRECTO', 'El nombre de la categoria tiene un formato erroneo, solo letras y números');
+
+	//descripcion_categoria
+	define('CATEGORIA_DESCRIPCION_VACIO', 'La descripción de la categoria no puede ser vacía');
+	define('CATEGORIA_DESCRIPCION_MENOR_QUE_3', 'La descripción de la categoria es menor de 3');
+	define('CATEGORIA_DESCRIPCION_MAYOR_QUE_200', 'La desripción de la categoria es mayor de 200');
+	define('CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO', 'La descripción de la categoria tiene un formato erroneo, solo letras y números');
+
+	//id_padre
+	define('ID_PADRE_VACIO', 'El campo id_padre está vacío.');
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////ACCION///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,6 +229,7 @@
 
 	//editar
 	define('EMAIL_USUARIO_YA_EXISTE', 'Ya existe un usuario con ese email.');
+	define('RESPONSABLE_TIENE_CATEGORIA', 'No se puede borrar un responsable con categoría, elimine primero su categoría.');
 	define('ACCION_DENEGADA_EDITAR_USUARIO', 'Solo el administrador puede editar los datos de un usuario y un usuario los suyos propios.');
 
 	//borrar
@@ -198,6 +244,18 @@
 	
 	//verEnDetalle
 
+////proceso_VALIDATION_ACCION
+	//insertar
+	define('NO_EXISTE_CATEGORIA', 'No se puede insertar un proceso en una categoría si esta ya tiene un proceso.');
+	define('EXISTE_PROCESO_EN_CATEGORIA', 'No se puede insertar un proceso en una categoría si esta ya tiene un proceso.');
+	define('ACCION_DENEGADA_INSERTAR_PROCESO', 'Solo el administrador o el responsable de la categoría puede insertar un proceso.');
+
+	//editar
+	define('ACCION_DENEGADA_EDITAR_PROCESO', 'Solo el administrador puede editar los datos de un usuario y un usuario los suyos propios.');
+
+	//borrar
+	define('ACCION_DENEGADA_BORRAR_PROCESO', 'Solo el administrador puede borrar un usuario.');
+	define('NO_EXISTE_PROCESO', 'El proceso indicado no existe.');
 ////rol_VALIDATION_ACCION
 	//insertar
 	define('ROL_YA_EXISTE', 'No se puede insertar un rol que ya existe.');
@@ -254,7 +312,7 @@
 	
 	//verEnDetalle
 
-////accion_VALIDATION_ACCION
+////permiso_VALIDATION_ACCION
 	//insertar
 	define('PERMISO_YA_EXISTE', 'No se puede insertar un permiso que ya existe.');
 	define('ACCION_DENEGADA_INSERTAR_PERMISO', 'Solo el administrador puede insertar un nuevo permiso.');
@@ -269,6 +327,54 @@
 	
 	//verEnDetalle
 
+////categoria_VALIDATION_ACCION
+	//insertar
+	define('CATEGORIA_YA_EXISTE', 'No se puede insertar una categoria que ya existe.');
+	define('ACCION_DENEGADA_INSERTAR_CATEGORIA', 'Solo el administrador puede insertar una nueva categoria.');
+	define('CATEGORIA_NO_EXISTE_PADRE', 'No se puede insertar una categoria con un padre inexistente.');
+	define('CATEGORIA_NO_EXISTE_RESPONSABLE', 'No se puede insertar una categoria con un responsable inexistente.');
+	define('CATEGORIA_DENEGADA_BORRAR_CATEGORIA', 'No se puede insertar una categoria con un padre inexistente.');
+	define('CATEGORIA_DENEGADA_INSERTAR_CATEGORIA', 'No se pudo insertar la categoria al no contar con los permisos necesarios');
+	define('CATEGORIA_NO_SER_PROPIO_PADRE_INSERTAR', 'Una categoria no puede ser padre de si misma');
+	define('CATEGORIA_NO_SER_PROPIO_PADRE_EDITAR', 'Una categoria no puede ser padre de si misma');
+	//editar
+
+	//borrar
+	define('CATEGORIA_NO_EXISTE', 'La categoria que se pretende editar no existe.');
+	define('ACCION_DENEGADA_BORRAR_CATEGORIA', 'Solo el administrador puede borrar una categoria.');
+	define('CATEGORIA_NO_BORRAR_BASE', 'No se puede borrar la categoria base.');
+	define('CATEGORIA_TIENE_PROCESO', 'No se puede borrar una categoria que tiene un proceso asociado.');
+	define('CATEGORIA_NO_TIENE_PERMISO', 'No tienes permisos para actuar sobre esta categoría, contacta con el administrador en caso de existir un error en el arbol.');
+	define('CATEGORIA_EXISTE_HIJO', 'No se puede borrar una categoria que tiene otra categoria por debajo.');
+	
+	//buscar
+	
+	//verEnDetalle
+
+	//devolverPadre
+
+	//devolverHijos
+	define('CATEGORIA_NO_HIJOS', 'La categoria seleccionada no tiene hijos.');
+
+	////proceso_usuario_VALIDATION_ACCION
+
+	define('PROCESO_USUARIO_YA_EXISTE', 'No se puede insertar una categoria que ya existe.');
+	define('PROCESO_USUARIO_DENEGADA_INSERTAR', 'No se pudo insertar el proceso usuario al no contar con los permisos necesarios');
+
+	define('PROCESO_USUARIO_NO_EXISTE', 'El proceso de usuario que se pretende editar no existe.');
+
+	define('EXISTE_PROCESO_USUARIO', 'Ya existe el proceso para este usuario');
+
+	define('PROCESO_USUARIO_USUARIO_VACIO', 'El usuario es vacio');
+	define('PROCESO_USUARIO_USUARIO_ALFANUMERICO_INCORRECTO', 'El usuario tiene formato incorrecto');
+	define('PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO', 'Id del proceso vacia');
+	define('PROCESO_USUARIO_ID_PROCESO_USUARIO_FORMATO', 'Id del proceso mal formada');
+	define('PROCESO_USUARIO_PARAMETROS_VACIO', 'El usuario es vacio');
+	define('PROCESO_USUARIO_PROCESO_USUARIO__FORMATO', 'Mal formato de proceso usuario');
+
+	define('NO_EXISTE_USUARIO', 'No existe el usuario');
+	
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////CONTROLLER/////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -281,33 +387,49 @@
 ////usuario_CONTROLLER
 	define('USUARIO_INSERTAR_OK', 'Usuario insertado con éxito.');
 	define('USUARIO_EDITAR_OK', 'Usuario editado con éxito.');
+	define('USUARIO_EDITAR_ROL_OK', 'Rol de usuario editado con éxito.');
 	define('USUARIO_EDITAR_CONTRASENA_OK', 'Contraseña editada con éxito.');
 	define('USUARIO_BORRAR_OK', 'Usuario eliminado con éxito.');
 	define('USUARIO_REACTIVAR_OK', 'Usuario reactivado con éxito.');
 
-////rol_SERVICE
+////rol_CONTROLLER
 	define('ROL_INSERTAR_OK', 'El rol ha sido insertado correctamente');
 	define('ROL_EDITAR_OK', 'El rol ha sido modificado correctamente');
 	define('ROL_BORRAR_OK', 'El rol ha sido borrado correctamente');
 	define('ROL_REACTIVAR_OK', 'El rol ha sido reactivado');
 
-////funcionalidad_SERVICE
+////funcionalidad_CONTROLLER
 	define('FUNCIONALIDAD_INSERTAR_OK', 'La funcionalidad ha sido insertada correctamente');
 	define('FUNCIONALIDAD_EDITAR_OK', 'La funcionalidad ha sido modificada correctamente');
 	define('FUNCIONALIDAD_BORRAR_OK', 'La funcionalidad ha sido borrada correctamente');
 	define('ACCIONES_FUNCIONALIDAD', 'Acciones que posee una funcionalidad.');
 	define('FUNCIONALIDADES_SISTEMA', 'Funcionalidades existentes en el sistema.');
 
-////accion_SERVICE
+////accion_CONTROLLER
 	define('ACCION_INSERTAR_OK', 'La accion ha sido insertada correctamente');
 	define('ACCION_EDITAR_OK', 'La accion ha sido modificada correctamente');
 	define('ACCION_BORRAR_OK', 'La accion ha sido borrada correctamente');
 
-////permiso_SERVICE
+////permiso_CONTROLLER
 	define('PERMISO_INSERTAR_OK', 'La permiso ha sido insertada correctamente');
 	define('PERMISO_EDITAR_OK', 'La permiso ha sido modificada correctamente');
 	define('PERMISO_BORRAR_OK', 'La permiso ha sido borrada correctamente');
 	define('PERMISOS_OBTENIDOS', 'Permisos obtenidos para una funcionalidad');
+
+////categoria_CONTROLLER
+	define('CATEGORIA_INSERTAR_OK', 'La categoria ha sido insertada correctamente');
+	define('CATEGORIA_EDITAR_OK', 'La categoria ha sido modificada correctamente');
+	define('CATEGORIA_BORRAR_OK', 'La categoria ha sido borrada correctamente');
+	define('CATEGORIA_DEVOLVER_PADRE', 'La categoria padre ha sido devuelta correctamente');
+	define('CATEGORIA_DEVOLVER_HIJOS', 'Las categorias hijos has sido devueltas correctamente');
+
+	///proceso_usuario_CONTROLLER
+	define('PROCESO_USUARIO_INSERTAR_OK', 'El proceso de usuario ha sido insertada correctamente');
+	define('PROCESO_USUARIO_EDITAR_OK', 'El proceso de usuario ha sido modificada correctamente');
+	define('PROCESO_USUARIO_BORRAR_OK', 'El proceso de usuario ha sido borrada correctamente');
+	define('PROCESO_USUARIO_REACTIVAR_OK', 'El proceso de usuario ha sido reactivado');
+	define('PROCESO_USUARIO_DEVOLVER_PROCESOS_OK', 'Se ha devuelto todos los procesos de dicho usuario');
+	define('PROCESO_USUARIO_DEVOLVER_HUELLA_OK', 'Se ha devuelto la huella del usuario');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////CORREOS//////////////////////////////////////////////

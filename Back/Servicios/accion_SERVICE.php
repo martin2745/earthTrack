@@ -1,6 +1,8 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/accion_VALIDATION.php';
+
 class accion_SERVICE extends ServiceBase{
 
 	function inicializarRest(){

@@ -5,7 +5,7 @@ class ServiceBase{
 	protected $modelo;
 	protected $clase_validacion;
 
-	function rellenarExcepcion($mensaje){
+	function rellenarExcepcionAccion($mensaje){
 		$feedback['ok'] = false;
 		$feedback['code'] = $mensaje;
 		
@@ -81,7 +81,7 @@ class ServiceBase{
 
 	function paginacion($objeto, $listaAtributos){
 		//Si el action empieza por buscar
-		if (substr(action, 0, 6) == 'buscar'){
+		if (substr(action, 0, 6) == 'buscar' || action == 'verEnDetalle' ){
 			foreach ($listaAtributos as $atributo){
 				if (!isset($_POST[$atributo])){
 					$_POST[$atributo] = '';
@@ -110,106 +110,38 @@ class ServiceBase{
 		}
 		return $objeto;
 	}
-
-
-////Log de excepción de acciones
-
-function logExcepcionesAccion($feedback){
-	include_once './Modelos/logExcepcionAcciones_MODEL.php';
-
-	$log = new logExcepcionAcciones_MODEL();
-	date_default_timezone_set('Europe/Madrid');
-	if(action == 'login' || action == 'registrar' || action == 'obtenerContrasenaCorreo'){
-		define('usuarioSistema', 'DESCONOCIDO');
+	
+	/*Función que invoca la validación de atributos en función del action correspondiente.*/
+	function validar_entrada_atributos(){
+		$validacion = 'validar_entrada_'.controlador;	
+		$validacion();
 	}
-
-	$cod = substr($feedback['code'], 0, 5);
-	if($cod == 'TOKEN'){
-		//No guardamos como errores de accion aquellos como TOKEN_CADUCADO...
-	}else{
-
-		$log->arrayDatoValor = array( 
-			'usuario' => usuarioSistema, 
-			'funcionalidad' => controlador,
-			'accion' => action,
-			'codigo' => $feedback['code'],
-			'mensaje' => constant($feedback['code']),
-			'tiempo' => (string)date("Y-m-d H:i:s", time()));
-
-		try{	
-			$log->insertar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
-	}
-}
 
 ////////////////////////////////////////////////////////insertar////////////////////////////////////////////////////////
 
 	function insertar($mensaje){
-		try{	
-			$this->modelo->insertar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
-		
+		$this->modelo->ADD();
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;	
 	}
 
 	function validar_insertar(){
-		try{
-			$this->clase_validacion->validar_insertar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->clase_validacion->validar_insertar();
 	}
 
 ///////////////////////////////////////////////////////editar////////////////////////////////////////////////////////
 
 	function editar($mensaje){
 
-		try{	
-			$this->modelo->editar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
-		
+		$this->modelo->EDIT();
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;		
 		return $this->feedback;
 	}
 
 	function validar_editar(){
-		try{
-			$this->clase_validacion->validar_editar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
+		$this->clase_validacion->validar_editar();
 	}
 
 ///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
@@ -218,36 +150,17 @@ function logExcepcionesAccion($feedback){
 		$borradoLogico = $this->clase_validacion->existen_relaciones();
 		$tipoBorrado = '';
 			if($borradoLogico){
-
-				try{	
-					$this->modelo->editar();
-					$tipoBorrado = 'borradoLogico';
-				}catch(falloQuery $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}catch(falloBD $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}catch(Exception $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}
-				
+				$this->modelo->EDIT();
+				$tipoBorrado = 'borradoLogico';
 			}else{
 				if(isset($this->modelo->arrayDatoValor['borrado_logico'])){
 					$indiceBorradoLogico = count($this->modelo->arrayDatoValor) - 1;
 					unset($this->modelo->datosQuery[$indiceBorradoLogico]);
 					unset($this->modelo->valoresQuery[$indiceBorradoLogico]);
 					unset($this->modelo->arrayDatoValor['borrado_logico']);
-				}
-				try{	
-					$this->modelo->borrar();
-					$tipoBorrado = 'borradoFisico';
-				}catch(falloQuery $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}catch(falloBD $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}catch(Exception $ex){
-					$this->rellenarExcepcion($ex->getMessage());
-				}
-
+				}	
+				$this->modelo->DELETE();
+				$tipoBorrado = 'borradoFisico';
 			}
 			$this->feedback['ok'] = true;
 			$this->feedback['code'] = $mensaje;
@@ -256,62 +169,26 @@ function logExcepcionesAccion($feedback){
 	}
 
 	function validar_borrar(){
-		try{
-			$this->clase_validacion->validar_borrar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
-
+		$this->clase_validacion->validar_borrar();
 	}
 
 /////////////////////////////////////////////////////reactivar/////////////////////////////////////////////////////////
 
 	function reactivar($mensaje){
-		try{	
-			$this->modelo->editar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
-		
+		$this->modelo->EDIT();
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
 		return $this->feedback;	
 	}
 
 	function validar_reactivar(){
-		try{
-			$this->clase_validacion->validar_reactivar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
-
+		$this->clase_validacion->validar_reactivar();
 	}
 
 /////////////////////////////////////////////////////buscar/////////////////////////////////////////////////////////
 
 	function buscar(){
-		try{
-			$infoBusqueda = $this->modelo->buscar($this->modelo->arrayDatoValor, $this->modelo->orden, $this->modelo->tipoOrden);
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
+		$infoBusqueda = $this->modelo->SEARCH($this->modelo->arrayDatoValor, $this->modelo->orden, $this->modelo->tipoOrden);
 
 			//No se puede ver la contraseña de los usuarios
 			if(controlador == 'usuario' && action == 'buscar'){
@@ -332,35 +209,17 @@ function logExcepcionesAccion($feedback){
 	}
 
 	function validar_buscar(){
-		try{
-			$this->clase_validacion->validar_buscar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
+		$this->clase_validacion->validar_buscar();
 	}
 
 //////////////////////////////////////////////////verEnDetalle//////////////////////////////////////////////////////
 
 	function verEnDetalle(){
-		try{
-			$infoBusqueda = $this->modelo->buscar($this->modelo->arrayDatoValor, '', '');
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
-
+			$infoBusqueda = $this->modelo->SEARCH($this->modelo->arrayDatoValor, '', '');
 			//No se puede ver la contraseña de los usuarios
 			if(controlador == 'usuario' && action == 'verEnDetalle' && count($infoBusqueda['resource']) == 1){
 				$infoBusqueda['resource'][0]['contrasena'] = '********************************';
 			}
-
 			$this->feedback['ok'] = true;
 			$this->feedback['code'] = $infoBusqueda['code'];
 			$this->feedback['resource'] = $infoBusqueda['resource'];
@@ -369,16 +228,7 @@ function logExcepcionesAccion($feedback){
 	}
 
 	function validar_verEnDetalle(){
-		try{
-			$this->clase_validacion->validar_verEnDetalle();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(excepcionAccion $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());}
+		$this->clase_validacion->validar_verEnDetalle();
 	}
 
 ///////////////////////////////////////////////cargarTokenCabecera//////////////////////////////////////////////////

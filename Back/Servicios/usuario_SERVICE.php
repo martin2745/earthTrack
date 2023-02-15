@@ -1,6 +1,8 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/usuario_VALIDATION.php';
+
 class usuario_SERVICE extends ServiceBase{
 
 	function inicializarRest(){
@@ -11,7 +13,7 @@ class usuario_SERVICE extends ServiceBase{
 				$this->listaAtributos = array('usuario', 'contrasena', 'dni', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
 				break;
 			case 'editar':
-				$this->listaAtributos = array('usuario', 'id_rol', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
+				$this->listaAtributos = array('usuario', 'nombre', 'apellidos', 'fechaNacimiento', 'direccion', 'telefono', 'email');
 				break;
 			case 'editarContrasena':
 				$this->listaAtributos = array('usuario', 'contrasena');
@@ -38,18 +40,10 @@ class usuario_SERVICE extends ServiceBase{
 			$this->clase_validacion->modelo = $this->modelo;
 
 	}
-
+	
 	function editarContrasena($mensaje){
 		$this->modelo->arrayDatoValor['usuario'] = usuarioSistema;
-		try{	
-			$this->modelo->editar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}
+		$this->modelo->EDIT();
 		
 		$this->feedback['ok'] = true;
 		$this->feedback['code'] = $mensaje;
@@ -66,14 +60,7 @@ class usuario_SERVICE extends ServiceBase{
 				'rol' => rolUsuarioSistema
 			];
 
-			try{
-				$token = MiToken::creaToken($usuarioDatos);
-			}catch(excepcionToken $ex){
-				$this->rellenarExcepcion($ex->getMessage());
-			}catch(Exception $ex){
-				$this->rellenarExcepcion($ex->getMessage());
-			}
-
+			$token = MiToken::creaToken($usuarioDatos);
 		return $token;
 	}
 

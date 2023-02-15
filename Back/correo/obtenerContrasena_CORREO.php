@@ -7,7 +7,7 @@ class obtenerContrasena_CORREO{
 		$contrasenaclaro = substr(str_shuffle($permitted_chars), 0, 16);
 		$contrasenaencriptada = md5($contrasenaclaro);
 		$usuario->arrayDatoValor['contrasena'] = $contrasenaencriptada;
-		$usuario->editar();
+		$usuario->EDIT();
 		return $contrasenaclaro;
 		
 	}
@@ -52,7 +52,7 @@ class obtenerContrasena_CORREO{
 		$resultado = $phpmailer->Send();
 
 		if (!$resultado) {
-		    throw new excepcionAccion('CONTRASENA_CAMBIADA_EMAIL_KO');
+			rellenarExcepcionAccion('CONTRASENA_CAMBIADA_EMAIL_KO');
 		}
 	}
 

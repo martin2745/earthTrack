@@ -343,7 +343,10 @@ function obtenerListado(empieza) {
     setCookie("camposFormularioListado", "si");
   }
   cargarInformacionBusqueda();
-  document.formularioListado.submit();
+  let acciones = getCookie("acciones").split(",");
+  if (acciones.includes("listar")) {
+    document.formularioListado.submit();
+  }
 }
 
 /**Función que llama al show all de rols*/

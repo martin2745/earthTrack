@@ -1,6 +1,8 @@
 <?php
 
 include_once './Servicios/ServiceBase.php';
+include_once './Validation/Atributo/controlador_VALIDATION/rol_VALIDATION.php';
+
 class rol_SERVICE extends ServiceBase{
 
 	function inicializarRest(){
@@ -8,7 +10,7 @@ class rol_SERVICE extends ServiceBase{
 
 		switch(action){
 			case 'insertar':
-				$this->listaAtributos = array('nombre_rol', 'descripcion_rol', 'borrado_logico');
+				$this->listaAtributos = array('nombre_rol', 'descripcion_rol');
 				break;
 			case 'editar':
 				$this->listaAtributos = array('id_rol', 'nombre_rol', 'descripcion_rol');

@@ -1,12 +1,13 @@
 <?php
       include_once './Comun/codigos.php';
+      include_once './Comun/rellenarExcepcion.php';
       include_once './TestPuntosAcceso/funcionesComunes_TestPuntosAcceso.php';
 
       header('Access-Control-Allow-Origin: *');
 
       if (  ( !isset($_POST['controlador']) and !isset($_POST['action']) ) or
             !isset($_POST['controlador']) or !isset($_POST['action'])){
-            rellenarExcepcion('PETICION_INVALIDA');
+            peticionInvalida('PETICION_INVALIDA');
       }
 
       define('controlador', $_POST['controlador']);
@@ -24,7 +25,7 @@
                include_once './TestPuntosAcceso/pruebaREST_'.$rest.'.php';
                $nombrerest = new $rest;	
          }else{
-               rellenarExcepcion('ACCION_NO_ENCONTRADA');
+               peticionInvalida('ACCION_NO_ENCONTRADA');
          }
 
          $metodosControlador = get_class_methods($nombrerest);
@@ -33,14 +34,14 @@
                $nombrerest->$action();
          }
          else{
-               rellenarExcepcion('ACCION_NO_ENCONTRADA');
+               peticionInvalida('ACCION_NO_ENCONTRADA');
          }
       }
       else{
-         rellenarExcepcion('ACCION_DENEGADA_TEST');
+         peticionInvalida('ACCION_DENEGADA_TEST');
       }
 
-      function rellenarExcepcion($mensaje){
+      function peticionInvalida($mensaje){
             header('Content-type: application/json');
             echo(json_encode(array('ok' => 'false', 'code' => $mensaje))); 
             exit();

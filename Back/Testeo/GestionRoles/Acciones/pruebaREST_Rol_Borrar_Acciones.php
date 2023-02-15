@@ -109,7 +109,7 @@ function pruebaREST_Rol_Borrar_Acciones(){
     $POST = $vaciarPost;
     $POST['controlador'] = 'rol';
     $POST['action'] = 'borrar';
-    $POST['id_rol'] = 2;
+    $POST['id_rol'] = 6;
 
     $prueba = 'Solo el administrador puede eliminar un rol del sistema.';
     $codeEsperado = 'ACCION_DENEGADA_BORRAR_ROL';

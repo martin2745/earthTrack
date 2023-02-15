@@ -125,10 +125,53 @@
 			</div>
 		</div>
 
+		<div class="card">
+			<div class="card-header">
+				<a class="collapsed card-link gestionUsuariosTest" data-toggle="collapse" href="#collapseUsuario"
+					onclick="javascript:cargarTestGestionUsuarios()">Usuario
+				</a>
+				<img class="iconTab" id="iconoTestUsuario" src="images/failed.png" hidden>
+			</div>
+
+			<div id="collapseUsuario" class="collapse" data-parent="#accordion">
+				<div class="card-body" id="testUsuario">
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				<a class="collapsed card-link gestionCategoriasTest" data-toggle="collapse" href="#collapseCategoria"
+					onclick="javascript:cargarTestGestionCategorias()">Categoria
+				</a>
+				<img class="iconTab" id="iconoTestCategoria" src="images/failed.png" hidden>
+			</div>
+
+			<div id="collapseCategoria" class="collapse" data-parent="#accordion">
+				<div class="card-body" id="testCategoria">
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				<a class="collapsed card-link gestionProcesosTest" data-toggle="collapse" href="#collapseProceso"
+					onclick="javascript:cargarTestGestionProcesos()">Proceso y Parámetro
+				</a>
+				<img class="iconTab" id="iconoTestProceso" src="images/failed.png" hidden>
+			</div>
+
+			<div id="collapseProceso" class="collapse" data-parent="#accordion">
+				<div class="card-body" id="testProceso">
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<div class="modal modal3 fade" id="editarcontrasena-modal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;"></div>
+		aria-labelledby="myModalLabel" aria-hidden="true" style="display:none;">
+	</div>
 
 	<div class="volver">
 		<div name="btnBack" value="Volver" class="tooltip backIcon">
@@ -146,7 +189,7 @@
 					<img src="" name="aviso" class="imagenAviso" />
 					<h3 id="modal-title" class="modal-title"></h3>
 				</div>
-				<div id='mensajeError' class="modal-body"></div>
+				<div id='modal-mensaje' class="modal-body"></div>
 				<div class="modal-footer">
 					<a id="cerrar" href="#" class="tooltip5">
 						<img class="iconCerrar" alt="Cerrar" src="images/close.png" />

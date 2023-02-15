@@ -66,32 +66,11 @@ function pruebaREST_Usuario_Editar_Atributos(){
 	$pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
 
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-												//ERRORES_ATRIBUTO id_rol
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-	//ID_ROL_VACIO
-	$POST['usuario'] = 'usuario';
-	$POST['id_rol'] = '';
-
-	$prueba = 'El rol está vacio.';
-	$codeEsperado = 'ID_ROL_VACIO';
-	$pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
-
-//---------------------------------------------------------------------------------------------------------------------
-	
-	//ID_ROL_ERROR_FORMATO
-	$POST['id_rol'] = '1%';
-
-	$prueba = 'El rol presenta un formato incorrecto, solo se admiten números.';
-	$codeEsperado = 'ID_ROL_ERROR_FORMATO';
-	$pruebas->hacerPrueba($POST, $POST['controlador'], $POST['action'], $tipo, $prueba, $codeEsperado);
-
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 												//ERRORES_ATRIBUTO nombre
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 	//NOMBRE_VACIO
-	$POST['id_rol'] = '4';
+	$POST['usuario'] = 'usuario';
 	$POST['nombre'] = '';
 
 	$prueba = 'El nombre no puede ser vacio.';

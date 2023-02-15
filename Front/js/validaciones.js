@@ -37,6 +37,29 @@ function comprobarUser(idElemento, idElementoError, campo) {
   }
 }
 
+/**Función que valida el login de usuario en el buscar*/
+function comprobarUserSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /**Función que valida la password de usuario*/
 function comprobarPass(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -183,6 +206,29 @@ function comprobarEmail(idElemento, idElementoError, campo) {
   }
 }
 
+/** Función que valida el email **/
+function comprobarEmailSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarFormatoEmail(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /** Funcion que valida el formato del DNI **/
 function comprobarDNI(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -203,6 +249,34 @@ function comprobarDNI(idElemento, idElementoError, campo) {
   }
 }
 
+/**Función que valida el login de usuario en el buscar*/
+function comprobarDNISearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarEnhe(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        if (comprobarDNICorrecto(idElemento, idElementoError, campo)) {
+          validacionOK(idElemento, idElementoError);
+          return true;
+        } else {
+          validacionKO(idElemento, idElementoError);
+          return false;
+        }
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 /** Funcion que valida el formato del Nombre **/
 function comprobarNombre(idElemento, idElementoError, campo) {
   document.getElementById(idElemento).style.borderWidth = "2px";
@@ -218,6 +292,47 @@ function comprobarNombre(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+/** Funcion que valida el formato del Nombre **/
+function comprobarNombreCategoria(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    //comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) &&
+    comprobarSoloLetras(idElemento, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+
+/** Funcion que valida el formato del Nombre **/
+function comprobarNombreSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 56, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -236,6 +351,29 @@ function comprobarApellidos(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/**Función que valida los apellidos en el buscar*/
+function comprobarApellidosSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -263,7 +401,7 @@ function comprobarDireccion(idElemento, idElementoError, campo) {
 
   if (
     validaNoVacio(idElemento, idElementoError, campo) &&
-    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 5, idElementoError, campo) &&
     comprobarTamañoMaximo(idElemento, 200, idElementoError, campo) &&
     comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo)
   ) {
@@ -272,6 +410,29 @@ function comprobarDireccion(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/** Funcion que valida el format para buscar la direccion **/
+function comprobarDireccionSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -290,6 +451,29 @@ function comprobarTelefono(idElemento, idElementoError, campo) {
   } else {
     validacionKO(idElemento, idElementoError);
     return false;
+  }
+}
+
+/**Función que valida el formato del teléfono al buscar **/
+function comprobarTelefonoSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarSoloNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
   }
 }
 
@@ -353,11 +537,41 @@ function validaNoVacio(idElemento, idElementoError, campo) {
       case "descripcionFuncionalidad":
         codigo = "FUNCIONALIDAD_DESCRIPCION_VACIO";
         break;
+      case "nombreCategoria":
+        codigo = "CATEGORIA_NOMBRE_VACIO";
+        break;
+      case "descripcionCategoria":
+        codigo = "CATEGORIA_DESCRIPCION_VACIO";
+        break;
+      case "padreCategoria":
+        codigo = "CATEGORIA_PADRE_VACIO";
+        break;
+      case "responsableCategoria":
+        codigo = "CATEGORIA_RESPONSABLE_VACIO";
+        break;
+      case "parametroFormula":
+        codigo = "PARAMETRO_FORMULA_VACIO";
+        break;
+      case "formulaProceso":
+        codigo = "FORMULA_VACIA";
+        break;
       case "nombreAccion":
         codigo = "ACCION_NOMBRE_VACIO";
         break;
       case "descripcionAccion":
         codigo = "ACCION_DESCRIPCION_VACIO";
+        break;
+      case "nombreProceso":
+        codigo = "PROCESO_NOMBRE_VACIO";
+        break;
+      case "descripcionProceso":
+        codigo = "PROCESO_DESCRIPCION_VACIO";
+        break;
+      case "formulaProceso":
+        codigo = "FORMULA_PROCESO_VACIA";
+        break;
+      case "categoriaProceso":
+        codigo = "CATEGORIA_PROCESO_VACIA";
         break;
     }
     addCodeError(idElementoError, codigo);
@@ -373,7 +587,7 @@ function comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) {
 
   var valor = document.getElementById(idElemento).value;
 
-  var patron = /^[a-zA-Z0-9À-ÿ\u00f1\u00d1\s]+$/g;
+  var patron = /^[\.,a-zA-Z0-9À-ÿ\u00f1\u00d1\s]+$/g;
 
   if (!patron.test(valor)) {
     switch (campo) {
@@ -385,6 +599,12 @@ function comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) {
         break;
       case "descripcionAccion":
         codigo = "ACCION_DESCRIPCION_FORMATO_INCORRECTO";
+        break;
+      case "descripcionCategoria":
+        codigo = "CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO";
+        break;
+      case "descripcionProceso":
+        codigo = "PROCESO_DESCRIPCION_FORMATO_INCORRECTO";
         break;
       case "mensajeLogExcepcion":
         codigo = "MENSAJE_FORMATO_INCORRECTO";
@@ -430,7 +650,7 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo) {
         codigo = "FECHA_NACIMIENTO_MENOR_QUE_8";
         break;
       case "direccionPersonaRegistro":
-        codigo = "DIRECCION_MENOR_QUE_5";
+        codigo = "DIRECCION_MENOR_5";
         break;
       case "telefonoPersonaRegistro":
         codigo = "TELEFONO_MENOR_QUE_9";
@@ -452,6 +672,12 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo) {
         break;
       case "nombreFuncionalidad":
         codigo = "FUNCIONALIDAD_NOMBRE_MENOR_QUE_3";
+        break;
+      case "nombreCategoria":
+        codigo = "CATEGORIA_NOMBRE_MENOR_QUE_3";
+        break;
+      case "nombreProceso":
+        codigo = "PROCESO_NOMBRE_MENOR_QUE_3";
         break;
       case "descripcionFuncionalidad":
         codigo = "FUNCIONALIDAD_DESCRIPCION_MENOR_QUE_3";
@@ -526,8 +752,20 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo) {
       case "nombreFuncionalidad":
         codigo = "FUNCIONALIDAD_NOMBRE_MAYOR_QUE_48";
         break;
+      case "nombreCategoria":
+        codigo = "CATEGORIA_NOMBRE_MAYOR_QUE_48";
+        break;
+      case "nombreProceso":
+        codigo = "PROCESO_NOMBRE_MAYOR_QUE_48";
+        break;
       case "descripcionFuncionalidad":
         codigo = "FUNCIONALIDAD_DESCRIPCION_MAYOR_QUE_200";
+        break;
+      case "descripcionCategoria":
+        codigo = "CATEGORIA_DESCRIPCION_MAYOR_QUE_200";
+        break;
+      case "descripcionProceso":
+        codigo = "PROCESO_DESCRIPCION_MAYOR_QUE_200";
         break;
       case "nombreAccion":
         codigo = "ACCION_NOMBRE_MAYOR_QUE_48";
@@ -583,6 +821,9 @@ function comprobarLetrasNumeros(idElemento, idElementoError, campo) {
       case "nombreAccion":
         codigo = "ACCION_NOMBRE_FORMATO_INCORRECTO";
         break;
+      case "responsableCategoria":
+        codigo = "ERROR_FORMATO_RESPONSABLE_CATEGORIA";
+        break;
     }
     addCodeError(idElementoError, codigo);
     return false;
@@ -603,6 +844,26 @@ function comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo) {
     switch (campo) {
       case "direccionPersonaRegistro":
         codigo = "DIRECCION_FORMATO_INCORRECTO";
+        break;
+    }
+    addCodeError(idElementoError, codigo);
+    return false;
+  } else {
+    return true;
+  }
+}
+/**Función que valida que un campo esté compuesto por letras y números**/
+function comprobarNumerico(idElemento, idElementoError, campo) {
+  var codigo = "";
+
+  var valor = document.getElementById(idElemento).value;
+
+  var patron = /^[0-9\s]+$/;
+
+  if (!(valor === parseFloat(valor).toString())) {
+    switch (campo) {
+      case "parametroFormula":
+        codigo = "PARAMETRO_FORMULA_INCORRECTO";
         break;
     }
     addCodeError(idElementoError, codigo);
@@ -645,6 +906,12 @@ function comprobarSoloNumeros(idElemento, idElementoError, campo) {
     switch (campo) {
       case "telefonoPersonaRegistro":
         codigo = "TELEFONO_FORMATO_INCORRECTO";
+        break;
+      case "padreCategoria":
+        codigo = "PADRE_CATEGORIA_FORMATO_INCORRECTO";
+        break;
+      case "categoriaProceso":
+        codigo = "CATEGORIA_PROCESO_INCORRECTO";
         break;
     }
     addCodeError(idElementoError, codigo);
@@ -727,6 +994,12 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
       case "apellidosPersonaRegistro":
         codigo = "APELLIDOS_FORMATO_INCORRECTO";
         break;
+      case "nombreCategoria":
+        codigo = "NOMBRE_CATEGORIA_FORMATO_INCORRECTO";
+        break;
+      case "nombreProceso":
+        codigo = "PROCESO_NOMBRE_FORMATO_INCORRECTO";
+        break;
     }
     addCodeError(idElementoError, codigo);
     return false;
@@ -745,7 +1018,8 @@ function comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) {
 
   if (!patron.test(valor)) {
     switch (campo) {
-      case "porDefinir":
+      case "nombreCategoria":
+        codigo = "CATEGORIA_NOMBRE_SOLO_LETRAS";
         break;
     }
     addCodeError(idElementoError, codigo);
@@ -1008,6 +1282,71 @@ function comprobarDescripcionRolSearch(idElemento, idElementoError, campo) {
   }
 }
 
+/**Función que valida el nombre del rol en el buscar*/
+function comprobarNombreCategoriaSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+function comprobarNombreProcesoSearch(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+      if (!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)) {
+        validacionKO(idElemento, idElementoError);
+        return false;
+      } else {
+        validacionOK(idElemento, idElementoError);
+        return true;
+      }
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+/**Función que valida la descripcion del rol en el buscar*/
+function comprobarDescripcionCategoriaSearch(
+  idElemento,
+  idElementoError,
+  campo
+) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (validaNoVacio(idElemento, idElementoError, campo)) {
+    if (comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo)) {
+      validacionOK(idElemento, idElementoError);
+      return true;
+    } else {
+      validacionKO(idElemento, idElementoError);
+      return false;
+    }
+  } else {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////FUNCIONALIDAD///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1132,6 +1471,22 @@ function comprobarNombreFuncionalidadSearch(
     validacionOK(idElemento, idElementoError);
     return true;
   }
+}
+/**Función que valida el nombre del funcionalidad en el buscar*/
+function comprobarParametroNumerico(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarNumerico(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+  return true;
 }
 
 /**Función que valida la descripcion del funcionalidad en el buscar*/
@@ -1414,4 +1769,680 @@ function comprobarMensajeSearch(idElemento, idElementoError, campo) {
     validacionOK(idElemento, idElementoError);
     return true;
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////GESTION USUARIOS//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function comprobarAddUsuario() {
+  if (
+    comprobarDNI("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombre(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidos(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccion(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefono(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmail(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUser(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    ) &&
+    comprobarPass(
+      "passwdUsuario1",
+      "errorFormatoPassRegistro",
+      "passwdUsuarioRegistro"
+    ) &&
+    comprobarPassRepetida(
+      "passwdUsuario2",
+      "errorFormatoPassRegistro2",
+      "passwdUsuarioRegistro"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function comprobarSearchUsuario() {
+  if (
+    comprobarDNISearch("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombreSearch(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidosSearch(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccionSearch(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefonoSearch(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmailSearch(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUserSearch(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function comprobarEditUsuario() {
+  if (
+    comprobarDNI("input_dni_usuario", "errorFormatoDni", "dniPersona") &&
+    comprobarNombre(
+      "input_nombre_usuario",
+      "errorFormatoNombre",
+      "nombrePersonaRegistro"
+    ) &&
+    comprobarApellidos(
+      "input_apellidos_usuario",
+      "errorFormatoApellidos",
+      "apellidosPersonaRegistro"
+    ) &&
+    comprobarFechaNacimiento(
+      "input_fechaNacimiento_usuario",
+      "errorFormatoFecha",
+      "fechaPersonaRegistro"
+    ) &&
+    comprobarDireccion(
+      "input_direccion_usuario",
+      "errorFormatoDireccion",
+      "direccionPersonaRegistro"
+    ) &&
+    comprobarTelefono(
+      "input_telefono_usuario",
+      "errorFormatoTelefono",
+      "telefonoPersonaRegistro"
+    ) &&
+    comprobarEmail(
+      "input_email_usuario",
+      "errorFormatoEmail",
+      "emailPersonaRegistro"
+    ) &&
+    comprobarUser(
+      "input_usuario_usuario",
+      "errorFormatoUsuario",
+      "loginUsuario"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**Función verificar passwd**/
+function verificarPasswd() {
+  passwdUsuario1 = $("#passwdUsuario1").val();
+  passwdUsuario2 = $("#passwdUsuario2").val();
+
+  if (passwdUsuario1 != passwdUsuario2) {
+    addCodeError("error", "CONTRASEÑAS_NO_COINCIDEN");
+    return false;
+  } else {
+    $("#error").removeClass();
+    $("#error").html("");
+    $("#error").css("display", "none");
+    return true;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////GESTION CATEGORIAS//////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/** Funcion que valida el formato de la descripcion de categoria **/
+function comprobarDescripcionCategoria(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMaximo(idElemento, 200, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+
+function comprobarSelectCategoriaPadre(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarSoloNumeros(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarSelectCategoriaProceso(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarSoloNumeros(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarSelectCategoriaProcesoSearch(
+  idElemento,
+  idElementoError,
+  campo
+) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    !validaNoVacio(idElemento, idElementoError, campo) ||
+    comprobarSoloNumeros(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarSelectResponsableCategoria(
+  idElemento,
+  idElementoError,
+  campo
+) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarLetrasNumeros(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarSelectCategoriaPadreSearch(
+  idElemento,
+  idElementoError,
+  campo
+) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    comprobarSoloNumeros(idElemento, idElementoError, campo) ||
+    !validaNoVacio(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarSelectResponsableCategoriaSearch(
+  idElemento,
+  idElementoError,
+  campo
+) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    (validaNoVacio(idElemento, idElementoError, campo) &&
+      comprobarLetrasNumeros(idElemento, idElementoError, campo)) ||
+    !validaNoVacio(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+
+function comprobarAddCategoria() {
+  if (
+    comprobarNombreCategoria(
+      "input_categoria_nombre",
+      "errorFormatoNombre",
+      "nombreCategoria"
+    ) &&
+    comprobarDescripcionCategoria(
+      "input_categoria_descripcion",
+      "errorFormatoDescripcion",
+      "descripcionCategoria"
+    ) &&
+    comprobarSelectCategoriaPadre(
+      "select_padre_insertar_categoria",
+      "errorFormatoCategoriaPadre",
+      "padreCategoria"
+    ) &&
+    comprobarSelectResponsableCategoria(
+      "select_responsable_insertar_categoria",
+      "errorFormatoResponsableCategoria",
+      "responsableCategoria"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function comprobarEditCategoria() {
+  if (
+    comprobarNombreCategoria(
+      "input_categoria_nombre",
+      "errorFormatoNombre",
+      "nombreCategoria"
+    ) &&
+    comprobarDescripcionCategoria(
+      "input_categoria_descripcion",
+      "errorFormatoDescripcion",
+      "descripcionCategoria"
+    ) &&
+    comprobarSelectCategoriaPadre(
+      "select_padre_insertar_categoria",
+      "errorFormatoCategoriaPadre",
+      "padreCategoria"
+    ) &&
+    comprobarSelectResponsableCategoria(
+      "select_responsable_insertar_categoria",
+      "errorFormatoResponsableCategoria",
+      "responsableCategoria"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function comprobarSearchCategoria() {
+  if (
+    comprobarNombreCategoriaSearch(
+      "input_categoria_nombre",
+      "errorFormatoNombre",
+      "nombreCategoria"
+    ) &&
+    comprobarDescripcionCategoriaSearch(
+      "input_categoria_descripcion",
+      "errorFormatoDescripcion",
+      "descripcionCategoria"
+    ) &&
+    comprobarSelectCategoriaPadreSearch(
+      "select_padre_insertar_categoria",
+      "errorFormatoCategoriaPadre",
+      "padreCategoria"
+    ) &&
+    comprobarSelectResponsableCategoriaSearch(
+      "select_responsable_insertar_categoria",
+      "errorFormatoResponsableCategoria",
+      "responsableCategoria"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//validaciones de procesos
+function comprobarDescripcionProceso(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMaximo(idElemento, 200, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarNombreProceso(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    //comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) &&
+    comprobarSoloLetras(idElemento, idElementoError, campo) &&
+    comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) &&
+    comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+function comprobarFormulaProceso(idElemento, idElementoError, campo) {
+  document.getElementById(idElemento).style.borderWidth = "2px";
+
+  if (
+    validaNoVacio(idElemento, idElementoError, campo) &&
+    //comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) &&
+    comprobarFormulaLLaves(idElemento, idElementoError, campo) &&
+    comprobarFormulaFormato(idElemento, idElementoError, campo) &&
+    comprobarFormatoParametros(idElemento, idElementoError, campo)
+  ) {
+    validacionOK(idElemento, idElementoError);
+    return true;
+  } else {
+    validacionKO(idElemento, idElementoError);
+    return false;
+  }
+}
+/**Función que valida la longitud del texto y que esté compuesto por letras**/
+function comprobarFormulaLLaves(idElemento, idElementoError, campo) {
+  var codigo = "";
+
+  var valor = document.getElementById(idElemento).value;
+
+  if (!comprobarLLavesParentesis(valor)) {
+    switch (campo) {
+      case "formulaProceso":
+        codigo = "FORMULA_PARENTESIS_MAL";
+        break;
+    }
+    addCodeError(idElementoError, codigo);
+    return false;
+  }
+  return true;
+}
+
+function comprobarFormulaFormato(idElemento, idElementoError, campo) {
+  var codigo = "";
+
+  var valor = eliminarEspacios(document.getElementById(idElemento).value);
+  var formulaTransformada = reemplazarLlaves(valor, "p");
+
+  var formulaTransformada2 = reemplazarLlaves(valor, "");
+  let regexCaracteres = /^[0-9+\-*/\(\).^]+$/i;
+
+  if (
+    !checkCaractetesFormula(formulaTransformada) ||
+    !checkOperadores(formulaTransformada) ||
+    !regexCaracteres.test(formulaTransformada2)
+  ) {
+    switch (campo) {
+      case "formulaProceso":
+        codigo = "FORMULA_MAL_FORMADA";
+        break;
+    }
+    addCodeError(idElementoError, codigo);
+    return false;
+  }
+  return true;
+}
+function comprobarFormatoParametros(idElemento, idElementoError, campo) {
+  var codigo = "";
+  var valid = true;
+
+  var valor = eliminarEspacios(document.getElementById(idElemento).value);
+
+  const variables = valor.match(/{(.*?)}/g);
+  if (variables != null) {
+    const names = variables.map((v) => v.replace(/[{}]/g, ""));
+
+    const caracterQueNoSeaLetra = /[^a-z]/i;
+
+    names.forEach((element) => {
+      if (!caracterQueNoSeaLetra.test(element)) {
+        //no hay unidad
+        valid = true;
+      } else {
+        const matchUnidades = element.match(/\(([^)]+)\)/); //extrae las unidades
+        const matchParametro = element.match(/^([^(]+)/);
+        if (matchUnidades && matchParametro) {
+          var unidad = matchUnidades[1]; // Esto da la unidad
+          var parametro = matchParametro[1]; // Esto da el parametro
+
+          if (
+            !caracterQueNoSeaLetra.test(parametro) &&
+            !caracterQueNoSeaLetra.test(unidad)
+          ) {
+            valid = true;
+          } else {
+            valid = false;
+          }
+        } else {
+          valid = false;
+        }
+      }
+    });
+  }
+
+  if (!valid) {
+    switch (campo) {
+      case "formulaProceso":
+        codigo = "FORMULA_PARAMETROS_MAL";
+        break;
+    }
+    addCodeError(idElementoError, codigo);
+    return false;
+  }
+  return true;
+}
+
+function comprobarAddProceso() {
+  if (
+    comprobarNombreProceso(
+      "input_proceso_nombre",
+      "errorFormatoNombreProceso",
+      "nombreProceso"
+    ) &&
+    comprobarDescripcionProceso(
+      "input_proceso_descripcion",
+      "errorFormatoDescripcionProceso",
+      "descripcionProceso"
+    ) &&
+    comprobarFormulaProceso(
+      "input_proceso_formula",
+      "errorFormatoFormulaProceso",
+      "formulaProceso"
+    ) &&
+    comprobarSelectCategoriaProceso(
+      "select_categoria_insertar_proceso",
+      "errorFormatoCategoriaProceso",
+      "categoriaProceso"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function comprobarEditProceso() {
+  if (
+    comprobarNombreProceso(
+      "input_proceso_nombre",
+      "errorFormatoNombreProceso",
+      "nombreProceso"
+    ) &&
+    comprobarDescripcionProceso(
+      "input_proceso_descripcion",
+      "errorFormatoDescripcionProceso",
+      "descripcionProceso"
+    ) &&
+    comprobarFormulaProceso(
+      "input_proceso_formula",
+      "errorFormatoFormulaProceso",
+      "formulaProceso"
+    ) &&
+    comprobarSelectCategoriaProceso(
+      "select_categoria_insertar_proceso",
+      "errorFormatoCategoriaProceso",
+      "categoriaProceso"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function comprobarSearchProceso() {
+  if (
+    comprobarNombreProcesoSearch(
+      "input_proceso_nombre",
+      "errorFormatoNombreProceso",
+      "nombreProceso"
+    ) &&
+    comprobarSelectCategoriaProcesoSearch(
+      "select_categoria_insertar_proceso",
+      "errorFormatoCategoriaProceso",
+      "categoriaProceso"
+    )
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function comprobarLLavesParentesis(string) {
+  const stack = [];
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    if (char === "(" || char === "{") {
+      stack.push(char);
+    } else if (char === ")" || char === "}") {
+      if (stack.length === 0) {
+        return false;
+      }
+      const last = stack.pop();
+      if (char === ")" && last !== "(") {
+        return false;
+      }
+      if (char === "}" && last !== "{") {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
+}
+
+function reemplazarLlaves(formula, caracter) {
+  return formula.replace(/{[^{}]*}/g, caracter);
+}
+function checkCaractetesFormula(formula) {
+  let regexCaracteres = /^[0-9p+\-*/().^]+$/i;
+  let regexNoRepetidos = /[\+\-\*\/\^]{2,}/g;
+  let regexNoParametrosYVariablesSeguidas = /([0-9])([a-z])|([a-z])([0-9])/gi;
+
+  if (
+    regexCaracteres.test(formula) &&
+    !regexNoRepetidos.test(formula) &&
+    !regexNoParametrosYVariablesSeguidas.test(formula)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function checkOperadores(formula) {
+  let hayOperadores = /[\/\^\*]/g;
+  let esNumeroOp = /[0-9p\(\)]/;
+
+  var caracteres = formula.split("");
+  var previous = "";
+  var i = 0;
+  var valid = true;
+
+  for (i = 0; i < caracteres.length; i++) {
+    if (caracteres[i] == "*" || caracteres[i] == "/" || caracteres[i] == "^") {
+      if (previous == "") {
+        valid = false;
+      } else if (
+        !esNumeroOp.test(previous) ||
+        !esNumeroOp.test(caracteres[i + 1])
+      ) {
+        valid = false;
+
+        break;
+      }
+    } else if (caracteres[i] == "+" || caracteres[i] == "-") {
+      if (!esNumeroOp.test(caracteres[i + 1])) {
+        valid = false;
+      }
+    }
+    previous = caracteres[i];
+  }
+
+  return valid;
+
+  /*if(hayOperadores.test(formula) && !regexOperadoresMal.test(formula)
+    ){
+    return true;
+  }else if(!hayOperadores.test(formula)){
+    return true;
+  } 
+  else{
+      return false;
+  }*/
+}
+
+function eliminarEspacios(str) {
+  return str.replace(/\s/g, "");
 }

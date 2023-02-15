@@ -719,3 +719,494 @@ function cargarTestGestionRolAccionFuncionalidad() {
 
   $("#testRolAccionFuncionalidad").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de Usuarios*/
+function cargarTestGestionUsuarios() {
+  $("#testUsuario").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarUsuario",
+    "javascript:testUsuario('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestUsuarioAtributosInsertar",
+    "cabeceraAtributosUsuarioInsertar",
+    "cuerpoAtributosUsuarioInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseUsuarioAtributoBuscar",
+    "javascript:testUsuario('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestUsuarioAtributosBuscar",
+    "cabeceraAtributosUsuarioBuscar",
+    "cuerpoAtributosUsuarioBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseUsuarioAtributoModificar",
+    "javascript:testUsuario('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestUsuarioAtributosModificar",
+    "cabeceraAtributosUsuarioModificar",
+    "cuerpoAtributosUsuarioModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarUsuario",
+    "javascript:testUsuario('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestUsuarioAtributosBorrar",
+    "cabeceraAtributosUsuarioBorrar",
+    "cuerpoAtributosUsuarioBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseUsuarioAtributoVerEnDetalle",
+    "javascript:testUsuario('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestUsuarioAtributosVerEnDetalle",
+    "cabeceraAtributosUsuarioVerEnDetalle",
+    "cuerpoAtributosUsuarioVerEnDetalle",
+  ];
+  let arraySubAccordionSeis = [
+    "collapseUsuarioAtributoReactivar",
+    "javascript:testUsuario('Reactivar', 'Atributos')",
+    "Reactivar",
+    "iconoTestUsuarioAtributosReactivar",
+    "cabeceraAtributosUsuarioReactivar",
+    "cuerpoAtributosUsuarioReactivar",
+  ];
+  let arraySubAccordionSiete = [
+    "collapseUsuarioAtributoEditarContrasena",
+    "javascript:testUsuario('EditarContrasena', 'Atributos')",
+    "EditarContrasena",
+    "iconoTestUsuarioAtributosEditarContrasena",
+    "cabeceraAtributosUsuarioEditarContrasena",
+    "cuerpoAtributosUsuarioEditarContrasena",
+  ];
+  let arrayAccordionUno = [
+    "accordion19",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+    arraySubAccordionSeis,
+    arraySubAccordionSiete,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseUsuarioAccionesInsertar",
+    "javascript:testUsuario('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestUsuarioAccionesInsertar",
+    "cabeceraAccionesUsuarioInsertar",
+    "cuerpoAccionesUsuarioInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseUsuarioAccionesBuscar",
+    "javascript:testUsuario('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestUsuarioAccionesBuscar",
+    "cabeceraAccionesUsuarioBuscar",
+    "cuerpoAccionesUsuarioBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseUsuarioAccionesModificar",
+    "javascript:testUsuario('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestUsuarioAccionesModificar",
+    "cabeceraAccionesUsuarioModificar",
+    "cuerpoAccionesUsuarioModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseUsuarioAccionesBorrar",
+    "javascript:testUsuario('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestUsuarioAccionesBorrar",
+    "cabeceraAccionesUsuarioBorrar",
+    "cuerpoAccionesUsuarioBorrar",
+  ];
+  let arraySubAccordionDoce = [
+    "collapseUsuarioAccionesReactivar",
+    "javascript:testUsuario('Reactivar', 'Acciones')",
+    "Reactivar",
+    "iconoTestUsuarioAccionesReactivar",
+    "cabeceraAccionesUsuarioReactivar",
+    "cuerpoAccionesUsuarioReactivar",
+  ];
+  let arraySubAccordionTrece = [
+    "collapseUsuarioAccionesEditarContrasena",
+    "javascript:testUsuario('EditarContrasena', 'Acciones')",
+    "EditarContrasena",
+    "iconoTestUsuarioAccionesEditarContrasena",
+    "cabeceraAccionesUsuarioEditarContrasena",
+    "cuerpoAccionesUsuarioEditarContrasena",
+  ];
+  let arrayAccordionDos = [
+    "accordion20",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+    arraySubAccordionDoce,
+    arraySubAccordionTrece,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion18",
+    "collapseUsuarioAtributos",
+    null,
+    "Atributos",
+    "iconoTestUsuarioAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseUsuarioAcciones",
+    null,
+    "Acciones",
+    "iconoTestUsuarioAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testUsuario").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de Categorias*/
+function cargarTestGestionCategorias() {
+  $("#testCategoria").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarCategoria",
+    "javascript:testCategoria('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestCategoriaAtributosInsertar",
+    "cabeceraAtributosCategoriaInsertar",
+    "cuerpoAtributosCategoriaInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseCategoriaAtributoBuscar",
+    "javascript:testCategoria('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestCategoriaAtributosBuscar",
+    "cabeceraAtributosCategoriaBuscar",
+    "cuerpoAtributosCategoriaBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseCategoriaAtributoModificar",
+    "javascript:testCategoria('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestCategoriaAtributosModificar",
+    "cabeceraAtributosCategoriaModificar",
+    "cuerpoAtributosCategoriaModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarCategoria",
+    "javascript:testCategoria('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestCategoriaAtributosBorrar",
+    "cabeceraAtributosCategoriaBorrar",
+    "cuerpoAtributosCategoriaBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseCategoriaAtributoVerEnDetalle",
+    "javascript:testCategoria('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestCategoriaAtributosVerEnDetalle",
+    "cabeceraAtributosCategoriaVerEnDetalle",
+    "cuerpoAtributosCategoriaVerEnDetalle",
+  ];
+  let arrayAccordionUno = [
+    "accordion22",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseCategoriaAccionesInsertar",
+    "javascript:testCategoria('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestCategoriaAccionesInsertar",
+    "cabeceraAccionesCategoriaInsertar",
+    "cuerpoAccionesCategoriaInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseCategoriaAccionesBuscar",
+    "javascript:testCategoria('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestCategoriaAccionesBuscar",
+    "cabeceraAccionesCategoriaBuscar",
+    "cuerpoAccionesCategoriaBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseCategoriaAccionesModificar",
+    "javascript:testCategoria('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestCategoriaAccionesModificar",
+    "cabeceraAccionesCategoriaModificar",
+    "cuerpoAccionesCategoriaModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseCategoriaAccionesBorrar",
+    "javascript:testCategoria('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestCategoriaAccionesBorrar",
+    "cabeceraAccionesCategoriaBorrar",
+    "cuerpoAccionesCategoriaBorrar",
+  ];
+  let arrayAccordionDos = [
+    "accordion23",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion21",
+    "collapseCategoriaAtributos",
+    null,
+    "Atributos",
+    "iconoTestCategoriaAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseCategoriaAcciones",
+    null,
+    "Acciones",
+    "iconoTestCategoriaAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testCategoria").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de Procesos*/
+function cargarTestGestionProcesos() {
+  $("#testProceso").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarProceso",
+    "javascript:testProceso('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestProcesoAtributosInsertar",
+    "cabeceraAtributosProcesoInsertar",
+    "cuerpoAtributosProcesoInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseProcesoAtributoBuscar",
+    "javascript:testProceso('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestProcesoAtributosBuscar",
+    "cabeceraAtributosProcesoBuscar",
+    "cuerpoAtributosProcesoBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseProcesoAtributoModificar",
+    "javascript:testProceso('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestProcesoAtributosModificar",
+    "cabeceraAtributosProcesoModificar",
+    "cuerpoAtributosProcesoModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarProceso",
+    "javascript:testProceso('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestProcesoAtributosBorrar",
+    "cabeceraAtributosProcesoBorrar",
+    "cuerpoAtributosProcesoBorrar",
+  ];
+  let arrayAccordionUno = [
+    "accordion22",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseProcesoAccionesInsertar",
+    "javascript:testProceso('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestProcesoAccionesInsertar",
+    "cabeceraAccionesProcesoInsertar",
+    "cuerpoAccionesProcesoInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseProcesoAccionesBuscar",
+    "javascript:testProceso('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestProcesoAccionesBuscar",
+    "cabeceraAccionesProcesoBuscar",
+    "cuerpoAccionesProcesoBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseProcesoAccionesModificar",
+    "javascript:testProceso('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestProcesoAccionesModificar",
+    "cabeceraAccionesProcesoModificar",
+    "cuerpoAccionesProcesoModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseProcesoAccionesBorrar",
+    "javascript:testProceso('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestProcesoAccionesBorrar",
+    "cabeceraAccionesProcesoBorrar",
+    "cuerpoAccionesProcesoBorrar",
+  ];
+  let arrayAccordionDos = [
+    "accordion23",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion21",
+    "collapseProcesoAtributos",
+    null,
+    "Atributos",
+    "iconoTestProcesoAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseProcesoAcciones",
+    null,
+    "Acciones",
+    "iconoTestProcesoAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testProceso").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de Procesos*/
+function cargarTestGestionProcesosUsuario() {
+  $("#testProcesoUsuario").html("");
+
+  let arraySubAccordionUno = [
+    "collapseAtributosInsertarProcesoUsuario",
+    "javascript:testProcesoUsuario('Insertar', 'Atributos')",
+    "Añadir",
+    "iconoTestProcesoUsuarioAtributosInsertar",
+    "cabeceraAtributosProcesoUsuarioInsertar",
+    "cuerpoAtributosProcesoUsuarioInsertar",
+  ];
+  let arraySubAccordionDos = [
+    "collapseProcesoUsuarioAtributoBuscar",
+    "javascript:testProcesoUsuario('Buscar', 'Atributos')",
+    "Buscar",
+    "iconoTestProcesoUsuarioAtributosBuscar",
+    "cabeceraAtributosProcesoUsuarioBuscar",
+    "cuerpoAtributosProcesoUsuarioBuscar",
+  ];
+  let arraySubAccordionTres = [
+    "collapseProcesoUsuarioAtributoModificar",
+    "javascript:testProcesoUsuario('Modificar', 'Atributos')",
+    "Modificar",
+    "iconoTestProcesoUsuarioAtributosModificar",
+    "cabeceraAtributosProcesoUsuarioModificar",
+    "cuerpoAtributosProcesoUsuarioModificar",
+  ];
+  let arraySubAccordionCuatro = [
+    "collapseAtributosBorrarProcesoUsuario",
+    "javascript:testProcesoUsuario('Borrar', 'Atributos')",
+    "Borrar",
+    "iconoTestProcesoUsuarioAtributosBorrar",
+    "cabeceraAtributosProcesoUsuarioBorrar",
+    "cuerpoAtributosProcesoUsuarioBorrar",
+  ];
+  let arraySubAccordionCinco = [
+    "collapseProcesoUsuarioAtributoVerEnDetalle",
+    "javascript:testProcesoUsuario('VerEnDetalle', 'Atributos')",
+    "Ver en detalle",
+    "iconoTestProcesoUsuarioAtributosVerEnDetalle",
+    "cabeceraAtributosProcesoUsuarioVerEnDetalle",
+    "cuerpoAtributosProcesoUsuarioVerEnDetalle",
+  ];
+  let arrayAccordionUno = [
+    "accordion22",
+    arraySubAccordionUno,
+    arraySubAccordionDos,
+    arraySubAccordionTres,
+    arraySubAccordionCuatro,
+    arraySubAccordionCinco,
+  ];
+
+  let arraySubAccordionOcho = [
+    "collapseProcesoUsuarioAccionesInsertar",
+    "javascript:testProcesoUsuario('Insertar', 'Acciones')",
+    "Añadir",
+    "iconoTestProcesoUsuarioAccionesInsertar",
+    "cabeceraAccionesProcesoUsuarioInsertar",
+    "cuerpoAccionesProcesoUsuarioInsertar",
+  ];
+  let arraySubAccordionNueve = [
+    "collapseProcesoUsuarioAccionesBuscar",
+    "javascript:testProcesoUsuario('Buscar', 'Acciones')",
+    "Buscar",
+    "iconoTestProcesoUsuarioAccionesBuscar",
+    "cabeceraAccionesProcesoUsuarioBuscar",
+    "cuerpoAccionesProcesoUsuarioBuscar",
+  ];
+  let arraySubAccordionDiez = [
+    "collapseProcesoUsuarioAccionesModificar",
+    "javascript:testProcesoUsuario('Modificar', 'Acciones')",
+    "Modificar",
+    "iconoTestProcesoUsuarioAccionesModificar",
+    "cabeceraAccionesProcesoUsuarioModificar",
+    "cuerpoAccionesProcesoUsuarioModificar",
+  ];
+  let arraySubAccordionOnce = [
+    "collapseProcesoUsuarioAccionesBorrar",
+    "javascript:testProcesoUsuario('Borrar', 'Acciones')",
+    "Borrar",
+    "iconoTestProcesoUsuarioAccionesBorrar",
+    "cabeceraAccionesProcesoUsuarioBorrar",
+    "cuerpoAccionesProcesoUsuarioBorrar",
+  ];
+  let arrayAccordionDos = [
+    "accordion23",
+    arraySubAccordionOcho,
+    arraySubAccordionNueve,
+    arraySubAccordionDiez,
+    arraySubAccordionOnce,
+  ];
+
+  let arrayAccordionTres = [
+    "accordion21",
+    "collapseProcesoUsuarioAtributos",
+    null,
+    "Atributos",
+    "iconoTestProcesoUsuarioAtributos",
+    null,
+    null,
+    arrayAccordionUno,
+    "collapseProcesoUsuarioAcciones",
+    null,
+    "Acciones",
+    "iconoTestProcesoUsuarioAcciones",
+    null,
+    null,
+    arrayAccordionDos,
+  ];
+
+  var contenidoTest = crearTest(arrayAccordionTres);
+
+  $("#testProcesoUsuario").append(contenidoTest);
+}

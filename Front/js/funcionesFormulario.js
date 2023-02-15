@@ -57,7 +57,6 @@ function eliminarcampoId(idElementoError) {
 /**Función que resetear los valores del formulario*/
 function resetearFormulario(idFormulario, idElementoList) {
   document.getElementById(idFormulario).reset();
-
   //Devuelve el color por defecto.
   idElementoList.forEach(function (idElemento) {
     document.getElementById(idElemento).style.borderColor = "#c8c8c8";
@@ -104,6 +103,15 @@ function addActionControler(form, action, controller) {
       break;
     case "funcionalidadesSistema":
       accion = "funcionalidadesSistema";
+      break;
+    case "devolverHijos":
+      accion = "devolverHijos";
+      break;
+    case "devolverHuella":
+      accion = "devolverHuella";
+      break;
+    case "devolverProcesos":
+      accion = "devolverProcesos";
       break;
   }
   //(form, name, value)

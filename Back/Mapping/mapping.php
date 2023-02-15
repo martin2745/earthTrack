@@ -27,9 +27,9 @@ class mapping extends MappingBase{
         }
     }
   
-////////////////////////////////////////////////////////insertar////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////ADD////////////////////////////////////////////////////////
 
-    function insertar($tabla,$arrayDatoValor){
+    function ADD($tabla,$arrayDatoValor){
         $this->datosValores($arrayDatoValor);
         $y = '';
         foreach($this->valoresQuery as $valor){
@@ -37,7 +37,7 @@ class mapping extends MappingBase{
         }
         $y = substr($y,0,-1);
         $datos = $this->queryDatosAdd($this->datosQuery);
-
+       
         $this->query = "INSERT INTO $tabla ($datos) values ($y)";
         $this->stmt = $this->conexion->prepare($this->query);
         $this->execute_single_query($this->valoresQuery);  
@@ -54,9 +54,9 @@ class mapping extends MappingBase{
             return substr($toret, 2, strlen($toret));
         }
 
-///////////////////////////////////////////////////////editar////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////EDIT////////////////////////////////////////////////////////
     
-    function editar($tabla,$arrayDatoValor,$condicion,$valoresCondition){
+    function EDIT($tabla,$arrayDatoValor,$condicion,$valoresCondition){
       $this->datosValores($arrayDatoValor);
 
       $infoQuery = '';
@@ -76,19 +76,20 @@ class mapping extends MappingBase{
           foreach($condicion as $valorCondicion){
             $infoWhere = $infoWhere.$valorCondicion.'=? AND ';
           }
-
+          
           $infoQuery = substr($infoQuery,0,-2);
           $infoWhere = substr($infoWhere,0,-5);
 
         $this->query = "UPDATE $tabla SET $infoQuery WHERE $infoWhere";
-
+          
         $this->stmt = $this->conexion->prepare($this->query);
+        //var_dump($this->query);var_dump($this->valoresQuery);exit;
         $this->execute_single_query($valores);
     }
 
-///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////DELETE/////////////////////////////////////////////////////////
     
-    function borrar($tabla,$arrayDatoValor){
+    function DELETE($tabla,$arrayDatoValor){
       $this->datosValores($arrayDatoValor);
       $infoQuery = '';
 
@@ -99,18 +100,19 @@ class mapping extends MappingBase{
           
       $this->query = "DELETE FROM $tabla WHERE( $infoQuery )";
       $this->stmt = $this->conexion->prepare($this->query);
+      //var_dump($this->query);var_dump($this->valoresQuery);exit;
       $this->execute_single_query($this->valoresQuery);
     }
 
-//////////////////////////////////////////////////////buscar///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH_GENERICO///////////////////////////////////////////////////////
 
-    function buscar($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    function SEARCH_GENERICO($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden, $id){
         $valores = array();
         $this->query = "SELECT * FROM ".$tabla;
         $this->datosValores($arrayDatoValor);  
 
         if (!empty($this->datosQuery)){
-            $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+            $toret = $this->filtradoSentenciaWHERE_GENERICO($arrayDatoValor);
             $this->query = $this->query.' WHERE ('.$toret[0].')';
             $valores = $toret[1];
         }
@@ -123,6 +125,7 @@ class mapping extends MappingBase{
             $this->stmt = $this->conexion->prepare($this->query);
             $this->get_results_from_query($valores);
         }
+        
         else{
         //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
             $this->stmt = $this->conexion->prepare($this->query);
@@ -141,13 +144,13 @@ class mapping extends MappingBase{
 
         if (!empty($this->feedback['resource']) && !empty($foraneas)){
             foreach ($foraneas as $key => $value) {
-                $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+                $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value, $id);
             }
         }
         return $this->feedback;
       }
 
-    function filtradoSentenciaWHERE($arrayDatoValor){
+    function filtradoSentenciaWHERE_GENERICO($arrayDatoValor){
         $arrayDatoValorLIKE = array();
         $arrayDatoValorIGUAL = array();
         $valoresQuery = array();
@@ -227,8 +230,8 @@ class mapping extends MappingBase{
                 $this->get_results_from_query(array());
                 return $this->feedback;
             }
-        
-            function incluirforaneas($principal, $tabla, $clave){
+            
+            function incluirforaneas($principal, $tabla, $clave, $id){
                 $filasforaneas = $this->buscarforaneas($tabla);
                 $auxiliar = array();
 
@@ -236,9 +239,16 @@ class mapping extends MappingBase{
                 else{
                     foreach ($principal as $fila) {
                         foreach ($filasforaneas['resource'] as $filasforanea) {
-                            if ($fila[$clave] == $filasforanea[$clave]){
-                                $fila[$clave] = $filasforanea;
-                            }       
+                            if(strpos($id[0], $tabla) != false){
+                                if ($fila[$clave] == $filasforanea[$id[0]]){
+                                    $fila[$clave] = $filasforanea;                               
+                                }
+                            }else{
+                                if ($fila[$clave] == $filasforanea[$clave]){
+                                    $fila[$clave] = $filasforanea;                               
+                                }
+                            }
+                                  
                         }
                     array_push($auxiliar, $fila);
                   }
@@ -246,6 +256,127 @@ class mapping extends MappingBase{
                 return $auxiliar;
             }
 
+////////////////////////////////////////////SEARCH BY///////////////////////////////////////////////////////
+function SEARCH_BY($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    $valores = array();
+    $this->query = "SELECT * FROM ".$tabla;
+    $this->datosValores($arrayDatoValor);  
+
+    if (!empty($this->datosQuery)){
+        $toret = $this->filtradoSentenciaWHEREBy($arrayDatoValor);
+        $this->query = $this->query.' WHERE ('.$toret[0].')';
+        $valores = $toret[1];
+    }
+    
+    if($orden != '' && $tipoOrden != ''){
+        $this->query = $this->query.' ORDER BY ('.$orden.') '.$tipoOrden;
+    }
+
+    if (($empieza == 'nulo') && ($filaspagina == 'nulo')) {
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+    }
+    else{
+    //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+        
+        if($empieza == 'nulo') { $empieza = 0;}
+
+        if(count($this->feedback['resource']) == $empieza){
+            $this->feedback['code'] = 'RECORDSET_VACIO';
+            $this->feedback['resource'] = array();
+        }
+        else if(count($this->feedback['resource']) > $filaspagina){
+            $this->feedback['resource'] = array_slice($this->feedback['resource'], $empieza, $filaspagina);
+        }
+    }
+
+    if (!empty($this->feedback['resource']) && !empty($foraneas)){
+        foreach ($foraneas as $key => $value) {
+            $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+        }
+    }
+    return $this->feedback;
+  }
+
+function filtradoSentenciaWHEREBy($arrayDatoValor){
+    $valoresQuery = array();
+    $query = '';
+
+    if($query != ''){
+        $query = $query.' and '.$this->constructWhereBuscar($arrayDatoValorIGUAL);
+    }else{
+        $query = $this->constructWhereBuscar($arrayDatoValorIGUAL);
+    }
+    foreach($arrayDatoValorIGUAL as $valor){
+       array_push($valoresQuery, $valor);
+    }  
+
+    $toret[0] = $query;
+    $toret[1] = $valoresQuery;
+     return $toret;
+    
+  }
+////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
+function SEARCH($tabla,$arrayDatoValor, $foraneas, $empieza, $filaspagina, $orden, $tipoOrden){
+    $valores = array();
+    $this->query = "SELECT * FROM ".$tabla;
+    $this->datosValores($arrayDatoValor);  
+
+    if (!empty($this->datosQuery)){
+        $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+        $this->query = $this->query.' WHERE ('.$toret[0].')';
+        $valores = $toret[1];
+    }
+    
+    if($orden != '' && $tipoOrden != ''){
+        $this->query = $this->query.' ORDER BY ('.$orden.') '.$tipoOrden;
+    }
+
+    if (($empieza == 'nulo') && ($filaspagina == 'nulo')) {
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+    }
+    else{
+    //ES NECESARIO MEJORAR ESTA PARTE PARA INCLUIR UN LIMIT POR SQL CON PDO EN PHP
+        $this->stmt = $this->conexion->prepare($this->query);
+        $this->get_results_from_query($valores);
+        
+        if($empieza == 'nulo') { $empieza = 0;}
+
+        if(count($this->feedback['resource']) == $empieza){
+            $this->feedback['code'] = 'RECORDSET_VACIO';
+            $this->feedback['resource'] = array();
+        }
+        else if(count($this->feedback['resource']) > $filaspagina){
+            $this->feedback['resource'] = array_slice($this->feedback['resource'], $empieza, $filaspagina);
+        }
+    }
+
+    if (!empty($this->feedback['resource']) && !empty($foraneas)){
+        foreach ($foraneas as $key => $value) {
+            $this->feedback['resource'] = $this->incluirforaneas($this->feedback['resource'], $key, $value);
+        }
+    }
+    return $this->feedback;
+  }
+
+function filtradoSentenciaWHERE($arrayDatoValor){
+    $valoresQuery = array();
+    $query = '';
+
+    $query = $this->constructWhereBuscar($arrayDatoValorLIKE);
+    $arrayValoresLike = $this->convertirValoresLike(array_values($arrayDatoValorLIKE));
+    foreach($arrayValoresLike as $value){
+        array_push($valoresQuery, $value);
+    }
+
+    $toret[0] = $query;
+    $toret[1] = $valoresQuery;
+     return $toret;
+    
+  }
 ////////////////////////////////////////////Funciones de apoyo///////////////////////////////////////////////////////
       
     function getById($tabla,$datosQuery,$valoresQuery){
@@ -313,7 +444,7 @@ class mapping extends MappingBase{
         $this->query = "SELECT COUNT(*) FROM ". $tabla;
   
         if (!empty($this->datosQuery)){
-          $toret = $this->filtradoSentenciaWHERE($arrayDatoValor);
+          $toret = $this->filtradoSentenciaWHERE_GENERICO($arrayDatoValor);
           $this->query = $this->query.' WHERE ('.$toret[0].')';
           $valores = $toret[1];
         }

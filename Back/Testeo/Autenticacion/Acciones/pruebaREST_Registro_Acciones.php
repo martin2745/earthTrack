@@ -30,7 +30,7 @@ function pruebaREST_Registro_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'auth';
 	$POST['action'] = 'registrar';
-	$POST['usuario'] = 'usuarioTest2';
+	$POST['usuario'] = 'usuarioTest3';
 	$POST['contrasena'] = '21232f297a57a5a7f3894a0e4a801fc3';
 	$POST['dni'] = '34971500T';
 	$POST['nombre'] = 'Martin';
@@ -38,7 +38,7 @@ function pruebaREST_Registro_Acciones(){
 	$POST['fechaNacimiento'] = '2021-12-06';
 	$POST['direccion'] = 'salvador Dalí portal 10º piso 6º A ';
 	$POST['telefono'] = '696696696';
-	$POST['email'] = 'usuarioRegistro@gmail.com';
+	$POST['email'] = 'usuarioRegistro3@gmail.com';
 
 	$prueba = 'Usuario registrado correctamente.';
 	$codeEsperado = 'REGISTRAR_USUARIO_OK';
@@ -71,7 +71,7 @@ function pruebaREST_Registro_Acciones(){
 	$POST = $vaciarPost;
 	$POST['controlador'] = 'usuario';
 	$POST['action'] = 'borrar';
-	$POST['usuario'] = 'usuarioTest2';
+	$POST['usuario'] = 'usuarioTest3';
 
 	$pruebas->peticionCurlNoTest($POST);
 	

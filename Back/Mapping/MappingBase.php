@@ -26,7 +26,7 @@ abstract class MappingBase{
 	public $mapping;
 
 	function connection(){
-		if (isset($_POST['test']) && $_POST['test'] == 'concetardbTest'){
+		if (isset($_POST['test']) && $_POST['test'] == 'conectardbTest'){
 			try{
 				$this->conn = new PDO('mysql:host='.self::$db_host.';dbname='.self::$bdTest,self::$db_user,self::$db_pass);
 			}catch(Exception $e){
@@ -48,13 +48,12 @@ abstract class MappingBase{
 
 	//Ejecutar un query simple del tipo INSERT, DELETE, UPDATE
 	protected function execute_single_query($valores) {
-		
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!($this->stmt->execute($valores))){
-				throw new falloQuery('SQL_KO');
+				rellenarExcepcionAccion('SQL_KO');
 			}
 		}
 
@@ -64,12 +63,12 @@ abstract class MappingBase{
 	protected function get_results_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					throw new falloQuery('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 	
 					if ($this->stmt->rowCount() == 0){
@@ -88,7 +87,7 @@ abstract class MappingBase{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					throw new falloQuery('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 	
 					if ($this->stmt->rowCount() == 0){
@@ -113,12 +112,12 @@ abstract class MappingBase{
 	protected function get_one_result_from_query($valores) {
 		$this->resource = array();
 		if (!($this->connection())){
-			throw new falloBD('CONEXION_BD_KO');
+			rellenarExcepcionAccion('CONEXION_BD_KO');
 		}
 		else{
 			if(!empty($valores)){
 				if (!$this->stmt->execute($valores)){
-					throw new falloQuery('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;
@@ -135,7 +134,7 @@ abstract class MappingBase{
 			}
 			else{
 				if (!$this->stmt->execute()){
-					throw new falloQuery('SQL_KO');
+					rellenarExcepcionAccion('SQL_KO');
 				}else{
 					if ($this->stmt->rowCount() == 0){
 						$this->ok = true;

@@ -13,15 +13,15 @@ class ModelBase{
 		$this->mapping = new mapping();	
 	}
 
-////////////////////////////////////////////////////////insertar////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////ADD////////////////////////////////////////////////////////
 
-	function insertar(){
-		$this->mapping->insertar($this->tabla, $this->arrayDatoValor);
+	function ADD(){
+		$this->mapping->ADD($this->tabla, $this->arrayDatoValor);
 	}
 
-///////////////////////////////////////////////////////editar////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////EDIT////////////////////////////////////////////////////////
 
-	function editar(){
+	function EDIT(){
 		$valoresCondition = array();
 		foreach ($this->arrayDatoValor as $key => $value) { 
 			foreach($this->id as $elementoId){
@@ -30,7 +30,7 @@ class ModelBase{
 				}
 			}
 		} 
-
+		
 		foreach ($this->id as $value) { 
 			foreach($this->arrayDatoValor as $dato => $valor){
 				if($value == $dato){
@@ -38,20 +38,20 @@ class ModelBase{
 				}
 			}
 		}
-
-		$this->mapping->editar($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
+		
+		$this->mapping->EDIT($this->tabla, $this->arrayDatoValor, $this->id, $valoresCondition);
 	}
 
-///////////////////////////////////////////////////////borrar/////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////DELETE/////////////////////////////////////////////////////////
 
-	function borrar(){
-		$this->mapping->borrar($this->tabla, $this->arrayDatoValor);
+	function DELETE(){
+		$this->mapping->DELETE($this->tabla, $this->arrayDatoValor);
 	}
 
-//////////////////////////////////////////////////////buscar///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SEARCH///////////////////////////////////////////////////////
 
-	function buscar(){
-		$result = $this->mapping->buscar($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden);
+	function SEARCH(){
+		$result = $this->mapping->SEARCH_GENERICO($this->tabla, $this->arrayDatoValor, $this->foraneas, $this->empieza, $this->filaspagina, $this->orden, $this->tipoOrden, $this->id);
 		$filas = $result['resource'];
 
 		if($this->empieza == 'nulo') {$this->empieza = 0;}

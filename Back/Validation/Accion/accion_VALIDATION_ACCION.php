@@ -1,41 +1,41 @@
 <?php
 
-include_once './Validation/Validar_class.php';
-include_once './Validation/excepciones.php';
+include_once './Validation/validar_class.php';
 include_once './Modelos/permiso_MODEL.php';
 
 class accion_VALIDATION_ACCION extends Validar{
 
     function validar_insertar(){		
 		if ($this->existe_nombre_accion()){
-			throw new excepcionAccion('ACCION_YA_EXISTE');
+            rellenarExcepcionAccion('ACCION_YA_EXISTE');
+            
         }
         if(!$this->accion_denegada_insertar()){
-			throw new excepcionAccion('ACCION_DENEGADA_INSERTAR_ACCION');
+            rellenarExcepcionAccion('ACCION_DENEGADA_INSERTAR_ACCION');
         }
 	}
 
 	function validar_editar(){
 		if (!$this->existe_accion_id()){
-			throw new excepcionAccion('ACCION_NO_EXISTE');
+            rellenarExcepcionAccion('ACCION_NO_EXISTE');
         }	
 		if ($this->existe_nombre_accion_editar()){
-			throw new excepcionAccion('ACCION_YA_EXISTE');
+            rellenarExcepcionAccion('ACCION_YA_EXISTE');
         }
         if(!$this->accion_denegada_editar()){
-			throw new excepcionAccion('ACCION_DENEGADA_EDITAR_ACCION');
+            rellenarExcepcionAccion('ACCION_DENEGADA_EDITAR_ACCION');
         }
 	}
 
     function validar_borrar(){
 		if (!$this->existe_accion_id()){ 
-			throw new excepcionAccion('ACCION_NO_EXISTE');
+            rellenarExcepcionAccion('ACCION_NO_EXISTE');
         }
         if($this->existe_permiso()){
-			throw new excepcionAccion('ACCION_ASOCIADO_PERMISO');
+            rellenarExcepcionAccion('ACCION_ASOCIADO_PERMISO');
         }
         if(!$this->accion_denegada_borrar()){
-			throw new excepcionAccion('ACCION_DENEGADA_BORRAR_ACCION');
+            rellenarExcepcionAccion('ACCION_DENEGADA_BORRAR_ACCION');
         }
 	}
 

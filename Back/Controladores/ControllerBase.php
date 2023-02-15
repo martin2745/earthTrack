@@ -2,50 +2,54 @@
 
 abstract class ControllerBase{
 
-	function rellenarExcepcion($mensaje){
-		$feedback['ok'] = false;
-		$feedback['code'] = $mensaje;
-		if(!isset($_POST['test'])){
-			$this->logExcepcionesAtributo($feedback);
-		}
-		header('Content-type: application/json');
-		echo(json_encode($feedback)); 
-		exit();
+	public function __construct()
+	{
+		include_once './Servicios/'.controlador.'_SERVICE.php';
+
+        $nombre_servicio = controlador;
+        $nombre_servicio = $nombre_servicio.'_SERVICE';
+		$this->servicio = new $nombre_servicio();
 	}
 
-	function devolverRest($feedback){
-		
-	    header('Content-type: application/json');
-		echo(json_encode($feedback));
-
+    function insertar(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_insertar();
+		$respuesta = $this->servicio->insertar(strtoupper(controlador).'_INSERTAR_OK');
+		devolverRest($respuesta);		
+	}
+	
+	function editar(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_editar();
+		$respuesta = $this->servicio->editar(strtoupper(controlador).'_EDITAR_OK');
+		devolverRest($respuesta);
 	}
 
-	function logExcepcionesAtributo($feedback){
-		include_once './Modelos/logExcepcionAtributos_MODEL.php';
-		
-		$log = new logExcepcionAtributos_MODEL();
-		date_default_timezone_set('Europe/Madrid');
-		if(action == 'login' || action == 'registrar' || action == 'obtenerContrasenaCorreo'){
-			define('usuarioSistema', 'DESCONOCIDO');
-		}
+	function borrar(){
+		$_POST['borrado_logico'] = 1;
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_borrar();
+		$respuesta = $this->servicio->borrar(strtoupper(controlador).'_BORRAR_OK');
+		devolverRest($respuesta);	
+	}
 
-		$log->arrayDatoValor = array( 
-			'usuario' => usuarioSistema, 
-			'funcionalidad' => controlador,
-			'accion' => action,
-			'codigo' => $feedback['code'],
-			'mensaje' => constant($feedback['code']),
-			'tiempo' => (string)date("Y-m-d H:i:s", time()));
-			
-		try{	
-			$log->insertar();
-		}catch(falloQuery $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(falloBD $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}catch(Exception $ex){
-			$this->rellenarExcepcion($ex->getMessage());
-		}	  
+	function buscar(){
+		$this->servicio->validar_entrada_atributos();	
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_buscar();
+		$respuesta = $this->servicio->buscar();
+		devolverRest($respuesta);
+	}	
+	
+	function verEnDetalle(){
+		$this->servicio->validar_entrada_atributos();
+		$this->servicio->inicializarRest();
+		$this->servicio->validar_verEnDetalle();
+		$respuesta = $this->servicio->verEnDetalle();
+		devolverRest($respuesta);
 	}
 
 }

@@ -10,9 +10,9 @@ arrayGA = {
   RECORDSET_DATOS: "O recordset non esta baleiro.",
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////ApiRest.php////////////////////////////////////////////////
+  /////////////////////////////////////////index.php////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////
-  //Excepciones de ApiRest.php
+  //Excepciones de index.php
   PETICION_INVALIDA: "Petición invalida.",
   ACTION_NO_ENCONTRADA: "Acción non encontrada.",
   PUNTO_ACCESO_TEST_INVALIDO:
@@ -223,6 +223,8 @@ arrayGA = {
 
   //editar
   EMAIL_USUARIO_YA_EXISTE: "Xa existe un usuario con ese email.",
+  RESPONSABLE_TIENE_CATEGORIA:
+    "Un administrador con categoría non se pode eliminar, primeiro elimine a súa categoría.",
   ACCION_DENEGADA_EDITAR_USUARIO:
     "So o administrador pode editar os datos de un usuario e un usuario os seus propios.",
 
@@ -445,6 +447,7 @@ arrayGA = {
   ICON_PERMISOS: "Xestión de permisos",
   ICONO_DETALLE: "Detalle",
   ANTERIOR: "Anterior",
+  ICONO_NAVEGAR_PROCESO: "Ver o seu proceso",
   SIGUIENTE: "Seguinte",
   ACTION: "Accións",
 
@@ -471,10 +474,20 @@ arrayGA = {
   LOGEXCEPCION_TIEMPO: "Tempo",
   GESTION_USUARIO: "Xestión de usuarios",
   DATOS_USUARIO: "Datos do usuario",
+  USUARIO_DNI: "DNI",
+  USUARIO_USUARIO: "Usuario",
+  USUARIO_ROL: "Rol",
+  USUARIO_NOMBRE: "Nome",
+  USUARIO_APELLIDOS: "Apelidos",
+  USUARIO_DIRECCION: "Direccion",
+  USUARIO_FECHANACIMIENTO: "Data de nacemento",
+  USUARIO_EMAIL: "Email",
+  USUARIO_TELEFONO: "Telefono",
   TESTS: "Tests",
 
   //Mensajes error
   ERROR: "ERROR",
+  ERROR_TEST: "Error na realización do test",
   ERROR_AUTENTICACION: "Non tes permiso para acceder. Volve  intentalo",
   ERROR_LISTAR_FUNCIONALIDADES_MENU:
     "Ocurriu un erro ao listar as funcionalidades do usuario",
@@ -521,4 +534,112 @@ arrayGA = {
   TITULO_NOTICIA_3: "Cal é a nosa meta?",
   CONTENIDO_NOTICIA_3:
     "Que cada usuario poida aportar su grano de area na loita contra o cambio climático. É deber de todos axudar no sostemento do planeta.",
+
+  //////////////
+  //////////////  CATEGORIAS
+  //////////7////
+
+  GESTION_CATEGORIA: "Xestion categorias",
+  EXPLORAR_CATEGORIA: "Explora as categorias",
+  ACCEDER_CATEGORIA: "Adentrate nesta categoría",
+  ACLARACION_CATEGORIA: "Accede para ver as suas subcategorias",
+  NUEVA_CATEGORIA: "Crea nova Categoría",
+  NOMBRE: "Nome",
+  DESCRIPCION: "Descripción",
+  SELECCIONAR_RESPONSABLE: "Escolle un responsable de esta categoria",
+  SELECCIONAR_CATEGORIA_PADRE: "Escolle unha categoría pai de esta",
+  PADRE_CATEGORIA: "Categoria pai",
+  RESPONSABLE_CATEGORIA: "Responsable",
+  VOLVER_PADRE_ANTERIOR: "Volver a sección anterior",
+  CATEGORIAS: "Categorias",
+  PROCESOS: "Procesos",
+  CATEGORIA_NOMBRE_VACIO: "O nome da categoría non pode ser vacío",
+  CATEGORIA_DESCRIPCION_VACIO: "A descripción da categoría non pode ser vacío",
+  CATEGORIA_PADRE_VACIO: "Debes escoller un pai para esta categoría",
+  MI_CATEGORIA: "Miña categoría",
+  CATEGORIA_RESPONSABLE_VACIO:
+    "Debes escoller un responsable para esta categoría",
+  CATEGORIA_NOMBRE_MENOR_QUE_3:
+    "A lonxitude do nome debe ser entre 3 e 48 caracteres",
+  CATEGORIA_NOMBRE_MAYOR_QUE_48:
+    "A lonxitude do nome debe ser entre 3 e 48 caracteres",
+  CATEGORIA_DESCRIPCION_MAYOR_QUE_200:
+    "A descripción non pode ter mais de 200 caracteres",
+  CATEGORIA_NOMBRE_SOLO_LETRAS: "O nome solo admite letras, sen espacios",
+  CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO:
+    "A descripción ten un formato incorrecto.",
+  NOMBRE_CATEGORIA_FORMATO_INCORRECTO: "O nome ten un formato incorrecto.",
+  EDITAR_CATEGORIA: "Edita esta categoría",
+  ELIMINAR_CATEGORIA: "Elimina esta categoría",
+  CATEGORIA_YA_EXISTE: "Xa existe unha categoria con ese name",
+  CATEGORIA_NOMBRE_FORMATO_INCORRECTO:
+    "O formato do nome da categoria e incorrecto",
+  NOMBRE_CATEGORIA: "Nome da categoria",
+
+  // codigos categoria
+  CATEGORIA_EDITAR_OK: "A categoria foi modificada correctamente",
+  CATEGORIA_INSERTAR_OK: "A categoria insertouse correctamente",
+  CATEGORIA_BORRAR_OK: "A categoria eliminouse correctamente",
+  CATEGORIA_DEVOLVER_PADRE: "A categoria padre foi devolta correctamente",
+  CATEGORIA_DEVOLVER_HIJOS: "As categorias fillas foron devoltas correctamente",
+
+  //codigos proceso
+  CALCULAR_PROCESO: "Calcular proceso",
+  GESTION_PROCESO: "Xestión de procesos",
+  PROCESO_INSERTAR_OK: "Proceso insertado correctamente",
+  INSERTAR_PROCESO: "Crea un proceso",
+  EDITAR_PROCESO: "Editar proceso",
+  BORRAR_PROCESO: "Eliminar proceso",
+  NOTAS_FORMULA_PROCESO:
+    "Nota: para escribir a fórmula introduce os parámetros entre chaves. Non e necesario indicar a unidade.",
+  FORMULA_PROCESO: "Fórmula para calcular o proceso",
+  PROCESO_DESCRIPCION_VACIO: "A descripción non pode estar baleira",
+  PROCESO_NOMBRE_VACIO: "Debes indicar un nome",
+  FORMULA_PROCESO_VACIO: "Debes indicar unha formula",
+  CATEGORIA_NOMBRE_MAYOR_QUE_48:
+    "A lonxitude do nome debe ser entre 3 e 48 caracteres",
+  CATEGORIA_NOMBRE_MENOR_QUE_3:
+    "A lonxitude do nome debe ser entre 3 e 48 caracteres",
+  PROCESO_DESCRIPCION_FORMATO_INCORRECTO:
+    "A descripción ten un formato incorrecto.",
+  PROCESO_NOMBRE_FORMATO_INCORRECTO: "O nome ten un formato incorrecto.",
+  FORMULA_PARAMETROS_MAL:
+    "Os parámetros introducironse de forma incorrecta, por favor mire a nota que indica cómo facelo",
+  FORMULA_MAL_FORMADA:
+    "A formula está mal formada. Os operadores dispoñibles son +,-,*,/,^",
+  FORMULA_PARENTESIS_MAL: "A formula presenta parentesis o llaves mal pechados",
+  FORMULA_VACIA: "A formula non pode ser vacia",
+  PARAMETRO_FORMULA_VACIO: "Non pode haber parámetros baleiros",
+  PARAMETRO_FORMULA_INCORRECTO: "O parametro debe ser numerico",
+  EJEMPLO_FORMULA: "{masa(kg)} * 2 / ( {altura(metros)} * {edad} )",
+  CATEGORIA_PROCESO: "Categoria a que pertence o proceso",
+  CATEGORIA_PROCESO_VACIA: "Debes asignar o proceso a unha categoria",
+  EXISTE_PROCESO_EN_CATEGORIA: "Existe un proceso na categoria",
+  PROCESO_EDITAR_OK: "O proceso actualizouse correctamente",
+  PROCESO_BORRAR_OK: "O proceso eliminouse correctamente",
+  EXPLORAR_PROCESOS: "Explora procesos",
+  CATEGORIA_PROCESO_EXPLAIN: "Categoria: ",
+  CATEGORIA_PROCESO_INCORRECTO: "Categoria do proceso incorrecta",
+  ICONO_BUSCAR_PROCESO: "Buscar proceso",
+  CATEGORIA_NO_TIENE_PERMISO:
+    "Non tes permisos para actuar sobre a categoría, contacta co administrador en caso de existir un erro na árbore",
+  CATEGORIA_EXISTE_HIJO: "Existen fillos de esta categoria",
+  CATEGORIA_NO_EXISTE: "Non existe a categoria",
+  CATEGORIA_TIENE_PROCESO: "A categoría ten proceso",
+
+  MI_HUELLA: "MIÑA PEGADA",
+  EMISIONES: "Xeras unha pegada de",
+  GENERAS_HUELLA: "Emisions de CO2",
+  //PARAMETROS
+  PROCESO_USUARIO_INSERTAR_OK: "O proceso calculouse correctamente",
+  MIS_PROCESOS: "Meus procesos",
+  PROCESO_USUARIO_BORRAR_OK: "Os datos eliminaronse correctamente",
+  SIN_PROCESOS_CALCULADOS: "Aínda non se calcularon procesos",
+  PROCESO_CALCULADO:
+    'Vostede xa añadiu este proceso a súa pegada de carbono, para revisar os procesos que a forman pode visitar o apartado "Meus procesos"',
+  NAVEGAR_MIS_PROCESOS: "Navegar os meus procesos",
+  PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO: "ID do proceso baleiro",
+  EXISTE_PROCESO_USUARIO: "Xa calculaches este proceso",
+  PROCESO_USUARIO_EDITAR_OK: "Cálculo actualizado",
+  CATEGORIA_TIENE_PROCESO: "Esta categoría ten un proceso",
 };

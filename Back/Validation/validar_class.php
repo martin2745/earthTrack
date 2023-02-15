@@ -97,6 +97,24 @@ class Validar{
 		}
 	}
 
+	//comprueba si un string tiene solo numeros y espacios o puntos
+	//devuelve true si es correcto false en caso contrario
+	function comprobarNumerosEspaciosParentesis($string){
+		if (preg_match('/^[0-9.)( ]+$/s',$string)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function comprobarOperadores($string){
+		if (preg_match('/^[+\*^\/-]+$/s',$string)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	function comprobarLetrasNumerosEspaciosGuiones($string){
 
 		if (preg_match('/^[a-zA-ZÀ-ÿ0-9-_. \u00f1\u00d1]+$/s',$string)){

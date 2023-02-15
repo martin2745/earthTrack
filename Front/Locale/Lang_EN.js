@@ -10,9 +10,9 @@ arrayEN = {
   RECORDSET_DATOS: "The recordset is not empty.",
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////ApiRest.php////////////////////////////////////////////////
+  /////////////////////////////////////////index.php////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////
-  //Excepciones de ApiRest.php
+  //Excepciones de index.php
   PETICION_INVALIDA: "Invalid request.",
   ACTION_NO_ENCONTRADA: "Action not found.",
   PUNTO_ACCESO_TEST_INVALIDO:
@@ -211,6 +211,8 @@ arrayEN = {
 
   //editar
   EMAIL_USUARIO_YA_EXISTE: "A user with that email already exists.",
+  RESPONSABLE_TIENE_CATEGORIA:
+    "A manager with category cannot be deleted, delete his category first.",
   ACCION_DENEGADA_EDITAR_USUARIO:
     "Only the administrator can edit the data of a user and a user their own.",
 
@@ -430,6 +432,7 @@ arrayEN = {
   ICONO_BACK: "Back",
   ICON_PERMISOS: "Permission management",
   ICONO_DETALLE: "Detail",
+  ICONO_NAVEGAR_PROCESO: "See the process",
   ANTERIOR: "Previous",
   SIGUIENTE: "Next",
   ACTION: "Actions",
@@ -457,10 +460,20 @@ arrayEN = {
   LOGEXCEPCION_TIEMPO: "Time",
   GESTION_USUARIO: "User management",
   DATOS_USUARIO: "User info",
+  USUARIO_USUARIO: "User",
+  USUARIO_DNI: "DNI",
+  USUARIO_ROL: "Rol",
+  USUARIO_NOMBRE: "Name",
+  USUARIO_APELLIDOS: "Surname",
+  USUARIO_FECHANACIMIENTO: "Birthday",
+  USUARIO_DIRECCION: "Address",
+  USUARIO_EMAIL: "Email",
+  USUARIO_TELEFONO: "Phone",
   TESTS: "Tests",
 
   //Mensajes error
   ERROR: "ERROR",
+  ERROR_TEST: "Error in performing the test",
   ERROR_AUTENTICACION: "You do not have permission to access. Please try again",
   ERROR_LISTAR_FUNCIONALIDADES_MENU:
     "An error occurred while listing user features",
@@ -507,4 +520,108 @@ arrayEN = {
   TITULO_NOTICIA_3: "What is our goal?",
   CONTENIDO_NOTICIA_3:
     "That each user can contribute their grain of sand in the fight against climate change. It is everyone`s duty to help sustain the planet.",
+
+  //////////////
+  //////////////  CATEGORIAS
+  //////////7////
+
+  GESTION_CATEGORIA: "Categories Maganment",
+  EXPLORAR_CATEGORIA: "Explore categories",
+  ACCEDER_CATEGORIA: "Go deeper",
+  ACLARACION_CATEGORIA: "Click the button to see its subcategories",
+  NUEVA_CATEGORIA: "Create new category",
+  NOMBRE: "Name",
+  DESCRIPCION: "Description",
+  SELECCIONAR_RESPONSABLE: "Pick a manager for this category",
+  SELECCIONAR_CATEGORIA_PADRE: "Pick an upper category for this category",
+  PADRE_CATEGORIA: "Upper category",
+  RESPONSABLE_CATEGORIA: "Manager",
+  VOLVER_PADRE_ANTERIOR: "Go back to the previus father",
+  CATEGORIAS: "Categories",
+  PROCESOS: "Proceses",
+
+  CATEGORIA_NOMBRE_VACIO: "The name given can not be empty",
+  CATEGORIA_DESCRIPCION_VACIO: "The decription given can not be empty",
+  MI_CATEGORIA: "My category",
+  CATEGORIA_PADRE_VACIO: "You must choose a father for this category",
+  CATEGORIA_RESPONSABLE_VACIO: "You must choose a manager for this category",
+  CATEGORIA_NOMBRE_MENOR_QUE_3:
+    "Name length must be between 3 and 48 characters",
+  CATEGORIA_NOMBRE_MAYOR_QUE_48:
+    "Name length must be between 3 and 48 characters",
+  CATEGORIA_DESCRIPCION_MAYOR_QUE_200:
+    "The description has a maximum of 200 characters",
+  CATEGORIA_NOMBRE_SOLO_LETRAS: "The name only admit letters",
+  EDITAR_CATEGORIA: "Edit this category",
+  ELIMINAR_CATEGORIA: "Delete this category",
+  CATEGORIA_DESCRIPCION_FORMATO_INCORRECTO:
+    "Incorrect format of the description",
+  NOMBRE_CATEGORIA_FORMATO_INCORRECTO: "Incorrect format of the name",
+  // codigos categoria
+  CATEGORIA_EDITAR_OK: "Category was updated succesfully",
+  CATEGORIA_INSERTAR_OK: "Category was inserted succesfully",
+  CATEGORIA_BORRAR_OK: "Category was deleted succesfully",
+  CATEGORIA_DEVOLVER_PADRE: "Father category has been brought correctly",
+  CATEGORIA_DEVOLVER_HIJOS: "Dependent categories had been brought correctly",
+  CATEGORIA_YA_EXISTE: "Already exists a category with that name",
+  CATEGORIA_NOMBRE_FORMATO_INCORRECTO: "The format of the name is incorrect",
+  NOMBRE_CATEGORIA: "Name of the category",
+
+  //codigos proceso
+  GESTION_PROCESO: "Proccess Managment",
+  INSERTAR_PROCESO: "Create a process",
+  PROCESO_INSERTAR_OK: "The process was inserted correctly",
+  BORRAR_PROCESO: "Delete process",
+  NOTAS_FORMULA_PROCESO:
+    "Note: in order to fulfill this formula introduce the parameters between keys indicating their unity with backets. ",
+  FORMULA_PROCESO: "Formula of the process",
+  CALCULAR_PROCESO: "Calculate process",
+  EDITAR_PROCESO: "Edit processs",
+  PROCESO_DESCRIPCION_VACIO: "The description can not be empty",
+  PROCESO_NOMBRE_VACIO: "The name can not be empty",
+  FORMULA_PROCESO_VACIO: "The formula can not be empty",
+  PROCESO_NOMBRE_MAYOR_QUE_48: "The name can not have more than 48 characters",
+  PROCESO_NOMBRE_MENOR_QUE_3: "The name must be larger",
+  PROCESO_DESCRIPCION_FORMATO_INCORRECTO: "Incorrect format of the description",
+  PROCESO_NOMBRE_FORMATO_INCORRECTO: "Incorrect format of the name",
+  FORMULA_PARAMETROS_MAL:
+    "The parameters are not formatted propperly, please check the note below.",
+  FORMULA_MAL_FORMADA:
+    "There is some errors on the formula. The operators available are +,-,*,/,^",
+  PARAMETRO_FORMULA_VACIO: "There can not be empty parameters",
+  FORMULA_PARENTESIS_MAL:
+    "There is parentheses or keys in the formula that do not match",
+  PARAMETRO_FORMULA_INCORRECTO: "The parameter must be numeric",
+  FORMULA_VACIA: "The formula can not be empty",
+  EJEMPLO_FORMULA: "{mass(kg)} * 2 / ( {height(meters)} * {age} )",
+  CATEGORIA_PROCESO: "Category",
+  CATEGORIA_PROCESO_VACIA: "The process must be assigned to a category",
+  EXISTE_PROCESO_EN_CATEGORIA: "There is already a process in the category",
+  PROCESO_EDITAR_OK: "The process was correctly updated",
+  PROCESO_BORRAR_OK: "The process has been correctly deleted",
+  EXPLORAR_PROCESOS: "Explore process",
+  CATEGORIA_PROCESO_EXPLAIN: "Category:",
+  CATEGORIA_PROCESO_INCORRECTO: "Incorrect category",
+  ICONO_BUSCAR_PROCESO: "Search process",
+  CATEGORIA_NO_TIENE_PERMISO:
+    "You don't have permissions to act on this category, contact the administrator in case there is an error in the tree",
+  CATEGORIA_EXISTE_HIJO: "There is subcategories that rely on this one",
+  CATEGORIA_NO_EXISTE: "The category does not exist",
+  CATEGORIA_TIENE_PROCESO: "The category has a process",
+  MI_HUELLA: "MY TRACK",
+  EMISIONES: "CO2 emissions",
+  GENERAS_HUELLA: "You generate a track of",
+
+  //PARAMETROS
+  PROCESO_USUARIO_INSERTAR_OK: "The process was correctly introduced",
+  MIS_PROCESOS: "My process",
+  PROCESO_USUARIO_BORRAR_OK: "Data was removed correctly",
+  SIN_PROCESOS_CALCULADOS: "There is no process yet",
+  PROCESO_CALCULADO:
+    'You have already filled this process, to check the process that currently shape your track go to "My Process"',
+  NAVEGAR_MIS_PROCESOS: "Go to my process",
+  PROCESO_USUARIO_ID_PROCESO_USUARIO_VACIO: "Empty ID process",
+  EXISTE_PROCESO_USUARIO: "This process has been already calculated",
+  PROCESO_USUARIO_EDITAR_OK: "Process updated",
+  CATEGORIA_TIENE_PROCESO: "This category has a process",
 };
