@@ -1537,7 +1537,7 @@ async function categoriasSistema() {
       categorias = [];
       todasCategorias = [];
       res.resource.forEach((element) => {
-        if (element.borrado_logico == 0) {
+        
           if (element.tiene_proceso) {
             todasCategorias[element.id_categoria] = element.nombre_categoria;
           }
@@ -1545,7 +1545,7 @@ async function categoriasSistema() {
           if (!element.tiene_proceso && !element.tiene_hijos) {
             categorias[element.id_categoria] = element.nombre_categoria;
           }
-        }
+        
       });
 
       setCookie("categorias", categorias);
